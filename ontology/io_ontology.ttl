@@ -1,0 +1,705 @@
+@prefix io: <http://example.org/iom#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+io:T00_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T00_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T00_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T00_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T00_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T00_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T01_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T01_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T01_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T01_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T01_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T01_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T02_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T02_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T02_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T02_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T02_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T02_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T03_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T03_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T03_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T03_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T03_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T03_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T04_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T04_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T04_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T04_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T04_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T04_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T05_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T05_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T05_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T05_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T05_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T05_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T06_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T06_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T06_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T06_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T06_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T06_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T07_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T07_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T07_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T07_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T07_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T07_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T08_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T08_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T08_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T08_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T08_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T08_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T09_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T09_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T09_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T09_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T09_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T09_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T10_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T10_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T10_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T10_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T10_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T10_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T11_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T11_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T11_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T11_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T11_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T11_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_adv_P2 ;
+    io:restoresVacuum true .
+
+io:T12_adv_P0 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_ret_P0 ;
+    io:restoresVacuum true .
+
+io:T12_adv_P1 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_ret_P1 ;
+    io:restoresVacuum true .
+
+io:T12_adv_P2 a io:OntoNode ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "adv" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_ret_P2 ;
+    io:restoresVacuum true .
+
+io:T12_ret_P0 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 0 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_adv_P0 ;
+    io:restoresVacuum true .
+
+io:T12_ret_P1 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:Evol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_adv_P1 ;
+    io:restoresVacuum true .
+
+io:T12_ret_P2 a io:OntoNode ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Invol ;
+    io:hasPhase "ret" ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_adv_P2 ;
+    io:restoresVacuum true .
+
