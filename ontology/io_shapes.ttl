@@ -1,0 +1,3 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix io: <http://example.org/iom#> .
+io:StructuralShape a sh:NodeShape ; sh:targetClass io:OntoNode .
