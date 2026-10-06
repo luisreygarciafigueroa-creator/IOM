@@ -150,6 +150,17 @@ Se verifica la Fórmula Nuclear para el estado vacío $V_t = (t, \emptyset)$:
 
 ---
 
+**Nota de Rigor (asimetría temporal en estados no vacíos).** 
+Mientras el estado vacío $V_t = (t, \emptyset)$ es un **punto fijo estricto isócrono** ($t \to t$) bajo la composición $S_{\mathrm{rev}} \circ Ivo \circ E$, la aplicación de la Fórmula Nuclear sobre un estado informativo arbitrario $s = (t, \sigma)$ con $\sigma \neq \emptyset$ produce el estado $(t-1,\, \mathrm{red}(\sigma))$. Esta regresión temporal en un paso ($t \to t-1$) es una **propiedad estructural** del operador $S_{\mathrm{rev}}$ en su caso general (Ecuación 4), y refleja que la disolución de la información estructurada consume un ciclo de retroceso temporal antes de alcanzar la condición de vacío. Esta asimetría es consistente con:
+
+- La naturaleza retroactiva de $S_{\mathrm{rev}}$ (supresión hacia el pasado).
+- La direccionalidad del vector involutivo (Perspectiva 5: estructura $\to$ vacío).
+- El Teorema 4 (No Repetición), que verifica formalmente en Lean 4 que $(S_{\mathrm{rev}} \circ Ivo \circ E(s)).time \neq s.time$ para $\sigma \neq \emptyset$.
+
+En consecuencia, la Ecuación (4) se mantiene en su forma actual, y la isocronía completa ($t \to t$) se restringe exclusivamente al subespacio de estados vacíos.
+
+---
+
 ## 4. Las trece tríadas categoriales
 
 ### 4.1. Estructura general
