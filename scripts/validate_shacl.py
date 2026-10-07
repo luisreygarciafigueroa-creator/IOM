@@ -1,17 +1,30 @@
 #!/usr/bin/env python3
-"""Valida ontology/io_ontology.ttl contra ontology/io_shapes.ttl."""
+"""Valida la ontología IOM contra sus formas SHACL."""
+from pathlib import Path
+import sys
+
 from pyshacl import validate
 
-conforms, results_graph, results_text = validate(
-    "ontology/io_ontology.ttl",
-    shacl_graph="ontology/io_shapes.ttl",
-    inference="none",
-    abort_on_first=False,
-)
+ROOT = Path(__file__).resolve().parents[1]
+DATA_GRAPH = ROOT / "ontology" / "io_ontology.ttl"
+SHAPES_GRAPH = ROOT / "ontology" / "io_shapes.ttl"
 
-print(results_text)
-if conforms:
-    print("✓ Las 4 restricciones SHACL fueron satisfechas.")
-else:
-    print("✗ La ontología NO satisface las restricciones SHACL")
-    exit(1)
+
+def main() -> int:
+    conforms, _results_graph, results_text = validate(
+        data_graph=str(DATA_GRAPH),
+        shacl_graph=str(SHAPES_GRAPH),
+        inference="none",
+        abort_on_first=False,
+    )
+    if results_text:
+        print(results_text)
+    if conforms:
+        print("✓ La ontología satisface todas las formas SHACL cargadas.")
+        return 0
+    print("✗ La ontología no satisface las formas SHACL; revisa los resultados anteriores.", file=sys.stderr)
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
