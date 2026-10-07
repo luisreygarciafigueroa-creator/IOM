@@ -9,7 +9,7 @@
 
 ## Resumen
 
-Este artículo presenta **Realidad I.O** como una propuesta ontológica que explora la relación entre vacío, información, temporalidad y perspectivas categoriales. El marco conceptual considera cinco perspectivas —Individualidad, Dualidad, Totalidad, Evolución e Involución— y una estructura combinatoria de trece tríadas, tres posiciones locales y dos fases. Se distingue expresamente esa propuesta de lo que verifica el software disponible. El repositorio `IOM-verified` contiene una biblioteca Lean 4 mínima con un tipo de estado formado por un entero y una lista de cadenas, tres operadores (`E`, `Ivo`, `S_rev`) y un único teorema Lean explícito: `strict_fixed_point`, que establece que el ciclo conserva los estados vacíos. También incluye un generador de un grafo RDF de 78 instancias `OntoNode` y formas SHACL para restricciones estructurales locales. Las comprobaciones automatizadas no demuestran la teoría filosófica completa, la consistencia lógica global, una transformación sin repetición ni propiedades globales de simetría. Se describen los artefactos, su alcance y los pasos para reproducir sus verificaciones.
+Este artículo presenta **Realidad I.O** como una propuesta ontológica que explora la relación entre vacío, información, temporalidad y perspectivas categoriales. El marco conceptual considera cinco perspectivas —Individualidad, Dualidad, Totalidad, Evolución e Involución— y una estructura combinatoria de trece tríadas, tres posiciones locales y dos fases. Se distingue expresamente esa propuesta de lo que verifica el software disponible. El repositorio `IOM` contiene una biblioteca Lean 4 mínima con un tipo de estado formado por un entero y una lista de cadenas, tres operadores (`E`, `Ivo`, `S_rev`) y un único teorema Lean explícito: `strict_fixed_point`, que establece que el ciclo conserva los estados vacíos. También incluye un generador de un grafo RDF de 78 instancias `OntoNode` y formas SHACL para restricciones estructurales locales. Las comprobaciones automatizadas no demuestran la teoría filosófica completa, la consistencia lógica global, una transformación sin repetición ni propiedades globales de simetría. Se describen los artefactos, su alcance y los pasos para reproducir sus verificaciones.
 
 **Palabras clave:** ontología, vacío, información, temporalidad discreta, Lean 4, RDF, SHACL, reproducibilidad.
 
@@ -189,11 +189,11 @@ En particular, el código disponible no demuestra una ley general de no repetici
 
 ## Disponibilidad de código
 
-El código y los artefactos descritos están en el repositorio **IOM-verified**:
+El código y los artefactos descritos están en el repositorio **IOM**:
 
-<https://github.com/luisreygarciafigueroa-creator/IOM-verified>
+<https://github.com/luisreygarciafigueroa-creator/IOM>
 
-El repositorio está configurado como **privado** al momento de esta revisión, por lo que el acceso depende de los permisos concedidos por su propietario. Incluye los módulos Lean, el generador RDF, las formas SHACL, pruebas Python, instrucciones de reproducción y un flujo de integración continua.
+El repositorio es **público**. Incluye los módulos Lean, el generador RDF, las formas SHACL, pruebas Python e instrucciones de reproducción. La rama de correcciones incorpora además un flujo de integración continua.
 
 ---
 
@@ -202,7 +202,7 @@ El repositorio está configurado como **privado** al momento de esta revisión, 
 1. Moura, L. de & Ullrich, S. (2021). *The Lean 4 Theorem Prover and Programming Language*. En *Automated Deduction – CADE 28*. Springer.
 2. W3C. (2014). *RDF 1.1 Concepts and Abstract Syntax*. W3C Recommendation.
 3. W3C. (2017). *Shapes Constraint Language (SHACL)*. W3C Recommendation.
-4. García Figueroa, L. R. (2026). *IOM-verified: Realidad I.O — implementación Lean y validación RDF/SHACL* [código fuente]. GitHub: <https://github.com/luisreygarciafigueroa-creator/IOM-verified>.
+4. García Figueroa, L. R. (2026). *IOM: Realidad I.O — implementación Lean y validación RDF/SHACL* [código fuente]. GitHub: <https://github.com/luisreygarciafigueroa-creator/IOM>.
 
 ---
 
