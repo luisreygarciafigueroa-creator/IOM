@@ -1,3 +1,50 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix io: <http://example.org/iom#> .
-io:StructuralShape a sh:NodeShape ; sh:targetClass io:OntoNode .
+
+io:StructuralShape a sh:NodeShape ;
+    sh:targetClass io:OntoNode ;
+    sh:property [
+        sh:path io:hasTriadIndex ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 12 ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:hasPhase ;
+        sh:in ( "adv" "ret" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:hasLocalPos ;
+        sh:datatype xsd:integer ;
+        sh:in ( 0 1 2 ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:hasDirection ;
+        sh:in ( io:evol io:invol ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:hasPerspective ;
+        sh:in ( io:Ind io:D io:Tot io:Evol io:Invol ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:restoresVacuum ;
+        sh:hasValue true ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path io:mirrorOf ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .

@@ -1,333 +1,220 @@
 # Realidad I.O: Dinámica Temporal del Vacío y la Unidad Informativa
 
-## Una ontología formal verificada mediante Lean 4 y RDF/OWL
-
----
+## Propuesta ontológica y estado de su implementación formal
 
 **Luis Rey García Figueroa**
-
-*Octubre de 2026*
-
-**Clasificación:** Marco ontológico-formal
+**Octubre de 2026**
 
 ---
 
 ## Resumen
 
-El presente artículo introduce y formaliza el marco ontológico-temporal denominado **Realidad I.O**, una reinterpretación del infinito como *ausencia de información* (vacío, $V$) en dinámica recíproca con la *unidad informativa* ($U$). La realidad se articula mediante cinco perspectivas complementarias, cuatro operadores temporales y trece tríadas categoriales con inversión simétrica distribuidas sobre un eje posicional $[0,4]$. La tesis central se expresa en la **Fórmula Nuclear** $S_{\mathrm{rev}} \circ Ivo \circ E \approx \mathrm{Id}_{\mathrm{vacío}}$, la cual restaura el vacío como punto fijo estricto para estados vacíos y opera como atractor funcional (transformación sin repetición) para estados informativos arbitrarios. El marco ha sido verificado formalmente mediante el asistente de pruebas Lean 4 (16 teoremas compilados sin `sorry` ni `admit`) y validado ontológicamente mediante RDF/OWL con restricciones SHACL. Se presentan las definiciones formales, la demostración paso a paso de la Fórmula Nuclear, la verificación aritmética de la estructura categorial y los resultados de la validación computacional.
+Este artículo presenta **Realidad I.O** como una propuesta ontológica que explora la relación entre vacío, información, temporalidad y perspectivas categoriales. El marco conceptual considera cinco perspectivas —Individualidad, Dualidad, Totalidad, Evolución e Involución— y una estructura combinatoria de trece tríadas, tres posiciones locales y dos fases. Se distingue expresamente esa propuesta de lo que verifica el software disponible. El repositorio `IOM` contiene una biblioteca Lean 4 mínima con un tipo de estado formado por un entero y una lista de cadenas, tres operadores (`E`, `Ivo`, `S_rev`) y un único teorema Lean explícito: `strict_fixed_point`, que establece que el ciclo conserva los estados vacíos. También incluye un generador de un grafo RDF de 78 instancias `OntoNode` y formas SHACL para restricciones estructurales locales. Las comprobaciones automatizadas no demuestran la teoría filosófica completa, la consistencia lógica global, una transformación sin repetición ni propiedades globales de simetría. Se describen los artefactos, su alcance y los pasos para reproducir sus verificaciones.
 
-**Palabras clave:** ontología del vacío, unidad informativa, evolución-involución, temporalidad discreta, cinco perspectivas, Lean 4, RDF/OWL, SHACL, verificación formal.
+**Palabras clave:** ontología, vacío, información, temporalidad discreta, Lean 4, RDF, SHACL, reproducibilidad.
 
 ---
 
 ## 1. Introducción
 
-### 1.1. Contexto y motivación
+Realidad I.O propone pensar el vacío no como un espacio físico, sino como una condición conceptual asociada a la ausencia de contenido informativo, y estudiar su relación con estados que sí contienen información. El marco también organiza ciertas categorías mediante perspectivas y tríadas. Estas ideas se presentan aquí como una **propuesta filosófica y un programa de formalización**, no como resultados establecidos por la física ni como conclusiones derivadas íntegramente por un asistente de pruebas.
 
-La relación entre el vacío y la información constituye uno de los problemas fundamentales de la ontología filosófica y de la física teórica contemporánea. Tradicionalmente, el vacío ha sido concebido como ausencia pasiva o como sustrato indiferenciado. El presente trabajo propone una reinterpretación radical: el vacío no es un espacio físico ni una mera negación, sino una **condición ontológica activa** cuya dinámica recíproca con la información genera la estructura misma de la realidad.
+El objetivo de esta versión del artículo es describir con precisión tanto la propuesta como la implementación existente. Para evitar confundir niveles de evidencia, se usan tres distinciones:
 
-### 1.2. Objetivo
+1. **Propuesta conceptual:** definiciones e interpretaciones filosóficas que plantea el marco.
+2. **Artefacto computacional:** estructuras y reglas codificadas en Lean, Python, RDF y SHACL.
+3. **Resultado comprobado:** propiedades efectivamente aceptadas por Lean o conformidades reportadas por el validador SHACL.
 
-El objetivo de este artículo es presentar, formalizar y verificar el marco **Realidad I.O**, una ontología que:
-
-1. Define el vacío ($V$) como ausencia total de información y la unidad informativa ($U$) como elemento mínimo de diferenciación.
-2. Articula la dinámica entre ambos polos mediante operadores temporales sobre un eje discreto $t \in \mathbb{Z}$.
-3. Estructura la realidad en cinco perspectivas complementarias y trece tríadas categoriales con inversión simétrica.
-4. Verifica la autoconsistencia del sistema mediante herramientas de demostración automática (Lean 4) y validación ontológica (RDF/OWL + SHACL).
-
-### 1.3. Estructura del artículo
-
-La sección 2 establece el marco conceptual y las definiciones fundamentales. La sección 3 introduce los cuatro operadores temporales y demuestra la Fórmula Nuclear. La sección 4 presenta las trece tríadas categoriales. La sección 5 describe la verificación formal en Lean 4. La sección 6 detalla la validación ontológica. Las secciones 7 y 8 discuten los resultados y extraen conclusiones.
+La compilación de Lean confirma que el código Lean del proyecto compila y que el teorema incluido se acepta. SHACL evalúa las formas declaradas sobre el grafo RDF cargado. Ninguno de esos hechos, por sí solo, prueba todas las interpretaciones teóricas del artículo.
 
 ---
 
 ## 2. Marco conceptual
 
-### 2.1. Definiciones fundamentales
+### 2.1. Vacío y estado informativo
 
-Se establecen las siguientes definiciones primitivas del sistema:
+Como notación conceptual, se denomina **vacío** al estado sin contenido informativo, y **estado informativo** a uno que contiene algún contenido. La implementación usa una representación más concreta y limitada: un estado Lean consta de un instante entero y una lista finita de cadenas:
 
-**Definición 1 (Vacío).** El vacío en el instante $t$ se define como:
-$$V_t = (t,\, \emptyset)$$
-El vacío representa la ausencia total de información. No es un espacio físico; es una condición ontológica.
+\[
+\texttt{State} = (\texttt{time}:\mathbb{Z},\;\texttt{payload}:\texttt{List String}).
+\]
 
-**Definición 2 (Unidad informativa).** Un estado informativo es un par ordenado:
-$$s = (t,\, A), \quad A \subseteq U,\; |A| < \infty$$
-donde $U$ denota el universo de unidades informativas. La unidad informativa constituye el elemento mínimo de diferenciación.
+El constructor `vacuum t` produce el estado `(t, [])`. En consecuencia, dentro del programa, vacío significa específicamente **lista vacía**. La lista de cadenas no formaliza un universo general de unidades informativas, ni incorpora una teoría de significado, equivalencia, redundancia o contenido físico.
 
-**Definición 3 (Reciprocidad).** Sin vacío no hay condición de emergencia; sin información no hay diferenciación que reconozca el vacío. Ambos polos son co-constitutivos.
+### 2.2. Cinco perspectivas
 
-**Definición 4 (Presente operativo).** El origen del eje temporal discreto se fija como:
-$$P_0 = \{t = 0\}, \quad t \in \mathbb{Z}$$
+El vocabulario del proyecto considera las etiquetas `Ind`, `D`, `Tot`, `Evol` e `Invol`, interpretadas en la propuesta como Individualidad, Dualidad, Totalidad, vector Evolutivo y vector Involutivo. En el grafo, son valores permitidos de la propiedad `hasPerspective`. Su presencia como etiquetas RDF no formaliza por sí misma sus interpretaciones filosóficas ni una teoría de relaciones entre ellas.
 
-### 2.2. Cinco perspectivas complementarias
+La propuesta conceptual separa las tres primeras etiquetas, asociadas a modos de ser o de organización, de las dos últimas, asociadas a direcciones de cambio. Esta distinción es una organización interpretativa del marco, no un teorema Lean ni una restricción global de SHACL.
 
-El conjunto ordenado de perspectivas se define como $\mathcal{P} = \{Ind, D, Tot, Evol, Invol\}$:
+### 2.3. Estructura de tríadas
 
-| Posición | Perspectiva | Función | Rol |
-|:---:|:---|:---|:---|
-| 1 | Individualidad ($Ind$) | Entidad singular y autocentrada | Modo de actualización (*qué*) |
-| 2 | Dualidad ($D$) | Relación mediadora presencia/ausencia | Bisagra de transformación (*qué*) |
-| 3 | Totalidad ($Tot$) | Campo que engloba todas las unidades | Modo de actualización (*qué*) |
-| 4 | Vector Evolutivo ($Evol$) | Flujo: vacío → estructura | Operador de generación (*cómo*) |
-| 5 | Vector Involutivo ($Invol$) | Flujo: estructura → vacío | Operador de disolución (*cómo*) |
+El generador recorre trece índices de tríada (`0` a `12`), dos fases (`adv` y `ret`) y tres posiciones locales (`0`, `1` y `2`). Por tanto, crea:
 
-**Proposición 1 (Exhaustividad y exclusión mutua).** Las perspectivas 1–3 responden a *qué* se actualiza (modos de ser de la información); las perspectivas 4–5 responden a *cómo* se actualiza (direcciones de flujo). La partición $\{1,2,3\} \sqcup \{4,5\} = \mathcal{P}$ es exhaustiva y mutuamente excluyente en su función.
+\[
+13\times 2\times 3 = 78
+\]
 
-### 2.3. Estructura direccional de los vectores
+instancias de `io:OntoNode`. Para cada instancia, el script asigna la dirección según la fase (`evol` para `adv`; `invol` para `ret`) y calcula la perspectiva con el índice `(triad_idx + pos) mod 5`. Empareja las instancias `adv` y `ret` de igual índice y posición mediante `mirrorOf` en ambos sentidos.
 
-**Vector Evolutivo (Perspectiva 4):**
-
-- *Fase de avance:* $\emptyset \xrightarrow{} Ind \xrightarrow{} Dua \xrightarrow{} Tot \xrightarrow{} Evol$ (posiciones $0 \to 4$).
-- *Fase de retroceso:* $Evol \xrightarrow{} Fut \xrightarrow{} Pre \xrightarrow{} Pas \xrightarrow{} \emptyset$ (posiciones $4 \to 0$).
-
-**Vector Involutivo (Perspectiva 5):**
-
-- *Fase de avance:* $Invol \xrightarrow{} Tot \xrightarrow{} Dua \xrightarrow{} Ind \xrightarrow{} \emptyset$ (posiciones $4 \to 0$).
-- *Fase de retroceso:* $\emptyset \xrightarrow{} Pas \xrightarrow{} Pre \xrightarrow{} Fut \xrightarrow{} Invol$ (posiciones $0 \to 4$).
-
-**Verificación aritmética.** En ambos vectores se contabilizan exactamente 4 transiciones para 5 posiciones, lo cual es aritméticamente consistente ($5 - 1 = 4$). La inversión entre avance y retroceso es simétrica.
-
-### 2.4. Complementariedad y cierre del circuito
-
-El ciclo ontológico completo se describe mediante cuatro fases:
-
-1. La información **emerge** del vacío por el vector evolutivo.
-2. Se **estructura** en la secuencia $Ind \to D \to Tot$.
-3. **Retorna** al vacío por el vector involutivo.
-4. Cada tránsito **reconfigura** orientaciones y funciones de los polos (transformación, no repetición).
+Estas son reglas de construcción del generador. La existencia de los 78 nodos y de esos enlaces en el grafo generado no equivale a una demostración de una simetría categorial universal ni de las interpretaciones de las tríadas.
 
 ---
 
-## 3. Operadores temporales y Fórmula Nuclear
+## 3. Operadores incluidos en Lean
 
-### 3.1. Definición de los operadores
+### 3.1. Definiciones del código
 
-Se definen cuatro operadores sobre el estado informativo $s = (t, A)$:
+La biblioteca Lean actual define tres operadores; no define el operador `S_fwd`, una función `red`, ni una transformación categorial `iota`. Para un estado `s = (t, p)`, las definiciones exactas son:
 
-| Operador | Signatura | Función |
-|:---|:---|:---|
-| Evolución ($E$) | $Info_t \rightarrow Info_{t+1}$ | Proyecta información hacia el futuro |
-| Supresión directa ($S_{\mathrm{fwd}}$) | $Info_t \rightarrow Info_t$ (reducción) | Reduce redundancia acumulada |
-| Involución ($Ivo$) | $Info_{t+1} \rightarrow Info_t$ | Reconfigura la información en sentido inverso |
-| Supresión retroactiva ($S_{\mathrm{rev}}$) | $Info_{t+1} \rightarrow V'_t$ | Restituye la condición de vacío al cerrar el ciclo |
+\[
+E(t,p)=(t+1,p),
+\]
 
-Sus definiciones formales son:
+\[
+Ivo(t,p)=(t-1,p),
+\]
 
-$$E(n, \sigma) = (n+1,\; \sigma) \tag{1}$$
+\[
+S_{rev}(t,p)=
+\begin{cases}
+(t,[]) & \text{si }p=[],\\
+(t-1,[]) & \text{si }p\ne[].
+\end{cases}
+\]
 
-$$S_{\mathrm{fwd}}(n, \sigma) = (n,\; \mathrm{red}(\sigma)) \tag{2}$$
+Estas ecuaciones resumen `IOM/Operators.lean`. En particular, para cualquier estado no vacío, `S_rev` descarta el payload y retrocede un paso temporal. Esta definición de código no debe confundirse con formulaciones más generales del marco que invoquen reducción de redundancia, inversión de categorías u otros operadores aún no implementados.
 
-$$Ivo(n, \sigma) = (n-1,\; \iota(\sigma)) \tag{3}$$
+### 3.2. Ciclo y teorema formalizado
 
-$$S_{\mathrm{rev}}(n, \sigma) = \begin{cases} (n,\; \emptyset) & \text{si } \sigma = \emptyset \\ (n-1,\; \mathrm{red}(\iota(\sigma))) & \text{en general} \end{cases} \tag{4}$$
+Se considera el ciclo `S_rev (Ivo (E s))`, equivalente a la composición \(S_{rev}\circ Ivo\circ E\) con la convención usual de aplicación de derecha a izquierda.
 
-donde:
-- $\mathrm{red}$: función idempotente de eliminación de redundancias ($\mathrm{red} \circ \mathrm{red} = \mathrm{red}$).
-- $\iota$: transformación involutiva de inversión categorial tal que $\iota \circ \iota = \mathrm{Id}_{\mathcal{C}}$.
+Para `vacuum t = (t, [])`, las definiciones implican:
 
-### 3.2. Fórmula Nuclear
-
-**Teorema 1 (Fórmula Nuclear).** La composición:
-$$\boxed{S_{\mathrm{rev}} \circ Ivo \circ E \approx \mathrm{Id}_{\mathrm{vacío}}} \tag{5}$$
-restaura el vacío como **punto fijo estricto** para estados vacíos y opera como **atractor funcional** (transformación sin repetición) para estados informativos arbitrarios.
-
-### 3.3. Demostración paso a paso
-
-Se verifica la Fórmula Nuclear para el estado vacío $V_t = (t, \emptyset)$:
-
-| Paso | Operación | Resultado |
-|:---:|:---|:---|
-| 1 | $E(V_t) = E(t, \emptyset)$ | $(t+1, \emptyset) = V_{t+1}$ ✓ |
-| 2 | $Ivo(V_{t+1}) = Ivo(t+1, \emptyset)$ | $(t, \iota(\emptyset)) = (t, \emptyset) = V_t$ ✓ |
-| 3 | $S_{\mathrm{rev}}(V_t) = S_{\mathrm{rev}}(t, \emptyset)$ | $(t, \emptyset) = V_t$ ✓ (caso $\sigma = \emptyset$) |
-
-**Conclusión:** $S_{\mathrm{rev}}(Ivo(E(V_t))) = V_t$. Punto fijo estricto confirmado. $\blacksquare$
-
-### 3.4. Precisión sobre la simultaneidad
-
-**Observación 1.** La simultaneidad $Ivo \circ E = E \circ Ivo = \mathrm{Id}$ se cumple exclusivamente en la **componente temporal** (el índice $t$ se restaura). En la componente informacional, la composición introduce $\iota(\sigma)$, que coincide con $\sigma$ solo cuando $\iota$ actúa como identidad sobre el conjunto dado. Esta restricción al componente temporal es una propiedad estructural del sistema, no una limitación.
-
----
-
-**Nota de Rigor (asimetría temporal en estados no vacíos).** 
-Mientras el estado vacío $V_t = (t, \emptyset)$ es un **punto fijo estricto isócrono** ($t \to t$) bajo la composición $S_{\mathrm{rev}} \circ Ivo \circ E$, la aplicación de la Fórmula Nuclear sobre un estado informativo arbitrario $s = (t, \sigma)$ con $\sigma \neq \emptyset$ produce el estado $(t-1,\, \mathrm{red}(\sigma))$. Esta regresión temporal en un paso ($t \to t-1$) es una **propiedad estructural** del operador $S_{\mathrm{rev}}$ en su caso general (Ecuación 4), y refleja que la disolución de la información estructurada consume un ciclo de retroceso temporal antes de alcanzar la condición de vacío. Esta asimetría es consistente con:
-
-- La naturaleza retroactiva de $S_{\mathrm{rev}}$ (supresión hacia el pasado).
-- La direccionalidad del vector involutivo (Perspectiva 5: estructura $\to$ vacío).
-- El Teorema 4 (No Repetición), que verifica formalmente en Lean 4 que $(S_{\mathrm{rev}} \circ Ivo \circ E(s)).time \neq s.time$ para $\sigma \neq \emptyset$.
-
-En consecuencia, la Ecuación (4) se mantiene en su forma actual, y la isocronía completa ($t \to t$) se restringe exclusivamente al subespacio de estados vacíos.
-
----
-
-## 4. Las trece tríadas categoriales
-
-### 4.1. Estructura general
-
-| Propiedad | Descripción |
+| Paso | Estado |
 |:---|:---|
-| **Cantidad** | 13 tríadas |
-| **Fases** | Avance y retroceso (inversión simétrica) |
-| **Distribución** | Eje posicional $[0, 4]$ definido por las cinco perspectivas |
-| **Inversión lateral** | $\iota \circ \iota = \mathrm{Id}_{\mathcal{C}}$ (involución perfecta) |
-| **Simetría cruzada** | Los extremos de la fase de avance producen los centros de la fase de retroceso, y viceversa |
-| **Herencia direccional** | Cada categoría hereda la direccionalidad del vector evolutivo (avance) y del vector involutivo (retroceso) |
+| `vacuum t` | `(t, [])` |
+| `E (vacuum t)` | `(t + 1, [])` |
+| `Ivo (E (vacuum t))` | `(t, [])` |
+| `S_rev (Ivo (E (vacuum t)))` | `(t, [])` |
 
-### 4.2. Verificación aritmética
+El repositorio formaliza exactamente esta propiedad como:
 
-Se verifica la consistencia numérica de la estructura categorial:
-
-$$13 \text{ tríadas} \times 3 \text{ posiciones} \times 2 \text{ fases} = 78 \text{ nodos} \tag{6}$$
-
-$$13 \times 3 = 39 \text{ posiciones de avance} + 39 \text{ posiciones de retroceso} = 78 \text{ nodos totales} \tag{7}$$
-
-Las cifras son aritméticamente consistentes.
-
----
-
-## 5. Verificación formal en Lean 4
-
-### 5.1. Metodología
-
-La verificación se realizó mediante el asistente de pruebas **Lean 4**, utilizando la siguiente configuración:
-
-- **Módulos:** `IOM_Core`, `IOM_Operators`, `IOM_Theorems`.
-- **Compilación:** `lake build`.
-- **Criterio de integridad:** Ausencia total de `sorry` y `admit` en los 16 teoremas.
-
-### 5.2. Teoremas críticos
-
-| N.º | Teorema | Enunciado |
-|:---:|:---|:---|
-| 1 | **Lema del Vacío** | $E(V_t) = V_{t+1}$; $\;S_{\mathrm{fwd}}(V_t) = V_t$; $\;Ivo(V_t) = V_{t-1}$ |
-| 2 | **Punto Fijo Estricto** | $\forall t \in \mathbb{Z}:\; S_{\mathrm{rev}}(Ivo(E(V_t))) = V_t$ |
-| 3 | **Simultaneidad** | $Ivo \circ E = E \circ Ivo = \mathrm{Id}$ (componente temporal) |
-| 4 | **No Repetición** | $\forall s_0 = (0, \sigma_0),\; \sigma_0 \neq \emptyset:\; S_{\mathrm{rev}} \circ Ivo \circ E(s_0) \neq s_0$ |
-
-**Resultado:** 16 teoremas compilados y verificados sin excepciones.
-
-### 5.3. Estructura del proyecto formal
-
-```
-IOM/
-├── IOM_Core.lean          → Definiciones: V, U, P, estados, eje temporal
-├── IOM_Operators.lean     → E, S_fwd, Ivo, S_rev
-├── IOM_Perspectives.lean  → Cinco perspectivas y eje [0,4]
-├── IOM_Triads.lean        → 13 tríadas categoriales e inversión ι
-├── IOM_Theorems.lean      → 16 teoremas verificados
-├── ontology/
-│   ├── io_ontology.ttl    → Grafo RDF/OWL (78 nodos)
-│   └── io_shapes.ttl      → Restricciones SHACL
-└── lakefile.lean          → Configuración de compilación
+```lean
+theorem strict_fixed_point (t : Int) :
+  S_rev (Ivo (E (vacuum t))) = vacuum t := by rfl
 ```
 
----
+La prueba se cierra por reducción definicional (`rfl`). La igualdad es exacta para los estados construidos por `vacuum`.
 
-## 6. Validación ontológica (RDF/OWL y SHACL)
+Para un estado con payload no vacío, una evaluación directa de las definiciones produce `(t - 1, [])` después del ciclo. Esto es una descripción del comportamiento del código, pero el repositorio **no contiene un teorema Lean separado** que formalice una propiedad de no repetición o un atractor para esos estados. Tampoco contiene una prueba de que dicho resultado sea una propiedad de la teoría ontológica general.
 
-### 6.1. Grafo RDF/OWL
+### 3.3. Alcance de la verificación
 
-Se construyó un grafo ontológico con las siguientes características:
-
-- **78 nodos** (39 posiciones de avance + 39 posiciones de retroceso).
-- Estructura de 13 tríadas × 3 posiciones × 2 fases.
-- Codificación en formato TTL (Turtle).
-
-### 6.2. Restricciones SHACL
-
-| Restricción | Condición | Estado |
-|:---|:---|:---:|
-| Consistencia estructural | Cada categoría posee exactamente una fase y posición dentro del eje $[0,4]$ | ✓ |
-| Inversión lateral perfecta | Para cada tríada de avance en posición Izquierda, existe su espejo en posición Derecha en retroceso (13/13) | ✓ |
-| Cierre de circuito | Toda instancia de $S_{\mathrm{rev}}$ declara `io:restoresVacuum true` | ✓ |
-| Coherencia perspectival | Cada instancia declara pertenencia a una de las cinco perspectivas y su dirección de flujo | ✓ |
-
-Las cuatro restricciones estructurales fueron satisfechas en su totalidad.
+`lake build` compila la biblioteca declarada en `lakefile.lean` usando la versión fijada en `lean-toolchain` (`leanprover/lean4:v4.9.0`). La compilación no demuestra automáticamente proposiciones informales que no estén expresadas como tipos o teoremas Lean. En el estado documentado aquí, hay **un teorema explícito**, `strict_fixed_point`; no hay una suite de 16 teoremas.
 
 ---
 
-## 7. Discusión de resultados
+## 4. Grafo RDF y validación SHACL
 
-### 7.1. Síntesis de hallazgos
+### 4.1. Datos generados
 
-| N.º | Resultado | Implicación |
-|:---:|:---|:---|
-| 1 | **Vacío como punto fijo estricto** | La composición $S_{\mathrm{rev}} \circ Ivo \circ E$ restaura exactamente $V_t$ para estados vacíos. El vacío es invariante bajo el ciclo completo. |
-| 2 | **Transformación sin repetición** | Para estados informativos, el ciclo produce un estado distinto del original ($V'$ estructurado). Se garantiza la no trivialidad del tránsito. |
-| 3 | **Cierre del circuito ontológico** | La información emerge del vacío (vector evolutivo), se estructura ($Ind$–$D$–$Tot$) y retorna al vacío (vector involutivo). |
-| 4 | **Coherencia categorial verificada** | Las 13 tríadas con inversión simétrica cumplen la totalidad de las restricciones SHACL sobre el eje $[0,4]$. |
-| 5 | **Consistencia lógica** | Los axiomas de temporalidad, reciprocidad y cierre de circuito son consistentes. Verificación Lean 4 sin excepciones. |
+El script `scripts/generate_ontology.py` genera `ontology/io_ontology.ttl`, un grafo Turtle con 78 sujetos tipados como `io:OntoNode`. Cada instancia recibe índice de tríada, fase, posición local, dirección, perspectiva, el valor booleano `restoresVacuum = true` y un enlace `mirrorOf`. El espacio de nombres empleado es `http://example.org/iom#`; funciona como identificador del vocabulario de ejemplo del proyecto, no como prueba de que exista un vocabulario OWL publicado y formalmente axiomatizado.
 
-### 7.2. Alcance y limitaciones
+El script genera instancias RDF. No hay en este artefacto una demostración de que los nodos representen exhaustivamente una realidad ontológica, ni una inferencia automática del significado de `restoresVacuum` a partir de los operadores Lean.
 
-El marco opera sobre un eje temporal discreto ($t \in \mathbb{Z}$), lo que permite la verificación mecánica pero impone una granularidad específica. La función $\mathrm{red}$ se asume idempotente; su caracterización interna queda fuera del alcance del presente trabajo. La transformación $\iota$ se define axiomáticamente como involución perfecta ($\iota \circ \iota = \mathrm{Id}_{\mathcal{C}}$), sin especificar su contenido categorial concreto más allá de las 13 tríadas.
+### 4.2. Restricciones SHACL efectivamente declaradas
 
-### 7.3. Contribución metodológica
+`ontology/io_shapes.ttl` declara un `NodeShape` dirigido a los nodos de clase `io:OntoNode`, con restricciones locales para siete propiedades:
 
-El presente trabajo establece un puente entre la ontología filosófica y la verificación formal asistida por computadora. La combinación de Lean 4 (verificación lógica) con RDF/OWL + SHACL (validación ontológica) ofrece un protocolo reproducible, auditable y extensible para marcos ontológicos de esta naturaleza.
+| Propiedad | Comprobación local declarada |
+|:---|:---|
+| `hasTriadIndex` | Un valor entero entre 0 y 12, inclusive. |
+| `hasPhase` | Exactamente un valor, perteneciente a `adv` o `ret`. |
+| `hasLocalPos` | Exactamente un entero, perteneciente a 0, 1 o 2. |
+| `hasDirection` | Exactamente un valor, `evol` o `invol`. |
+| `hasPerspective` | Exactamente un valor de `Ind`, `D`, `Tot`, `Evol` o `Invol`. |
+| `restoresVacuum` | Exactamente un valor con valor booleano verdadero. |
+| `mirrorOf` | Al menos un valor y como máximo uno. No se comprueba que el enlace sea recíproco ni que apunte a una instancia existente. |
 
----
+Estas son restricciones por nodo y propiedad. La forma actual no exige que el grafo tenga exactamente 78 nodos, que estén presentes todas las combinaciones índice/fase/posición, que cada referencia `mirrorOf` sea recíproca, ni que la perspectiva siga una secuencia global. Tales propiedades no deben atribuirse a SHACL en esta versión.
 
-## 8. Conclusiones
+### 4.3. Pruebas y significado del resultado
 
-1. El marco **Realidad I.O** proporciona una ontología formal y autoconsistente donde el vacío y la unidad informativa constituyen los dos polos de una dinámica recíproca cerrada.
+La suite Python contiene dos pruebas de regresión: (1) verifica que el grafo cargado contiene 78 sujetos `OntoNode` y que conforma con la forma SHACL; (2) cambia el índice de un nodo a 13 y verifica que el grafo deja de conformar. El validador `scripts/validate_shacl.py` ejecuta PySHACL y comunica la conformidad del grafo cargado.
 
-2. La formalización sobre un eje temporal discreto ($t \in \mathbb{Z}$) permite la verificación mecánica de todas las propiedades fundamentales mediante Lean 4, alcanzando **16 teoremas compilados sin excepciones**.
-
-3. La estructura de **cinco perspectivas** y **trece tríadas categoriales** con inversión simétrica queda validada tanto lógica como ontológicamente (RDF/OWL + SHACL), con un total de **78 nodos** y **4 restricciones estructurales** satisfechas.
-
-4. La Fórmula Nuclear $S_{\mathrm{rev}} \circ Ivo \circ E \approx \mathrm{Id}_{\mathrm{vacío}}$ constituye el principio de cierre del sistema: garantiza que el vacío es punto fijo estricto y que la información, al recorrer el ciclo completo, se transforma sin repetirse.
-
-5. El documento establece un puente entre la ontología filosófica y la verificación formal asistida por computadora, ofreciendo un marco reproducible, auditable y extensible.
+Una respuesta `Conforms: True` significa que los datos evaluados satisfacen las restricciones SHACL cargadas. No significa que el modelo filosófico sea verdadero, que el grafo sea completo respecto de una ontología externa o que se haya probado la corrección semántica de sus interpretaciones.
 
 ---
 
-## Disponibilidad de datos y código
+## 5. Reproducibilidad y automatización
 
-El código fuente completo, los 16 teoremas verificados en Lean 4, el grafo ontológico RDF/OWL (78 nodos) y las restricciones SHACL que sustentan los resultados de este artículo están disponibles públicamente bajo licencia MIT en el repositorio oficial del proyecto:
+La versión Lean está fijada por `lean-toolchain`. Las dependencias Python para RDFLib y PySHACL se declaran en `requirements.txt`. Desde la raíz del repositorio, los pasos principales son:
 
-> **Repositorio IOM:** https://github.com/luisreygarciafigueroa-creator/IOM
+```bash
+lake build
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python scripts/generate_ontology.py
+python scripts/validate_shacl.py
+```
 
-El repositorio incluye un entorno de Codespaces preconfigurado que permite reproducir la compilación `lake build` y la validación SHACL sin instalación local. Todas las cifras reportadas (13 tríadas × 3 posiciones × 2 fases = 78 nodos; 16 teoremas sin `sorry` ni `admit`) pueden verificarse de forma independiente mediante los scripts contenidos en las carpetas `IOM/`, `ontology/` y `scripts/`.
+El flujo de GitHub Actions en `.github/workflows/ci.yml` ejecuta la compilación Lean y las comprobaciones de generación y validación RDF/SHACL en `push` y `pull_request`. El estado concreto de una ejecución de CI debe consultarse en la interfaz de GitHub; la mera presencia del archivo de flujo no se presenta como evidencia de que una ejecución remota haya pasado.
+
+---
+
+## 6. Discusión
+
+La implementación actual es deliberadamente acotada frente al alcance filosófico sugerido por Realidad I.O. Su aporte verificable es una pequeña representación ejecutable que conecta una definición de vacío como payload vacío, tres funciones sobre estados, un teorema de punto fijo para el estado vacío y una tabla de datos RDF sometida a reglas SHACL locales.
+
+Conviene no identificar tres niveles distintos de afirmación:
+
+- La composición conserva el vacío **en el caso definido y probado** por `strict_fixed_point`.
+- La lectura de las perspectivas, los vectores y el cierre del circuito pertenece a la propuesta conceptual mientras no se formalice y se pruebe de manera correspondiente.
+- La conformidad SHACL se refiere exclusivamente a las restricciones de datos descritas en la sección 4.
+
+En particular, el código disponible no demuestra una ley general de no repetición, un comportamiento de atractor, la consistencia global de axiomas de temporalidad y reciprocidad, ni una isomorfía entre la semántica Lean y el grafo RDF. La formalización de esas afirmaciones requeriría definiciones adicionales, enunciados explícitos y pruebas o validaciones adecuadas.
+
+---
+
+## 7. Conclusiones
+
+1. Realidad I.O se presenta como una propuesta ontológica sobre vacío, información y organización categorial; su interpretación filosófica excede la formalización computacional actualmente incluida.
+2. La biblioteca Lean representa estados como pares de tiempo entero y lista de cadenas, define `E`, `Ivo` y `S_rev`, y contiene un teorema explícito: `strict_fixed_point`.
+3. El teorema prueba, por reducción definicional, que el ciclo devuelve `vacuum t` cuando se parte de un estado vacío. No prueba una propiedad de no repetición para estados informativos.
+4. El generador RDF produce 78 instancias de `OntoNode`; las formas SHACL comprueban restricciones estructurales locales para siete propiedades, no integridad global ni semántica filosófica.
+5. La compilación Lean, las pruebas Python y el validador SHACL proporcionan comprobaciones reproducibles y de alcance limitado. Las afirmaciones más amplias deberán incorporarse al código antes de describirse como verificadas.
+
+---
+
+## Disponibilidad de código
+
+El código y los artefactos descritos están en el repositorio **IOM**:
+
+<https://github.com/luisreygarciafigueroa-creator/IOM>
+
+El repositorio es **público**. Incluye los módulos Lean, el generador RDF, las formas SHACL, pruebas Python e instrucciones de reproducción. La rama de correcciones incorpora además un flujo de integración continua.
 
 ---
 
 ## Referencias
 
-1. García Figueroa, L. R. (2026). *Realidad I.O: Dinámica Temporal del Vacío y la Unidad Informativa*. Documento fuente. Octubre de 2026.
-
-2. Moura, L. de & Ullrich, S. (2021). Lean 4. *Proceedings of the 28th International Conference on Automated Deduction (CADE-28)*. Springer.
-
-3. Bechhofer, S., van Harmelen, F., Hendler, J., et al. (2004). OWL Web Ontology Language Reference. *W3C Recommendation*.
-
-4. Knublauch, H. & Kontokostas, D. (2017). Shapes Constraint Language (SHACL). *W3C Recommendation*.
-
-5. García Figueroa, L. R. (2026). *IOM: Realidad I.O — Marco ontológico-formal verificado* [Código fuente]. GitHub. https://github.com/luisreygarciafigueroa-creator/IOM
+1. Moura, L. de & Ullrich, S. (2021). *The Lean 4 Theorem Prover and Programming Language*. En *Automated Deduction – CADE 28*. Springer.
+2. W3C. (2014). *RDF 1.1 Concepts and Abstract Syntax*. W3C Recommendation.
+3. W3C. (2017). *Shapes Constraint Language (SHACL)*. W3C Recommendation.
+4. García Figueroa, L. R. (2026). *IOM: Realidad I.O — implementación Lean y validación RDF/SHACL* [código fuente]. GitHub: <https://github.com/luisreygarciafigueroa-creator/IOM>.
 
 ---
 
-## Apéndice A: Metadatos del documento
+## Apéndice A. Correspondencia entre afirmaciones y artefactos
 
-| Campo | Valor |
-|:---|:---|
-| **Tipo** | Artículo académico – Ontología formal |
-| **Documento fuente** | *Realidad I.O: Dinámica Temporal del Vacío y la Unidad Informativa* |
-| **Autor** | Luis Rey García Figueroa |
-| **Fecha** | Octubre de 2026 |
-| **Herramientas de verificación** | Lean 4 (módulos IOM), RDF/OWL, SHACL |
-| **Estado de verificación** | 16 teoremas compilados en Lean 4 sin `sorry` ni `admit`; restricciones SHACL validadas |
-
----
-
-## Apéndice B: Nota de rigor
-
-Toda la información contenida en este artículo ha sido contrastada internamente con las definiciones formales del documento fuente. La verificación aritmética de posiciones, transiciones, nodos y composiciones operatorias confirma la consistencia del marco presentado. En particular:
-
-- 4 transiciones para 5 posiciones (consistente).
-- 13 × 3 × 2 = 78 nodos (consistente).
-- 39 + 39 = 78 (consistente).
-- La demostración de la Fórmula Nuclear procede por aplicación directa de las definiciones (1)–(4) sin pasos omitidos.
+| Afirmación | Artefacto que la respalda | Límite |
+|:---|:---|:---|
+| `vacuum t` es un estado con payload vacío | `IOM/Core.lean` | Lista vacía como representación concreta. |
+| El ciclo conserva el estado vacío | `strict_fixed_point` en `IOM/Operators.lean` | Solo el caso vacío codificado. |
+| El grafo generado contiene 78 nodos | `scripts/generate_ontology.py` y prueba Python | No demuestra completitud ontológica global. |
+| El grafo satisface las formas SHACL cargadas | `ontology/io_shapes.ttl`, `scripts/validate_shacl.py` | Solo las restricciones locales descritas arriba. |
+| Las pruebas de código se ejecutan en cambios | `.github/workflows/ci.yml` | El resultado de cada ejecución debe verificarse en GitHub Actions. |
 
 ---
 

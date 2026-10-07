@@ -1,45 +1,34 @@
-# Guía de Reproducción — Realidad I.O
+# Guía de reproducción — Realidad I.O
 
-Este documento proporciona instrucciones paso a paso para reproducir las verificaciones formales del marco **Realidad I.O**.
+Esta guía describe comandos reproducibles para el contenido que actualmente existe en el repositorio. El proyecto contiene una biblioteca Lean pequeña y scripts Python para generar y validar la ontología RDF. No afirma que haya 16 teoremas: el código formal debe revisarse directamente en `IOM/`.
 
 ## Requisitos
 
-- Cuenta de GitHub (para usar Codespaces) **O** instalación local de Lean 4.9.0 y Python 3.9+
-- Navegador web moderno (Chrome, Firefox, Edge)
+- Lean 4.9.0, instalado mediante Elan, para compilar el proyecto Lean. La versión está fijada en `lean-toolchain`.
+- Python 3.9 o posterior para los scripts RDF.
 
-## Opción A: Reproducción en la nube (recomendada, sin instalación)
+## Compilación Lean
 
-### 1. Abrir el repositorio en Codespaces
-
-1. Ve a: https://github.com/luisreygarciafigueroa-creator/IOM
-2. Toca el botón verde **<> Code**
-3. Selecciona la pestaña **Codespaces**
-4. Toca **Create codespace on main**
-5. Espera 2-5 minutos mientras se configura el entorno (Lean 4 se instala automáticamente)
-
-### 2. Verificar los 16 teoremas de Lean 4
-
-Abre la terminal (☰ → Terminal → New Terminal) y ejecuta:
+Desde la raíz del repositorio, ejecuta:
 
 ```bash
 lake build
-mkdir -p .devcontainer
-cat << 'EOF' > .devcontainer/devcontainer.json
-{
-  "name": "IOM - Realidad I.O",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
-  },
-  "postCreateCommand": "curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.9.0 && source $HOME/.elan/env && pip install rdflib pyshacl",
-  "postAttachCommand": "source $HOME/.elan/env",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "leanprover.lean4"
-      ]
-    }
-  }
-}
+```
+
+La compilación solo verifica los módulos Lean que forman parte del proyecto actual. Para comprobar qué teoremas contiene el repositorio, revisa los archivos `.lean` bajo `IOM/`.
+
+## Generación y validación RDF/SHACL
+
+Instala las dependencias Python declaradas en `requirements.txt` y ejecuta los scripts desde cualquier directorio:
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/generate_ontology.py
+python scripts/validate_shacl.py
+```
+
+El generador crea 78 instancias. El validador comprueba sus propiedades con las formas definidas en `ontology/io_shapes.ttl`; un resultado no conforme devuelve un código de salida distinto de cero.
+
+## Entorno de desarrollo
+
+El archivo `.devcontainer/devcontainer.json` configura Python y prepara Lean mediante Elan. Después de crear el entorno, ejecuta los mismos comandos de compilación y validación indicados arriba.

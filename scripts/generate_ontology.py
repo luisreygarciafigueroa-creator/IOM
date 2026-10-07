@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Genera ontology/io_ontology.ttl con 78 nodos (13 tríadas × 3 posiciones × 2 fases)."""
 from rdflib import Graph, Namespace, Literal
+from pathlib import Path
+
 from rdflib.namespace import RDF, RDFS, XSD
+
+ROOT = Path(__file__).resolve().parents[1]
 
 IO = Namespace("http://example.org/iom#")
 g = Graph()
@@ -35,8 +39,8 @@ for triad_idx in range(13):
         g.add((adv, IO.mirrorOf, ret))
         g.add((ret, IO.mirrorOf, adv))
 
-g.serialize("ontology/io_ontology.ttl", format="turtle")
+g.serialize(str(ROOT / "ontology" / "io_ontology.ttl"), format="turtle")
 node_count = len(list(g.subjects(RDF.type, IO.OntoNode)))
 print(f"Nodos generados: {node_count}")
 assert node_count == 78, f"Deben ser exactamente 78 nodos, se generaron {node_count}"
-print("✓ Ontología serializada en ontology/io_ontology.ttl")
+print(f"✓ Ontología serializada en {ROOT / 'ontology' / 'io_ontology.ttl'}")
