@@ -19,12 +19,14 @@ La compilación solo verifica los módulos Lean que forman parte del proyecto ac
 
 ## Generación y validación RDF/SHACL
 
-Instala las dependencias Python declaradas en `requirements.txt` y ejecuta los scripts desde cualquier directorio:
+Desde la raíz del repositorio, crea un entorno virtual e instala las dependencias declaradas. Así se evitan instalaciones globales que Ubuntu reciente puede bloquear:
 
 ```bash
-python -m pip install -r requirements.txt
-python scripts/generate_ontology.py
-python scripts/validate_shacl.py
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/generate_ontology.py
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python scripts/validate_shacl.py
 ```
 
 El generador crea 78 instancias. El validador comprueba sus propiedades con las formas definidas en `ontology/io_shapes.ttl`; un resultado no conforme devuelve un código de salida distinto de cero.
