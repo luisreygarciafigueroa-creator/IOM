@@ -14,10 +14,14 @@ El repositorio contiene actualmente una implementación Lean acotada (`IOM/Core.
 Desde la raíz del repositorio:
 
 ```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 lake build
-python -m pip install -r requirements.txt
-python scripts/generate_ontology.py
-python scripts/validate_shacl.py
+.venv/bin/python scripts/generate_ontology.py
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python scripts/validate_shacl.py
 ```
+
+El entorno virtual evita modificar el Python del sistema, que algunas distribuciones (incluido Ubuntu reciente) protegen contra instalaciones globales con `pip`.
 
 Consulta [la guía de reproducción](REPRODUCCION.md) para más detalles y [el artículo](paper.md) para la propuesta teórica.

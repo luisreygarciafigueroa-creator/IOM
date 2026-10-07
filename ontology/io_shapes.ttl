@@ -39,12 +39,76 @@ io:StructuralShape a sh:NodeShape ;
     ] ;
     sh:property [
         sh:path io:restoresVacuum ;
+        sh:datatype xsd:boolean ;
         sh:hasValue true ;
         sh:minCount 1 ;
         sh:maxCount 1
     ] ;
     sh:property [
         sh:path io:mirrorOf ;
+        sh:class io:OntoNode ;
         sh:minCount 1 ;
         sh:maxCount 1
+    ] ;
+    sh:sparql [
+        sh:message "mirrorOf debe enlazar recíprocamente un nodo de la misma tríada y posición, en la fase opuesta (adv/ret)." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this
+            WHERE {
+                $this io:hasTriadIndex ?triad ;
+                      io:hasLocalPos ?pos ;
+                      io:hasPhase ?phase ;
+                      io:mirrorOf ?mirror .
+                FILTER NOT EXISTS {
+                    ?mirror a io:OntoNode ;
+                            io:hasTriadIndex ?triad ;
+                            io:hasLocalPos ?pos ;
+                            io:hasPhase ?mirrorPhase ;
+                            io:mirrorOf $this .
+                    FILTER ((?phase = "adv" && ?mirrorPhase = "ret") ||
+                            (?phase = "ret" && ?mirrorPhase = "adv"))
+                }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "La dirección debe corresponder a la fase: adv=evol y ret=invol." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this
+            WHERE {
+                $this io:hasPhase ?phase ; io:hasDirection ?direction .
+                FILTER ((?phase = "adv" && ?direction != io:evol) ||
+                        (?phase = "ret" && ?direction != io:invol))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "La perspectiva debe corresponder a (índice de tríada + posición local) módulo 5." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this
+            WHERE {
+                $this io:hasTriadIndex ?triad ;
+                      io:hasLocalPos ?pos ;
+                      io:hasPerspective ?perspective .
+                BIND((?triad + ?pos) AS ?sum)
+                BIND(IF(?sum < 5,
+                    IF(?sum = 0, io:Ind,
+                    IF(?sum = 1, io:D,
+                    IF(?sum = 2, io:Tot,
+                    IF(?sum = 3, io:Evol, io:Invol)))),
+                    IF(?sum < 10,
+                        IF(?sum = 5, io:Ind,
+                        IF(?sum = 6, io:D,
+                        IF(?sum = 7, io:Tot,
+                        IF(?sum = 8, io:Evol, io:Invol)))),
+                        IF(?sum = 10, io:Ind,
+                        IF(?sum = 11, io:D,
+                        IF(?sum = 12, io:Tot,
+                        IF(?sum = 13, io:Evol, io:Invol)))))) AS ?expectedPerspective)
+                FILTER (?perspective != ?expectedPerspective)
+            }
+        """
     ] .

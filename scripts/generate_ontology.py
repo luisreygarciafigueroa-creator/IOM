@@ -39,8 +39,8 @@ for triad_idx in range(13):
         g.add((adv, IO.mirrorOf, ret))
         g.add((ret, IO.mirrorOf, adv))
 
-g.serialize(str(ROOT / "ontology" / "io_ontology.ttl"), format="turtle")
-node_count = len(list(g.subjects(RDF.type, IO.OntoNode)))
+node_count = len(set(g.subjects(RDF.type, IO.OntoNode)))
 print(f"Nodos generados: {node_count}")
 assert node_count == 78, f"Deben ser exactamente 78 nodos, se generaron {node_count}"
+g.serialize(str(ROOT / "ontology" / "io_ontology.ttl"), format="turtle")
 print(f"✓ Ontología serializada en {ROOT / 'ontology' / 'io_ontology.ttl'}")
