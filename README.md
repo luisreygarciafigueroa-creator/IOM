@@ -1,4 +1,4 @@
-# IOM — Realidad I.O
+# test — W 1.0
 
 Marco ontológico-formal en desarrollo, con Lean 4 y una ontología RDF validada mediante SHACL.
 
