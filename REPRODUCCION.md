@@ -53,3 +53,20 @@ lake build
 ```
 
 La metodología, las métricas y sus propiedades correspondientes, así como sus límites de interpretación, están en [`EXPERIMENTOS.md`](EXPERIMENTOS.md). La fuente original `docs/MARCOI.O.txt` se conserva sin alteraciones; las aclaraciones actualizadas se registran en `data/iom_spec.json` y los anexos.
+
+## Pasos adicionales v1.1
+
+```bash
+# Validar esquema y migraciones
+.venv/bin/python scripts/validate_spec.py
+.venv/bin/python scripts/migrate_spec.py --check
+
+# Pruebas de propiedades (Lean ↔ CSV ↔ ontología)
+.venv/bin/python -m unittest tests.test_property_links -v
+
+# Baselines
+.venv/bin/python experiments/baselines.py
+
+# Auditoría automática (commit + hashes + métricas)
+.venv/bin/python scripts/generate_audit_report.py
+```

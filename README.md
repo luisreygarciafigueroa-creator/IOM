@@ -45,4 +45,15 @@ La CI ejecuta la compilación Lean, genera los artefactos, corre pruebas, valida
 | `dist/IOM-reproducible.zip` | Paquete reproducible generado con `scripts/package_reproducible.py` |
 | `EXPERIMENTOS.md`, `AUDITORIA.md`, `REPRODUCCION.md`, `paper.md` | Método, trazabilidad, alcance y reproducción |
 
+
+## Extensiones científicas y técnicas (v1.1)
+
+- **Esquema JSON**: `data/iom_spec.schema.json` + `scripts/validate_spec.py`.
+- **Versionado formal**: campo `spec_version` y historial `migrations` en `iom_spec.json`; `scripts/migrate_spec.py`.
+- **Pruebas de propiedades**: `tests/test_property_links.py` conecta Lean, CSV y ontología.
+- **Relaciones operativas**: `docs/RELACIONES_OPERATIVAS.md` (mirrorOf / creates con ejemplos positivos, negativos y casos límite).
+- **Baselines**: `experiments/baselines.py` (reglas deterministas, regresión logística, MLP sin grafo).
+- **Evaluación externa**: `datasets/external_eval/` con anotaciones de evaluadores.
+- **Auditoría automática**: `scripts/generate_audit_report.py` → `AUDITORIA_AUTO.md` y `experiments/results/audit_report.json`.
+
 Para la metodología y la correspondencia de métricas: [`EXPERIMENTOS.md`](EXPERIMENTOS.md). Para ejecutar paso a paso: [`REPRODUCCION.md`](REPRODUCCION.md).
