@@ -1,12 +1,12 @@
 # IOM — Marco I.O. formal y reproducible
 
-Repositorio de comprobación ejecutable del documento [MARCOI.O.txt](docs/MARCOI.O.txt). El texto fuente se conserva **íntegro y byte a byte**. El código implementa los operadores temporales en Lean 4 y genera una ontología RDF validada con SHACL, además de pruebas de regresión.
+Repositorio de comprobación ejecutable del documento [MARCOI.O.txt](docs/MARCOI.O.txt), complementado con las listas exactas de tríadas y vectores que el usuario añadió para completar la fuente ([13 tríadas](docs/TRIADAS_CATEGORIALES.md), [perspectivas cuarta y quinta](docs/VECTORES_4_5.md)). El documento original se conserva íntegro y byte a byte.
 
-> El repositorio prueba propiedades del modelo formalizado; no convierte afirmaciones filosóficas, neurocientíficas o físicas del documento en hechos empíricos demostrados.
+> El repositorio verifica propiedades del modelo formalizado; no presenta las afirmaciones filosóficas, neurocientíficas o físicas como hechos empíricos demostrados.
 
-## Ejecutar toda la verificación
+## Ejecutar la verificación completa
 
-Requisitos: Elan/Lean 4.9.0, Python 3.9 o superior, `venv` y acceso a Internet para descargar dependencias.
+Requisitos: Elan/Lean 4.9.0, Python 3.9 o posterior, `venv` e Internet para instalar dependencias.
 
 ```bash
 # Instalar Lean 4.9.0 si Elan no está instalado:
@@ -21,27 +21,28 @@ lake build
 .venv/bin/python scripts/validate_shacl.py
 ```
 
-La CI de GitHub ejecuta las mismas etapas al abrir o actualizar una rama/PR.
+La CI de GitHub ejecuta esas etapas en cada actualización.
 
 ## Qué se comprueba
 
-- **Lean 4.9.0:** cuatro operadores (`E`, `S_fwd`, `Ivo`, `S_rev`) y 16 teoremas/lemas compilados, incluido `strict_fixed_point`, que demuestra la restauración exacta de `vacuum t` bajo `S_rev (Ivo (E (vacuum t)))`.
-- **RDF/SHACL:** 78 identificadores estructurales (`13 × 2 fases × 3 posiciones locales`), correspondencia avance/evolución y retroceso/involución, y espejos recíprocos con índice y posición coincidentes.
-- **Extensión enumerada:** 21 categorías distribuidas exactamente en niveles `1 + 4 + 6 + 6 + 4`, con etiquetas contrastadas con el texto fuente.
-- **Regresión:** pruebas positivas y mutaciones que deben ser rechazadas por SHACL.
+- **Lean 4.9.0:** cuatro operadores (`E`, `S_fwd`, `Ivo`, `S_rev`) y 16 teoremas/lemas, incluido el punto fijo estricto del vacío y la no repetición para contenido no vacío. La compilación no usa `sorry` ni `admit`.
+- **Perspectivas 1–3:** izquierda ↔ Individualidad, centro ↔ Dualidad, derecha ↔ Totalidad.
+- **Tríadas:** las 13 filas nominales en cada fase; **78 nodos**. Los espejos invierten izquierda/derecha y conservan el centro.
+- **Dinámicas `crea`:** 104 vínculos entre nodos de fases opuestas, resultado de las cuatro reglas aplicadas a las 13 filas.
+- **Perspectivas 4–5:** 20 pasos vectoriales con etiquetas, índices `[0,4]`, fases y flechas transcritos.
+- **Extensión adicional:** 21 categorías en niveles `1 + 4 + 6 + 6 + 4`.
+- **RDF/SHACL y regresión:** correspondencia de dirección/fase, perspectiva/posición, espejos, reglas de creación y estructura de vectores, con mutaciones negativas.
 
-## Estructura
+## Archivos clave
 
 | Ruta | Contenido |
 |---|---|
-| `docs/MARCOI.O.txt` | Copia íntegra del documento entregado; hash SHA-256 `acfdc81d7b78331d60f9a341b8cc5b4be151638826b05a5537d68f183b6ed034`. |
-| `IOM/` | Modelo y operadores Lean. |
-| `ontology/` | Grafo Turtle generado y formas SHACL. |
-| `scripts/` | Generación reproducible y validador SHACL. |
-| `tests/` | Pruebas de regresión del grafo y restricciones. |
-| `AUDITORIA.md` | Correspondencia entre fuente, implementación y límites verificables. |
-| `REPRODUCCION.md` | Pasos reproducibles y criterios de salida. |
+| `docs/MARCOI.O.txt` | Copia byte a byte del documento adjunto; SHA-256 `acfdc81d7b78331d60f9a341b8cc5b4be151638826b05a5537d68f183b6ed034`. |
+| `docs/TRIADAS_CATEGORIALES.md` | Lista de las 13 tríadas de avance/retroceso y cuatro reglas de creación añadidas por el usuario. |
+| `docs/VECTORES_4_5.md` | Tablas de posición y flechas de las perspectivas cuarta y quinta. |
+| `IOM/` y `IOM.lean` | Modelo, operadores, teoremas y módulo raíz Lean. |
+| `ontology/` | RDF/Turtle generado y restricciones SHACL. |
+| `scripts/`, `tests/` | Generación, validación y pruebas automatizadas. |
+| `AUDITORIA.md`, `REPRODUCCION.md`, `paper.md` | Correspondencia de fuente, resultados y reproducción.
 
-## Límite de datos explícito
-
-El documento declara 13 tríadas, pero solo nombra dos ejemplos y no publica el listado completo ni su orden. `T00`–`T12` son por eso **identificadores técnicos**, no nombres atribuidos. Tampoco se asignan a cada posición una de las cinco perspectivas cuando el documento no proporciona esa correspondencia. La auditoría describe otras diferencias entre enunciados del documento e implementación.
+La fuente original no contenía las tablas completas de 13 tríadas/vectorial; los dos documentos suplementarios conservan las precisiones posteriores del usuario sin alterar esa copia original.

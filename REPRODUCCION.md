@@ -30,7 +30,7 @@ lake build
 Criterios de éxito:
 
 1. `lake build` termina con código `0` y compila la biblioteca `IOM`.
-2. El generador informa **78 nodos estructurales** y **21 categorías de la extensión**.
+2. El generador informa **78 nodos estructurales**, **104 relaciones crea**, **20 pasos vectoriales** y **21 categorías de la extensión**.
 3. Todas las pruebas de `tests/test_ontology.py` terminan con `OK`. Las pruebas negativas confirman que mutaciones incompatibles no pasan SHACL.
 4. El validador imprime `Conforms: True` y sale con código `0`.
 

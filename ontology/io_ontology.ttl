@@ -91,555 +91,1062 @@ io:expanded_L4_04 a io:ExpandedCategory ;
     rdfs:label "S_rev"@es ;
     io:hasLevel 4 .
 
-io:sourceTriadExample1 a io:SourceTriadExample ;
-    rdfs:label "Oscuridad-Consciencia-Luz"@es .
+io:vector_evol_adv_0 a io:VectorStep ;
+    rdfs:label "vacio"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 0 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 0 ;
+    io:hasVector io:Evol .
 
-io:sourceTriadExample2 a io:SourceTriadExample ;
-    rdfs:label "Hardware-Virtual-Software"@es .
+io:vector_evol_adv_1 a io:VectorStep ;
+    rdfs:label "ind"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 1 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 1 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_adv_2 a io:VectorStep ;
+    rdfs:label "dua"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 2 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 2 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_adv_3 a io:VectorStep ;
+    rdfs:label "tot"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 3 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 3 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_adv_4 a io:VectorStep ;
+    rdfs:label "evol"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 4 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 4 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_ret_0 a io:VectorStep ;
+    rdfs:label "evol"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 4 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 0 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_ret_1 a io:VectorStep ;
+    rdfs:label "fut"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 3 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 1 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_ret_2 a io:VectorStep ;
+    rdfs:label "pre"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 2 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 2 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_ret_3 a io:VectorStep ;
+    rdfs:label "pas"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 1 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 3 ;
+    io:hasVector io:Evol .
+
+io:vector_evol_ret_4 a io:VectorStep ;
+    rdfs:label "vacio"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 0 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 4 ;
+    io:hasVector io:Evol .
+
+io:vector_invol_adv_0 a io:VectorStep ;
+    rdfs:label "invol"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 4 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 0 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_adv_1 a io:VectorStep ;
+    rdfs:label "tot"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 3 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 1 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_adv_2 a io:VectorStep ;
+    rdfs:label "dua"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 2 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 2 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_adv_3 a io:VectorStep ;
+    rdfs:label "ind"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 1 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 3 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_adv_4 a io:VectorStep ;
+    rdfs:label "vacio"@es ;
+    io:displayArrow "→" ;
+    io:hasAxisPosition 0 ;
+    io:hasCyclePhase "adv" ;
+    io:hasStepIndex 4 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_ret_0 a io:VectorStep ;
+    rdfs:label "vacio"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 0 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 0 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_ret_1 a io:VectorStep ;
+    rdfs:label "pas"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 1 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 1 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_ret_2 a io:VectorStep ;
+    rdfs:label "pre"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 2 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 2 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_ret_3 a io:VectorStep ;
+    rdfs:label "fut"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 3 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 3 ;
+    io:hasVector io:Invol .
+
+io:vector_invol_ret_4 a io:VectorStep ;
+    rdfs:label "invol"@es ;
+    io:displayArrow "←" ;
+    io:hasAxisPosition 4 ;
+    io:hasCyclePhase "ret" ;
+    io:hasStepIndex 4 ;
+    io:hasVector io:Invol .
 
 io:T00_adv_P0 a io:OntoNode ;
+    rdfs:label "individualidad"@es ;
+    io:creates io:T00_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 0 ;
-    io:mirrorOf io:T00_ret_P0 .
-
-io:T00_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 0 ;
-    io:mirrorOf io:T00_ret_P1 .
-
-io:T00_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 0 ;
     io:mirrorOf io:T00_ret_P2 .
 
+io:T00_adv_P2 a io:OntoNode ;
+    rdfs:label "totalidad"@es ;
+    io:creates io:T00_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_ret_P0 .
+
 io:T00_ret_P0 a io:OntoNode ;
+    rdfs:label "mundo"@es ;
+    io:creates io:T00_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 0 ;
-    io:mirrorOf io:T00_adv_P0 .
-
-io:T00_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 0 ;
-    io:mirrorOf io:T00_adv_P1 .
-
-io:T00_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 0 ;
     io:mirrorOf io:T00_adv_P2 .
 
+io:T00_ret_P2 a io:OntoNode ;
+    rdfs:label "cuerpo"@es ;
+    io:creates io:T00_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_adv_P0 .
+
 io:T01_adv_P0 a io:OntoNode ;
+    rdfs:label "oscuridad"@es ;
+    io:creates io:T01_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 1 ;
-    io:mirrorOf io:T01_ret_P0 .
-
-io:T01_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 1 ;
-    io:mirrorOf io:T01_ret_P1 .
-
-io:T01_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 1 ;
     io:mirrorOf io:T01_ret_P2 .
 
+io:T01_adv_P2 a io:OntoNode ;
+    rdfs:label "luz"@es ;
+    io:creates io:T01_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_ret_P0 .
+
 io:T01_ret_P0 a io:OntoNode ;
+    rdfs:label "personalidad"@es ;
+    io:creates io:T01_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 1 ;
-    io:mirrorOf io:T01_adv_P0 .
-
-io:T01_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 1 ;
-    io:mirrorOf io:T01_adv_P1 .
-
-io:T01_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 1 ;
     io:mirrorOf io:T01_adv_P2 .
 
+io:T01_ret_P2 a io:OntoNode ;
+    rdfs:label "caracter"@es ;
+    io:creates io:T01_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_adv_P0 .
+
 io:T02_adv_P0 a io:OntoNode ;
+    rdfs:label "descendente"@es ;
+    io:creates io:T02_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 2 ;
-    io:mirrorOf io:T02_ret_P0 .
-
-io:T02_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 2 ;
-    io:mirrorOf io:T02_ret_P1 .
-
-io:T02_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 2 ;
     io:mirrorOf io:T02_ret_P2 .
 
+io:T02_adv_P2 a io:OntoNode ;
+    rdfs:label "ascendente"@es ;
+    io:creates io:T02_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_ret_P0 .
+
 io:T02_ret_P0 a io:OntoNode ;
+    rdfs:label "imaginacion"@es ;
+    io:creates io:T02_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 2 ;
-    io:mirrorOf io:T02_adv_P0 .
-
-io:T02_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 2 ;
-    io:mirrorOf io:T02_adv_P1 .
-
-io:T02_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 2 ;
     io:mirrorOf io:T02_adv_P2 .
 
+io:T02_ret_P2 a io:OntoNode ;
+    rdfs:label "memoria"@es ;
+    io:creates io:T02_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_adv_P0 .
+
 io:T03_adv_P0 a io:OntoNode ;
+    rdfs:label "logica"@es ;
+    io:creates io:T03_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 3 ;
-    io:mirrorOf io:T03_ret_P0 .
-
-io:T03_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 3 ;
-    io:mirrorOf io:T03_ret_P1 .
-
-io:T03_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 3 ;
     io:mirrorOf io:T03_ret_P2 .
 
+io:T03_adv_P2 a io:OntoNode ;
+    rdfs:label "libertad"@es ;
+    io:creates io:T03_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_ret_P0 .
+
 io:T03_ret_P0 a io:OntoNode ;
+    rdfs:label "emisor"@es ;
+    io:creates io:T03_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 3 ;
-    io:mirrorOf io:T03_adv_P0 .
-
-io:T03_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 3 ;
-    io:mirrorOf io:T03_adv_P1 .
-
-io:T03_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 3 ;
     io:mirrorOf io:T03_adv_P2 .
 
+io:T03_ret_P2 a io:OntoNode ;
+    rdfs:label "receptor"@es ;
+    io:creates io:T03_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_adv_P0 .
+
 io:T04_adv_P0 a io:OntoNode ;
+    rdfs:label "muerte"@es ;
+    io:creates io:T04_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 4 ;
-    io:mirrorOf io:T04_ret_P0 .
-
-io:T04_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 4 ;
-    io:mirrorOf io:T04_ret_P1 .
-
-io:T04_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 4 ;
     io:mirrorOf io:T04_ret_P2 .
 
+io:T04_adv_P2 a io:OntoNode ;
+    rdfs:label "vida"@es ;
+    io:creates io:T04_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_ret_P0 .
+
 io:T04_ret_P0 a io:OntoNode ;
+    rdfs:label "dirección"@es ;
+    io:creates io:T04_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 4 ;
-    io:mirrorOf io:T04_adv_P0 .
-
-io:T04_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 4 ;
-    io:mirrorOf io:T04_adv_P1 .
-
-io:T04_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 4 ;
     io:mirrorOf io:T04_adv_P2 .
 
+io:T04_ret_P2 a io:OntoNode ;
+    rdfs:label "orientación"@es ;
+    io:creates io:T04_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_adv_P0 .
+
 io:T05_adv_P0 a io:OntoNode ;
+    rdfs:label "singularidad"@es ;
+    io:creates io:T05_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 5 ;
-    io:mirrorOf io:T05_ret_P0 .
-
-io:T05_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 5 ;
-    io:mirrorOf io:T05_ret_P1 .
-
-io:T05_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 5 ;
     io:mirrorOf io:T05_ret_P2 .
 
+io:T05_adv_P2 a io:OntoNode ;
+    rdfs:label "infinito"@es ;
+    io:creates io:T05_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_ret_P0 .
+
 io:T05_ret_P0 a io:OntoNode ;
+    rdfs:label "software"@es ;
+    io:creates io:T05_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 5 ;
-    io:mirrorOf io:T05_adv_P0 .
-
-io:T05_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 5 ;
-    io:mirrorOf io:T05_adv_P1 .
-
-io:T05_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 5 ;
     io:mirrorOf io:T05_adv_P2 .
 
+io:T05_ret_P2 a io:OntoNode ;
+    rdfs:label "hardware"@es ;
+    io:creates io:T05_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_adv_P0 .
+
 io:T06_adv_P0 a io:OntoNode ;
+    rdfs:label "universo"@es ;
+    io:creates io:T06_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 6 ;
-    io:mirrorOf io:T06_ret_P0 .
-
-io:T06_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 6 ;
-    io:mirrorOf io:T06_ret_P1 .
-
-io:T06_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 6 ;
     io:mirrorOf io:T06_ret_P2 .
 
+io:T06_adv_P2 a io:OntoNode ;
+    rdfs:label "vacio"@es ;
+    io:creates io:T06_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_ret_P0 .
+
 io:T06_ret_P0 a io:OntoNode ;
+    rdfs:label "vacio"@es ;
+    io:creates io:T06_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 6 ;
-    io:mirrorOf io:T06_adv_P0 .
-
-io:T06_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 6 ;
-    io:mirrorOf io:T06_adv_P1 .
-
-io:T06_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 6 ;
     io:mirrorOf io:T06_adv_P2 .
 
+io:T06_ret_P2 a io:OntoNode ;
+    rdfs:label "universo"@es ;
+    io:creates io:T06_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_adv_P0 .
+
 io:T07_adv_P0 a io:OntoNode ;
+    rdfs:label "hardware"@es ;
+    io:creates io:T07_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 7 ;
-    io:mirrorOf io:T07_ret_P0 .
-
-io:T07_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 7 ;
-    io:mirrorOf io:T07_ret_P1 .
-
-io:T07_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 7 ;
     io:mirrorOf io:T07_ret_P2 .
 
+io:T07_adv_P2 a io:OntoNode ;
+    rdfs:label "software"@es ;
+    io:creates io:T07_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_ret_P0 .
+
 io:T07_ret_P0 a io:OntoNode ;
+    rdfs:label "infinito"@es ;
+    io:creates io:T07_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 7 ;
-    io:mirrorOf io:T07_adv_P0 .
-
-io:T07_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 7 ;
-    io:mirrorOf io:T07_adv_P1 .
-
-io:T07_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 7 ;
     io:mirrorOf io:T07_adv_P2 .
 
+io:T07_ret_P2 a io:OntoNode ;
+    rdfs:label "singularidad"@es ;
+    io:creates io:T07_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_adv_P0 .
+
 io:T08_adv_P0 a io:OntoNode ;
+    rdfs:label "orientación"@es ;
+    io:creates io:T08_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 8 ;
-    io:mirrorOf io:T08_ret_P0 .
-
-io:T08_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 8 ;
-    io:mirrorOf io:T08_ret_P1 .
-
-io:T08_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 8 ;
     io:mirrorOf io:T08_ret_P2 .
 
+io:T08_adv_P2 a io:OntoNode ;
+    rdfs:label "dirección"@es ;
+    io:creates io:T08_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_ret_P0 .
+
 io:T08_ret_P0 a io:OntoNode ;
+    rdfs:label "vida"@es ;
+    io:creates io:T08_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 8 ;
-    io:mirrorOf io:T08_adv_P0 .
-
-io:T08_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 8 ;
-    io:mirrorOf io:T08_adv_P1 .
-
-io:T08_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 8 ;
     io:mirrorOf io:T08_adv_P2 .
 
+io:T08_ret_P2 a io:OntoNode ;
+    rdfs:label "muerte"@es ;
+    io:creates io:T08_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_adv_P0 .
+
 io:T09_adv_P0 a io:OntoNode ;
+    rdfs:label "receptor"@es ;
+    io:creates io:T09_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 9 ;
-    io:mirrorOf io:T09_ret_P0 .
-
-io:T09_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 9 ;
-    io:mirrorOf io:T09_ret_P1 .
-
-io:T09_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 9 ;
     io:mirrorOf io:T09_ret_P2 .
 
+io:T09_adv_P2 a io:OntoNode ;
+    rdfs:label "emisor"@es ;
+    io:creates io:T09_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_ret_P0 .
+
 io:T09_ret_P0 a io:OntoNode ;
+    rdfs:label "libertad"@es ;
+    io:creates io:T09_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 9 ;
-    io:mirrorOf io:T09_adv_P0 .
-
-io:T09_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 9 ;
-    io:mirrorOf io:T09_adv_P1 .
-
-io:T09_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 9 ;
     io:mirrorOf io:T09_adv_P2 .
 
+io:T09_ret_P2 a io:OntoNode ;
+    rdfs:label "lógica"@es ;
+    io:creates io:T09_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_adv_P0 .
+
 io:T10_adv_P0 a io:OntoNode ;
+    rdfs:label "memoria"@es ;
+    io:creates io:T10_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 10 ;
-    io:mirrorOf io:T10_ret_P0 .
-
-io:T10_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 10 ;
-    io:mirrorOf io:T10_ret_P1 .
-
-io:T10_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 10 ;
     io:mirrorOf io:T10_ret_P2 .
 
+io:T10_adv_P2 a io:OntoNode ;
+    rdfs:label "imaginación"@es ;
+    io:creates io:T10_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_ret_P0 .
+
 io:T10_ret_P0 a io:OntoNode ;
+    rdfs:label "ascendente"@es ;
+    io:creates io:T10_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 10 ;
-    io:mirrorOf io:T10_adv_P0 .
-
-io:T10_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 10 ;
-    io:mirrorOf io:T10_adv_P1 .
-
-io:T10_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 10 ;
     io:mirrorOf io:T10_adv_P2 .
 
+io:T10_ret_P2 a io:OntoNode ;
+    rdfs:label "descendente"@es ;
+    io:creates io:T10_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_adv_P0 .
+
 io:T11_adv_P0 a io:OntoNode ;
+    rdfs:label "caracter"@es ;
+    io:creates io:T11_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 11 ;
-    io:mirrorOf io:T11_ret_P0 .
-
-io:T11_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 11 ;
-    io:mirrorOf io:T11_ret_P1 .
-
-io:T11_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 11 ;
     io:mirrorOf io:T11_ret_P2 .
 
+io:T11_adv_P2 a io:OntoNode ;
+    rdfs:label "personalidad"@es ;
+    io:creates io:T11_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_ret_P0 .
+
 io:T11_ret_P0 a io:OntoNode ;
+    rdfs:label "luz"@es ;
+    io:creates io:T11_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
-    io:hasTriadIndex 11 ;
-    io:mirrorOf io:T11_adv_P0 .
-
-io:T11_ret_P1 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 11 ;
-    io:mirrorOf io:T11_adv_P1 .
-
-io:T11_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 11 ;
     io:mirrorOf io:T11_adv_P2 .
 
+io:T11_ret_P2 a io:OntoNode ;
+    rdfs:label "oscuridad"@es ;
+    io:creates io:T11_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_adv_P0 .
+
 io:T12_adv_P0 a io:OntoNode ;
+    rdfs:label "cuerpo"@es ;
+    io:creates io:T12_ret_P1 ;
     io:hasDirection io:evol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "adv" ;
-    io:hasTriadIndex 12 ;
-    io:mirrorOf io:T12_ret_P0 .
-
-io:T12_adv_P1 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 1 ;
-    io:hasPhase "adv" ;
-    io:hasTriadIndex 12 ;
-    io:mirrorOf io:T12_ret_P1 .
-
-io:T12_adv_P2 a io:OntoNode ;
-    io:hasDirection io:evol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "adv" ;
+    io:hasPosition io:left ;
     io:hasTriadIndex 12 ;
     io:mirrorOf io:T12_ret_P2 .
 
+io:T12_adv_P2 a io:OntoNode ;
+    rdfs:label "mundo"@es ;
+    io:creates io:T12_ret_P1 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:right ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_ret_P0 .
+
 io:T12_ret_P0 a io:OntoNode ;
+    rdfs:label "totalidad"@es ;
+    io:creates io:T12_adv_P1 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 0 ;
+    io:hasPerspective io:Ind ;
     io:hasPhase "ret" ;
+    io:hasPosition io:left ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_adv_P2 .
+
+io:T12_ret_P2 a io:OntoNode ;
+    rdfs:label "individualidad"@es ;
+    io:creates io:T12_adv_P1 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 2 ;
+    io:hasPerspective io:Tot ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:right ;
     io:hasTriadIndex 12 ;
     io:mirrorOf io:T12_adv_P0 .
 
-io:T12_ret_P1 a io:OntoNode ;
+io:T00_adv_P1 a io:OntoNode ;
+    rdfs:label "dualidad"@es ;
+    io:creates io:T00_ret_P0,
+        io:T00_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_ret_P1 .
+
+io:T00_ret_P1 a io:OntoNode ;
+    rdfs:label "consciente"@es ;
+    io:creates io:T00_adv_P0,
+        io:T00_adv_P2 ;
     io:hasDirection io:invol ;
     io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
     io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 0 ;
+    io:mirrorOf io:T00_adv_P1 .
+
+io:T01_adv_P1 a io:OntoNode ;
+    rdfs:label "consciencia"@es ;
+    io:creates io:T01_ret_P0,
+        io:T01_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_ret_P1 .
+
+io:T01_ret_P1 a io:OntoNode ;
+    rdfs:label "subconsciente"@es ;
+    io:creates io:T01_adv_P0,
+        io:T01_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 1 ;
+    io:mirrorOf io:T01_adv_P1 .
+
+io:T02_adv_P1 a io:OntoNode ;
+    rdfs:label "mente"@es ;
+    io:creates io:T02_ret_P0,
+        io:T02_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_ret_P1 .
+
+io:T02_ret_P1 a io:OntoNode ;
+    rdfs:label "inconsciente"@es ;
+    io:creates io:T02_adv_P0,
+        io:T02_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 2 ;
+    io:mirrorOf io:T02_adv_P1 .
+
+io:T03_adv_P1 a io:OntoNode ;
+    rdfs:label "inteligencia"@es ;
+    io:creates io:T03_ret_P0,
+        io:T03_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_ret_P1 .
+
+io:T03_ret_P1 a io:OntoNode ;
+    rdfs:label "supraconsciente"@es ;
+    io:creates io:T03_adv_P0,
+        io:T03_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 3 ;
+    io:mirrorOf io:T03_adv_P1 .
+
+io:T04_adv_P1 a io:OntoNode ;
+    rdfs:label "artificial"@es ;
+    io:creates io:T04_ret_P0,
+        io:T04_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_ret_P1 .
+
+io:T04_ret_P1 a io:OntoNode ;
+    rdfs:label "cuantico"@es ;
+    io:creates io:T04_adv_P0,
+        io:T04_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 4 ;
+    io:mirrorOf io:T04_adv_P1 .
+
+io:T05_adv_P1 a io:OntoNode ;
+    rdfs:label "tiempo"@es ;
+    io:creates io:T05_ret_P0,
+        io:T05_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_ret_P1 .
+
+io:T05_ret_P1 a io:OntoNode ;
+    rdfs:label "virtual"@es ;
+    io:creates io:T05_adv_P0,
+        io:T05_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 5 ;
+    io:mirrorOf io:T05_adv_P1 .
+
+io:T06_adv_P1 a io:OntoNode ;
+    rdfs:label "espacio"@es ;
+    io:creates io:T06_ret_P0,
+        io:T06_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_ret_P1 .
+
+io:T06_ret_P1 a io:OntoNode ;
+    rdfs:label "espacio"@es ;
+    io:creates io:T06_adv_P0,
+        io:T06_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 6 ;
+    io:mirrorOf io:T06_adv_P1 .
+
+io:T07_adv_P1 a io:OntoNode ;
+    rdfs:label "virtual"@es ;
+    io:creates io:T07_ret_P0,
+        io:T07_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_ret_P1 .
+
+io:T07_ret_P1 a io:OntoNode ;
+    rdfs:label "tiempo"@es ;
+    io:creates io:T07_adv_P0,
+        io:T07_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 7 ;
+    io:mirrorOf io:T07_adv_P1 .
+
+io:T08_adv_P1 a io:OntoNode ;
+    rdfs:label "cuantico"@es ;
+    io:creates io:T08_ret_P0,
+        io:T08_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_ret_P1 .
+
+io:T08_ret_P1 a io:OntoNode ;
+    rdfs:label "artificial"@es ;
+    io:creates io:T08_adv_P0,
+        io:T08_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 8 ;
+    io:mirrorOf io:T08_adv_P1 .
+
+io:T09_adv_P1 a io:OntoNode ;
+    rdfs:label "supraconsciente"@es ;
+    io:creates io:T09_ret_P0,
+        io:T09_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_ret_P1 .
+
+io:T09_ret_P1 a io:OntoNode ;
+    rdfs:label "inteligencia"@es ;
+    io:creates io:T09_adv_P0,
+        io:T09_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 9 ;
+    io:mirrorOf io:T09_adv_P1 .
+
+io:T10_adv_P1 a io:OntoNode ;
+    rdfs:label "inconsciente"@es ;
+    io:creates io:T10_ret_P0,
+        io:T10_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_ret_P1 .
+
+io:T10_ret_P1 a io:OntoNode ;
+    rdfs:label "mente"@es ;
+    io:creates io:T10_adv_P0,
+        io:T10_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 10 ;
+    io:mirrorOf io:T10_adv_P1 .
+
+io:T11_adv_P1 a io:OntoNode ;
+    rdfs:label "subconsciente"@es ;
+    io:creates io:T11_ret_P0,
+        io:T11_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_ret_P1 .
+
+io:T11_ret_P1 a io:OntoNode ;
+    rdfs:label "consciencia"@es ;
+    io:creates io:T11_adv_P0,
+        io:T11_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 11 ;
+    io:mirrorOf io:T11_adv_P1 .
+
+io:T12_adv_P1 a io:OntoNode ;
+    rdfs:label "consciente"@es ;
+    io:creates io:T12_ret_P0,
+        io:T12_ret_P2 ;
+    io:hasDirection io:evol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "adv" ;
+    io:hasPosition io:center ;
+    io:hasTriadIndex 12 ;
+    io:mirrorOf io:T12_ret_P1 .
+
+io:T12_ret_P1 a io:OntoNode ;
+    rdfs:label "dualidad"@es ;
+    io:creates io:T12_adv_P0,
+        io:T12_adv_P2 ;
+    io:hasDirection io:invol ;
+    io:hasLocalPos 1 ;
+    io:hasPerspective io:D ;
+    io:hasPhase "ret" ;
+    io:hasPosition io:center ;
     io:hasTriadIndex 12 ;
     io:mirrorOf io:T12_adv_P1 .
 
-io:T12_ret_P2 a io:OntoNode ;
-    io:hasDirection io:invol ;
-    io:hasLocalPos 2 ;
-    io:hasPhase "ret" ;
-    io:hasTriadIndex 12 ;
-    io:mirrorOf io:T12_adv_P2 .
+io:Evol a io:Perspective ;
+    rdfs:label "Vector Evolutivo"@es .
+
+io:Invol a io:Perspective ;
+    rdfs:label "Vector Involutivo"@es .
+
+io:D a io:Perspective ;
+    rdfs:label "Dualidad"@es .
+
+io:Ind a io:Perspective ;
+    rdfs:label "Individualidad"@es .
+
+io:Tot a io:Perspective ;
+    rdfs:label "Totalidad"@es .
 

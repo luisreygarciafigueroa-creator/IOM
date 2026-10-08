@@ -1,103 +1,92 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix io: <http://example.org/iom#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 io:StructuralShape a sh:NodeShape ;
     sh:targetClass io:OntoNode ;
-    sh:property [
-        sh:path io:hasTriadIndex ;
-        sh:datatype xsd:integer ;
-        sh:minInclusive 0 ;
-        sh:maxInclusive 12 ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
-    sh:property [
-        sh:path io:hasPhase ;
-        sh:in ( "adv" "ret" ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
-    sh:property [
-        sh:path io:hasLocalPos ;
-        sh:datatype xsd:integer ;
-        sh:in ( 0 1 2 ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
-    sh:property [
-        sh:path io:hasDirection ;
-        sh:in ( io:evol io:invol ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
-    sh:property [
-        sh:path io:mirrorOf ;
-        sh:class io:OntoNode ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
+    sh:property [ sh:path io:hasTriadIndex ; sh:datatype xsd:integer ; sh:minInclusive 0 ; sh:maxInclusive 12 ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPhase ; sh:in ( "adv" "ret" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasLocalPos ; sh:datatype xsd:integer ; sh:in ( 0 1 2 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPosition ; sh:in ( io:left io:center io:right ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPerspective ; sh:in ( io:Ind io:D io:Tot ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasDirection ; sh:in ( io:evol io:invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:mirrorOf ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:creates ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 2 ] ;
     sh:sparql [
-        sh:message "mirrorOf debe enlazar recíprocamente un nodo de la misma tríada y posición local, en la fase opuesta (adv/ret)." ;
+        sh:message "Perspectiva y posición: izquierda=Ind, centro=D, derecha=Tot." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
-            SELECT $this
-            WHERE {
-                $this io:hasTriadIndex ?triad ;
-                      io:hasLocalPos ?pos ;
-                      io:hasPhase ?phase ;
-                      io:mirrorOf ?mirror .
-                FILTER NOT EXISTS {
-                    ?mirror a io:OntoNode ;
-                            io:hasTriadIndex ?triad ;
-                            io:hasLocalPos ?pos ;
-                            io:hasPhase ?mirrorPhase ;
-                            io:mirrorOf $this .
-                    FILTER ((?phase = "adv" && ?mirrorPhase = "ret") ||
-                            (?phase = "ret" && ?mirrorPhase = "adv"))
-                }
+            SELECT $this WHERE {
+                $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective .
+                FILTER ((?pos = 0 && ?perspective != io:Ind) ||
+                        (?pos = 1 && ?perspective != io:D) ||
+                        (?pos = 2 && ?perspective != io:Tot))
             }
         """
     ] ;
     sh:sparql [
-        sh:message "La dirección debe corresponder a la fase: avance=evol y retroceso=invol." ;
+        sh:message "El espejo debe ser recíproco, de la misma tríada, fase opuesta y posición lateral invertida." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
-            SELECT $this
-            WHERE {
+            SELECT $this WHERE {
+                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ;
+                      io:hasPhase ?phase ; io:mirrorOf ?mirror .
+                ?mirror io:hasTriadIndex ?mirrorTriad ; io:hasLocalPos ?mirrorPos ;
+                        io:hasPhase ?mirrorPhase .
+                FILTER NOT EXISTS { ?mirror io:mirrorOf $this }
+                FILTER (?triad != ?mirrorTriad || ?mirrorPos != (2 - ?pos) ||
+                        !((?phase = "adv" && ?mirrorPhase = "ret") ||
+                          (?phase = "ret" && ?mirrorPhase = "adv")))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "La fase adv debe tener dirección evol y ret dirección invol." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this WHERE {
                 $this io:hasPhase ?phase ; io:hasDirection ?direction .
                 FILTER ((?phase = "adv" && ?direction != io:evol) ||
                         (?phase = "ret" && ?direction != io:invol))
             }
         """
+    ] ;
+    sh:sparql [
+        sh:message "Cada relación creates debe conectar la misma tríada con la fase contraria y el centro/lateral especificado." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this WHERE {
+                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ;
+                      io:hasPhase ?phase ; io:creates ?target .
+                ?target io:hasTriadIndex ?targetTriad ; io:hasLocalPos ?targetPos ;
+                        io:hasPhase ?targetPhase .
+                FILTER (?triad != ?targetTriad ||
+                    !((?phase = "adv" && ?targetPhase = "ret" &&
+                       ((?pos = 0 && ?targetPos = 1) || (?pos = 2 && ?targetPos = 1) ||
+                        (?pos = 1 && (?targetPos = 0 || ?targetPos = 2)))) ||
+                      (?phase = "ret" && ?targetPhase = "adv" &&
+                       ((?pos = 0 && ?targetPos = 1) || (?pos = 2 && ?targetPos = 1) ||
+                        (?pos = 1 && (?targetPos = 0 || ?targetPos = 2)))))
+                )
+            }
+        """
     ] .
 
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+io:VectorStepShape a sh:NodeShape ;
+    sh:targetClass io:VectorStep ;
+    sh:property [ sh:path io:hasVector ; sh:in ( io:Evol io:Invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasCyclePhase ; sh:in ( "adv" "ret" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasAxisPosition ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasStepIndex ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:displayArrow ; sh:in ( "→" "←" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] .
 
 io:ExpandedCategoryShape a sh:NodeShape ;
     sh:targetClass io:ExpandedCategory ;
-    sh:property [
-        sh:path io:hasLevel ;
-        sh:datatype xsd:integer ;
-        sh:in ( 0 1 2 3 4 ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] ;
-    sh:property [
-        sh:path rdfs:label ;
-        sh:languageIn ( "es" ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] .
-
-io:SourceTriadExampleShape a sh:NodeShape ;
-    sh:targetClass io:SourceTriadExample ;
-    sh:property [
-        sh:path rdfs:label ;
-        sh:languageIn ( "es" ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] .
+    sh:property [ sh:path io:hasLevel ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] .
 
 io:SourceModelShape a sh:NodeShape ;
     sh:targetNode io:SourceModel ;
@@ -105,3 +94,7 @@ io:SourceModelShape a sh:NodeShape ;
     sh:property [ sh:path io:declaredPerspectiveCount ; sh:hasValue 5 ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:declaredOperatorCount ; sh:hasValue 4 ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:declaredExpandedCategoryCount ; sh:hasValue 21 ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+io:PerspectiveShape a sh:NodeShape ;
+    sh:targetClass io:Perspective ;
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] .

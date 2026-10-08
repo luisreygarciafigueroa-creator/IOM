@@ -2,11 +2,11 @@
 
 ## Alcance
 
-Este documento describe el código verificable del repositorio. El original completo, sin modificaciones, se conserva en [docs/MARCOI.O.txt](docs/MARCOI.O.txt). Las afirmaciones conceptuales del marco no se presentan como resultados experimentales ni como teoremas cuando no existe una prueba ejecutable correspondiente.
+Este documento describe código y comprobaciones reproducibles. El MARCO I.O. original se conserva byte a byte en [docs/MARCOI.O.txt](docs/MARCOI.O.txt); las listas y secuencias añadidas posteriormente por el usuario están transcritas en [docs/TRIADAS_CATEGORIALES.md](docs/TRIADAS_CATEGORIALES.md) y [docs/VECTORES_4_5.md](docs/VECTORES_4_5.md). El contenido conceptual no se presenta como resultado experimental cuando no hay una prueba o conjunto de datos que lo respalde.
 
-## Estado formal
+## Formalización Lean
 
-`IOM/Core.lean` define un estado `State = (time : Int, payload : List String)`, el vacío `vacuum t`, una reducción estable de duplicados (`List.eraseDups`) y la inversión de una lista (`List.reverse`). `IOM/Operators.lean` define:
+`IOM/Core.lean` define un estado `State = (time : Int, payload : List String)`, el vacío `vacuum t`, la reducción `List.eraseDups` y la inversión `List.reverse`. `IOM/Operators.lean` implementa:
 
 | Operador | Definición ejecutada |
 |---|---|
@@ -15,43 +15,50 @@ Este documento describe el código verificable del repositorio. El original comp
 | `Ivo` | `(t, σ) ↦ (t − 1, reverse σ)` |
 | `S_rev` | Si `σ=[]`, `(t,[])`; en otro caso `(t−1, red (reverse σ))`. |
 
-La supresión retroactiva conserva el vacío literalmente; para contenido no vacío aplica la definición general `red (invert σ)` del documento. Por eso la carga resultante puede no ser vacía.
+`lake build` compila 16 teoremas/lemas, sin `sorry` ni `admit`. Incluyen `strict_fixed_point` para todo entero `t`, no repetición del estado inicial para contenido no vacío, las ecuaciones de cada operador, la involutividad de la inversión y la cancelación de los operadores en la componente temporal.
 
-## Resultados Lean
+Las pruebas se refieren exactamente a este tipo de datos y definiciones. No demuestran por sí solas la interpretación filosófica de “unidad informativa”.
 
-`lake build` compila los teoremas y lemas declarados en `IOM/Operators.lean`, sin `sorry` ni `admit`. Entre ellos:
+## Las primeras tres perspectivas: tríadas estructurales
 
-- las ecuaciones de los cuatro operadores para el vacío;
-- `strict_fixed_point`: para todo entero `t`, `S_rev (Ivo (E (vacuum t))) = vacuum t`;
-- `no_repetition`: para una carga no vacía en el instante 0, el ciclo definido en Lean no devuelve el mismo estado;
-- conservación o transformación del tiempo y la carga conforme a cada definición;
-- involutividad de la inversión de lista;
-- cancelación en la componente temporal de `E` e `Ivo`.
+Las perspectivas se asocian a las columnas: **izquierda = Individualidad**, **centro = Dualidad**, **derecha = Totalidad**. En [docs/TRIADAS_CATEGORIALES.md](docs/TRIADAS_CATEGORIALES.md) se transcriben las 13 filas por fase y las cuatro reglas proporcionadas por el usuario:
 
-Estas pruebas comprueban las definiciones de este modelo Lean; no prueban por sí mismas las interpretaciones ontológicas, neurocientíficas o físicas del marco.
+- lateral izquierdo y derecho de avance crean el centro del retroceso;
+- el centro del avance crea ambos laterales del retroceso;
+- el centro del retroceso crea ambos laterales del avance;
+- laterales del retroceso crean el centro del avance.
 
-## Grafo y restricciones
+El generador las materializa en **78 nodos** (13 filas × 3 posiciones × 2 fases), **39 parejas espejo recíprocas** (izquierda y derecha intercambian; centro queda en centro) y **104 relaciones `io:creates`** (8 aristas por fila). Los rótulos conservan la ortografía recibida para cada fase, sin normalización silenciosa.
 
-`scripts/generate_ontology.py` produce un Turtle con:
+## Cuarta y quinta perspectivas: vectores
 
-- 78 nodos estructurales creados a partir de los contadores declarados: 13 índices técnicos × dos fases × tres posiciones locales;
-- 39 vínculos espejo recíprocos, con mismo índice y posición y fase contraria;
-- dirección `evol` en `adv`, e `invol` en `ret`;
-- los dos nombres de tríadas que aparecen como ejemplos en el original, no asociados a índices;
-- las 21 categorías enumeradas en la extensión (niveles `1, 4, 6, 6, 4`).
+[docs/VECTORES_4_5.md](docs/VECTORES_4_5.md) contiene las tablas de las perspectivas vectoriales. Cada una tiene filas de avance y retroceso, cinco conceptos, posiciones de eje, índices visuales y dirección de flecha. RDF representa **20 pasos `io:VectorStep`** (4 filas × 5 posiciones). Las etiquetas de los diagramas se conservan literalmente, incluida `vacio` sin acento cuando así fue recibida.
 
-`ontology/io_shapes.ttl` valida rango y cardinalidad de índices, fase, posición y dirección, así como existencia, alineación y reciprocidad de espejos. No asigna nombres faltantes a las 13 tríadas ni calcula una perspectiva por nodo. SHACL verifica las restricciones codificadas, no toda la semántica del artículo.
+La extensión de **21 categorías** se mantiene aparte como estructura pentádica adicional, con conteos por nivel `1, 4, 6, 6, 4`.
 
-## Ejecución
+## RDF, SHACL y pruebas
 
-Sigue [REPRODUCCION.md](REPRODUCCION.md). La CI ejecuta `lake build`, genera el Turtle, corre los tests y valida SHACL. Los tests incluyen aserciones de cantidades y etiquetas, comprobaciones de espejos, conformidad y mutaciones negativas.
+`scripts/generate_ontology.py` genera `ontology/io_ontology.ttl`. `ontology/io_shapes.ttl` valida cardinalidad, rangos, direcciones, correspondencia posición-perspectiva, etiquetas, espejos, enlaces `creates`, pasos vectoriales y metadatos. La suite de `tests/test_ontology.py` compara los rótulos literales de las 26 filas, el conjunto exacto de 104 enlaces, las secuencias vectoriales, los conteos y mutaciones negativas. SHACL valida las restricciones codificadas, no la verdad científica de todas las afirmaciones del documento.
 
-## Límites precisos
+## Reproducción
 
-1. El MARCO I.O. declara 13 tríadas categoriales, pero no incluye una tabla completa con sus 13 nombres/elementos ni el orden. Solo da dos ejemplos.
-2. El texto usa distintos esquemas de posición: eje `[0,4]` para perspectivas y posiciones de tríada descritas como izquierda/centro/derecha; el RDF existente usa tres posiciones locales. No se inventa una función de correspondencia entre esos ejes.
-3. La extensión de 21 categorías está enumerada en el texto, pero se presenta como despliegue/extensión teórica; no se trata como sustitución probada de las 13 tríadas.
-4. Las analogías con neurociencia, Landauer, teoría cuántica de campos y holografía permanecen como contenido del documento fuente; este repositorio no contiene experimentos ni un modelo físico que las verifique.
-5. La identidad de datos usada por el programa es `List String`; la semántica de “unidad informativa” queda representada computacionalmente por esa estructura, no por una teoría física de información.
+Sigue [REPRODUCCION.md](REPRODUCCION.md). En resumen:
 
-El registro íntegro de discrepancias está en [AUDITORIA.md](AUDITORIA.md).
+```bash
+lake build
+.venv/bin/python scripts/generate_ontology.py
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python scripts/validate_shacl.py
+```
+
+La CI de GitHub ejecuta los mismos pasos.
+
+## Límites
+
+1. Las tablas completas de tríadas y los detalles de las perspectivas 4–5 se aportaron después del archivo MARCOI.O.txt original. Se mantienen en anexos distintos para preservar el archivo original.
+2. El grafo se valida como RDF/Turtle con SHACL; no ejecuta un razonador OWL.
+3. La afirmación `restoresVacuum` se modela como propiedad del operador/composición, no como una propiedad verdadera de cada nodo categorial.
+4. Las analogías neurocientíficas, termodinámicas y físicas del documento no se verifican empíricamente en este repositorio.
+5. `payload : List String` es una representación computacional finita y no una teoría física de la información.
+
+Véase [AUDITORIA.md](AUDITORIA.md) para el inventario de alcance y decisiones de transcripción.

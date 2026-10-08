@@ -1,38 +1,42 @@
 # Auditoría de correspondencia con MARCO I.O.
 
-**Fuente de autoridad:** [documento original íntegro](docs/MARCOI.O.txt). Esta auditoría no corrige ni reinterpreta el texto; registra qué datos se implementan y cuáles no son deducibles o no están respaldados por código/datos.
+**Fuentes:** [MARCOI.O.txt](docs/MARCOI.O.txt), copia byte a byte del adjunto; además, las tablas y secuencias aportadas por el usuario en aclaraciones posteriores se preservan por separado en [TRIADAS_CATEGORIALES.md](docs/TRIADAS_CATEGORIALES.md) y [VECTORES_4_5.md](docs/VECTORES_4_5.md). El original no se altera para incorporar material enviado después.
 
-## Hechos que el repositorio representa y prueba
+## Hechos representados y verificados
 
-| Afirmación/estructura del documento | Representación | Prueba/validación |
+| Especificación | Representación | Comprobación |
 |---|---|---|
-| Tiempo discreto `t ∈ ℤ`, estado `(t,A)` y vacío `(t,∅)` (§4.1) | `State(time : Int, payload : List String)`, `vacuum` | Compilación Lean y ecuaciones de los operadores |
-| Cuatro operadores `E`, `S_fwd`, `Ivo`, `S_rev` (§3.1, §4.1) | Funciones ejecutables en `IOM/Operators.lean` | Teoremas Lean; build sin `sorry`/`admit` |
-| `S_rev ∘ Ivo ∘ E` restaura el vacío (§3.2, §4.2) | Teorema `strict_fixed_point` | Lean para todo `t : Int` |
-| Conteo 13 × 2 fases × 3 posiciones = 78 (§5.1 y especificación del repositorio) | Identificadores internos `T00`–`T12`, `adv`/`ret`, posiciones 0–2 | Tests de conjunto exacto, recuento y SHACL |
-| Inversión entre fases, mismos índice y posición (§3.3 y §5.1) | `mirrorOf` recíproco | Test y restricción SHACL negativa/positiva |
-| Correspondencia de direcciones avance/evolución y retroceso/involución | `hasDirection` | Test y restricción SHACL |
-| Extensión pentádica de 21 categorías (§III.4.2) | Individuos etiquetados por nivel | Test de 21 etiquetas y recuentos `1,4,6,6,4` |
+| Tiempo discreto, estado y vacío (§4.1) | `State(time : Int, payload : List String)`, `vacuum` | Compilación Lean y teoremas de operadores |
+| Cuatro operadores (§3.1, §4.1) | `E`, `S_fwd`, `Ivo`, `S_rev` | Código Lean y build sin `sorry`/`admit` |
+| Punto fijo del vacío | `strict_fixed_point` | Lean, para todo `t : Int` |
+| No repetición para cargas no vacías | `no_repetition` | Teorema Lean compilado |
+| Primeras tres perspectivas | izquierda=Individualidad; centro=Dualidad; derecha=Totalidad | Campos `hasPosition`/`hasPerspective`, SHACL y pruebas |
+| 13 tríadas de avance y 13 de retroceso | Índices T00–T12 y etiquetas exactas por fase; 78 nodos | Test de etiquetas, recuento y conformidad SHACL |
+| Inversión lateral | Avance izquierda ↔ retroceso derecha; centro ↔ centro | `mirrorOf` recíproco, SHACL y tests |
+| Cuatro dinámicas `crea` | 8 aristas por fila × 13 filas = 104 relaciones | Test exacto de conjunto y restricciones SHACL |
+| Cuarta y quinta perspectivas | Cuatro filas de cinco pasos; 20 `VectorStep` | Test de vectores, fases, flechas y ejes; SHACL de cardinalidad/valores |
+| Extensión pentádica | 21 categorías con niveles 1, 4, 6, 6, 4 | Test de conteos y de etiquetas |
 
-## Datos no presentes en la fuente
+## Procedencia y decisiones de transcripción
 
-- **No existe una enumeración de las 13 tríadas.** El texto menciona solo `Oscuridad-Consciencia-Luz` y `Hardware-Virtual-Software` como ejemplos y añade “etc.”. No identifica los once nombres restantes ni el índice de esos dos ejemplos. `T00`–`T12` son únicamente claves generadas, no los nombres reales.
-- **No existe una tabla completa de asignación de cada nodo a una de las cinco perspectivas.** Por ello se retiró la fórmula `(índice + posición) mod 5` del generador/SHACL anterior: tal fórmula no figura en el MARCO I.O.
-- El documento nombra 39 posiciones por fase, exige una ubicación en eje `[0,4]` y, al describir tríadas, habla de posiciones izquierda/centro/derecha. No da una tabla para convertir estos tres esquemas. La ontología no adivina esa correspondencia.
-- Los 21 rótulos sí enumerados en la extensión son otra estructura declarada. No se identifican como nombres de las 13 tríadas originales ni se asignan a sus índices.
+- El MARCOI.O.txt adjunto inicialmente no contenía la tabla completa. El usuario aportó después los 13 renglones de cada fase y las cuatro reglas de creación; se transcribieron sin sustituir la ortografía recibida.
+- La aclaración posterior especificó que las tres perspectivas estructurales son Individualidad, Dualidad y Totalidad y corresponden a las columnas izquierda, centro y derecha. Esa asignación ahora es explícita en cada instancia.
+- En etiquetas de filas espejo se respetan las diferencias recibidas, por ejemplo `logica` frente a `lógica`, `imaginación` frente a `imaginacion` y `vacio` frente a `vacío`. Los espejos se conectan por índice de fila y simetría lateral, no por corrección textual.
+- Los diagramas de las perspectivas 4–5 se representan como cuatro secuencias de cinco elementos, guardando tanto el índice visual de izquierda a derecha como la posición numérica del eje y la flecha mostrada. Así no se pierde la diferencia entre orientación visual y número de eje.
+- La extensión de 21 categorías se conserva como una estructura adicional, separada de las 13 tríadas.
 
-## Discrepancias entre declaraciones y comprobación
+## Límites de la comprobación
 
-1. El MARCO I.O. anuncia una validación RDF/OWL y SHACL. El grafo del repositorio es RDF serializado en Turtle y usa restricciones SHACL. No hay importación/razonamiento OWL que verifique consistencia ontológica OWL.
-2. La afirmación fuente de que cada instancia de `S_rev` declara `io:restoresVacuum true` no se interpreta como atributo verdadero de cada posición categorial: la implementación pone la restauración como propiedad del operador/composición, no de los 78 nodos. Esto evita afirmar que cualquier categoría individual restaura por sí misma el vacío.
-3. En §4.1 del documento, el caso vacío de `S_rev` conserva `n`; la regla general `(n−1, red(iota(σ)))` produciría otra marca temporal incluso para `σ=[]`. El código sigue la excepción explícita para el vacío y aplica la rama general solo a contenido no vacío.
-4. La fuente reporta 16 teoremas críticos, una versión modular (incluidos `IOM_Theorems`) y una compilación anterior. Esas cifras/historiales no se dan por verificadas automáticamente. Se reportará el conteo del código actual, no el relato histórico.
-5. Una conclusión filosófica (por ejemplo, “resuelve la paradoja”) no se sigue solamente del teorema para el estado vacío. El alcance del teorema es el modelo definido en Lean.
-6. Las asociaciones neurocientíficas y físicas se presentan en la fuente como mapeos, analogías o propuestas. El repositorio no incorpora datos experimentales, mediciones ni simulaciones que las comprueben empíricamente.
+1. El documento fuente anuncia RDF/OWL y SHACL. Este proyecto genera RDF en Turtle y aplica restricciones SHACL; no ejecuta un razonador OWL ni prueba consistencia OWL.
+2. La afirmación de que una instancia del operador `S_rev` declara `io:restoresVacuum true` se modela como propiedad del operador/composición, no como propiedad verdadera de cada categoría individual.
+3. En §4.1 el caso vacío de `S_rev` conserva el tiempo `n`, mientras la regla general `(n−1, red(iota(σ)))` lo reduciría incluso si `σ=[]`. El código respeta la excepción explícita para el vacío y usa la rama general solo para contenido no vacío.
+4. Los 16 teoremas/lemas que declara el código actual son los que se compilan en Lean. Esto no valida automáticamente el historial o la modularización descritos por la fuente.
+5. Las analogías neurocientíficas y físicas siguen siendo afirmaciones/mapeos del texto fuente; no hay experimentos, datos, mediciones ni simulaciones que se ejecuten aquí.
+6. `payload : List String` es una representación computacional de unidades etiquetadas; no constituye una teoría física de la información.
 
-## Reglas para mantener exactitud
+## Mantenimiento
 
-- Cambiar el documento fuente requiere editar deliberadamente `docs/MARCOI.O.txt` y actualizar su hash indicado en `README.md`.
-- No asignar etiquetas ni índices a tríadas sin recibir su lista oficial.
-- No escribir “demostrado” salvo que exista una prueba Lean compilada o una prueba automatizada ejecutada que respalde exactamente la frase.
-- No presentar la conformidad SHACL como prueba de verdad científica ni de todas las tesis del documento.
+- No modificar `docs/MARCOI.O.txt` al agregar aclaraciones posteriores; registrarlas en anexos versionados con procedencia.
+- Al modificar cualquiera de las tablas, actualizar en conjunto generador, formas SHACL, pruebas y documentación.
+- Reservar «demostrado» para una prueba Lean compilada y «validado» para una restricción automatizada que se haya ejecutado.
+- La conformidad SHACL valida el grafo y las reglas formalizadas, no la verdad científica de las tesis filosóficas.
