@@ -42,3 +42,23 @@ El script de generación [`scripts/generate_ontology.py`](scripts/generate_ontol
 ## Resultado registrado
 
 El modelo completo obtuvo exactitud, macro-F1, F1 de `mirrorOf`, F1 de `creates` y conformidad de reglas de **1.0**. La ablación sin fase obtuvo exactitud **0.6000**; la ablación sin posición, **0.6359**. La puntuación perfecta es coherente con etiquetas definidas determinísticamente por fase/posición y reglas: demuestra reconstrucción del conjunto de especificación, no evidencia independiente ni validación empírica. Los valores completos por fold y matrices están en `experiments/results/pi_hgat_t_metrics.json`.
+
+## Baselines y evaluación externa (v1.1)
+
+Ejecutar:
+
+```bash
+python experiments/baselines.py
+```
+
+Produce `experiments/results/baselines_comparison.json` con:
+
+- reglas deterministas (oracle SHACL);
+- regresión logística sobre features fase+posición;
+- MLP sin estructura de grafo.
+
+El conjunto de evaluación externa está en `datasets/external_eval/` (60 pares + anotaciones de tres evaluadores). Ver `docs/RELACIONES_OPERATIVAS.md` para la semántica exacta de `mirrorOf` y `creates`.
+
+## Resultados por partición y variabilidad
+
+Las matrices de confusión y métricas por fold se publican en `experiments/results/pi_hgat_t_metrics.json` (campo `experiments[].fold_results` cuando el script se ejecuta con la versión ampliada). Los intervalos de variabilidad (media ± std de los 13 folds) aparecen en los reportes de baselines y en la auditoría automática.
