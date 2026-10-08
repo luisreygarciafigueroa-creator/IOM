@@ -1,48 +1,48 @@
-# IOM — Marco I.O. formal y reproducible
+# IOM — formalización, ontología y experimentos reproducibles
 
-Repositorio de comprobación ejecutable del documento [MARCOI.O.txt](docs/MARCOI.O.txt), complementado con las listas exactas de tríadas y vectores que el usuario añadió para completar la fuente ([13 tríadas](docs/TRIADAS_CATEGORIALES.md), [perspectivas cuarta y quinta](docs/VECTORES_4_5.md)). El documento original se conserva íntegro y byte a byte.
+Repositorio ejecutable del marco I.O. El documento original [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt) se conserva íntegro. La especificación más reciente de tríadas y vectores aportada por el usuario está centralizada en [`data/iom_spec.json`](data/iom_spec.json) y transcrita en [`docs/TRIADAS_CATEGORIALES.md`](docs/TRIADAS_CATEGORIALES.md) y [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md).
 
-> El repositorio verifica propiedades del modelo formalizado; no presenta las afirmaciones filosóficas, neurocientíficas o físicas como hechos empíricos demostrados.
+> El código verifica propiedades formales de la especificación. Los experimentos estructurales no son evidencia empírica de tesis filosóficas, físicas o neurocientíficas.
 
-## Ejecutar la verificación completa
+## Verificación completa
 
-Requisitos: Elan/Lean 4.9.0, Python 3.9 o posterior, `venv` e Internet para instalar dependencias.
+Requisitos: Elan/Lean 4.9.0, Python 3.12, `venv` e Internet para instalar dependencias.
 
 ```bash
-# Instalar Lean 4.9.0 si Elan no está instalado:
-curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.9.0
-export PATH="$HOME/.elan/bin:$PATH"
-
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements-lock.txt
 lake build
 .venv/bin/python scripts/generate_ontology.py
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python scripts/validate_shacl.py
+.venv/bin/python experiments/pi_hgat_t.py
 ```
 
-La CI de GitHub ejecuta esas etapas en cada actualización.
+La CI ejecuta la compilación Lean, genera los artefactos, corre pruebas, valida OWL RL/SHACL y reproduce PI-HGAT-T.
 
-## Qué se comprueba
+## Contenido verificado
 
-- **Lean 4.9.0:** cuatro operadores (`E`, `S_fwd`, `Ivo`, `S_rev`) y 16 teoremas/lemas, incluido el punto fijo estricto del vacío y la no repetición para contenido no vacío. La compilación no usa `sorry` ni `admit`.
-- **Perspectivas 1–3:** izquierda ↔ Individualidad, centro ↔ Dualidad, derecha ↔ Totalidad.
-- **Tríadas:** las 13 filas nominales en cada fase; **78 nodos**. Los espejos invierten izquierda/derecha y conservan el centro.
-- **Dinámicas `crea`:** 104 vínculos entre nodos de fases opuestas, resultado de las cuatro reglas aplicadas a las 13 filas.
-- **Perspectivas 4–5:** 20 pasos vectoriales con etiquetas, índices `[0,4]`, fases y flechas transcritos.
-- **Extensión adicional:** 21 categorías en niveles `1 + 4 + 6 + 6 + 4`.
-- **RDF/SHACL y regresión:** correspondencia de dirección/fase, perspectiva/posición, espejos, reglas de creación y estructura de vectores, con mutaciones negativas.
+- **Especificación canónica:** 13 tríadas de avance, 13 de retroceso; extremo inicial de avance `involución | vacio | evolución`, extremo final de retroceso `evolución | vacio | involución`; etiquetas con acentos y orden fiel a la última tabla recibida.
+- **Perspectivas 4–5:** vectores evolutivo e involutivo con cuatro filas de cinco pasos; secuencias, posiciones y flechas actuales.
+- **Lean 4.9.0:** operadores temporales, espejos de posición, cotas de índices vectoriales y teoremas formales; sin `sorry` ni `admit`.
+- **RDF/OWL + SHACL:** axiomas de clases y propiedades, dominios/rangos, propiedades funcionales/simetría y restricciones SHACL de estructura, espejo, creación y secuencias vectoriales. El validador ejecuta expansión OWL RL y SHACL.
+- **PI-HGAT-T:** clasificador de relaciones `none`/`mirrorOf`/`creates`, PyTorch, semilla fija, validación cruzada leave-one-triad-out y ablaciones sin fase/sin posición. Las métricas se vinculan directamente con las propiedades de la ontología; no se imponen umbrales arbitrarios. Los resultados y versiones quedan registrados.
+- **Datasets reproducibles:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390). Derivan de la especificación del usuario, no de mediciones empíricas.
 
-## Archivos clave
+## Archivos importantes
 
-| Ruta | Contenido |
+| Ruta | Función |
 |---|---|
-| `docs/MARCOI.O.txt` | Copia byte a byte del documento adjunto; SHA-256 `acfdc81d7b78331d60f9a341b8cc5b4be151638826b05a5537d68f183b6ed034`. |
-| `docs/TRIADAS_CATEGORIALES.md` | Lista de las 13 tríadas de avance/retroceso y cuatro reglas de creación añadidas por el usuario. |
-| `docs/VECTORES_4_5.md` | Tablas de posición y flechas de las perspectivas cuarta y quinta. |
-| `IOM/` y `IOM.lean` | Modelo, operadores, teoremas y módulo raíz Lean. |
-| `ontology/` | RDF/Turtle generado y restricciones SHACL. |
-| `scripts/`, `tests/` | Generación, validación y pruebas automatizadas. |
-| `AUDITORIA.md`, `REPRODUCCION.md`, `paper.md` | Correspondencia de fuente, resultados y reproducción.
+| `data/iom_spec.json` | Fuente de verdad estructurada de etiquetas, secuencias y reglas |
+| `IOM/` y `IOM.lean` | Especificación de estados, operadores y teoremas Lean |
+| `ontology/io_ontology.ttl` | Instancias RDF y axiomas OWL generados |
+| `ontology/io_shapes.ttl` | Validación SHACL estructural y semántica |
+| `scripts/generate_ontology.py` | Generación de Turtle y CSV desde la fuente canónica |
+| `scripts/validate_shacl.py` | Comprobación OWL RL y SHACL |
+| `experiments/` | Configuración, PI-HGAT-T, métricas, versiones y logs |
+| `datasets/` | CSV regenerables para análisis y entrenamiento |
+| `requirements-lock.txt` | Lock completo de dependencias; `MANIFEST.sha256` identifica artefactos |
+| `dist/IOM-reproducible.zip` | Paquete reproducible generado con `scripts/package_reproducible.py` |
+| `EXPERIMENTOS.md`, `AUDITORIA.md`, `REPRODUCCION.md`, `paper.md` | Método, trazabilidad, alcance y reproducción |
 
-La fuente original no contenía las tablas completas de 13 tríadas/vectorial; los dos documentos suplementarios conservan las precisiones posteriores del usuario sin alterar esa copia original.
+Para la metodología y la correspondencia de métricas: [`EXPERIMENTOS.md`](EXPERIMENTOS.md). Para ejecutar paso a paso: [`REPRODUCCION.md`](REPRODUCCION.md).

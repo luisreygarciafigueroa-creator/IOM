@@ -1,0 +1,22 @@
+{
+  "model_id": "PI-HGAT-T",
+  "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; operational project definition, not a claim of canonical architecture external to this repository.",
+  "seed": 20261008,
+  "device": "cpu",
+  "validation": "leave-one-triad-out",
+  "epochs": 100,
+  "hidden_dim": 32,
+  "attention_heads": 4,
+  "learning_rate": 0.003,
+  "weight_decay": 0.0001,
+  "optimizer": "AdamW",
+  "loss": "class-weighted cross entropy",
+  "features": ["one-hot phase adv/ret", "one-hot position left/center/right"],
+  "prohibited_features": ["lexical labels", "triad index", "target relation"],
+  "candidate_relations": ["none", "mirrorOf", "creates"],
+  "threshold_policy": "No arbitrary pass/fail threshold. Formal reference is exact equality (score 1.0) to deterministic RDF/SHACL properties; observed model metrics are reported without empirical interpretation.",
+  "target_properties": {
+    "mirrorOf": "same triad; opposite phase; reciprocal; lateral positions exchange and center remains center",
+    "creates": "same triad; opposite phase; follows the four declared left/center-to-center/laterals creation rules"
+  }
+}

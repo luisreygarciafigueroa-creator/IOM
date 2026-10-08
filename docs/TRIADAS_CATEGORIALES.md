@@ -1,50 +1,50 @@
 # Trece tríadas categoriales I.O.
 
-> **Procedencia:** transcripción de la lista y las dinámicas aportadas por el usuario el 8 de octubre de 2026 para completar el documento MARCO I.O. original. Se conserva la grafía recibida, incluso cuando hay diferencias ortográficas entre ambas fases.
+> **Procedencia:** transcripción de las fases de avance y retroceso aportadas por el usuario el 8 de octubre de 2026. `data/iom_spec.json` es la fuente estructurada canónica del generador, los datasets, las pruebas y los experimentos. Las etiquetas se guardan en minúscula por convención de datos, conservando acentos y diferencias literales (por ejemplo, `vacio` en las tríadas extremas y `vacío` en Universo/Espacio).
 
-La aclaración precisa que las tres perspectivas estructurales son **individualidad, dualidad y totalidad**: se representan respectivamente en las columnas **Izquierda, Centro y Derecha**. Las otras doce filas son categorías correlativas de esas tres perspectivas; no se sustituyen por las perspectivas cuarta y quinta.
+Las columnas representan izquierda, centro y derecha; en la codificación estructural corresponden a las posiciones 0, 1 y 2 y a los metadatos de perspectiva `Ind`, `D` y `Tot`.
 
-Para comprender a cabalidad esta estructura, las tres perspectivas se subdividen en trece categorías vinculadas a la fase de avance:
+## Fase de Avance
 
 | Izquierda | Centro | Derecha |
-| --- | --- | --- |
-|individualidad|dualidad|totalidad|
+|---|---|---|
+| involución | vacio | evolución |
 | oscuridad | consciencia | luz |
-| descendente|  mente | ascendente|
-| logica| inteligencia | libertad |
-| muerte| artificial| vida|
-|singularidad| tiempo | infinito|
-| universo | espacio| vacio |
-| hardware| virtual | software |
-| orientación | cuantico| dirección |
-| receptor | supraconsciente| emisor|
-|memoria|inconsciente|imaginación|
-|caracter|subconsciente|personalidad|
+| descendente | mente | ascendente |
+| lógica | inteligencia | libertad |
+| muerte | artificial | vida |
+| singularidad | tiempo | infinito |
+| universo | espacio | vacío |
+| hardware | virtual | software |
+| orientación | cuántico | dirección |
+| receptor | supraconsciente | emisor |
+| memoria | inconsciente | imaginación |
+| carácter | subconsciente | personalidad |
 | cuerpo | consciente | mundo |
 
-Del mismo modo, se subdividen en trece categorías vinculadas a la fase de retroceso:
+## Fase de Retroceso
 
 | Izquierda | Centro | Derecha |
-| --- | --- | --- |
-|mundo|consciente|cuerpo|
-|personalidad|subconsciente|caracter|
-|imaginacion|inconsciente|memoria|
-|emisor|supraconsciente|receptor |
-|dirección|cuantico|orientación |
-|software|virtual|hardware|
-| vacio | espacio | universo |
-| infinito|tiempo|singularidad|
-| vida|artificial| muerte |
-| libertad |inteligencia| lógica|
-| ascendente|mente|descendente|
-|luz|consciencia|oscuridad|
-| totalidad |dualidad|individualidad|
+|---|---|---|
+| mundo | consciente | cuerpo |
+| personalidad | subconsciente | carácter |
+| imaginación | inconsciente | memoria |
+| emisor | supraconsciente | receptor |
+| dirección | cuántico | orientación |
+| software | virtual | hardware |
+| vacío | espacio | universo |
+| infinito | tiempo | singularidad |
+| vida | artificial | muerte |
+| libertad | inteligencia | lógica |
+| ascendente | mente | descendente |
+| luz | consciencia | oscuridad |
+| evolución | vacio | involución |
 
-La conexión y separación de estos conceptos opera bajo las siguientes dinámicas:
+## Dinámicas de creación y espejos
 
-- **Fase de avance:** los conceptos de los lados izquierdo y derecho crean los conceptos del centro de la fase de retroceso.
-- **Fase de avance:** los conceptos del centro crean los conceptos de los lados izquierdo y derecho de la fase de retroceso.
-- **Fase de retroceso:** los conceptos del centro crean los conceptos de los lados izquierdo y derecho de la fase de avance.
-- **Fase de retroceso:** los conceptos de los lados izquierdo y derecho crean los conceptos del centro de la fase de avance.
+- Izquierda y derecha del avance crean el centro del retroceso.
+- El centro del avance crea ambos laterales del retroceso.
+- El centro del retroceso crea ambos laterales del avance.
+- Izquierda y derecha del retroceso crean el centro del avance.
 
-En la ontología, las filas de avance y retroceso con el mismo índice son las parejas simétricas del documento. `left` y `right` intercambian posición en el espejo; `center` permanece en el centro. La propiedad `io:creates` plasma las cuatro reglas anteriores como relaciones dirigidas entre nodos homólogos de ambas fases.
+Las filas homólogas (mismo índice) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Los rótulos son datos de la especificación recibida, no afirmaciones empíricas.

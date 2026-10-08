@@ -1,152 +1,190 @@
 #!/usr/bin/env python3
-"""Genera RDF desde MARCOI.O.txt y sus dos especificaciones complementarias."""
+"""Genera RDF/OWL y datasets desde data/iom_spec.json, única fuente tabular."""
+from __future__ import annotations
+
+import csv
+import json
 from pathlib import Path
-from rdflib import Graph, Literal, Namespace
-from rdflib.namespace import RDF, RDFS, XSD
+from rdflib import BNode, Graph, Literal, Namespace
+from rdflib.namespace import OWL, RDF, RDFS, XSD
 
 ROOT = Path(__file__).resolve().parents[1]
+SPEC = json.loads((ROOT / "data" / "iom_spec.json").read_text(encoding="utf-8"))
 IO = Namespace("http://example.org/iom#")
 g = Graph()
-g.bind("io", IO)
-g.bind("rdfs", RDFS)
-g.bind("xsd", XSD)
+for prefix, namespace in (("io", IO), ("rdfs", RDFS), ("xsd", XSD), ("owl", OWL)):
+    g.bind(prefix, namespace)
 
-for perspective, label in (
-    (IO.Ind, "Individualidad"), (IO.D, "Dualidad"), (IO.Tot, "Totalidad"),
-    (IO.Evol, "Vector Evolutivo"), (IO.Invol, "Vector Involutivo"),
-):
-    g.add((perspective, RDF.type, IO.Perspective))
-    g.add((perspective, RDFS.label, Literal(label, lang="es")))
+# OWL vocabulary: class/property declarations and explicit domains/ranges.
+ontology = IO.Ontology
+g.add((ontology, RDF.type, OWL.Ontology))
+g.add((ontology, OWL.versionInfo, Literal("1.1.0")))
+g.add((ontology, RDFS.label, Literal("Ontología IOM", lang="es")))
+g.add((ontology, RDFS.comment, Literal(SPEC["source_note"], lang="es")))
+classes = ("OntoNode", "VectorStep", "Perspective", "ExpandedCategory", "Position", "Direction", "SourceModel")
+for name in classes:
+    g.add((IO[name], RDF.type, OWL.Class))
+for names in (("OntoNode", "VectorStep", "ExpandedCategory", "Perspective"),):
+    axiom = BNode("iomDisjointCoreClasses")
+    head = BNode("iomDisjointClassList0")
+    g.add((axiom, RDF.type, OWL.AllDisjointClasses))
+    g.add((axiom, OWL.members, head))
+    cells = [BNode(f"iomDisjointClassList{i}") for i in range(len(names))]
+    for index, name in enumerate(names):
+        g.add((cells[index], RDF.first, IO[name]))
+        g.add((cells[index], RDF.rest, cells[index + 1] if index + 1 < len(cells) else RDF.nil))
 
-ADVANCE = [
-    ("individualidad", "dualidad", "totalidad"),
-    ("oscuridad", "consciencia", "luz"),
-    ("descendente", "mente", "ascendente"),
-    ("logica", "inteligencia", "libertad"),
-    ("muerte", "artificial", "vida"),
-    ("singularidad", "tiempo", "infinito"),
-    ("universo", "espacio", "vacio"),
-    ("hardware", "virtual", "software"),
-    ("orientación", "cuantico", "dirección"),
-    ("receptor", "supraconsciente", "emisor"),
-    ("memoria", "inconsciente", "imaginación"),
-    ("caracter", "subconsciente", "personalidad"),
-    ("cuerpo", "consciente", "mundo"),
-]
-RETREAT = [
-    ("mundo", "consciente", "cuerpo"),
-    ("personalidad", "subconsciente", "caracter"),
-    ("imaginacion", "inconsciente", "memoria"),
-    ("emisor", "supraconsciente", "receptor"),
-    ("dirección", "cuantico", "orientación"),
-    ("software", "virtual", "hardware"),
-    ("vacio", "espacio", "universo"),
-    ("infinito", "tiempo", "singularidad"),
-    ("vida", "artificial", "muerte"),
-    ("libertad", "inteligencia", "lógica"),
-    ("ascendente", "mente", "descendente"),
-    ("luz", "consciencia", "oscuridad"),
-    ("totalidad", "dualidad", "individualidad"),
-]
-POSITIONS = ("left", "center", "right")
-PERSPECTIVES = (IO.Ind, IO.D, IO.Tot)
-PHASES = {"adv": ADVANCE, "ret": RETREAT}
+object_properties = {
+    "hasPerspective": ("OntoNode", "Perspective"),
+    "hasPosition": ("OntoNode", "Position"),
+    "hasDirection": ("OntoNode", "Direction"),
+    "hasVector": ("VectorStep", "Perspective"),
+    "mirrorOf": ("OntoNode", "OntoNode"),
+    "creates": ("OntoNode", "OntoNode"),
+}
+datatype_properties = {
+    "hasTriadIndex": ("OntoNode", XSD.integer),
+    "hasPhase": ("OntoNode", XSD.string),
+    "hasLocalPos": ("OntoNode", XSD.integer),
+    "hasCyclePhase": ("VectorStep", XSD.string),
+    "hasAxisPosition": ("VectorStep", XSD.integer),
+    "hasStepIndex": ("VectorStep", XSD.integer),
+    "displayArrow": ("VectorStep", XSD.string),
+    "hasLevel": ("ExpandedCategory", XSD.integer),
+    "declaredTriadCount": ("SourceModel", XSD.integer),
+    "declaredPerspectiveCount": ("SourceModel", XSD.integer),
+    "declaredOperatorCount": ("SourceModel", XSD.integer),
+    "declaredExpandedCategoryCount": ("SourceModel", XSD.integer),
+}
+for name, (domain, range_) in object_properties.items():
+    prop = IO[name]
+    g.add((prop, RDF.type, OWL.ObjectProperty))
+    g.add((prop, RDFS.domain, IO[domain]))
+    g.add((prop, RDFS.range, IO[range_]))
+for name, (domain, range_) in datatype_properties.items():
+    prop = IO[name]
+    g.add((prop, RDF.type, OWL.DatatypeProperty))
+    g.add((prop, RDFS.domain, IO[domain]))
+    g.add((prop, RDFS.range, range_))
+for name in ("hasPerspective", "hasPosition", "hasDirection", "hasVector", "hasTriadIndex", "hasPhase", "hasLocalPos", "hasCyclePhase", "hasAxisPosition", "hasStepIndex", "displayArrow", "hasLevel"):
+    g.add((IO[name], RDF.type, OWL.FunctionalProperty))
+g.add((IO.mirrorOf, RDF.type, OWL.SymmetricProperty))
 
-for phase, rows in PHASES.items():
-    direction = IO.evol if phase == "adv" else IO.invol
+for pos in ("left", "center", "right"):
+    g.add((IO[pos], RDF.type, OWL.NamedIndividual))
+    g.add((IO[pos], RDF.type, IO.Position))
+    g.add((IO[pos], RDFS.label, Literal({"left": "Izquierda", "center": "Centro", "right": "Derecha"}[pos], lang="es")))
+for direction in ("evol", "invol"):
+    g.add((IO[direction], RDF.type, OWL.NamedIndividual))
+    g.add((IO[direction], RDF.type, IO.Direction))
+for name, label in (("Ind", "Individualidad"), ("D", "Dualidad"), ("Tot", "Totalidad"), ("Evol", "Vector Evolutivo"), ("Invol", "Vector Involutivo")):
+    g.add((IO[name], RDF.type, IO.Perspective))
+    g.add((IO[name], RDFS.label, Literal(label, lang="es")))
+
+perspectives = [IO[name] for name in SPEC["perspectives"]]
+position_names = SPEC["positions"]
+triad_rows = SPEC["triads"]
+nodes_csv = []
+for phase, rows in triad_rows.items():
+    direction = IO[SPEC["phases"][phase]["direction"]]
     for triad_idx, labels in enumerate(rows):
         for pos_idx, label in enumerate(labels):
             node = IO[f"T{triad_idx:02d}_{phase}_P{pos_idx}"]
             g.add((node, RDF.type, IO.OntoNode))
             g.add((node, IO.hasTriadIndex, Literal(triad_idx, datatype=XSD.integer)))
-            g.add((node, IO.hasPhase, Literal(phase)))
+            g.add((node, IO.hasPhase, Literal(phase, datatype=XSD.string)))
             g.add((node, IO.hasLocalPos, Literal(pos_idx, datatype=XSD.integer)))
-            g.add((node, IO.hasPosition, IO[POSITIONS[pos_idx]]))
-            g.add((node, IO.hasPerspective, PERSPECTIVES[pos_idx]))
+            g.add((node, IO.hasPosition, IO[position_names[pos_idx]]))
+            g.add((node, IO.hasPerspective, perspectives[pos_idx]))
             g.add((node, IO.hasDirection, direction))
             g.add((node, RDFS.label, Literal(label, lang="es")))
+            nodes_csv.append({"node_id": str(node).split("#", 1)[1], "triad_index": triad_idx, "phase": phase,
+                              "direction": str(direction).split("#", 1)[1], "position_index": pos_idx,
+                              "position": position_names[pos_idx], "perspective": SPEC["perspectives"][pos_idx], "label": label})
 
-# Espejo lateral: izquierda ↔ derecha y centro ↔ centro en la otra fase.
-for triad_idx in range(13):
+# Espejos entre fases: se invierten laterales y se conserva el centro.
+for triad_idx in range(len(triad_rows["adv"])):
     for pos_idx in range(3):
-        opposite_pos = 2 - pos_idx
         adv = IO[f"T{triad_idx:02d}_adv_P{pos_idx}"]
-        ret = IO[f"T{triad_idx:02d}_ret_P{opposite_pos}"]
+        ret = IO[f"T{triad_idx:02d}_ret_P{2-pos_idx}"]
         g.add((adv, IO.mirrorOf, ret))
         g.add((ret, IO.mirrorOf, adv))
 
-# Cuatro dinámicas de generación cruzada aplicadas fila por fila.
-for triad_idx in range(13):
-    adv_left = IO[f"T{triad_idx:02d}_adv_P0"]
-    adv_center = IO[f"T{triad_idx:02d}_adv_P1"]
-    adv_right = IO[f"T{triad_idx:02d}_adv_P2"]
-    ret_left = IO[f"T{triad_idx:02d}_ret_P0"]
-    ret_center = IO[f"T{triad_idx:02d}_ret_P1"]
-    ret_right = IO[f"T{triad_idx:02d}_ret_P2"]
-    for source in (adv_left, adv_right):
-        g.add((source, IO.creates, ret_center))
-    for target in (ret_left, ret_right):
-        g.add((adv_center, IO.creates, target))
-    for source in (ret_left, ret_right):
-        g.add((source, IO.creates, adv_center))
-    for target in (adv_left, adv_right):
-        g.add((ret_center, IO.creates, target))
+# Aplicar las cuatro reglas de creación indicadas en la fuente estructurada.
+for triad_idx in range(len(triad_rows["adv"])):
+    for rule in SPEC["creation_rules"]:
+        for source_pos in rule["source_positions"]:
+            for target_pos in rule["target_positions"]:
+                source = IO[f"T{triad_idx:02d}_{rule['source_phase']}_P{source_pos}"]
+                target = IO[f"T{triad_idx:02d}_{rule['target_phase']}_P{target_pos}"]
+                g.add((source, IO.creates, target))
 
-# Posiciones de eje para las perspectivas cuarta y quinta (4 filas × 5 pasos).
-VECTOR_ROWS = (
-    ("Evol", "adv", ("vacio", "ind", "dua", "tot", "evol"), (0, 1, 2, 3, 4), "→"),
-    ("Evol", "ret", ("evol", "fut", "pre", "pas", "vacio"), (4, 3, 2, 1, 0), "←"),
-    ("Invol", "adv", ("invol", "tot", "dua", "ind", "vacio"), (4, 3, 2, 1, 0), "→"),
-    ("Invol", "ret", ("vacio", "pas", "pre", "fut", "invol"), (0, 1, 2, 3, 4), "←"),
-)
-for vector_name, phase, labels, axis_positions, arrow in VECTOR_ROWS:
-    for visual_index, (label, axis_pos) in enumerate(zip(labels, axis_positions)):
-        step = IO[f"vector_{vector_name.lower()}_{phase}_{visual_index}"]
+vector_csv = []
+for vector_row in SPEC["vectors"]:
+    vector, phase = vector_row["name"], vector_row["phase"]
+    for step_index, (label, axis_pos) in enumerate(zip(vector_row["labels"], vector_row["axis_positions"])):
+        step = IO[f"vector_{vector.lower()}_{phase}_{step_index}"]
         g.add((step, RDF.type, IO.VectorStep))
-        g.add((step, IO.hasVector, IO[vector_name]))
-        g.add((step, IO.hasCyclePhase, Literal(phase)))
+        g.add((step, IO.hasVector, IO[vector]))
+        g.add((step, IO.hasCyclePhase, Literal(phase, datatype=XSD.string)))
         g.add((step, IO.hasAxisPosition, Literal(axis_pos, datatype=XSD.integer)))
-        g.add((step, IO.hasStepIndex, Literal(visual_index, datatype=XSD.integer)))
-        g.add((step, IO.displayArrow, Literal(arrow)))
+        g.add((step, IO.hasStepIndex, Literal(step_index, datatype=XSD.integer)))
+        g.add((step, IO.displayArrow, Literal(vector_row["arrow"], datatype=XSD.string)))
         g.add((step, RDFS.label, Literal(label, lang="es")))
+        vector_csv.append({"step_id": str(step).split("#", 1)[1], "vector": vector, "phase": phase,
+                           "step_index": step_index, "axis_position": axis_pos, "label": label,
+                           "arrow": vector_row["arrow"]})
 
-# Las 21 categorías enumeradas en la extensión teórica del documento.
-levels = {
-    0: ("Vacío Generativo (V)",),
-    1: ("Potencia", "Acto", "Percepción", "Acción"),
-    2: ("Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia",
-        "Símbolo-Significado", "Límite-Transgresión", "Mediación"),
-    3: ("Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"),
-    4: ("E", "S_fwd", "Ivo", "S_rev"),
-}
-for level, labels in levels.items():
+for level, labels in SPEC["expanded_categories"].items():
     for index, label in enumerate(labels, 1):
         category = IO[f"expanded_L{level}_{index:02d}"]
         g.add((category, RDF.type, IO.ExpandedCategory))
-        g.add((category, IO.hasLevel, Literal(level, datatype=XSD.integer)))
+        g.add((category, IO.hasLevel, Literal(int(level), datatype=XSD.integer)))
         g.add((category, RDFS.label, Literal(label, lang="es")))
 
 model = IO.SourceModel
-for predicate, value in (
-    (IO.declaredTriadCount, 13),
-    (IO.declaredPerspectiveCount, 5),
-    (IO.declaredOperatorCount, 4),
-    (IO.declaredExpandedCategoryCount, 21),
-):
-    g.add((model, predicate, Literal(value, datatype=XSD.integer)))
+g.add((model, RDF.type, IO.SourceModel))
+for prop, value in ((IO.declaredTriadCount, 13), (IO.declaredPerspectiveCount, 5),
+                    (IO.declaredOperatorCount, 4), (IO.declaredExpandedCategoryCount, 21)):
+    g.add((model, prop, Literal(value, datatype=XSD.integer)))
 
-node_count = len(set(g.subjects(RDF.type, IO.OntoNode)))
-vector_count = len(set(g.subjects(RDF.type, IO.VectorStep)))
-category_count = len(set(g.subjects(RDF.type, IO.ExpandedCategory)))
-creates_count = len(set(g.triples((None, IO.creates, None))))
-assert len(ADVANCE) == len(RETREAT) == 13
-assert node_count == 78, f"Deben ser 78 nodos de fase y posición; se generaron {node_count}"
-assert vector_count == 20, f"Deben ser 20 pasos vectoriales; se generaron {vector_count}"
-assert category_count == 21, f"Deben ser 21 categorías de la extensión; se generaron {category_count}"
-assert creates_count == 104, f"Deben ser 104 relaciones creates; se generaron {creates_count}"
+# Pair-classification dataset for PI-HGAT-T: 36 directed candidates per triad.
+relation_csv = []
+relation_lookup = {}
+for subject, _, obj in g.triples((None, IO.mirrorOf, None)):
+    relation_lookup[(str(subject), str(obj))] = "mirrorOf"
+for subject, _, obj in g.triples((None, IO.creates, None)):
+    relation_lookup[(str(subject), str(obj))] = "creates"
+for triad_idx in range(13):
+    ids = [IO[f"T{triad_idx:02d}_{phase}_P{pos}"] for phase in ("adv", "ret") for pos in range(3)]
+    for source in ids:
+        for target in ids:
+            if source == target:
+                continue
+            relation_csv.append({"triad_index": triad_idx, "source": str(source).split("#", 1)[1],
+                                 "target": str(target).split("#", 1)[1],
+                                 "relation": relation_lookup.get((str(source), str(target)), "none")})
+
+assert len(triad_rows["adv"]) == len(triad_rows["ret"]) == 13
+assert len(nodes_csv) == 78
+assert len(vector_csv) == 20
+assert sum(1 for _ in g.triples((None, IO.creates, None))) == 104
+assert len(relation_csv) == 13 * 6 * 5
+
 out = ROOT / "ontology" / "io_ontology.ttl"
 out.parent.mkdir(parents=True, exist_ok=True)
 g.serialize(destination=str(out), format="turtle")
-print(f"Tríadas: 13 por fase; nodos: {node_count}; relaciones creates: {creates_count}")
-print(f"Pasos vectoriales: {vector_count}; categorías de la extensión: {category_count}")
-print(f"✓ Ontología serializada en {out}")
+
+def write_csv(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+
+write_csv(ROOT / "datasets" / "triad_nodes.csv", nodes_csv)
+write_csv(ROOT / "datasets" / "vector_steps.csv", vector_csv)
+write_csv(ROOT / "datasets" / "relation_candidates.csv", relation_csv)
+print(f"Tríadas: 13 por fase; nodos: {len(nodes_csv)}; creates: 104; espejos: 78")
+print(f"Pasos vectoriales: {len(vector_csv)}; candidatos PI-HGAT-T: {len(relation_csv)}")
+print(f"OWL/Turtle: {out}")

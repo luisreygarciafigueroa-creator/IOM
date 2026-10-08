@@ -1,0 +1,23 @@
+{
+  "python": "3.12.3",
+  "implementation": "CPython",
+  "platform": "Linux-6.18.38+-x86_64-with-glibc2.39",
+  "packages": {
+    "rdflib": "7.1.4",
+    "pyshacl": "0.30.1",
+    "owlrl": "7.1.4",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cpu"
+  },
+  "lean_toolchain_file": "leanprover/lean4:v4.9.0",
+  "lean_version": "Lean (version 4.9.0, x86_64-unknown-linux-gnu, commit 8f9843a4a5fe, Release)",
+  "lake_version": "Lake version 5.0.0-8f9843a (Lean version 4.9.0)",
+  "requirements": [
+    "--extra-index-url https://download.pytorch.org/whl/cpu",
+    "rdflib==7.1.4",
+    "pyshacl==0.30.1",
+    "owlrl==7.1.4",
+    "numpy==1.26.4",
+    "torch==2.6.0+cpu"
+  ]
+}
