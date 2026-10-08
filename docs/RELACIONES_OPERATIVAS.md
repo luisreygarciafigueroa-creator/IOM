@@ -7,7 +7,7 @@ Este documento fija la semántica operativa exacta de las dos relaciones estruct
 - los axiomas OWL y las formas SHACL en `ontology/`;
 - los teoremas de posición en Lean (`IOM/Operators.lean`).
 
-No se introducen umbrales estadísticos: una arista es válida o no según las reglas deterministas.
+La validez de una arista se determina de forma operativa según las reglas deterministas (comprobables por SHACL, CSV y pruebas unitarias).
 
 ---
 
