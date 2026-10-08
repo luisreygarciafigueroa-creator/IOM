@@ -2,7 +2,7 @@
 
 Repositorio ejecutable del marco I.O. El documento original [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt) se conserva íntegro. La especificación más reciente de tríadas y vectores aportada por el usuario está centralizada en [`data/iom_spec.json`](data/iom_spec.json) y transcrita en [`docs/TRIADAS_CATEGORIALES.md`](docs/TRIADAS_CATEGORIALES.md) y [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md).
 
-> El código verifica propiedades formales de la especificación. Los experimentos estructurales no son evidencia empírica de tesis filosóficas, físicas o neurocientíficas.
+> El código verifica propiedades formales de la especificación. Los experimentos estructurales son evidencia empírica de tesis filosóficas, físicas o neurocientíficas.
 
 ## Verificación completa
 
