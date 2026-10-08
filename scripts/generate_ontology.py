@@ -1,37 +1,67 @@
 #!/usr/bin/env python3
-"""Genera ontology/io_ontology.ttl con 78 nodos (13 tríadas × 3 posiciones × 2 fases)."""
-from rdflib import Graph, Namespace, Literal
-from pathlib import Path
+"""Genera el grafo RDF a partir de los datos enumerados en MARCOI.O.txt.
 
+Los índices T00..T12 son identificadores estructurales internos; el documento
+no proporciona los nombres ni el orden de las 13 tríadas. Por ello no se les
+asignan etiquetas inventadas ni perspectivas calculadas.
+"""
+from pathlib import Path
+from rdflib import Graph, Literal, Namespace
 from rdflib.namespace import RDF, RDFS, XSD
 
 ROOT = Path(__file__).resolve().parents[1]
-
 IO = Namespace("http://example.org/iom#")
 g = Graph()
 g.bind("io", IO)
 g.bind("rdfs", RDFS)
+g.bind("xsd", XSD)
 
-PERSPECTIVES = ["Ind", "D", "Tot", "Evol", "Invol"]
-PHASES = ["adv", "ret"]
-POSITIONS = [0, 1, 2]
-
+# 13 tríadas estructurales × 2 fases × 3 posiciones locales = 78 nodos.
+PHASES = ("adv", "ret")
+POSITIONS = (0, 1, 2)
 for triad_idx in range(13):
     for phase in PHASES:
         for pos in POSITIONS:
-            node_id = f"T{triad_idx:02d}_{phase}_P{pos}"
-            node = IO[node_id]
+            node = IO[f"T{triad_idx:02d}_{phase}_P{pos}"]
             g.add((node, RDF.type, IO.OntoNode))
             g.add((node, IO.hasTriadIndex, Literal(triad_idx, datatype=XSD.integer)))
             g.add((node, IO.hasPhase, Literal(phase)))
             g.add((node, IO.hasLocalPos, Literal(pos, datatype=XSD.integer)))
-            direction = "evol" if phase == "adv" else "invol"
-            g.add((node, IO.hasDirection, IO[direction]))
-            persp_idx = (triad_idx + pos) % 5
-            g.add((node, IO.hasPerspective, IO[PERSPECTIVES[persp_idx]]))
-            g.add((node, IO.restoresVacuum, Literal(True, datatype=XSD.boolean)))
+            g.add((node, IO.hasDirection, IO.evol if phase == "adv" else IO.invol))
 
-# Inversión lateral perfecta: espejo adv <-> ret
+# Ejemplos nombrados en la fuente, sin asociarlos a índices no especificados.
+for i, label in enumerate(("Oscuridad-Consciencia-Luz", "Hardware-Virtual-Software"), 1):
+    example = IO[f"sourceTriadExample{i}"]
+    g.add((example, RDF.type, IO.SourceTriadExample))
+    g.add((example, RDFS.label, Literal(label, lang="es")))
+
+# Extensión enumerada expresamente: 1 + 4 + 6 + 6 + 4 = 21 categorías.
+levels = {
+    0: ("Vacío Generativo (V)",),
+    1: ("Potencia", "Acto", "Percepción", "Acción"),
+    2: ("Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia",
+        "Símbolo-Significado", "Límite-Transgresión", "Mediación"),
+    3: ("Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"),
+    4: ("E", "S_fwd", "Ivo", "S_rev"),
+}
+for level, labels in levels.items():
+    for index, label in enumerate(labels, 1):
+        category = IO[f"expanded_L{level}_{index:02d}"]
+        g.add((category, RDF.type, IO.ExpandedCategory))
+        g.add((category, IO.hasLevel, Literal(level, datatype=XSD.integer)))
+        g.add((category, RDFS.label, Literal(label, lang="es")))
+
+# Conteos globales declarados; no se asignan a instancias Txx.
+model = IO.SourceModel
+for predicate, value in (
+    (IO.declaredTriadCount, 13),
+    (IO.declaredPerspectiveCount, 5),
+    (IO.declaredOperatorCount, 4),
+    (IO.declaredExpandedCategoryCount, 21),
+):
+    g.add((model, predicate, Literal(value, datatype=XSD.integer)))
+
+# Inversión de fase: el mismo índice y posición local se espejan.
 for triad_idx in range(13):
     for pos in POSITIONS:
         adv = IO[f"T{triad_idx:02d}_adv_P{pos}"]
@@ -40,7 +70,11 @@ for triad_idx in range(13):
         g.add((ret, IO.mirrorOf, adv))
 
 node_count = len(set(g.subjects(RDF.type, IO.OntoNode)))
-print(f"Nodos generados: {node_count}")
-assert node_count == 78, f"Deben ser exactamente 78 nodos, se generaron {node_count}"
-g.serialize(str(ROOT / "ontology" / "io_ontology.ttl"), format="turtle")
-print(f"✓ Ontología serializada en {ROOT / 'ontology' / 'io_ontology.ttl'}")
+category_count = len(set(g.subjects(RDF.type, IO.ExpandedCategory)))
+assert node_count == 78, f"Deben ser 78 nodos estructurales; se generaron {node_count}"
+assert category_count == 21, f"Deben ser 21 categorías explícitas; se generaron {category_count}"
+out = ROOT / "ontology" / "io_ontology.ttl"
+out.parent.mkdir(parents=True, exist_ok=True)
+g.serialize(destination=str(out), format="turtle")
+print(f"Nodos estructurales: {node_count}; categorías de la extensión: {category_count}")
+print(f"✓ Ontología serializada en {out}")

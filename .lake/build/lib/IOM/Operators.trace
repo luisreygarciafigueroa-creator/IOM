@@ -1,0 +1,5 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/ubuntu/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././././IOM/Operators.lean -R ./././. -o ././.lake/build/lib/IOM/Operators.olean -i ././.lake/build/lib/IOM/Operators.ilean -c ././.lake/build/ir/IOM/Operators.c --json",
+   "level": "trace"}],
+ "depHash": "8925281426418893733"}

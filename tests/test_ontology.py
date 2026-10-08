@@ -1,16 +1,23 @@
-"""Pruebas de regresión para generación y validación de la ontología."""
+"""Pruebas de regresión RDF/SHACL para los datos enumerados en MARCOI.O.txt."""
+import hashlib
 import unittest
 from pathlib import Path
 
 from pyshacl import validate
 from rdflib import Graph, Literal, Namespace
-from rdflib.namespace import RDF, XSD
+from rdflib.namespace import RDF, RDFS, XSD
 
 ROOT = Path(__file__).resolve().parents[1]
 IO = Namespace("http://example.org/iom#")
 DATA = ROOT / "ontology" / "io_ontology.ttl"
 SHAPES = ROOT / "ontology" / "io_shapes.ttl"
-PERSPECTIVES = (IO.Ind, IO.D, IO.Tot, IO.Evol, IO.Invol)
+EXPECTED_LABELS = {
+    "Vacío Generativo (V)", "Potencia", "Acto", "Percepción", "Acción",
+    "Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia",
+    "Símbolo-Significado", "Límite-Transgresión", "Mediación",
+    "Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso",
+    "E", "S_fwd", "Ivo", "S_rev",
+}
 
 
 class OntologyValidationTests(unittest.TestCase):
@@ -27,90 +34,79 @@ class OntologyValidationTests(unittest.TestCase):
         )
         return conforms, report_text
 
-    def test_generated_node_count_and_conformance(self):
+    def test_exactly_78_structural_nodes_and_shacl_conformance(self):
         nodes = set(self.data.subjects(RDF.type, IO.OntoNode))
-        expected_nodes = {
-            IO[f"T{triad:02d}_{phase}_P{position}"]
-            for triad in range(13)
-            for phase in ("adv", "ret")
-            for position in range(3)
+        expected = {
+            IO[f"T{i:02d}_{phase}_P{pos}"]
+            for i in range(13) for phase in ("adv", "ret") for pos in range(3)
         }
-        self.assertEqual(len(nodes), 78)
-        self.assertEqual(nodes, expected_nodes)
-        conforms, report_text = self.conforms()
-        self.assertTrue(conforms, report_text)
+        self.assertEqual(nodes, expected)
+        self.assertTrue(self.conforms()[0], self.conforms()[1])
 
-    def test_generated_mirrors_are_reciprocal_and_aligned(self):
+    def test_mirrors_are_reciprocal_aligned_and_phase_opposed(self):
         for node in self.data.subjects(RDF.type, IO.OntoNode):
             mirror = self.data.value(node, IO.mirrorOf)
             self.assertIsNotNone(mirror)
-            self.assertNotEqual(node, mirror)
-            self.assertIn((mirror, RDF.type, IO.OntoNode), self.data)
             self.assertEqual(self.data.value(mirror, IO.mirrorOf), node)
-            self.assertEqual(
-                self.data.value(node, IO.hasTriadIndex),
-                self.data.value(mirror, IO.hasTriadIndex),
-            )
-            self.assertEqual(
-                self.data.value(node, IO.hasLocalPos),
-                self.data.value(mirror, IO.hasLocalPos),
-            )
-            phases = {
-                self.data.value(node, IO.hasPhase),
-                self.data.value(mirror, IO.hasPhase),
-            }
-            self.assertEqual(phases, {Literal("adv"), Literal("ret")})
+            for prop in (IO.hasTriadIndex, IO.hasLocalPos):
+                self.assertEqual(self.data.value(node, prop), self.data.value(mirror, prop))
+            self.assertNotEqual(self.data.value(node, IO.hasPhase), self.data.value(mirror, IO.hasPhase))
 
-    def test_generated_direction_and_perspective_match_definitions(self):
+    def test_phase_direction_correspondence(self):
         for node in self.data.subjects(RDF.type, IO.OntoNode):
             phase = self.data.value(node, IO.hasPhase)
-            triad = int(self.data.value(node, IO.hasTriadIndex))
-            position = int(self.data.value(node, IO.hasLocalPos))
-            expected_direction = IO.evol if phase == Literal("adv") else IO.invol
-            self.assertEqual(self.data.value(node, IO.hasDirection), expected_direction)
-            self.assertEqual(
-                self.data.value(node, IO.hasPerspective),
-                PERSPECTIVES[(triad + position) % len(PERSPECTIVES)],
-            )
+            expected = IO.evol if phase == Literal("adv") else IO.invol
+            self.assertEqual(self.data.value(node, IO.hasDirection), expected)
+
+    def test_exact_21_expanded_category_labels_and_level_counts(self):
+        nodes = set(self.data.subjects(RDF.type, IO.ExpandedCategory))
+        labels = {str(label) for label in self.data.objects(None, RDFS.label)
+                  if (label, ) and (None, RDF.type, IO.ExpandedCategory) in self.data}
+        labels = {str(self.data.value(node, RDFS.label)) for node in nodes}
+        self.assertEqual(len(nodes), 21)
+        self.assertEqual(labels, EXPECTED_LABELS)
+        self.assertEqual([sum(1 for n in nodes if self.data.value(n, IO.hasLevel) == Literal(level))
+                          for level in range(5)], [1, 4, 6, 6, 4])
+
+    def test_source_examples_are_kept_without_inventing_the_other_eleven(self):
+        labels = {str(self.data.value(n, RDFS.label))
+                  for n in self.data.subjects(RDF.type, IO.SourceTriadExample)}
+        self.assertEqual(labels, {"Oscuridad-Consciencia-Luz", "Hardware-Virtual-Software"})
+        self.assertEqual(len(list(self.data.subjects(RDF.type, IO.SourceTriadExample))), 2)
+
+    def test_source_document_matches_recorded_sha256(self):
+        source = ROOT / "docs" / "MARCOI.O.txt"
+        digest = hashlib.sha256(source.read_bytes()).hexdigest()
+        self.assertEqual(digest, "acfdc81d7b78331d60f9a341b8cc5b4be151638826b05a5537d68f183b6ed034")
+
+    def test_no_unsupported_perspective_or_vacuum_claim_per_structural_node(self):
+        for node in self.data.subjects(RDF.type, IO.OntoNode):
+            self.assertFalse(list(self.data.objects(node, IO.hasPerspective)))
+            self.assertFalse(list(self.data.objects(node, IO.restoresVacuum)))
 
     def test_invalid_triad_index_is_rejected(self):
         node = next(self.data.subjects(RDF.type, IO.OntoNode))
         self.data.remove((node, IO.hasTriadIndex, None))
         self.data.add((node, IO.hasTriadIndex, Literal(13, datatype=XSD.integer)))
-        conforms, report_text = self.conforms(focus_nodes=[node])
-        self.assertFalse(conforms, report_text)
+        conforms, report = self.conforms(focus_nodes=[node])
+        self.assertFalse(conforms, report)
 
-    def test_mismatched_mirror_is_rejected(self):
-        node = next(
-            subject for subject in self.data.subjects(IO.hasPhase, Literal("adv"))
-        )
-        old_mirror = self.data.value(node, IO.mirrorOf)
-        wrong_mirror = next(
-            subject
-            for subject in self.data.subjects(IO.hasPhase, Literal("adv"))
-            if subject != node
-        )
-        self.data.remove((node, IO.mirrorOf, old_mirror))
-        self.data.add((node, IO.mirrorOf, wrong_mirror))
-        conforms, report_text = self.conforms(focus_nodes=[node])
-        self.assertFalse(conforms, report_text)
-
-    def test_phase_direction_mismatch_is_rejected(self):
+    def test_wrong_phase_direction_is_rejected(self):
         node = next(self.data.subjects(RDF.type, IO.OntoNode))
         direction = self.data.value(node, IO.hasDirection)
         self.data.remove((node, IO.hasDirection, direction))
         self.data.add((node, IO.hasDirection, IO.invol if direction == IO.evol else IO.evol))
-        conforms, report_text = self.conforms(focus_nodes=[node])
-        self.assertFalse(conforms, report_text)
+        conforms, report = self.conforms(focus_nodes=[node])
+        self.assertFalse(conforms, report)
 
-    def test_perspective_formula_mismatch_is_rejected(self):
-        node = next(self.data.subjects(RDF.type, IO.OntoNode))
-        perspective = self.data.value(node, IO.hasPerspective)
-        replacement = IO.D if perspective != IO.D else IO.Ind
-        self.data.remove((node, IO.hasPerspective, perspective))
-        self.data.add((node, IO.hasPerspective, replacement))
-        conforms, report_text = self.conforms(focus_nodes=[node])
-        self.assertFalse(conforms, report_text)
+    def test_mismatched_mirror_is_rejected(self):
+        node = next(self.data.subjects(IO.hasPhase, Literal("adv")))
+        old = self.data.value(node, IO.mirrorOf)
+        wrong = next(n for n in self.data.subjects(IO.hasPhase, Literal("adv")) if n != node)
+        self.data.remove((node, IO.mirrorOf, old))
+        self.data.add((node, IO.mirrorOf, wrong))
+        conforms, report = self.conforms(focus_nodes=[node])
+        self.assertFalse(conforms, report)
 
 
 if __name__ == "__main__":
