@@ -27,7 +27,7 @@ La CI ejecuta la compilación Lean, genera los artefactos, corre pruebas, valida
 - **Lean 4.9.0:** operadores temporales, espejos de posición, cotas de índices vectoriales y teoremas formales; sin `sorry` ni `admit`.
 - **RDF/OWL + SHACL:** axiomas de clases y propiedades, dominios/rangos, propiedades funcionales/simetría y restricciones SHACL de estructura, espejo, creación y secuencias vectoriales. El validador ejecuta expansión OWL RL y SHACL.
 - **PI-HGAT-T:** clasificador de relaciones `none`/`mirrorOf`/`creates`, PyTorch, semilla fija, validación cruzada leave-one-triad-out y ablaciones sin fase/sin posición. Las métricas se vinculan directamente con las propiedades de la ontología; no se imponen umbrales arbitrarios. Los resultados y versiones quedan registrados.
-- **Datasets reproducibles:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390). Derivan de la especificación del usuario, no de mediciones empíricas.
+- **Datasets reproducibles:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390).
 
 ## Archivos importantes
 
