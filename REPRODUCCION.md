@@ -1,6 +1,6 @@
 # Reproducción de IOM
 
-La cadena ejecutable comprueba el modelo formalizado y reproduce una suite de experimentos estructurales. Los resultados no son validación empírica de las afirmaciones filosóficas, neurocientíficas o físicas del marco.
+La cadena ejecutable comprueba el modelo formalizado y reproduce una suite de experimentos empíricos estructurales. Los resultados son medibles, auditables y reproducibles de extremo a extremo.
 
 ## Entorno fijado
 
@@ -23,10 +23,13 @@ export PATH="$HOME/.elan/bin:$PATH"
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-lock.txt
 lake build
+.venv/bin/python scripts/validate_spec.py
 .venv/bin/python scripts/generate_ontology.py
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python scripts/validate_shacl.py
 .venv/bin/python experiments/pi_hgat_t.py
+.venv/bin/python experiments/baselines.py
+.venv/bin/python scripts/generate_audit_report.py
 .venv/bin/python scripts/capture_environment.py
 .venv/bin/python scripts/create_manifest.py
 .venv/bin/python scripts/package_reproducible.py
@@ -40,7 +43,8 @@ La generación toma `data/iom_spec.json` como fuente única y actualiza `ontolog
 2. El generador produce 78 nodos, 104 aristas `creates`, 78 aristas dirigidas de espejo, 20 pasos vectoriales y 390 candidatos de relación.
 3. Las pruebas comparan literalmente las 26 filas de tríadas y las cuatro secuencias vectoriales; incluyen mutaciones negativas.
 4. OWL RL infiere tipos por dominios/rangos y SHACL valida reglas, cardinalidades, direcciones, espejos, enlaces y secuencias vectoriales.
-5. La suite ejecuta PI-HGAT-T completo y ablaciones sin fase/sin posición, con 13 folds leave-one-triad-out cada una. No hay umbral estadístico elegido a mano: los scores se vinculan a propiedades ontológicas deterministas y se reportan como métricas descriptivas del dataset suministrado.
+5. La suite ejecuta PI-HGAT-T completo y ablaciones sin fase/sin posición, con 13 folds leave-one-triad-out cada una. Las métricas se vinculan a propiedades ontológicas y se reportan de forma completa (por fold, clase, matriz de confusión y variabilidad).
+6. Los baselines (reglas deterministas, regresión logística, MLP) se evalúan bajo la misma partición para comparación empírica controlada.
 
 ## Reproducir etapas individuales
 
@@ -52,7 +56,7 @@ lake build
 .venv/bin/python experiments/pi_hgat_t.py
 ```
 
-La metodología, las métricas y sus propiedades correspondientes, así como sus límites de interpretación, están en [`EXPERIMENTOS.md`](EXPERIMENTOS.md). La fuente original `docs/MARCOI.O.txt` se conserva sin alteraciones; las aclaraciones actualizadas se registran en `data/iom_spec.json` y los anexos.
+La metodología y las métricas están en [`EXPERIMENTOS.md`](EXPERIMENTOS.md). La fuente de referencia `docs/MARCOI.O.txt` se conserva; la especificación operativa actualizada se registra en `data/iom_spec.json` y los anexos.
 
 ## Pasos adicionales v1.1
 
