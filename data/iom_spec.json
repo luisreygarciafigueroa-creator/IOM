@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Especificación IOM proporcionada por el usuario",
+  "source_date": "2026-10-08",
+  "source_note": "Transcripción de las tablas de Fase de Avance, Fase de Retroceso y vectores cuarta y quinta aportadas por el usuario. No son datos empíricos.",
+  "positions": ["left", "center", "right"],
+  "perspectives": ["Ind", "D", "Tot"],
+  "phases": {
+    "adv": {"label": "Fase de Avance", "direction": "evol"},
+    "ret": {"label": "Fase de Retroceso", "direction": "invol"}
+  },
+  "triads": {
+    "adv": [
+      ["involución", "vacio", "evolución"],
+      ["oscuridad", "consciencia", "luz"],
+      ["descendente", "mente", "ascendente"],
+      ["lógica", "inteligencia", "libertad"],
+      ["muerte", "artificial", "vida"],
+      ["singularidad", "tiempo", "infinito"],
+      ["universo", "espacio", "vacío"],
+      ["hardware", "virtual", "software"],
+      ["orientación", "cuántico", "dirección"],
+      ["receptor", "supraconsciente", "emisor"],
+      ["memoria", "inconsciente", "imaginación"],
+      ["carácter", "subconsciente", "personalidad"],
+      ["cuerpo", "consciente", "mundo"]
+    ],
+    "ret": [
+      ["mundo", "consciente", "cuerpo"],
+      ["personalidad", "subconsciente", "carácter"],
+      ["imaginación", "inconsciente", "memoria"],
+      ["emisor", "supraconsciente", "receptor"],
+      ["dirección", "cuántico", "orientación"],
+      ["software", "virtual", "hardware"],
+      ["vacío", "espacio", "universo"],
+      ["infinito", "tiempo", "singularidad"],
+      ["vida", "artificial", "muerte"],
+      ["libertad", "inteligencia", "lógica"],
+      ["ascendente", "mente", "descendente"],
+      ["luz", "consciencia", "oscuridad"],
+      ["evolución", "vacio", "involución"]
+    ]
+  },
+  "vectors": [
+    {"name": "Evol", "phase": "adv", "labels": ["vacio", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
+    {"name": "Evol", "phase": "ret", "labels": ["evol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "←"},
+    {"name": "Invol", "phase": "adv", "labels": ["invol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "→"},
+    {"name": "Invol", "phase": "ret", "labels": ["vacio", "ind", "dua", "tot", "invol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "←"}
+  ],
+  "creation_rules": [
+    {"source_phase": "adv", "source_positions": [0, 2], "target_phase": "ret", "target_positions": [1]},
+    {"source_phase": "adv", "source_positions": [1], "target_phase": "ret", "target_positions": [0, 2]},
+    {"source_phase": "ret", "source_positions": [1], "target_phase": "adv", "target_positions": [0, 2]},
+    {"source_phase": "ret", "source_positions": [0, 2], "target_phase": "adv", "target_positions": [1]}
+  ],
+  "expanded_categories": {
+    "0": ["Vacío Generativo (V)"],
+    "1": ["Potencia", "Acto", "Percepción", "Acción"],
+    "2": ["Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia", "Símbolo-Significado", "Límite-Transgresión", "Mediación"],
+    "3": ["Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"],
+    "4": ["E", "S_fwd", "Ivo", "S_rev"]
+  }
+}

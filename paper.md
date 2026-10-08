@@ -1,64 +1,52 @@
-# IOM — Resultados ejecutables y alcance de la comprobación
+# IOM — formalización, ontología y experimento computacional reproducible
 
-## Alcance
+## Alcance y procedencia
 
-Este documento describe código y comprobaciones reproducibles. El MARCO I.O. original se conserva byte a byte en [docs/MARCOI.O.txt](docs/MARCOI.O.txt); las listas y secuencias añadidas posteriormente por el usuario están transcritas en [docs/TRIADAS_CATEGORIALES.md](docs/TRIADAS_CATEGORIALES.md) y [docs/VECTORES_4_5.md](docs/VECTORES_4_5.md). El contenido conceptual no se presenta como resultado experimental cuando no hay una prueba o conjunto de datos que lo respalde.
+Este informe describe código verificable. El documento original se conserva en [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt); la versión más reciente de las tablas recibidas del usuario se registra en [`data/iom_spec.json`](data/iom_spec.json). Las afirmaciones filosóficas, neurocientíficas y físicas no se presentan como hechos empíricos demostrados.
+
+## Especificación categorial actualizada
+
+La fuente canónica define trece tríadas por fase. Avance comienza con `involución | vacio | evolución`; retroceso termina con `evolución | vacio | involución`. Las otras doce filas de cada fase conservan el orden y las etiquetas de la tabla del usuario. Cada concepto se representa como `io:OntoNode` con índices de fila, fase, posición, perspectiva posicional, dirección y etiqueta.
+
+Las columnas corresponden a izquierda/centro/derecha y a metadatos `Ind`/`D`/`Tot`. Esos nombres de perspectiva no sustituyen las etiquetas de las filas categoriales.
+
+Las cuatro reglas de creación generan 104 aristas `io:creates`; los espejos entre fases son recíprocos y cambian izquierda/derecha, preservando centro. Hay 78 nodos de tríada.
+
+## Perspectivas vectoriales cuarta y quinta
+
+Las secuencias vigentes son:
+
+| Vector | Fase | Etiquetas (izquierda a derecha) | Eje | Flecha |
+|---|---|---|---|---|
+| Evolutivo | Avance | vacio · ind · dua · tot · evol | 0 · 1 · 2 · 3 · 4 | → |
+| Evolutivo | Retroceso | evol · tot · dua · ind · vacio | 4 · 3 · 2 · 1 · 0 | ← |
+| Involutivo | Avance | invol · tot · dua · ind · vacio | 4 · 3 · 2 · 1 · 0 | → |
+| Involutivo | Retroceso | vacio · ind · dua · tot · invol | 0 · 1 · 2 · 3 · 4 | ← |
+
+RDF conserva por separado el índice visual, el eje, la etiqueta y la flecha. Son 20 pasos en total.
 
 ## Formalización Lean
 
-`IOM/Core.lean` define un estado `State = (time : Int, payload : List String)`, el vacío `vacuum t`, la reducción `List.eraseDups` y la inversión `List.reverse`. `IOM/Operators.lean` implementa:
+`IOM/Core.lean` define el estado `State(time : Int, payload : List String)`, el vacío, deduplicación e inversión. `IOM/Operators.lean` define `E`, `S_fwd`, `Ivo` y `S_rev`, junto con teoremas de composición y del punto fijo estricto del vacío. `IOM/Specification.lean` formaliza posiciones, espejo involutivo, inversión de índice y cotas 0–4. La construcción se compila con Lean 4.9.0 sin `sorry` ni `admit`.
 
-| Operador | Definición ejecutada |
-|---|---|
-| `E` | `(t, σ) ↦ (t + 1, σ)` |
-| `S_fwd` | `(t, σ) ↦ (t, red σ)` |
-| `Ivo` | `(t, σ) ↦ (t − 1, reverse σ)` |
-| `S_rev` | Si `σ=[]`, `(t,[])`; en otro caso `(t−1, red (reverse σ))`. |
+Las pruebas prueban los tipos y propiedades expresamente modelados, no el significado filosófico de los conceptos.
 
-`lake build` compila 16 teoremas/lemas, sin `sorry` ni `admit`. Incluyen `strict_fixed_point` para todo entero `t`, no repetición del estado inicial para contenido no vacío, las ecuaciones de cada operador, la involutividad de la inversión y la cancelación de los operadores en la componente temporal.
+## Ontología y restricciones
 
-Las pruebas se refieren exactamente a este tipo de datos y definiciones. No demuestran por sí solas la interpretación filosófica de “unidad informativa”.
+`scripts/generate_ontology.py` consume la especificación JSON y genera `ontology/io_ontology.ttl` más tres CSV. El grafo declara vocabulario OWL: clases, propiedades de objeto y de datos, dominios, rangos, propiedades funcionales y simetría de `io:mirrorOf`. `scripts/validate_shacl.py` verifica axiomas esperados, ejecuta expansión OWL RL y evalúa `ontology/io_shapes.ttl`.
 
-## Las primeras tres perspectivas: tríadas estructurales
+SHACL restringe cardinalidad, valores permitidos, fase-dirección, posición-perspectiva, espejo recíproco, `creates` y las cuatro secuencias vectoriales. Las pruebas negativas alteran enlaces/datos para verificar que las formas detectan incompatibilidades.
 
-Las perspectivas se asocian a las columnas: **izquierda = Individualidad**, **centro = Dualidad**, **derecha = Totalidad**. En [docs/TRIADAS_CATEGORIALES.md](docs/TRIADAS_CATEGORIALES.md) se transcriben las 13 filas por fase y las cuatro reglas proporcionadas por el usuario:
+## Experimento PI-HGAT-T
 
-- lateral izquierdo y derecho de avance crean el centro del retroceso;
-- el centro del avance crea ambos laterales del retroceso;
-- el centro del retroceso crea ambos laterales del avance;
-- laterales del retroceso crean el centro del avance.
+Se implementa una definición operacional propia del repositorio: *Perspective-Informed Heterogeneous Graph Attention Network for Triads*. Un codificador con atención multi-cabeza consume atributos de fase y posición de los seis nodos de cada par de filas; un decodificador predice relaciones dirigidas `none`, `mirrorOf` o `creates`. No usa el rótulo textual ni el índice de tríada.
 
-El generador las materializa en **78 nodos** (13 filas × 3 posiciones × 2 fases), **39 parejas espejo recíprocas** (izquierda y derecha intercambian; centro queda en centro) y **104 relaciones `io:creates`** (8 aristas por fila). Los rótulos conservan la ortografía recibida para cada fase, sin normalización silenciosa.
+Los 390 candidatos derivados de las 13 filas se evalúan con 13 particiones leave-one-triad-out. Se ejecutan tres variantes: atributos completos, ablación sin fase y ablación sin posición. Los datasets tienen 78 nodos, 78 aristas dirigidas de espejo, 104 aristas dirigidas `creates` y 208 pares sin relación.
 
-## Cuarta y quinta perspectivas: vectores
+Las métricas se atan explícitamente a las propiedades ontológicas: F1 de `mirrorOf` evalúa inversión lateral y reciprocidad; F1 de `creates` evalúa las cuatro reglas; la conformidad semántica de aristas predichas mide su admisibilidad bajo las reglas que SHACL define. En la ejecución registrada, el modelo completo obtiene 1.0 en exactitud y macro-F1; la ablación sin fase obtiene 0.6000 de exactitud y la ablación sin posición 0.6359. Como la clase objetivo se deriva precisamente de fase/posición y reglas fijas, esos scores miden reconstrucción de la especificación pequeña, no una prueba independiente del marco. La referencia formal es igualdad exacta (score 1.0) con la especificación determinista; **no** se eligen umbrales estadísticos discrecionales. Resultados por pliegue, configuración y versiones se archivan en `experiments/results/` y `experiments/logs/`.
 
-[docs/VECTORES_4_5.md](docs/VECTORES_4_5.md) contiene las tablas de las perspectivas vectoriales. Cada una tiene filas de avance y retroceso, cinco conceptos, posiciones de eje, índices visuales y dirección de flecha. RDF representa **20 pasos `io:VectorStep`** (4 filas × 5 posiciones). Las etiquetas de los diagramas se conservan literalmente, incluida `vacio` sin acento cuando así fue recibida.
+## Reproducción y límites
 
-La extensión de **21 categorías** se mantiene aparte como estructura pentádica adicional, con conteos por nivel `1, 4, 6, 6, 4`.
+Sigue [`REPRODUCCION.md`](REPRODUCCION.md). La CI compila Lean, regenera los artefactos, ejecuta pruebas, valida OWL RL/SHACL y corre PI-HGAT-T.
 
-## RDF, SHACL y pruebas
-
-`scripts/generate_ontology.py` genera `ontology/io_ontology.ttl`. `ontology/io_shapes.ttl` valida cardinalidad, rangos, direcciones, correspondencia posición-perspectiva, etiquetas, espejos, enlaces `creates`, pasos vectoriales y metadatos. La suite de `tests/test_ontology.py` compara los rótulos literales de las 26 filas, el conjunto exacto de 104 enlaces, las secuencias vectoriales, los conteos y mutaciones negativas. SHACL valida las restricciones codificadas, no la verdad científica de todas las afirmaciones del documento.
-
-## Reproducción
-
-Sigue [REPRODUCCION.md](REPRODUCCION.md). En resumen:
-
-```bash
-lake build
-.venv/bin/python scripts/generate_ontology.py
-.venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python scripts/validate_shacl.py
-```
-
-La CI de GitHub ejecuta los mismos pasos.
-
-## Límites
-
-1. Las tablas completas de tríadas y los detalles de las perspectivas 4–5 se aportaron después del archivo MARCOI.O.txt original. Se mantienen en anexos distintos para preservar el archivo original.
-2. El grafo se valida como RDF/Turtle con SHACL; no ejecuta un razonador OWL.
-3. La afirmación `restoresVacuum` se modela como propiedad del operador/composición, no como una propiedad verdadera de cada nodo categorial.
-4. Las analogías neurocientíficas, termodinámicas y físicas del documento no se verifican empíricamente en este repositorio.
-5. `payload : List String` es una representación computacional finita y no una teoría física de la información.
-
-Véase [AUDITORIA.md](AUDITORIA.md) para el inventario de alcance y decisiones de transcripción.
+El dataset es una codificación pequeña de reglas suministradas, no observaciones independientes. Los resultados son una prueba de consistencia y reconstrucción computacional; no permiten inferir desempeño fuera de la especificación ni sostienen una conclusión empírica física o psicológica.

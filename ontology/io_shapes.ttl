@@ -6,7 +6,7 @@
 io:StructuralShape a sh:NodeShape ;
     sh:targetClass io:OntoNode ;
     sh:property [ sh:path io:hasTriadIndex ; sh:datatype xsd:integer ; sh:minInclusive 0 ; sh:maxInclusive 12 ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path io:hasPhase ; sh:in ( "adv" "ret" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPhase ; sh:datatype xsd:string ; sh:in ( "adv"^^xsd:string "ret"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasLocalPos ; sh:datatype xsd:integer ; sh:in ( 0 1 2 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPosition ; sh:in ( io:left io:center io:right ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPerspective ; sh:in ( io:Ind io:D io:Tot ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
@@ -15,60 +15,54 @@ io:StructuralShape a sh:NodeShape ;
     sh:property [ sh:path io:mirrorOf ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:creates ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 2 ] ;
     sh:sparql [
-        sh:message "Perspectiva y posición: izquierda=Ind, centro=D, derecha=Tot." ;
+        sh:message "La posición izquierda/centro/derecha debe corresponder a Ind/D/Tot." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
-                $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective .
-                FILTER ((?pos = 0 && ?perspective != io:Ind) ||
-                        (?pos = 1 && ?perspective != io:D) ||
-                        (?pos = 2 && ?perspective != io:Tot))
+                $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective ; io:hasPosition ?position .
+                FILTER ((?pos = 0 && (?perspective != io:Ind || ?position != io:left)) ||
+                        (?pos = 1 && (?perspective != io:D || ?position != io:center)) ||
+                        (?pos = 2 && (?perspective != io:Tot || ?position != io:right)))
             }
         """
     ] ;
     sh:sparql [
-        sh:message "El espejo debe ser recíproco, de la misma tríada, fase opuesta y posición lateral invertida." ;
+        sh:message "El espejo debe ser recíproco, de la misma tríada, fase opuesta y lateral invertido." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
-                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ;
-                      io:hasPhase ?phase ; io:mirrorOf ?mirror .
-                ?mirror io:hasTriadIndex ?mirrorTriad ; io:hasLocalPos ?mirrorPos ;
-                        io:hasPhase ?mirrorPhase .
+                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ; io:hasPhase ?phase ; io:mirrorOf ?mirror .
+                ?mirror io:hasTriadIndex ?otherTriad ; io:hasLocalPos ?otherPos ; io:hasPhase ?otherPhase .
                 FILTER NOT EXISTS { ?mirror io:mirrorOf $this }
-                FILTER (?triad != ?mirrorTriad || ?mirrorPos != (2 - ?pos) ||
-                        !((?phase = "adv" && ?mirrorPhase = "ret") ||
-                          (?phase = "ret" && ?mirrorPhase = "adv")))
+                FILTER (?triad != ?otherTriad || ?otherPos != (2 - ?pos) ||
+                        !((?phase = "adv" && ?otherPhase = "ret") || (?phase = "ret" && ?otherPhase = "adv")))
             }
         """
     ] ;
     sh:sparql [
-        sh:message "La fase adv debe tener dirección evol y ret dirección invol." ;
+        sh:message "Fase adv corresponde a evol y fase ret a invol." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
                 $this io:hasPhase ?phase ; io:hasDirection ?direction .
-                FILTER ((?phase = "adv" && ?direction != io:evol) ||
-                        (?phase = "ret" && ?direction != io:invol))
+                FILTER ((?phase = "adv" && ?direction != io:evol) || (?phase = "ret" && ?direction != io:invol))
             }
         """
     ] ;
     sh:sparql [
-        sh:message "Cada relación creates debe conectar la misma tríada con la fase contraria y el centro/lateral especificado." ;
+        sh:message "io:creates debe respetar la misma tríada, la fase opuesta y una de las cuatro reglas laterales/centro." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
-                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ;
-                      io:hasPhase ?phase ; io:creates ?target .
-                ?target io:hasTriadIndex ?targetTriad ; io:hasLocalPos ?targetPos ;
-                        io:hasPhase ?targetPhase .
-                FILTER (?triad != ?targetTriad ||
-                    !((?phase = "adv" && ?targetPhase = "ret" &&
-                       ((?pos = 0 && ?targetPos = 1) || (?pos = 2 && ?targetPos = 1) ||
-                        (?pos = 1 && (?targetPos = 0 || ?targetPos = 2)))) ||
-                      (?phase = "ret" && ?targetPhase = "adv" &&
-                       ((?pos = 0 && ?targetPos = 1) || (?pos = 2 && ?targetPos = 1) ||
-                        (?pos = 1 && (?targetPos = 0 || ?targetPos = 2)))))
+                $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ; io:hasPhase ?phase ; io:creates ?target .
+                ?target io:hasTriadIndex ?otherTriad ; io:hasLocalPos ?otherPos ; io:hasPhase ?otherPhase .
+                FILTER (?triad != ?otherTriad ||
+                    !((?phase = "adv" && ?otherPhase = "ret" &&
+                       ((?pos = 0 && ?otherPos = 1) || (?pos = 2 && ?otherPos = 1) ||
+                        (?pos = 1 && (?otherPos = 0 || ?otherPos = 2)))) ||
+                      (?phase = "ret" && ?otherPhase = "adv" &&
+                       ((?pos = 0 && ?otherPos = 1) || (?pos = 2 && ?otherPos = 1) ||
+                        (?pos = 1 && (?otherPos = 0 || ?otherPos = 2)))))
                 )
             }
         """
@@ -77,11 +71,41 @@ io:StructuralShape a sh:NodeShape ;
 io:VectorStepShape a sh:NodeShape ;
     sh:targetClass io:VectorStep ;
     sh:property [ sh:path io:hasVector ; sh:in ( io:Evol io:Invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path io:hasCyclePhase ; sh:in ( "adv" "ret" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasCyclePhase ; sh:datatype xsd:string ; sh:in ( "adv"^^xsd:string "ret"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasAxisPosition ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasStepIndex ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path io:displayArrow ; sh:in ( "→" "←" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] .
+    sh:property [ sh:path io:displayArrow ; sh:in ( "→"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:sparql [
+        sh:message "Etiqueta, fase, paso, eje y flecha deben ajustarse a las cuatro secuencias vectoriales declaradas." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT $this WHERE {
+                $this io:hasVector ?vector ; io:hasCyclePhase ?phase ; io:hasAxisPosition ?axis ;
+                      io:hasStepIndex ?step ; io:displayArrow ?arrow ; rdfs:label ?label .
+                BIND(STR(?label) AS ?text)
+                FILTER (
+                  (?vector = io:Evol && ?phase = "adv" &&
+                    (?axis != ?step || ?arrow != "→" ||
+                     !((?axis = 0 && ?text = "vacio") || (?axis = 1 && ?text = "ind") ||
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
+                  (?vector = io:Evol && ?phase = "ret" &&
+                    (?axis != 4 - ?step || ?arrow != "←" ||
+                     !((?axis = 0 && ?text = "vacio") || (?axis = 1 && ?text = "ind") ||
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
+                  (?vector = io:Invol && ?phase = "adv" &&
+                    (?axis != 4 - ?step || ?arrow != "→" ||
+                     !((?axis = 0 && ?text = "vacio") || (?axis = 1 && ?text = "ind") ||
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol")))) ||
+                  (?vector = io:Invol && ?phase = "ret" &&
+                    (?axis != ?step || ?arrow != "←" ||
+                     !((?axis = 0 && ?text = "vacio") || (?axis = 1 && ?text = "ind") ||
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol"))))
+                )
+            }
+        """
+    ] .
 
 io:ExpandedCategoryShape a sh:NodeShape ;
     sh:targetClass io:ExpandedCategory ;

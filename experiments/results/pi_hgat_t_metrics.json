@@ -1,0 +1,508 @@
+{
+  "model": "PI-HGAT-T",
+  "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; operational project definition, not a claim of canonical architecture external to this repository.",
+  "dataset": {
+    "triads": 13,
+    "nodes": 78,
+    "directed_relation_candidates": 390,
+    "gold_mirrorOf_edges": 78,
+    "gold_creates_edges": 104,
+    "gold_none_pairs": 208
+  },
+  "validation": "13-fold leave-one-triad-out; no lexical labels or triad index as model features",
+  "primary_metrics": {
+    "candidate_relation_accuracy": {
+      "value": 1.0,
+      "property": "io:mirrorOf / io:creates; exact three-class labels"
+    },
+    "relation_macro_f1": {
+      "value": 1.0,
+      "property": "balanced F1 for none, io:mirrorOf and io:creates"
+    },
+    "mirrorOf_precision": {
+      "value": 1.0,
+      "property": "SHACL: reciprocal mirror; same triad; opposite phase; position reflection"
+    },
+    "mirrorOf_recall": {
+      "value": 1.0,
+      "property": "completeness of the io:mirrorOf edge set"
+    },
+    "mirrorOf_f1": {
+      "value": 1.0,
+      "property": "precision/recall of io:mirrorOf"
+    },
+    "creates_precision": {
+      "value": 1.0,
+      "property": "SHACL: same triad, opposite phase, four allowed position rules"
+    },
+    "creates_recall": {
+      "value": 1.0,
+      "property": "completeness of four creation rules"
+    },
+    "creates_f1": {
+      "value": 1.0,
+      "property": "precision/recall of io:creates"
+    },
+    "predicted_edge_rule_conformance": {
+      "value": 1.0,
+      "property": "SHACL phase/triad/position rules for predicted mirrorOf and creates",
+      "predicted_edges": 182
+    }
+  },
+  "experiments": [
+    {
+      "variant": "PI-HGAT-T_full_phase_and_position",
+      "feature_columns": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "metrics": {
+        "candidate_relation_accuracy": {
+          "value": 1.0,
+          "property": "io:mirrorOf / io:creates; exact three-class labels"
+        },
+        "relation_macro_f1": {
+          "value": 1.0,
+          "property": "balanced F1 for none, io:mirrorOf and io:creates"
+        },
+        "mirrorOf_precision": {
+          "value": 1.0,
+          "property": "SHACL: reciprocal mirror; same triad; opposite phase; position reflection"
+        },
+        "mirrorOf_recall": {
+          "value": 1.0,
+          "property": "completeness of the io:mirrorOf edge set"
+        },
+        "mirrorOf_f1": {
+          "value": 1.0,
+          "property": "precision/recall of io:mirrorOf"
+        },
+        "creates_precision": {
+          "value": 1.0,
+          "property": "SHACL: same triad, opposite phase, four allowed position rules"
+        },
+        "creates_recall": {
+          "value": 1.0,
+          "property": "completeness of four creation rules"
+        },
+        "creates_f1": {
+          "value": 1.0,
+          "property": "precision/recall of io:creates"
+        },
+        "predicted_edge_rule_conformance": {
+          "value": 1.0,
+          "property": "SHACL phase/triad/position rules for predicted mirrorOf and creates",
+          "predicted_edges": 182
+        }
+      },
+      "per_class": {
+        "none": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 208
+        },
+        "mirrorOf": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 78
+        },
+        "creates": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 104
+        }
+      },
+      "confusion_matrix_rows_gold_cols_predicted": [
+        [
+          208,
+          0,
+          0
+        ],
+        [
+          0,
+          78,
+          0
+        ],
+        [
+          0,
+          0,
+          104
+        ]
+      ],
+      "folds": [
+        {
+          "held_out_triad": 0,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 1,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 2,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 3,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 4,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 5,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 6,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 7,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 8,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 9,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 10,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 11,
+          "accuracy": 1.0
+        },
+        {
+          "held_out_triad": 12,
+          "accuracy": 1.0
+        }
+      ]
+    },
+    {
+      "variant": "ablation_without_phase",
+      "feature_columns": [
+        2,
+        3,
+        4
+      ],
+      "metrics": {
+        "candidate_relation_accuracy": {
+          "value": 0.6,
+          "property": "io:mirrorOf / io:creates; exact three-class labels"
+        },
+        "relation_macro_f1": {
+          "value": 0.6055555555555555,
+          "property": "balanced F1 for none, io:mirrorOf and io:creates"
+        },
+        "mirrorOf_precision": {
+          "value": 0.6,
+          "property": "SHACL: reciprocal mirror; same triad; opposite phase; position reflection"
+        },
+        "mirrorOf_recall": {
+          "value": 1.0,
+          "property": "completeness of the io:mirrorOf edge set"
+        },
+        "mirrorOf_f1": {
+          "value": 0.7499999999999999,
+          "property": "precision/recall of io:mirrorOf"
+        },
+        "creates_precision": {
+          "value": 0.5,
+          "property": "SHACL: same triad, opposite phase, four allowed position rules"
+        },
+        "creates_recall": {
+          "value": 1.0,
+          "property": "completeness of four creation rules"
+        },
+        "creates_f1": {
+          "value": 0.6666666666666666,
+          "property": "precision/recall of io:creates"
+        },
+        "predicted_edge_rule_conformance": {
+          "value": 0.5384615384615384,
+          "property": "SHACL phase/triad/position rules for predicted mirrorOf and creates",
+          "predicted_edges": 338
+        }
+      },
+      "per_class": {
+        "none": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 208
+        },
+        "mirrorOf": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "support": 78
+        },
+        "creates": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 104
+        }
+      },
+      "confusion_matrix_rows_gold_cols_predicted": [
+        [
+          52,
+          52,
+          104
+        ],
+        [
+          0,
+          78,
+          0
+        ],
+        [
+          0,
+          0,
+          104
+        ]
+      ],
+      "folds": [
+        {
+          "held_out_triad": 0,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 1,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 2,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 3,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 4,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 5,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 6,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 7,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 8,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 9,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 10,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 11,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 12,
+          "accuracy": 0.6
+        }
+      ]
+    },
+    {
+      "variant": "ablation_without_position",
+      "feature_columns": [
+        0,
+        1
+      ],
+      "metrics": {
+        "candidate_relation_accuracy": {
+          "value": 0.6358974358974359,
+          "property": "io:mirrorOf / io:creates; exact three-class labels"
+        },
+        "relation_macro_f1": {
+          "value": 0.577065384358512,
+          "property": "balanced F1 for none, io:mirrorOf and io:creates"
+        },
+        "mirrorOf_precision": {
+          "value": 0.3333333333333333,
+          "property": "SHACL: reciprocal mirror; same triad; opposite phase; position reflection"
+        },
+        "mirrorOf_recall": {
+          "value": 0.46153846153846156,
+          "property": "completeness of the io:mirrorOf edge set"
+        },
+        "mirrorOf_f1": {
+          "value": 0.3870967741935484,
+          "property": "precision/recall of io:mirrorOf"
+        },
+        "creates_precision": {
+          "value": 0.4444444444444444,
+          "property": "SHACL: same triad, opposite phase, four allowed position rules"
+        },
+        "creates_recall": {
+          "value": 0.5384615384615384,
+          "property": "completeness of four creation rules"
+        },
+        "creates_f1": {
+          "value": 0.4869565217391304,
+          "property": "precision/recall of io:creates"
+        },
+        "predicted_edge_rule_conformance": {
+          "value": 0.39316239316239315,
+          "property": "SHACL phase/triad/position rules for predicted mirrorOf and creates",
+          "predicted_edges": 234
+        }
+      },
+      "per_class": {
+        "none": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "support": 208
+        },
+        "mirrorOf": {
+          "precision": 0.3333333333333333,
+          "recall": 0.46153846153846156,
+          "f1": 0.3870967741935484,
+          "support": 78
+        },
+        "creates": {
+          "precision": 0.4444444444444444,
+          "recall": 0.5384615384615384,
+          "f1": 0.4869565217391304,
+          "support": 104
+        }
+      },
+      "confusion_matrix_rows_gold_cols_predicted": [
+        [
+          156,
+          24,
+          28
+        ],
+        [
+          0,
+          36,
+          42
+        ],
+        [
+          0,
+          48,
+          56
+        ]
+      ],
+      "folds": [
+        {
+          "held_out_triad": 0,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 1,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 2,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 3,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 4,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 5,
+          "accuracy": 0.6
+        },
+        {
+          "held_out_triad": 6,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 7,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "held_out_triad": 8,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 9,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "held_out_triad": 10,
+          "accuracy": 0.6333333333333333
+        },
+        {
+          "held_out_triad": 11,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "held_out_triad": 12,
+          "accuracy": 0.6666666666666666
+        }
+      ]
+    }
+  ],
+  "threshold_policy": "No hand-set statistical pass threshold. Formal reference is exact (1.0) because target properties are deterministic RDF/SHACL constraints; observed model/ablation scores are not empirical confirmation.",
+  "software": {
+    "python": "3.12.3",
+    "pytorch": "2.6.0+cpu",
+    "platform": "Linux-6.18.38+-x86_64-with-glibc2.39"
+  },
+  "configuration": {
+    "model_id": "PI-HGAT-T",
+    "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; operational project definition, not a claim of canonical architecture external to this repository.",
+    "seed": 20261008,
+    "device": "cpu",
+    "validation": "leave-one-triad-out",
+    "epochs": 100,
+    "hidden_dim": 32,
+    "attention_heads": 4,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "optimizer": "AdamW",
+    "loss": "class-weighted cross entropy",
+    "features": [
+      "one-hot phase adv/ret",
+      "one-hot position left/center/right"
+    ],
+    "prohibited_features": [
+      "lexical labels",
+      "triad index",
+      "target relation"
+    ],
+    "candidate_relations": [
+      "none",
+      "mirrorOf",
+      "creates"
+    ],
+    "threshold_policy": "No arbitrary pass/fail threshold. Formal reference is exact equality (score 1.0) to deterministic RDF/SHACL properties; observed model metrics are reported without empirical interpretation.",
+    "target_properties": {
+      "mirrorOf": "same triad; opposite phase; reciprocal; lateral positions exchange and center remains center",
+      "creates": "same triad; opposite phase; follows the four declared left/center-to-center/laterals creation rules"
+    }
+  }
+}
