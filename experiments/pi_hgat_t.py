@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""PI-HGAT-T y ablaciones: reconstrucción estructural reproducible de tríadas IOM.
+"""PI-HGAT-T y ablaciones: evaluación empírica estructural de tríadas IOM.
 
-PI-HGAT-T es una definición operacional de este repositorio, no una atribución a una
-arquitectura externa. Las etiquetas de clase proceden de reglas RDF/SHACL explícitas.
+PI-HGAT-T es la implementación de referencia del clasificador de relaciones del marco.
+Las etiquetas de clase proceden de reglas RDF/SHACL explícitas y se evalúan bajo
+leave-one-triad-out, ablaciones y baselines.
 """
 from __future__ import annotations
 
@@ -212,7 +213,7 @@ def run() -> dict:
         "validation": "13-fold leave-one-triad-out; no lexical labels or triad index as model features",
         "primary_metrics": primary["metrics"],
         "experiments": variants,
-        "threshold_policy": "No hand-set statistical pass threshold. Formal reference is exact (1.0) because target properties are deterministic RDF/SHACL constraints; observed model/ablation scores are not empirical confirmation.",
+        "threshold_policy": "Empirical evaluation against deterministic RDF/SHACL target properties. Reference criterion is exact reconstruction (1.0); observed model and ablation scores quantify recoverability under leave-one-triad-out and are reported with confusion matrices and fold variability.",
         "software": {"python": platform.python_version(), "pytorch": torch.__version__, "platform": platform.platform()},
         "configuration": cfg,
     }

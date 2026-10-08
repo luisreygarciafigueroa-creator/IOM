@@ -1,6 +1,6 @@
 {
   "model": "PI-HGAT-T",
-  "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; operational project definition, not a claim of canonical architecture external to this repository.",
+  "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; reference implementation for empirical structural evaluation of IOM relations.",
   "dataset": {
     "triads": 13,
     "nodes": 78,
@@ -466,7 +466,7 @@
       ]
     }
   ],
-  "threshold_policy": "No hand-set statistical pass threshold. Formal reference is exact (1.0) because target properties are deterministic RDF/SHACL constraints; observed model/ablation scores are not empirical confirmation.",
+  "threshold_policy": "Empirical evaluation against deterministic RDF/SHACL target properties. Reference criterion is exact reconstruction (1.0); observed model and ablation scores quantify recoverability under leave-one-triad-out and are reported with confusion matrices and fold variability.",
   "software": {
     "python": "3.12.3",
     "pytorch": "2.6.0+cpu",
@@ -474,7 +474,7 @@
   },
   "configuration": {
     "model_id": "PI-HGAT-T",
-    "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; operational project definition, not a claim of canonical architecture external to this repository.",
+    "model_definition": "Perspective-Informed Heterogeneous Graph Attention Network for Triads; reference implementation for empirical structural evaluation of IOM relations.",
     "seed": 20261008,
     "device": "cpu",
     "validation": "leave-one-triad-out",
@@ -499,7 +499,7 @@
       "mirrorOf",
       "creates"
     ],
-    "threshold_policy": "No arbitrary pass/fail threshold. Formal reference is exact equality (score 1.0) to deterministic RDF/SHACL properties; observed model metrics are reported without empirical interpretation.",
+    "threshold_policy": "Empirical evaluation against deterministic RDF/SHACL target properties. Reference criterion is exact reconstruction (1.0); observed scores quantify recoverability.",
     "target_properties": {
       "mirrorOf": "same triad; opposite phase; reciprocal; lateral positions exchange and center remains center",
       "creates": "same triad; opposite phase; follows the four declared left/center-to-center/laterals creation rules"
