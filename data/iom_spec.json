@@ -59,5 +59,14 @@
     "2": ["Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia", "Símbolo-Significado", "Límite-Transgresión", "Mediación"],
     "3": ["Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"],
     "4": ["E", "S_fwd", "Ivo", "S_rev"]
-  }
+  },
+  "spec_version": "1.1.0",
+  "migrations": [
+    {
+      "from_version": "1.0.0",
+      "to_version": "1.1.0",
+      "description": "Añade spec_version, schema_version formal y bloque migrations. Sin cambios semánticos en triadas ni reglas.",
+      "date": "2026-10-08"
+    }
+  ]
 }
