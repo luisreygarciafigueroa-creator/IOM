@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/luisreygarciafigueroa-creator/IOM/data/iom_spec.schema.json",
+  "title": "IOM Specification Schema",
+  "description": "JSON Schema for the canonical IOM specification (iom_spec.json).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "spec_version",
+    "title",
+    "source_date",
+    "positions",
+    "perspectives",
+    "phases",
+    "triads",
+    "vectors",
+    "creation_rules"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Version of this JSON Schema contract."
+    },
+    "spec_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version of the IOM specification content."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "source_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "source_note": { "type": "string" },
+    "positions": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["left", "center", "right"] },
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "perspectives": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "phases": {
+      "type": "object",
+      "required": ["adv", "ret"],
+      "properties": {
+        "adv": {
+          "type": "object",
+          "required": ["label", "direction"],
+          "properties": {
+            "label": { "type": "string" },
+            "direction": { "type": "string", "enum": ["evol", "invol"] }
+          }
+        },
+        "ret": {
+          "type": "object",
+          "required": ["label", "direction"],
+          "properties": {
+            "label": { "type": "string" },
+            "direction": { "type": "string", "enum": ["evol", "invol"] }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "triads": {
+      "type": "object",
+      "required": ["adv", "ret"],
+      "properties": {
+        "adv": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 1
+        },
+        "ret": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "vectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "phase", "labels", "axis_positions", "arrow"],
+        "properties": {
+          "name": { "type": "string" },
+          "phase": { "type": "string", "enum": ["adv", "ret"] },
+          "labels": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "axis_positions": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0, "maximum": 4 },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "arrow": { "type": "string" }
+        }
+      },
+      "minItems": 1
+    },
+    "creation_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_phase", "source_positions", "target_phase", "target_positions"],
+        "properties": {
+          "source_phase": { "type": "string", "enum": ["adv", "ret"] },
+          "source_positions": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0, "maximum": 2 },
+            "minItems": 1
+          },
+          "target_phase": { "type": "string", "enum": ["adv", "ret"] },
+          "target_positions": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0, "maximum": 2 },
+            "minItems": 1
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "expanded_categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "migrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from_version", "to_version", "description"],
+        "properties": {
+          "from_version": { "type": "string" },
+          "to_version": { "type": "string" },
+          "description": { "type": "string" },
+          "date": { "type": "string" }
+        }
+      }
+    }
+  }
+}
