@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-10-08T21:40:57.708728+00:00",
+  "spec_version": "1.1.0",
+  "schema_version": "1.0.0",
+  "note": "Regenerar con: python scripts/generate_audit_report.py",
+  "primary_metrics_snapshot": {
+    "candidate_relation_accuracy": 1.0,
+    "relation_macro_f1": 1.0,
+    "mirrorOf_f1": 1.0,
+    "creates_f1": 1.0,
+    "predicted_edge_rule_conformance": 1.0
+  }
+}
