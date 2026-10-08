@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "title": "Especificación IOM proporcionada por el usuario",
+  "title": "Especificación IOM canónica",
   "source_date": "2026-10-08",
-  "source_note": "Transcripción de las tablas de Fase de Avance, Fase de Retroceso y vectores cuarta y quinta aportadas por el usuario. No son datos empíricos.",
+  "source_note": "Operacionalización canónica de las tablas de Fase de Avance, Fase de Retroceso y vectores cuarta y quinta. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles.",
   "positions": ["left", "center", "right"],
   "perspectives": ["Ind", "D", "Tot"],
   "phases": {
