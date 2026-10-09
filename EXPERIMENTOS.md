@@ -39,26 +39,106 @@ Desde la raíz, `python experiments/pi_hgat_t.py` lee los CSV y [`experiments/co
 
 El script de generación [`scripts/generate_ontology.py`](scripts/generate_ontology.py) recrea Turtle y CSV a partir del JSON canónico. La CI reproduce el experimento después de Lean, generación, pruebas y OWL RL/SHACL.
 
-## Resultado registrado
-
-El modelo completo obtuvo exactitud, macro-F1, F1 de `mirrorOf`, F1 de `creates` y conformidad de reglas de **1.0**. La ablación sin fase obtuvo exactitud **0.6000**; la ablación sin posición, **0.6359**. La puntuación perfecta del modelo completo confirma que las relaciones son recuperables de forma determinista a partir de fase y posición; las ablaciones cuantifican la contribución empírica de cada factor. Los valores completos por fold y matrices están en `experiments/results/pi_hgat_t_metrics.json`.
-
-## Baselines y evaluación externa (v1.1)
-
-Ejecutar:
-
 ```bash
+python experiments/pi_hgat_t.py
 python experiments/baselines.py
 ```
 
-Produce `experiments/results/baselines_comparison.json` con:
+## Resultados numéricos finales — PI-HGAT-T y ablaciones
 
-- reglas deterministas (oracle SHACL);
-- regresión logística sobre features fase+posición;
-- MLP sin estructura de grafo.
+Semilla fija `20261008`, 100 épocas, AdamW, leave-one-triad-out (13 folds), 390 candidatos por evaluación agregada.
+
+### Tabla 1. Métricas agregadas por variante
+
+| Variante | Accuracy | Macro-F1 | mirrorOf F1 | creates F1 | Conformidad reglas | Aristas predichas |
+|---|---:|---:|---:|---:|---:|---:|
+| **PI-HGAT-T (fase + posición)** | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **1.0000** | 182 |
+| Ablación sin fase | 0.6000 | 0.6056 | 0.7500 | 0.6667 | 0.5385 | 338 |
+| Ablación sin posición | 0.6359 | 0.5771 | 0.3871 | 0.4870 | 0.3932 | 234 |
+
+### Tabla 2. Precisión / recall / F1 por clase (modelo completo)
+
+| Clase | Precision | Recall | F1 | Support |
+|---|---:|---:|---:|---:|
+| none | 1.0000 | 1.0000 | 1.0000 | 208 |
+| mirrorOf | 1.0000 | 1.0000 | 1.0000 | 78 |
+| creates | 1.0000 | 1.0000 | 1.0000 | 104 |
+
+### Tabla 3. Matrices de confusión (filas = gold, columnas = predicted: none / mirrorOf / creates)
+
+**PI-HGAT-T completo**
+
+| | none | mirrorOf | creates |
+|---|---:|---:|---:|
+| none | 208 | 0 | 0 |
+| mirrorOf | 0 | 78 | 0 |
+| creates | 0 | 0 | 104 |
+
+**Ablación sin fase**
+
+| | none | mirrorOf | creates |
+|---|---:|---:|---:|
+| none | 52 | 52 | 104 |
+| mirrorOf | 0 | 78 | 0 |
+| creates | 0 | 0 | 104 |
+
+**Ablación sin posición**
+
+| | none | mirrorOf | creates |
+|---|---:|---:|---:|
+| none | 156 | 24 | 28 |
+| mirrorOf | 0 | 36 | 42 |
+| creates | 0 | 48 | 56 |
+
+### Tabla 4. Variabilidad por fold (accuracy leave-one-triad-out)
+
+| Variante | Media | Desv. estándar | Rango (min–max) |
+|---|---:|---:|---|
+| PI-HGAT-T (fase + posición) | 1.0000 | 0.0000 | 1.0000 – 1.0000 |
+| Ablación sin fase | 0.6000 | 0.0000 | 0.6000 – 0.6000 |
+| Ablación sin posición | 0.6359 | 0.0253 | 0.6000 – 0.6667 |
+
+La puntuación perfecta del modelo completo confirma que las relaciones `io:mirrorOf` y `io:creates` son recuperables de forma determinista a partir de fase y posición bajo la partición leave-one-triad-out. Las ablaciones cuantifican la contribución empírica de cada factor: sin fase la accuracy cae a 0.60; sin posición a ~0.64.
+
+Fuente: `experiments/results/pi_hgat_t_metrics.json`.
+
+## Resultados numéricos finales — Baselines
+
+Misma partición leave-one-triad-out y mismos 390 candidatos. Artefacto: `experiments/results/baselines_comparison.json`.
+
+### Tabla 5. Comparación de baselines
+
+| Método | Accuracy | Macro-F1 | none F1 | mirrorOf F1 | creates F1 |
+|---|---:|---:|---:|---:|---:|
+| **Reglas deterministas (oracle SHACL)** | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **1.0000** |
+| **MLP sin grafo** (2 capas ocultas) | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **1.0000** |
+| Regresión logística (softmax lineal, 10-dim) | 0.5333 | 0.2424 | 0.7273 | 0.0000 | 0.0000 |
+| PI-HGAT-T (referencia) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+
+### Tabla 6. Matrices de confusión de baselines
+
+**Reglas deterministas / MLP sin grafo** (idénticas al modelo completo):
+
+| | none | mirrorOf | creates |
+|---|---:|---:|---:|
+| none | 208 | 0 | 0 |
+| mirrorOf | 0 | 78 | 0 |
+| creates | 0 | 0 | 104 |
+
+**Regresión logística**
+
+| | none | mirrorOf | creates |
+|---|---:|---:|---:|
+| none | 208 | 0 | 0 |
+| mirrorOf | 52 | 0 | 26 |
+| creates | 104 | 0 | 0 |
+
+Interpretación: el oracle SHACL y el MLP no-grafo (con features de fase+posición) recuperan exactamente la estructura; la regresión logística lineal no separa `mirrorOf`/`creates` y colapsa hacia `none`. PI-HGAT-T iguala el techo determinista bajo atención de grafo.
+
+## Evaluación externa
 
 El conjunto de evaluación externa está en `datasets/external_eval/` (60 pares + protocolo de anotación por evaluadores independientes). Ver `docs/RELACIONES_OPERATIVAS.md` para la semántica exacta de `mirrorOf` y `creates`.
 
 ## Resultados por partición y variabilidad
 
-Las matrices de confusión y métricas por fold se publican en `experiments/results/pi_hgat_t_metrics.json`. Los intervalos de variabilidad (media ± std de los 13 folds) aparecen en los reportes de baselines y en la auditoría automática.
+Las matrices de confusión y métricas por fold se publican en `experiments/results/pi_hgat_t_metrics.json` y `experiments/results/baselines_comparison.json`. Los intervalos de variabilidad (media ± std de los 13 folds) se resumen en las Tablas 4 y 5.

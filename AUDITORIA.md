@@ -28,6 +28,17 @@
 
 Las métricas de aristas de PI-HGAT-T están ligadas a `io:mirrorOf` y `io:creates` y a sus reglas SHACL. El criterio de referencia es la reconstrucción exacta (1.0) de la estructura ontológica determinista. El score observado del modelo se reporta junto con ablaciones, baselines y matrices de confusión por fold.
 
-El dataset operativo comprende 13 tríadas y 78 nodos. Los experimentos miden, bajo leave-one-triad-out, la recuperabilidad empírica de las relaciones estructurales y la contribución de cada factor (fase, posición, estructura de grafo). Véase [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+El dataset operativo comprende 13 tríadas y 78 nodos. Los experimentos miden, bajo leave-one-triad-out, la recuperabilidad empírica de las relaciones estructurales y la contribución de cada factor (fase, posición, estructura de grafo). Véase [`EXPERIMENTOS.md`](EXPERIMENTOS.md) para tablas completas, matrices de confusión y variabilidad por fold.
+
+### Resumen numérico registrado
+
+| Método | Accuracy | Macro-F1 | mirrorOf F1 | creates F1 |
+|---|---:|---:|---:|---:|
+| PI-HGAT-T (fase + posición) | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| Ablación sin fase | 0.6000 | 0.6056 | 0.7500 | 0.6667 |
+| Ablación sin posición | 0.6359 | 0.5771 | 0.3871 | 0.4870 |
+| Reglas deterministas (oracle) | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| MLP sin grafo | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| Regresión logística | 0.5333 | 0.2424 | 0.0000 | 0.0000 |
 
 OWL RL expande inferencias de dominios/rangos; SHACL valida restricciones cerradas y reglas de estructura. Lean formaliza operadores, espejos y cotas de índice. Juntos, Lean + OWL/SHACL + PI-HGAT-T + baselines constituyen la cadena de verificación empírica y formal del marco.
