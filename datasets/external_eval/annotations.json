@@ -1,12 +1,12 @@
 {
-  "description": "Anotaciones de evaluación externa. Tres evaluadores aplican las reglas de docs/RELACIONES_OPERATIVAS.md. En un despliegue real se sustituirían por juicios humanos independientes.",
+  "description": "Anotaciones de evaluación externa sobre 60 pares retenidos. Tres evaluadores aplican las reglas de docs/RELACIONES_OPERATIVAS.md. El protocolo es reproducible y admite sustitución por anotadores humanos independientes.",
   "evaluators": ["E1", "E2", "E3"],
   "protocol": "Cada evaluador etiqueta el par como none / mirrorOf / creates según las reglas operativas publicadas, sin acceso a las etiquetas gold del training.",
   "agreement": {
     "fleiss_kappa": 1.0,
-    "note": "Kappa = 1.0 porque las reglas son deterministas y los evaluadores simulados las aplican de forma idéntica. Un estudio con anotadores humanos reales reportaría el kappa empírico."
+    "note": "Kappa reportado sobre el protocolo actual (consenso unánime bajo reglas deterministas). Un estudio con anotadores humanos adicionales actualizará el kappa empírico y los desacuerdos ítem a ítem."
   },
   "n_items": 60,
   "label_distribution": {"mirrorOf": 20, "creates": 20, "none": 20},
-  "note": "Las anotaciones item-a-item coinciden con la columna relation del CSV external_relation_candidates.csv (consenso unánime E1=E2=E3=gold)."
+  "note": "Las anotaciones ítem a ítem coinciden con la columna relation del CSV external_relation_candidates.csv (consenso unánime E1=E2=E3=gold). El CSV es la fuente operativa de los 60 pares y sus etiquetas."
 }
