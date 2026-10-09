@@ -1,4 +1,0 @@
-# Empirical evaluation marker
-# This file confirms the experimental stack uses empirical framing.
-# Generated: 2026-10-08
-EMPIRICAL_FRAMING=1
