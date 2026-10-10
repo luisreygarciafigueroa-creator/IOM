@@ -26,14 +26,19 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-      - run: python -m pip install -r requirements-lock.txt
-      - name: Validate iom_spec.json against schema
+          cache-dependency-path: requirements-lock.txt
+      - name: Install locked dependencies
+        run: python -m pip install -r requirements-lock.txt
+      - name: Validate iom_spec.json against JSON Schema
         run: python scripts/validate_spec.py
       - name: Check specification migrations
         run: python scripts/migrate_spec.py --check
-      - run: python scripts/generate_ontology.py
-      - run: python -m unittest discover -s tests -v
-      - run: python scripts/validate_shacl.py
+      - name: Generate ontology and datasets
+        run: python scripts/generate_ontology.py
+      - name: Unit tests (ontology, property links, PI-HGAT-T)
+        run: python -m unittest discover -s tests -v
+      - name: OWL RL + SHACL validation
+        run: python scripts/validate_shacl.py
       - name: Reproducible PI-HGAT-T experiment
         run: python experiments/pi_hgat_t.py
       - name: Baseline classifiers comparison
