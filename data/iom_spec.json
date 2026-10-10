@@ -1,5 +1,6 @@
 {
   "schema_version": "1.0.0",
+  "spec_version": "1.1.0",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-08",
   "source_note": "Operacionalización canónica de las tablas de Fase de Avance, Fase de Retroceso y vectores cuarta y quinta. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles.",
@@ -42,10 +43,10 @@
     ]
   },
   "vectors": [
-    {"name": "Evol", "phase": "adv", "labels": ["vacio", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
-    {"name": "Evol", "phase": "ret", "labels": ["evol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "←"},
-    {"name": "Invol", "phase": "adv", "labels": ["invol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "→"},
-    {"name": "Invol", "phase": "ret", "labels": ["vacio", "ind", "dua", "tot", "invol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "←"}
+    {"name": "Evol", "phase": "adv", "labels": ["vacio", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "\u2192"},
+    {"name": "Evol", "phase": "ret", "labels": ["evol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "\u2190"},
+    {"name": "Invol", "phase": "adv", "labels": ["invol", "tot", "dua", "ind", "vacio"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "\u2192"},
+    {"name": "Invol", "phase": "ret", "labels": ["vacio", "ind", "dua", "tot", "invol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "\u2190"}
   ],
   "creation_rules": [
     {"source_phase": "adv", "source_positions": [0, 2], "target_phase": "ret", "target_positions": [1]},
@@ -60,7 +61,6 @@
     "3": ["Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"],
     "4": ["E", "S_fwd", "Ivo", "S_rev"]
   },
-  "spec_version": "1.1.0",
   "migrations": [
     {
       "from_version": "1.0.0",
