@@ -1,0 +1,7 @@
+external_id,external_label,mapped_node_id,perspective,phase,position,relation_candidate,notes
+bio_pred_01,lobo,T04_adv_P0,Ind,adv,left,none,"Depredador como singularidad en fase de avance (tríada muerte/artificial/vida)"
+bio_prey_01,ciervo,T04_ret_P2,Ind,ret,right,mirrorOf,"Presa como singularidad reflejada (mirrorOf del depredador)"
+bio_inter_01,depredacion,T04_adv_P1,D,adv,center,creates,"Relación dual que crea el centro de la fase opuesta"
+bio_pop_01,poblacion,T04_ret_P1,Tot,ret,center,none,"Población como totalidad del sistema"
+bio_collapse_01,extincion_local,T00_ret_P0,Invol,ret,left,none,"Colapso poblacional alineado a involución"
+bio_recovery_01,recolonizacion,T00_adv_P2,Evol,adv,right,none,"Recuperación alineada a evolución"
