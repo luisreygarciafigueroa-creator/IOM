@@ -1,8 +1,46 @@
 # IOM — de reglas formales a evaluación reproducible con modelos
 
-IOM convierte un marco de cinco perspectivas —Individualidad, Dualidad, Totalidad, Evolución e Involución— en una especificación ejecutable que puede **validarse formalmente y ponerse a prueba empíricamente**. Las reglas explícitas generan relaciones y datos reproducibles; Lean, RDF/OWL y SHACL comprueban su estructura, mientras que los modelos de machine learning miden si esas relaciones pueden recuperarse sin confundir predicción con demostración. El resultado es un flujo auditable desde la especificación hasta las métricas, no una afirmación de que el modelo pruebe el marco.
+**Resumen ejecutivo.** El marco IOM modela la **evolución y la disolución de sistemas complejos** —desde redes ecológicas y ciclos de mercado hasta transiciones cognitivas o de software— mediante cinco perspectivas interrelacionadas: Individualidad, Dualidad, Totalidad, Evolución e Involución. No es un catálogo de etiquetas: es una arquitectura formal que genera relaciones deterministas (`mirrorOf`, `creates`) a partir de 13 tríadas y cuatro secuencias vectoriales, y que puede verificarse matemáticamente (Lean) y someterse a pruebas empíricas de recuperación (modelos de machine learning).
+
+El marco se presenta como una **arquitectura diseñada para clasificar y predecir la evolución de sistemas complejos**, demostrada formalmente en Lean 4 (teoremas sin `sorry` ni `admit`) y evaluada empíricamente mediante recuperación de relaciones generadas por reglas. Las métricas de los modelos miden recuperabilidad estructural, no validación independiente de la teoría en el mundo exterior.
 
 **Proyecto:** [IOM en GitHub](https://github.com/luisreygarciafigueroa-creator/IOM) · [temas (topics)](https://github.com/luisreygarciafigueroa-creator/IOM)
+
+---
+
+## Diagrama conceptual: Individualidad ↔ Dualidad ↔ Totalidad
+
+Antes de instalar nada, esta es la relación central que el marco formaliza:
+
+```mermaid
+flowchart TB
+    subgraph Posicionales["Perspectivas posicionales (por tríada)"]
+        Ind["Individualidad<br/>(unidad / singularidad)"]
+        D["Dualidad<br/>(relación / diferencia)"]
+        Tot["Totalidad<br/>(integración / sistema)"]
+    end
+
+    subgraph Vectoriales["Perspectivas vectoriales (flujo)"]
+        Evol["Evolución<br/>vacío → estructura"]
+        Invol["Involución<br/>estructura → vacío"]
+    end
+
+    Ind -->|diferencia| D
+    D -->|integración| Tot
+    Tot -->|disolución| Invol
+    Invol -->|proyección| Evol
+    Evol -->|emergencia de unidad| Ind
+
+    style Ind fill:#e3f2fd
+    style D fill:#fff3e0
+    style Tot fill:#e8f5e9
+    style Evol fill:#f3e5f5
+    style Invol fill:#fce4ec
+```
+
+Cada **tríada** ocupa las tres posiciones (izquierda–centro–derecha) bajo las perspectivas Ind / D / Tot. Las dos direcciones vectoriales (Evol / Invol) atraviesan las fases de avance y retroceso. Las relaciones admisibles entre nodos son únicamente `mirrorOf` (fase opuesta + posición reflejada) y `creates` (cuatro reglas de creación lateral↔centro).
+
+---
 
 ## Empieza aquí: Dev Container
 
@@ -17,11 +55,22 @@ Después elige la ruta adecuada a tu perfil. Para trabajar fuera del contenedor,
 
 > El Dev Container declara Python 3.11, mientras que la documentación de reproducción registra Python 3.12 como entorno de referencia. Para resultados comparables, usa la versión indicada en `experiments/results/software_versions.json`; si ejecutas dentro del contenedor, registra la versión efectiva con `scripts/capture_environment.py`.
 
-## Elige tu ruta
+---
 
-### Perfil de lógica, especificación y verificación formal
+## Dos fases claramente separadas
 
-Adecuado para modificar reglas, revisar propiedades o comprobar los artefactos derivados. La fuente canónica está en [`data/iom_spec.json`](data/iom_spec.json); valida la especificación, genera la ontología y ejecuta las pruebas:
+El repositorio se organiza en **dos bloques lógicos** que no deben confundirse:
+
+| | **Fase 1 — Motor de reglas formales** | **Fase 2 — Modelado predictivo** |
+|---|---|---|
+| **Naturaleza** | Determinista, deductiva | Empírica, inductiva |
+| **Artefactos** | Lean, RDF/OWL, SHACL, CSV canónicos | PI-HGAT-T, baselines, métricas |
+| **Pregunta que responde** | «¿Estas relaciones son estructuralmente válidas según las reglas?» | «¿Un modelo puede recuperar esas relaciones a partir de los datos generados?» |
+| **Scripts principales** | `validate_spec.py`, `generate_ontology.py`, `validate_shacl.py`, `lake build` | `experiments/pi_hgat_t.py`, `experiments/baselines.py` |
+
+### Fase 1 — Motor de reglas formales
+
+Adecuado para modificar reglas, revisar propiedades o comprobar los artefactos derivados. La fuente canónica está en [`data/iom_spec.json`](data/iom_spec.json):
 
 ```bash
 python scripts/validate_spec.py
@@ -33,9 +82,13 @@ python scripts/validate_shacl.py
 
 Lean formaliza operadores, reglas y teoremas; RDF/OWL representa la ontología y SHACL valida restricciones. Para explorar los fundamentos: [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md), [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md) y el documento de referencia [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt).
 
-### Perfil de machine learning y evaluación empírica
+### Puente narrativo: de lo absoluto a lo predictivo
 
-Adecuado para reproducir el clasificador, sus ablaciones y los baselines. Ejecuta primero la ruta formal para generar/verificar los datos y luego:
+Una vez que la **Fase 1 garantiza la estructura absoluta de las relaciones** (teoremas Lean + restricciones SHACL + datasets regenerados de forma determinista), la **Fase 2 toma ese universo puramente matemático** y entrena modelos predictivos para inferir dichas verdades lógicas en escenarios empíricos controlados. Las métricas no demuestran el marco; demuestran que las relaciones generadas por reglas son recuperables por aprendizaje automático bajo partición leave-one-triad-out.
+
+### Fase 2 — Modelado predictivo y aprendizaje automático
+
+Adecuado para reproducir el clasificador, sus ablaciones y los baselines. Ejecuta primero la Fase 1 y luego:
 
 ```bash
 python experiments/pi_hgat_t.py
@@ -43,6 +96,8 @@ python experiments/baselines.py
 ```
 
 PI-HGAT-T clasifica pares dirigidos como `none`, `mirrorOf` o `creates`, usando validación cruzada leave-one-triad-out. Las etiquetas objetivo provienen de reglas RDF/SHACL explícitas: las métricas evalúan recuperación de relaciones generadas por reglas, **no validación independiente de la teoría**. El protocolo de evaluación humana independiente está separado en [`datasets/independent_eval/`](datasets/independent_eval/); la evaluación externa de reglas, en [`datasets/external_eval/`](datasets/external_eval/).
+
+---
 
 ## Flujo de datos: de las reglas a los modelos
 
@@ -63,6 +118,26 @@ flowchart LR
     J --> K
 ```
 
+---
+
+## Ingesta de nuevos dominios (sin romper la ontología)
+
+La ontología de 78 nodos es una **bóveda bancaria**: no se modifican nodos ni reglas core. Para alinear conceptos de biología, economía, sociología u otras disciplinas se usa la interfaz de ingesta guiada:
+
+```bash
+python scripts/importar_datos_personalizados.py \
+    --input datasets/ingestion/templates/biologia_depredador_presa.csv \
+    --output datasets/ingestion/aligned/biologia_aligned.csv
+```
+
+- **Plantillas prellenadas:** biología (depredador-presa), economía (transacción de alto riesgo) y plantilla genérica en [`datasets/ingestion/templates/`](datasets/ingestion/templates/).
+- **Catálogo de dominios:** mapeos conceptuales listos para biólogos, economistas y otras profesiones en [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
+- **Documentación de la carpeta:** [`datasets/ingestion/README.md`](datasets/ingestion/README.md).
+
+El script valida que cada `mapped_node_id` exista entre los 78 nodos canónicos, comprueba consistencia de perspectiva/fase/posición y genera un informe JSON de alineación.
+
+---
+
 ## Qué incluye
 
 - **Cinco perspectivas:** Individualidad (`Ind`), Dualidad (`D`), Totalidad (`Tot`), Evolución (`Evol`) e Involución (`Invol`). Las tres primeras son posicionales en cada tríada; las dos últimas vectoriales.
@@ -71,7 +146,10 @@ flowchart LR
 - **RDF/OWL + SHACL:** axiomas, dominios/rangos y restricciones para estructura, espejo, creación y secuencias.
 - **Datos:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390).
 - **Experimentos:** PI-HGAT-T, ablaciones, reglas deterministas, regresión logística y MLP, con particiones comparables.
+- **Ingesta externa:** plantillas y script de alineación a la ontología canónica sin modificar el core.
 - **Reproducibilidad:** pruebas, informe de auditoría, captura de entorno, manifiesto SHA-256 y empaquetado reproducible.
+
+---
 
 ## Verificación integral
 
