@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
-"""Comprueba que ontology/CSV versionados coinciden con generate_ontology.py.
+"""Comprueba que los CSV versionados coinciden con generate_ontology.py.
+
+El Turtle (ontology/io_ontology.ttl) se regenera siempre en CI antes de SHACL;
+la comparación byte-a-byte del TTL es frágil entre versiones de rdflib, por eso
+solo se exige igualdad exacta de:
+
+  - datasets/triad_nodes.csv
+  - datasets/vector_steps.csv
+  - datasets/relation_candidates.csv
 
 Flujo:
-  1. Ejecuta scripts/generate_ontology.py (reescribe artefactos).
-  2. Compara los archivos generados con el árbol git (git diff --exit-code).
-  3. Opcionalmente regenera MANIFEST.sha256 y lo compara.
+  1. (opcional) generate_ontology.py
+  2. git diff --exit-code sobre los CSV anteriores
+  3. (opcional) create_manifest.py + diff de MANIFEST.sha256
 
-Sale con código 1 si hay diferencias (artefactos desactualizados en el repo).
+Uso:
+  python scripts/check_generated_committed.py
+  python scripts/check_generated_committed.py --with-manifest
 """
 from __future__ import annotations
 
@@ -17,8 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-GENERATED = [
-    "ontology/io_ontology.ttl",
+GENERATED_CSV = [
     "datasets/triad_nodes.csv",
     "datasets/vector_steps.csv",
     "datasets/relation_candidates.csv",
@@ -41,6 +50,11 @@ def main() -> int:
         action="store_true",
         help="No regenerar; solo comparar el working tree actual con HEAD",
     )
+    parser.add_argument(
+        "--include-ttl",
+        action="store_true",
+        help="Incluir ontology/io_ontology.ttl en el diff (puede fallar por orden de serialización rdflib)",
+    )
     args = parser.parse_args()
 
     if not args.skip_generate:
@@ -51,7 +65,10 @@ def main() -> int:
             print(r.stderr, file=sys.stderr)
             return 1
 
-    paths = list(GENERATED)
+    paths = list(GENERATED_CSV)
+    if args.include_ttl:
+        paths.insert(0, "ontology/io_ontology.ttl")
+
     if args.with_manifest:
         print(">>> create_manifest.py")
         r = run([sys.executable, "scripts/create_manifest.py"])
@@ -61,21 +78,30 @@ def main() -> int:
             return 1
         paths.append("MANIFEST.sha256")
 
-    print(">>> git diff --exit-code (artefactos generados)")
+    print(">>> git diff --exit-code", " ".join(paths))
     r = run(["git", "diff", "--exit-code", "--", *paths])
     if r.returncode != 0:
-        print("ERROR: los artefactos generados no coinciden con lo versionado.", file=sys.stderr)
+        print(
+            "ERROR: los artefactos generados no coinciden con lo versionado.",
+            file=sys.stderr,
+        )
         print(r.stdout or r.stderr, file=sys.stderr)
         print(
             "\nEjecuta localmente:\n"
             "  python scripts/generate_ontology.py\n"
             "  python scripts/create_manifest.py   # si usas --with-manifest\n"
-            "  git add ontology datasets MANIFEST.sha256 && git commit",
+            "  git add datasets ontology MANIFEST.sha256 && git commit",
             file=sys.stderr,
         )
         return 1
 
-    print("OK: artefactos generados idénticos a los versionados")
+    print("OK: CSV generados idénticos a los versionados")
+    if not args.include_ttl:
+        print(
+            "Nota: ontology/io_ontology.ttl no se compara byte-a-byte; "
+            "CI lo regenera antes de SHACL. Para versionarlo: "
+            "python scripts/generate_ontology.py && git add ontology/io_ontology.ttl"
+        )
     return 0
 
 

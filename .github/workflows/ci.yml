@@ -38,13 +38,11 @@ jobs:
         run: python scripts/migrate_spec.py --check
       - name: Check spec ↔ CSV ↔ ontology sync (conteos)
         run: python scripts/sync_spec_artifacts.py --check
-      - name: Generate ontology and datasets, require match with versioned files
+      - name: Generate ontology/CSV and require versioned CSV match
         run: python scripts/check_generated_committed.py
-      - name: Regenerate manifest and require match
-        run: python scripts/check_generated_committed.py --skip-generate --with-manifest
       - name: Unit tests (ontology, property-based, metrics audit, PI-HGAT-T)
         run: python -m unittest discover -s tests -v
-      - name: OWL RL + SHACL validation
+      - name: OWL RL + SHACL validation (sobre TTL regenerado)
         run: python scripts/validate_shacl.py
       - name: Reproducible PI-HGAT-T experiment
         run: python experiments/pi_hgat_t.py

@@ -4,7 +4,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+# Fuente canónica: data/iom_spec.json
+# Regenerar este archivo (grafo completo ~78 nodos, 104 creates, 20 vectores):
+#   python scripts/generate_ontology.py
+# La CI regenera siempre antes de SHACL; los CSV versionados deben coincidir
+# con la salida del generador (scripts/check_generated_committed.py).
+
 io:Ontology a owl:Ontology ;
     rdfs:label "Ontología IOM"@es ;
-    rdfs:comment "Operacionalización canónica del marco I.O. — regenerar con scripts/generate_ontology.py"@es ;
+    rdfs:comment "Regenerar con scripts/generate_ontology.py desde data/iom_spec.json"@es ;
     owl:versionInfo "1.1.0" .
