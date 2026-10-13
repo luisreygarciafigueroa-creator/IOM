@@ -97,7 +97,7 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
 
 ## 6. Referencias internas
 
-- Nodos canónicos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
+- Nodos canónicos: [`datasets/triad_nodes.csv`](https://github.com/luisreygarciafigueroa-creator/IOM/blob/main/datasets/triad_nodes.csv)
 - Reglas de relaciones: [`docs/RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
-- Especificación: [`data/iom_spec.json`](../data/iom_spec.json)
-- Script de ingesta: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
+- Especificación: [`data/iom_spec.json`](https://github.com/luisreygarciafigueroa-creator/IOM/blob/main/data/iom_spec.json)
+- Script de ingesta: [`scripts/importar_datos_personalizados.py`](https://github.com/luisreygarciafigueroa-creator/IOM/blob/main/scripts/importar_datos_personalizados.py)

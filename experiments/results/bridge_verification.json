@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "rule_source": "data/iom_spec.json -> ontology/io_ontology.ttl",
+  "dataset": "datasets/relation_candidates.csv",
+  "sha256": {
+    "iom_spec.json": "30e7b3ff74b6eadf76c2ce6c10f31c893f5c0f3ceac3d1bfb9596d1e5501a2d3",
+    "io_ontology.ttl": "6641c980f19ba1024c7874e91af9171f96f84a9ac29c47317d6cb2fcc7a1dc50",
+    "relation_candidates.csv": "ded7655d8c9b9c0d44946d662415fb91fee274c03ac40aed05b26cc7baa35f83"
+  },
+  "counts": {
+    "csv_pairs": 390,
+    "rdf_labeled_pairs": 182,
+    "csv_labels": {
+      "none": 208,
+      "mirrorOf": 78,
+      "creates": 104
+    }
+  },
+  "mismatch_count": 0,
+  "mismatches": [],
+  "errors": []
+}

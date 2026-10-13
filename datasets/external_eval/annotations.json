@@ -1,12 +1,13 @@
 {
-  "description": "Anotaciones de evaluación externa sobre 60 pares retenidos. Tres evaluadores aplican las reglas de docs/RELACIONES_OPERATIVAS.md. El protocolo es reproducible y admite sustitución por anotadores humanos independientes.",
-  "evaluators": ["E1", "E2", "E3"],
-  "protocol": "Cada evaluador etiqueta el par como none / mirrorOf / creates según las reglas operativas publicadas, sin acceso a las etiquetas gold del training.",
+  "description": "Anotaciones actuales de 60 pares retenidos generadas aplicando reglas. No son anotaciones humanas independientes verificadas; el protocolo permite un estudio humano futuro.",
+  "annotation_source": "Etiquetas de reglas aplicadas a los 60 pares; no son juicios independientes de tres personas.",
+  "protocol": "Los pares se comparan con reglas operativas publicadas y se guardan como none / mirrorOf / creates. No hubo ronda documentada de anotación humana ciega.",
   "agreement": {
-    "fleiss_kappa": 1.0,
-    "note": "Kappa reportado sobre el protocolo actual (consenso unánime bajo reglas deterministas). Un estudio con anotadores humanos adicionales actualizará el kappa empírico y los desacuerdos ítem a ítem."
+    "fleiss_kappa": null,
+    "rule_label_concordance": 1.0,
+    "note": "No se ha medido kappa empírico entre anotadores humanos. La concordancia 1.0 expresa consistencia de las etiquetas derivadas respecto de las reglas; ejecutar un estudio ciego y publicar anotaciones crudas antes de reportar acuerdo humano."
   },
   "n_items": 60,
   "label_distribution": {"mirrorOf": 20, "creates": 20, "none": 20},
-  "note": "Las anotaciones ítem a ítem coinciden con la columna relation del CSV external_relation_candidates.csv (consenso unánime E1=E2=E3=gold). El CSV es la fuente operativa de los 60 pares y sus etiquetas."
+  "note": "Las etiquetas de este JSON coinciden con la columna relation de external_relation_candidates.csv; se consideran etiquetas por reglas y no anotaciones humanas independientes."
 }

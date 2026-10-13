@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Si utiliza IOM, cite esta versión del software y la especificación." 
+title: "IOM: marco formal para modelado estructural de sistemas complejos"
+authors:
+  - family-names: "García Figueroa"
+    given-names: "Luis Rey"
+    affiliation: "Independent researcher"
+version: 1.0.0
+date-released: 2026-10-12
+license: MIT
+repository-code: "https://github.com/luisreygarciafigueroa-creator/IOM"
+abstract: >-
+  Especificación reproducible que conecta reglas formales en Lean y RDF/SHACL
+  con datasets CSV y experimentos de recuperación estructural.
+keywords:
+  - formal methods
+  - RDF
+  - reproducibility
+  - graph learning

@@ -31,13 +31,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-lock.txt
-          python -c "import jsonschema; print('jsonschema', jsonschema.__version__)"
-      - name: Validate iom_spec.json against JSON Schema
+      - name: Validate canonical specification
         run: python scripts/validate_spec.py
       - name: Check specification migrations
         run: python scripts/migrate_spec.py --check
       - name: Generate ontology and datasets
         run: python scripts/generate_ontology.py
+      - name: Validate canonical CSV contracts
+        run: python scripts/validate_csv.py
+      - name: Verify rules-to-labels bridge
+        run: python scripts/verify_bridge.py --report experiments/results/bridge_verification.json
       - name: Unit tests (ontology, property links, PI-HGAT-T)
         run: python -m unittest discover -s tests -v
       - name: OWL RL + SHACL validation
@@ -48,3 +51,28 @@ jobs:
         run: python experiments/baselines.py
       - name: Generate audit report
         run: python scripts/generate_audit_report.py
+      - name: Generate SHA-256 manifest
+        run: python scripts/create_manifest.py
+      - name: Publish metrics to run summary
+        run: python scripts/summarize_metrics.py >> "$GITHUB_STEP_SUMMARY"
+      - name: Build navigable documentation
+        run: |
+          python -m pip install -r docs/requirements.txt
+          mkdocs build --strict
+      - name: Upload reproducibility metrics and bridge report
+        uses: actions/upload-artifact@v4
+        with:
+          name: iom-metrics-${{ github.run_id }}
+          if-no-files-found: error
+          path: |
+            experiments/results/pi_hgat_t_metrics.json
+            experiments/results/baselines_comparison.json
+            experiments/results/bridge_verification.json
+            experiments/results/audit_report.json
+            MANIFEST.sha256
+      - name: Upload MkDocs site
+        uses: actions/upload-artifact@v4
+        with:
+          name: iom-documentation-${{ github.run_id }}
+          path: site/
+          if-no-files-found: error

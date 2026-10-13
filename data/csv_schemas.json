@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/luisreygarciafigueroa-creator/IOM/data/csv_schemas.json",
+  "title": "Contratos CSV canónicos IOM",
+  "description": "Esquemas JSON Draft 2020-12 para filas materializadas desde los CSV canónicos.",
+  "type": "object",
+  "required": ["datasets"],
+  "properties": {
+    "datasets": {
+      "type": "object",
+      "required": ["triad_nodes.csv", "vector_steps.csv", "relation_candidates.csv"],
+      "properties": {
+        "triad_nodes.csv": {"type": "array", "items": {"$ref": "#/$defs/triad_node"}},
+        "vector_steps.csv": {"type": "array", "items": {"$ref": "#/$defs/vector_step"}},
+        "relation_candidates.csv": {"type": "array", "items": {"$ref": "#/$defs/relation_candidate"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "triad_node": {
+      "type": "object", "additionalProperties": false,
+      "required": ["node_id", "triad_index", "phase", "direction", "position_index", "position", "perspective", "label"],
+      "properties": {
+        "node_id": {"type": "string", "pattern": "^T[0-9]{2}_(adv|ret)_P[0-2]$"},
+        "triad_index": {"type": "integer", "minimum": 0},
+        "phase": {"enum": ["adv", "ret"]}, "direction": {"enum": ["evol", "invol"]},
+        "position_index": {"type": "integer", "minimum": 0, "maximum": 2},
+        "position": {"enum": ["left", "center", "right"]}, "perspective": {"enum": ["Ind", "D", "Tot"]},
+        "label": {"type": "string", "minLength": 1}
+      }
+    },
+    "vector_step": {
+      "type": "object", "additionalProperties": false,
+      "required": ["step_id", "vector", "phase", "step_index", "axis_position", "label", "arrow"],
+      "properties": {
+        "step_id": {"type": "string", "minLength": 1}, "vector": {"type": "string", "minLength": 1},
+        "phase": {"enum": ["adv", "ret"]}, "step_index": {"type": "integer", "minimum": 0, "maximum": 4},
+        "axis_position": {"type": "integer", "minimum": 0, "maximum": 4},
+        "label": {"type": "string", "minLength": 1}, "arrow": {"type": "string", "minLength": 1}
+      }
+    },
+    "relation_candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["triad_index", "source", "target", "relation"],
+      "properties": {
+        "triad_index": {"type": "integer", "minimum": 0},
+        "source": {"type": "string", "pattern": "^T[0-9]{2}_(adv|ret)_P[0-2]$"},
+        "target": {"type": "string", "pattern": "^T[0-9]{2}_(adv|ret)_P[0-2]$"},
+        "relation": {"enum": ["none", "mirrorOf", "creates"]}
+      }
+    }
+  }
+}

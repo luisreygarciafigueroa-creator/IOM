@@ -4,10 +4,11 @@ from hashlib import sha256
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-INCLUDE_DIRS = ("IOM", "data", "datasets", "docs", "experiments", "ontology", "scripts", "tests")
+INCLUDE_DIRS = ("IOM", "data", "datasets", "docs", "experiments", "notebooks", "ontology", "scripts", "tests", ".devcontainer")
 INCLUDE_FILES = ("IOM.lean", "README.md", "AUDITORIA.md", "EXPERIMENTOS.md", "REPRODUCCION.md", "paper.md",
                  "requirements.txt", "requirements-lock.txt", "lakefile.lean", "lake-manifest.json", "lean-toolchain",
-                 "LICENSE", ".gitignore", ".github/workflows/ci.yml")
+                 "LICENSE", "CITATION.cff", "mkdocs.yml", ".gitignore", ".github/workflows/ci.yml",
+                 ".github/workflows/release.yml")
 
 def main() -> None:
     files = {ROOT / name for name in INCLUDE_FILES if (ROOT / name).is_file()}

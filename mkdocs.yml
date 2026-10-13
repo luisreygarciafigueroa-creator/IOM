@@ -1,0 +1,31 @@
+site_name: IOM — documentación
+site_description: Especificación formal, datos, experimentos y protocolo de evaluación del marco IOM
+site_url: https://luisreygarciafigueroa-creator.github.io/IOM/
+repo_url: https://github.com/luisreygarciafigueroa-creator/IOM
+repo_name: luisreygarciafigueroa-creator/IOM
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+nav:
+  - Inicio: index.md
+  - Guía integral: GUIA.md
+  - Datos: DATA_DICTIONARY.md
+  - Evaluación independiente: PROTOCOLO_EVALUACION.md
+  - Extensión y releases: EXTENSION_Y_VERSIONADO.md
+  - Fundamentos:
+      - Premisas y teoremas: PREMISAS_Y_TEOREMAS.md
+      - Relaciones operativas: RELACIONES_OPERATIVAS.md
+      - Catálogo de dominios: CATALOGO_DOMINIOS.md
+      - Tríadas categoriales: TRIADAS_CATEGORIALES.md
+      - Vectores 4 y 5: VECTORES_4_5.md
+  - Artefactos y fuentes: ARCHIVOS_PIPELINE.md

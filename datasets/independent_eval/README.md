@@ -1,5 +1,7 @@
 # Evaluación independiente (interpretación de relaciones)
 
+**Estado actual:** el protocolo está definido, pero no hay una ronda de anotación humana ciega documentada en este repositorio. Los archivos son preparación/plantillas, no evidencia de validación empírica independiente. Consulta el [protocolo preregistrado](../../docs/PROTOCOLO_EVALUACION.md).
+
 Este conjunto **no** es una partición del generador de 390 candidatos. Incluye:
 
 | kind | Descripción |

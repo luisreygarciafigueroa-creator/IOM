@@ -12,7 +12,7 @@ El marco I.O. se articula mediante **cinco perspectivas complementarias**:
 
 Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada (izquierda, centro, derecha). Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos.
 
-Fuente estructurada: [`data/iom_spec.json`](../data/iom_spec.json) (`five_perspectives`, `vectors`).
+Fuente estructurada: [`data/iom_spec.json`](https://github.com/luisreygarciafigueroa-creator/IOM/blob/main/data/iom_spec.json) (`five_perspectives`, `vectors`).
 
 ## Cuarta perspectiva — Evolución
 

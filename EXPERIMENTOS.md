@@ -137,7 +137,7 @@ Interpretación: el oracle SHACL y el MLP no-grafo (con features de fase+posici�
 
 ## Evaluación externa
 
-El conjunto de evaluación externa está en `datasets/external_eval/` (60 pares + protocolo de anotación por evaluadores independientes). Ver `docs/RELACIONES_OPERATIVAS.md` para la semántica exacta de `mirrorOf` y `creates`.
+El conjunto está en `datasets/external_eval/` (60 pares etiquetados por reglas). **No contiene actualmente anotaciones humanas independientes ni kappa empírico**; la concordancia de etiquetas derivadas no es evidencia de acuerdo interanotador. El protocolo humano futuro y los criterios de cegado/acuerdo están en `docs/PROTOCOLO_EVALUACION.md`. Ver `docs/RELACIONES_OPERATIVAS.md` para la semántica exacta de `mirrorOf` y `creates`.
 
 ## Resultados por partición y variabilidad
 

@@ -1,6 +1,6 @@
 # Tríadas categoriales I.O.
 
-> **Procedencia:** transcripción operativa de las fases de avance y retroceso. Fuente estructurada canónica: [`data/iom_spec.json`](../data/iom_spec.json).
+> **Procedencia:** transcripción operativa de las fases de avance y retroceso. Fuente estructurada canónica: [`data/iom_spec.json`](https://github.com/luisreygarciafigueroa-creator/IOM/blob/main/data/iom_spec.json).
 
 El marco I.O. se articula con **cinco perspectivas**:
 

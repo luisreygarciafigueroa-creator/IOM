@@ -6,7 +6,7 @@
 
 io:Ontology a owl:Ontology ;
     rdfs:label "Ontología IOM"@es ;
-    rdfs:comment "Transcripción de las tablas de Fase de Avance, Fase de Retroceso y vectores cuarta y quinta aportadas por el usuario. No son datos empíricos."@es ;
+    rdfs:comment "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución), tablas de Fase de Avance y Fase de Retroceso, y secuencias vectoriales. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles."@es ;
     owl:versionInfo "1.1.0" .
 
 io:creates a owl:ObjectProperty ;
@@ -179,7 +179,7 @@ io:mirrorOf a owl:ObjectProperty,
     rdfs:range io:OntoNode .
 
 io:vector_evol_adv_0 a io:VectorStep ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:displayArrow "→"^^xsd:string ;
     io:hasAxisPosition 0 ;
     io:hasCyclePhase "adv"^^xsd:string ;
@@ -251,7 +251,7 @@ io:vector_evol_ret_3 a io:VectorStep ;
     io:hasVector io:Evol .
 
 io:vector_evol_ret_4 a io:VectorStep ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:displayArrow "←"^^xsd:string ;
     io:hasAxisPosition 0 ;
     io:hasCyclePhase "ret"^^xsd:string ;
@@ -291,7 +291,7 @@ io:vector_invol_adv_3 a io:VectorStep ;
     io:hasVector io:Invol .
 
 io:vector_invol_adv_4 a io:VectorStep ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:displayArrow "→"^^xsd:string ;
     io:hasAxisPosition 0 ;
     io:hasCyclePhase "adv"^^xsd:string ;
@@ -299,7 +299,7 @@ io:vector_invol_adv_4 a io:VectorStep ;
     io:hasVector io:Invol .
 
 io:vector_invol_ret_0 a io:VectorStep ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:displayArrow "←"^^xsd:string ;
     io:hasAxisPosition 0 ;
     io:hasCyclePhase "ret"^^xsd:string ;
@@ -913,7 +913,7 @@ io:T12_ret_P2 a io:OntoNode ;
 io:Direction a owl:Class .
 
 io:T00_adv_P1 a io:OntoNode ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:creates io:T00_ret_P0,
         io:T00_ret_P2 ;
     io:hasDirection io:evol ;
@@ -1213,7 +1213,7 @@ io:T12_adv_P1 a io:OntoNode ;
     io:mirrorOf io:T12_ret_P1 .
 
 io:T12_ret_P1 a io:OntoNode ;
-    rdfs:label "vacio"@es ;
+    rdfs:label "vacío"@es ;
     io:creates io:T12_adv_P0,
         io:T12_adv_P2 ;
     io:hasDirection io:invol ;
@@ -1236,10 +1236,10 @@ io:SourceModel a io:SourceModel,
 io:Perspective a owl:Class .
 
 io:Evol a io:Perspective ;
-    rdfs:label "Vector Evolutivo"@es .
+    rdfs:label "Evolución"@es .
 
 io:Invol a io:Perspective ;
-    rdfs:label "Vector Involutivo"@es .
+    rdfs:label "Involución"@es .
 
 io:ExpandedCategory a owl:Class .
 
