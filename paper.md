@@ -6,6 +6,16 @@ Este informe describe un marco verificable de extremo a extremo. El documento de
 
 Las hipótesis estructurales del marco se someten a pruebas formales (Lean, OWL/SHACL) y a evaluación de **recuperación de relaciones generadas por reglas** (validación cruzada, ablaciones, baselines). La interpretación humana independiente se estudia en `datasets/independent_eval/`.
 
+## Ejemplo narrativo de anclaje: depredador–presa y mercado
+
+Para aterrizar las cinco perspectivas antes de la formalización, consideremos dos escenarios:
+
+**Ciclo ecológico.** Un lobo (Individualidad, fase de avance) depreda a un ciervo (Individualidad reflejada, fase de retroceso). La interacción depredación ocupa Dualidad (centro) y genera una arista `creates`. La red trófica o la población constituye Totalidad. Un colapso local se lee como Involución (disolución hacia vacío); la recolonización, como Evolución (proyección hacia estructura). La plantilla [`datasets/ingestion/templates/biologia_depredador_presa.csv`](datasets/ingestion/templates/biologia_depredador_presa.csv) materializa este mapeo.
+
+**Ciclo de mercado.** Un trader (Individualidad) opera un activo (Individualidad reflejada); el riesgo o el contrato ocupa Dualidad; el mercado, Totalidad. Una burbuja se alinea a Evolución; un crash, a Involución. Véase [`datasets/ingestion/templates/economia_transaccion_riesgo.csv`](datasets/ingestion/templates/economia_transaccion_riesgo.csv).
+
+Estos ejemplos muestran que las perspectivas no son etiquetas abstractas: son lecturas operativas de sistemas reales que el marco formaliza y que la herramienta de ingesta CSV permite alinear sin modificar la ontología core.
+
 ## Especificación categorial actualizada
 
 La fuente canónica define trece tríadas por fase (spec_version 1.2.0). La fase de avance comienza con `animal | humano | IA`; la fase de retroceso (índice homólogo) termina el ciclo con `IA | humano | animal`. Cada concepto se representa como `io:OntoNode` con índices de fila, fase, posición, perspectiva posicional, dirección y etiqueta.
@@ -34,6 +44,21 @@ RDF conserva por separado el índice visual, el eje, la etiqueta y la flecha. So
 ## Ontología y restricciones
 
 `scripts/generate_ontology.py` consume la especificación JSON y genera `ontology/io_ontology.ttl` más tres CSV. El grafo declara vocabulario OWL: clases, propiedades de objeto y de datos, dominios, rangos, propiedades funcionales y simetría de `io:mirrorOf`. `scripts/validate_shacl.py` verifica axiomas esperados, ejecuta expansión OWL RL y evalúa `ontology/io_shapes.ttl`.
+
+## Ingesta de dominios personalizados (propuesta de valor central)
+
+La ontología de 78 nodos es inmutable. La herramienta `scripts/importar_datos_personalizados.py` permite a investigadores interdisciplinarios alinear conceptos externos (biología, economía, sociología, software, etc.) mediante archivos CSV, validando que cada `mapped_node_id` exista en el core y generando un informe de alineación. Las plantillas y el catálogo de mapeos están en `datasets/ingestion/` y `docs/CATALOGO_DOMINIOS.md`. Esta funcionalidad conecta el marco formal con datos del mundo real **sin romper** las garantías Lean/SHACL.
+
+## Justificación metodológica: por qué el aprendizaje automático
+
+La Fase 1 (Lean + SHACL + datasets deterministas) demuestra *corrección estructural* en un universo sin ruido. La Fase 2 (PI-HGAT-T, ablaciones, baselines) responde a una pregunta complementaria: **¿las relaciones generadas por reglas siguen siendo recuperables cuando un modelo inductivo solo ve atributos parciales y particiones leave-one-triad-out?**
+
+Esta validación empírica es útil porque:
+
+1. **Demuestra aprendibilidad.** La recuperación perfecta (accuracy/F1 = 1.0) bajo leave-one-triad-out muestra que la ontología no es un artefacto ad hoc: un modelo puede reconstruir `mirrorOf` y `creates` a partir de fase y posición.
+2. **Cuantifica robustez estructural.** Las ablaciones (sin fase → accuracy 0.60; sin posición → ~0.64) revelan la contribución de cada factor y los puntos de fragilidad ante información incompleta.
+3. **Puentea lo determinista y lo probabilístico.** Fase 1 produce el gold determinista; Fase 2 mide si un learner generaliza ese gold. El mismo pipeline admite, en extensiones, CSV de dominios externos con su ruido inherente, permitiendo evaluar robustez frente a perturbaciones del mundo real sin alterar la bóveda formal.
+4. **No sustituye la validación externa.** Las métricas miden recuperabilidad de relaciones *generadas por reglas*, no la verdad del marco sobre datos independientes. Para eso existen `datasets/independent_eval/` y `datasets/external_eval/`.
 
 ## Experimento PI-HGAT-T (recuperación de relaciones por reglas)
 

@@ -8,9 +8,27 @@ El marco se presenta como una **arquitectura diseñada para clasificar y predeci
 
 ---
 
-## Diagrama conceptual: Individualidad ↔ Dualidad ↔ Totalidad
+## Ejemplo narrativo temprano: depredador–presa
 
-Antes de instalar nada, esta es la relación central que el marco formaliza:
+Antes de sumergirnos en la abstracción matemática, anclamos las cinco perspectivas en un caso concreto que cualquier investigador reconoce: el ciclo ecológico depredador–presa.
+
+| Fenómeno biológico | Perspectiva IOM | Qué formaliza |
+|---|---|---|
+| El lobo como individuo cazador | **Individualidad** | Unidad / singularidad que actúa |
+| La relación de depredación (lobo ↔ ciervo) | **Dualidad** | Diferencia / interacción entre dos unidades |
+| La población o la red trófica completa | **Totalidad** | Sistema integrado |
+| Recuperación tras un colapso (recolonización) | **Evolución** | Proyección del vacío hacia nueva estructura |
+| Extinción local o colapso poblacional | **Involución** | Disolución de estructura hacia el vacío |
+
+En el marco, el lobo en fase de avance puede alinearse a un nodo de Individualidad (izquierda); el ciervo, como su reflejo en fase de retroceso, a Individualidad (derecha). La depredación ocupa el centro (Dualidad) y genera una arista `creates` hacia el centro de la fase opuesta. El colapso poblacional se lee como un paso del vector Involución; la recuperación, como un paso de Evolución.
+
+El mismo esquema se aplica a un escenario de mercado (trader ↔ activo ↔ riesgo ↔ mercado ↔ burbuja/crash). La abstracción de las cinco perspectivas deja de flotar: cada una corresponde a una lectura operativa de un sistema real.
+
+> Plantilla lista para usar: [`datasets/ingestion/templates/biologia_depredador_presa.csv`](datasets/ingestion/templates/biologia_depredador_presa.csv). Catálogo completo de mapeos: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
+
+---
+
+## Diagrama conceptual: Individualidad ↔ Dualidad ↔ Totalidad
 
 ```mermaid
 flowchart TB
@@ -39,6 +57,27 @@ flowchart TB
 ```
 
 Cada **tríada** ocupa las tres posiciones (izquierda–centro–derecha) bajo las perspectivas Ind / D / Tot. Las dos direcciones vectoriales (Evol / Invol) atraviesan las fases de avance y retroceso. Las relaciones admisibles entre nodos son únicamente `mirrorOf` (fase opuesta + posición reflejada) y `creates` (cuatro reglas de creación lateral↔centro).
+
+---
+
+## Funcionalidad central: ingesta de dominios personalizados vía CSV
+
+**Esta es una de las propuestas de valor principales del repositorio.** La ontología de 78 nodos es una **bóveda bancaria**: no se modifican nodos ni reglas core. Cualquier investigador —biólogo, economista, sociólogo, ingeniero de software— puede alinear sus conceptos a la ontología canónica sin romper las garantías formales (Lean, RDF/OWL, SHACL).
+
+```bash
+python scripts/importar_datos_personalizados.py \
+    --input datasets/ingestion/templates/biologia_depredador_presa.csv \
+    --output datasets/ingestion/aligned/biologia_aligned.csv
+```
+
+- **Plantillas prellenadas** en [`datasets/ingestion/templates/`](datasets/ingestion/templates/):
+  - `biologia_depredador_presa.csv` — ciclo ecológico
+  - `economia_transaccion_riesgo.csv` — mercado de alto riesgo
+  - `plantilla_dominio.csv` — plantilla genérica
+- **Catálogo de dominios** con mapeos conceptuales listos: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
+- **Documentación de la carpeta:** [`datasets/ingestion/README.md`](datasets/ingestion/README.md)
+
+El script valida que cada `mapped_node_id` exista entre los 78 nodos canónicos, comprueba consistencia de perspectiva/fase/posición y genera un informe JSON de alineación. Los datos alineados pueden usarse como candidatos externos en evaluación independiente o como features adicionales, **sin tocar** `data/iom_spec.json` ni la ontología core.
 
 ---
 
@@ -82,9 +121,19 @@ python scripts/validate_shacl.py
 
 Lean formaliza operadores, reglas y teoremas; RDF/OWL representa la ontología y SHACL valida restricciones. Para explorar los fundamentos: [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md), [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md) y el documento de referencia [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt).
 
-### Puente narrativo: de lo absoluto a lo predictivo
+### Puente metodológico: de lo determinista a lo probabilístico
 
-Una vez que la **Fase 1 garantiza la estructura absoluta de las relaciones** (teoremas Lean + restricciones SHACL + datasets regenerados de forma determinista), la **Fase 2 toma ese universo puramente matemático** y entrena modelos predictivos para inferir dichas verdades lógicas en escenarios empíricos controlados. Las métricas no demuestran el marco; demuestran que las relaciones generadas por reglas son recuperables por aprendizaje automático bajo partición leave-one-triad-out.
+Una vez que la **Fase 1 garantiza la estructura absoluta de las relaciones** (teoremas Lean + restricciones SHACL + datasets regenerados de forma determinista), la **Fase 2 toma ese universo puramente matemático** y lo somete a aprendizaje automático.
+
+**¿Por qué es útil la validación empírica mediante ML?**  
+Las reglas formales demuestran *corrección estructural* en un mundo sin ruido. El aprendizaje automático responde a una pregunta distinta y complementaria: **¿esas mismas relaciones siguen siendo recuperables cuando el modelo solo ve atributos parciales, particiones leave-one-triad-out y, en extensiones futuras, datos alineados de dominios externos con su ruido inherente?**  
+
+- Las ablaciones (sin fase / sin posición) cuantifican la contribución de cada factor estructural y revelan puntos de fragilidad.  
+- La recuperación perfecta bajo leave-one-triad-out demuestra que la ontología es *aprendible* a partir de rasgos mínimos, no un artefacto ad hoc.  
+- El puente entre fases es explícito: Fase 1 produce el gold determinista; Fase 2 mide si un modelo inductivo reconstruye ese gold bajo condiciones de generalización.  
+- Cuando se incorporan CSV de dominios personalizados (biología, economía, etc.), el mismo pipeline permite evaluar robustez frente a perturbaciones del mundo real sin alterar la bóveda formal.
+
+Las métricas **no demuestran el marco en el mundo exterior**; demuestran que las relaciones generadas por reglas son recuperables por aprendizaje automático y, por tanto, que la ontología ofrece una base estable sobre la cual construir evaluaciones empíricas posteriores.
 
 ### Fase 2 — Modelado predictivo y aprendizaje automático
 
@@ -116,25 +165,8 @@ flowchart LR
     H --> K[Resultados reproducibles<br/>métricas, auditoría y hashes]
     I --> K
     J --> K
+    L[Ingesta CSV de dominios<br/>biología, economía, …] --> G
 ```
-
----
-
-## Ingesta de nuevos dominios (sin romper la ontología)
-
-La ontología de 78 nodos es una **bóveda bancaria**: no se modifican nodos ni reglas core. Para alinear conceptos de biología, economía, sociología u otras disciplinas se usa la interfaz de ingesta guiada:
-
-```bash
-python scripts/importar_datos_personalizados.py \
-    --input datasets/ingestion/templates/biologia_depredador_presa.csv \
-    --output datasets/ingestion/aligned/biologia_aligned.csv
-```
-
-- **Plantillas prellenadas:** biología (depredador-presa), economía (transacción de alto riesgo) y plantilla genérica en [`datasets/ingestion/templates/`](datasets/ingestion/templates/).
-- **Catálogo de dominios:** mapeos conceptuales listos para biólogos, economistas y otras profesiones en [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
-- **Documentación de la carpeta:** [`datasets/ingestion/README.md`](datasets/ingestion/README.md).
-
-El script valida que cada `mapped_node_id` exista entre los 78 nodos canónicos, comprueba consistencia de perspectiva/fase/posición y genera un informe JSON de alineación.
 
 ---
 
@@ -146,7 +178,7 @@ El script valida que cada `mapped_node_id` exista entre los 78 nodos canónicos,
 - **RDF/OWL + SHACL:** axiomas, dominios/rangos y restricciones para estructura, espejo, creación y secuencias.
 - **Datos:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390).
 - **Experimentos:** PI-HGAT-T, ablaciones, reglas deterministas, regresión logística y MLP, con particiones comparables.
-- **Ingesta externa:** plantillas y script de alineación a la ontología canónica sin modificar el core.
+- **Ingesta de dominios (funcionalidad central):** plantillas CSV, script de alineación y catálogo interdisciplinario para conectar biólogos, economistas y otras profesiones sin modificar el core.
 - **Reproducibilidad:** pruebas, informe de auditoría, captura de entorno, manifiesto SHA-256 y empaquetado reproducible.
 
 ---
