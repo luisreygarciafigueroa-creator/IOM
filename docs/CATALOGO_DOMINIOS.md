@@ -33,9 +33,9 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 
 ```csv
 external_id,external_label,mapped_node_id,perspective,phase,position,notes
-bio_pred_01,lobo,T04_adv_P0,Ind,adv,left,"Depredador como singularidad en fase de avance"
-bio_prey_01,ciervo,T04_ret_P2,Ind,ret,right,"Presa como singularidad reflejada"
-bio_inter_01,depredacion,T04_adv_P1,D,adv,center,"Relación dual que crea el centro de la fase opuesta"
+bio_pred_01,lobo,T03_adv_P0,Ind,adv,left,"Depredador como singularidad en fase de avance (muerte/artificial/vida)"
+bio_prey_01,ciervo,T03_ret_P2,Ind,ret,right,"Presa como singularidad reflejada"
+bio_inter_01,depredacion,T03_adv_P1,D,adv,center,"Relación dual que crea el centro de la fase opuesta"
 ```
 
 **Uso de vectores de involución**: un biólogo puede modelar la extinción local como un paso del vector `Invol` (disolución) y la recolonización como un paso del vector `Evol`.
@@ -59,10 +59,10 @@ bio_inter_01,depredacion,T04_adv_P1,D,adv,center,"Relación dual que crea el cen
 
 ```csv
 external_id,external_label,mapped_node_id,perspective,phase,position,notes
-econ_agent_01,trader_A,T07_adv_P0,Ind,adv,left,"Agente como singularidad"
-econ_asset_01,derivado_X,T07_ret_P2,Ind,ret,right,"Activo como singularidad reflejada"
-econ_risk_01,exposicion,T07_adv_P1,D,adv,center,"Riesgo como dualidad mediadora"
-econ_mkt_01,mercado,T07_ret_P1,Tot,ret,center,"Mercado como totalidad"
+econ_agent_01,trader_A,T09_adv_P0,Ind,adv,left,"Agente como singularidad (singularidad/tiempo/infinito)"
+econ_asset_01,derivado_X,T09_ret_P2,Ind,ret,right,"Activo como singularidad reflejada"
+econ_risk_01,exposicion,T09_adv_P1,D,adv,center,"Riesgo como dualidad mediadora"
+econ_mkt_01,mercado,T09_ret_P1,Tot,ret,center,"Mercado como totalidad"
 ```
 
 Las tres tríadas más útiles para economistas suelen ser las de *singularidad/tiempo/infinito*, *hardware/virtual/software* (por analogía con instrumentos) y *muerte/artificial/vida* (ciclo de creación-destrucción de valor).
@@ -73,10 +73,11 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
 
 | Disciplina | Fenómeno típico | Tríada sugerida | Vector dominante |
 |------------|-----------------|-----------------|------------------|
-| Sociología | Cambio de norma social | carácter / subconsciente / personalidad | Invol → Evol |
+| Sociología | Cambio de norma social | caracter / subconsciente / personalidad | Invol → Evol |
 | Física / sistemas complejos | Transición de fase | oscuridad / consciencia / luz | Evol / Invol |
 | Psicología | Insight / represión | imaginación / inconsciente / memoria | Invol |
 | Ingeniería de software | Refactoring / deuda técnica | hardware / virtual / software | Invol (deuda) → Evol (refactor) |
+| IA / cognición artificial | Transición animal→humano→IA | animal / humano / IA | Evol / Invol |
 
 ---
 
