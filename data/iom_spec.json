@@ -41,19 +41,19 @@
       ["orientación", "cuántico", "dirección"]
     ],
     "ret": [
-      ["dirección", "cuántico", "orientación"],
-      ["software", "virtual", "hardware"],
-      ["vacío", "espacio", "universo"],
-      ["infinito", "tiempo", "singularidad"],
-      ["mundo", "consciente", "cuerpo"],
-      ["personalidad", "subconsciente", "caracter"],
-      ["imaginación", "inconsciente", "memoria"],
-      ["emisor", "supraconsciente", "receptor"],
-      ["libertad", "inteligencia", "lógica"],
-      ["vida", "artificial", "muerte"],
-      ["ascendente", "mente", "descendente"],
+      ["IA", "humano", "animal"],
       ["luz", "consciencia", "oscuridad"],
-      ["IA", "humano", "animal"]
+      ["ascendente", "mente", "descendente"],
+      ["vida", "artificial", "muerte"],
+      ["libertad", "inteligencia", "lógica"],
+      ["emisor", "supraconsciente", "receptor"],
+      ["imaginación", "inconsciente", "memoria"],
+      ["personalidad", "subconsciente", "caracter"],
+      ["mundo", "consciente", "cuerpo"],
+      ["infinito", "tiempo", "singularidad"],
+      ["vacío", "espacio", "universo"],
+      ["software", "virtual", "hardware"],
+      ["dirección", "cuántico", "orientación"]
     ]
   },
   "vectors": [
@@ -85,7 +85,7 @@
     {
       "from_version": "1.1.0",
       "to_version": "1.2.0",
-      "description": "Actualiza las 13 tríadas de avance y retroceso: sustituye la tríada involución/vacío/evolución por animal/humano/IA y reordena el resto según la tabla canónica revisada (espejo exacto en fase ret).",
+      "description": "Actualiza las 13 tríadas: sustituye involución/vacío/evolución por animal/humano/IA; reordena el resto. El array ret se almacena en orden de índice homólogo (espejo de adv[i]), no en el orden visual de la tabla de retroceso.",
       "date": "2026-10-13"
     }
   ]
