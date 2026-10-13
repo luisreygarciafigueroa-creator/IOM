@@ -18,9 +18,11 @@ Formato oficial de anotaciones (annotations_template.json):
 
 Reglas estadísticas:
   - null / ausente ≠ etiqueta "unsure".
-  - Solo se incluyen en Fleiss' kappa los ítems con ≥ min_annotators
-    respuestas no nulas.
-  - "unsure" es una respuesta legítima del anotador, no un relleno.
+  - Fleiss' kappa exige el **mismo conjunto de anotadores** con respuesta
+    no nula en **todos** los ítems incluidos (k fijo). No se trunca.
+  - Si un ítem tiene un subconjunto distinto de respondentes, se excluye
+    del kappa y se reporta en incomplete/heterogeneous.
+  - "unsure" es una respuesta legítima, no un relleno.
 
 Uso:
     python scripts/score_independent_eval.py
@@ -79,10 +81,7 @@ def fleiss_kappa(ratings: list[list[str]], categories: list[str]) -> float:
 
 
 def parse_template_format(data: dict) -> tuple[list[str], dict[str, dict[str, str | None]]]:
-    """Formato oficial: annotators=[ids], items=[{id, annotations: {A: label|null}}].
-
-    Devuelve (annotator_ids, {pair_id: {annotator_id: label|None}}).
-    """
+    """Formato oficial: annotators=[ids], items=[{id, annotations: {A: label|null}}]."""
     annotator_ids = list(data.get("annotators") or [])
     if not annotator_ids:
         raise ValueError("Campo 'annotators' vacío o ausente")
@@ -103,7 +102,7 @@ def parse_template_format(data: dict) -> tuple[list[str], dict[str, dict[str, st
         for aid in annotator_ids:
             raw = anns.get(aid)
             if raw is None:
-                pair_map[aid] = None  # ausente
+                pair_map[aid] = None
             elif isinstance(raw, str) and raw.strip() == "":
                 pair_map[aid] = None
             elif raw in VALID_LABELS:
@@ -118,13 +117,11 @@ def parse_template_format(data: dict) -> tuple[list[str], dict[str, dict[str, st
 
 
 def parse_legacy_formats(data: Any) -> tuple[list[str], dict[str, dict[str, str | None]]]:
-    """Formatos alternativos (compatibilidad)."""
     by_pair: dict[str, dict[str, str | None]] = defaultdict(dict)
     annotator_ids: list[str] = []
 
     if isinstance(data, dict) and "annotators" in data:
         anns = data["annotators"]
-        # Lista de objetos {id, labels: {pair: label}}
         if isinstance(anns, list) and anns and isinstance(anns[0], dict) and "labels" in anns[0]:
             for ann in anns:
                 aid = str(ann.get("id") or ann.get("name") or f"A{len(annotator_ids)+1}")
@@ -147,8 +144,7 @@ def parse_legacy_formats(data: Any) -> tuple[list[str], dict[str, dict[str, str 
 
     raise ValueError(
         "Formato de anotaciones no reconocido. "
-        "Usa el formato de annotations_template.json "
-        "(annotators: [ids], items: [{id, annotations: {A: label|null}}])."
+        "Usa el formato de annotations_template.json."
     )
 
 
@@ -157,9 +153,9 @@ def load_annotations(path: Path) -> tuple[list[str], dict[str, dict[str, str | N
     meta = {
         "status": data.get("status") if isinstance(data, dict) else None,
         "description": data.get("description") if isinstance(data, dict) else None,
+        "evaluation_mode": data.get("evaluation_mode") if isinstance(data, dict) else None,
     }
     if isinstance(data, dict) and isinstance(data.get("items"), list):
-        # Formato oficial de la plantilla
         annotator_ids, by_pair = parse_template_format(data)
     else:
         annotator_ids, by_pair = parse_legacy_formats(data)
@@ -174,7 +170,6 @@ def load_rule_reference() -> dict[str, str]:
     if isinstance(raw, list):
         return {item["id"]: item.get("rule_label") for item in raw if "id" in item}
     if isinstance(raw, dict):
-        # {id: {rule_label, notes}} o {id: label}
         out = {}
         for k, v in raw.items():
             if k in ("labels",):
@@ -203,7 +198,7 @@ def main() -> int:
         "--min-annotators",
         type=int,
         default=3,
-        help="Mínimo de respuestas no nulas por ítem para incluirlo en kappa (default 3)",
+        help="Número exacto de anotadores con respuesta no nula requerido por ítem (default 3)",
     )
     args = parser.parse_args()
 
@@ -217,58 +212,110 @@ def main() -> int:
         print(f"ERROR de formato: {exc}", file=sys.stderr)
         return 1
 
-    # Separar presentes vs ausentes
-    complete_pairs: dict[str, list[str]] = {}
+    k_required = args.min_annotators
+    if k_required < 2:
+        print("ERROR: --min-annotators debe ser ≥ 2", file=sys.stderr)
+        return 1
+
+    # Por ítem: quién respondió y con qué etiqueta (orden fijo de annotator_ids)
     incomplete_pairs: dict[str, dict] = {}
+    respondent_sets: dict[str, tuple[str, ...]] = {}
+    labels_by_pair_ordered: dict[str, list[str]] = {}
     unsure_counts: Counter = Counter()
     present_counts: Counter = Counter()
 
     for pid, ann_map in by_pair.items():
-        present = []
+        respondents = []
+        labels_ordered = []
         missing = []
         for aid in annotator_ids:
             lab = ann_map.get(aid)
             if lab is None:
                 missing.append(aid)
             else:
-                present.append(lab)
+                respondents.append(aid)
+                labels_ordered.append(lab)
                 present_counts[lab] += 1
                 if lab == "unsure":
                     unsure_counts[pid] += 1
-        if len(present) >= args.min_annotators:
-            # Para kappa necesitamos exactamente k respuestas; si hay más anotadores
-            # de los requeridos, usamos solo los que respondieron (mismo k por ítem
-            # solo si todos los ítems completos tienen el mismo número).
-            complete_pairs[pid] = present
+
+        if len(respondents) == k_required:
+            respondent_sets[pid] = tuple(respondents)
+            labels_by_pair_ordered[pid] = labels_ordered
         else:
             incomplete_pairs[pid] = {
-                "n_present": len(present),
+                "n_present": len(respondents),
                 "n_missing": len(missing),
                 "missing_annotators": missing,
-                "present_labels": present,
+                "present_annotators": respondents,
+                "present_labels": labels_ordered,
+                "reason": (
+                    f"se requieren exactamente {k_required} respuestas no nulas; "
+                    f"hay {len(respondents)}"
+                ),
             }
 
     status = meta.get("status") or "unknown"
     n_total = len(by_pair)
-    n_complete = len(complete_pairs)
-    n_incomplete = len(incomplete_pairs)
 
-    if n_complete == 0:
+    # Agrupar ítems por el conjunto exacto de respondentes
+    by_respondent_set: dict[tuple[str, ...], list[str]] = defaultdict(list)
+    for pid, rset in respondent_sets.items():
+        by_respondent_set[rset].append(pid)
+
+    # Elegir el conjunto de respondentes más frecuente con tamaño k_required
+    # Solo se calcula kappa sobre ítems que comparten EXACTAMENTE el mismo conjunto.
+    kappa_eligible_ids: list[str] = []
+    kappa_annotators: tuple[str, ...] | None = None
+    heterogeneous: dict[str, dict] = {}
+
+    if by_respondent_set:
+        # Preferir el set con más ítems; en empate, el primero en orden lexicográfico del tuple
+        best_set = max(
+            by_respondent_set.keys(),
+            key=lambda s: (len(by_respondent_set[s]), s),
+        )
+        kappa_eligible_ids = sorted(by_respondent_set[best_set])
+        kappa_annotators = best_set
+
+        for rset, pids in by_respondent_set.items():
+            if rset == best_set:
+                continue
+            for pid in pids:
+                heterogeneous[pid] = {
+                    "respondents": list(rset),
+                    "n_present": len(rset),
+                    "reason": (
+                        "conjunto de anotadores distinto al usado para kappa "
+                        f"({list(best_set)}); no se trunca ni se mezcla"
+                    ),
+                    "present_labels": labels_by_pair_ordered[pid],
+                }
+
+    n_kappa = len(kappa_eligible_ids)
+    n_incomplete = len(incomplete_pairs)
+    n_heterogeneous = len(heterogeneous)
+
+    if n_kappa == 0:
         report = {
             "status": status,
+            "evaluation_mode": meta.get("evaluation_mode"),
             "n_pairs_total": n_total,
-            "n_pairs_complete": 0,
+            "n_pairs_in_kappa": 0,
             "n_pairs_incomplete": n_incomplete,
-            "min_annotators_required": args.min_annotators,
+            "n_pairs_heterogeneous_respondent_set": n_heterogeneous,
+            "min_annotators_required": k_required,
+            "kappa_annotators": None,
             "fleiss_kappa": None,
             "majority_labels": {},
             "posthoc_agreement_with_rule_reference": None,
             "incomplete_detail": incomplete_pairs,
+            "heterogeneous_detail": heterogeneous,
             "note": (
-                "Sin ítems con ≥{0} anotaciones no nulas. "
-                "Protocolo listo; esperando recolección humana. "
-                "null/ausente ≠ 'unsure'."
-            ).format(args.min_annotators),
+                f"Sin ítems con exactamente {k_required} respuestas no nulas "
+                "del mismo conjunto de anotadores. No se trunca. "
+                "null/ausente ≠ 'unsure'. Protocolo listo; esperando recolección."
+            ),
         }
         out = ROOT / "experiments" / "results" / "independent_eval_scores.json"
         out.parent.mkdir(parents=True, exist_ok=True)
@@ -277,37 +324,38 @@ def main() -> int:
         print(f"Escrito: {out}")
         return 0
 
-    # Verificar que todos los ítems completos tienen el mismo número de respuestas
-    lengths = {len(v) for v in complete_pairs.values()}
-    if len(lengths) > 1:
+    assert kappa_annotators is not None
+    k = len(kappa_annotators)
+    categories = ["none", "mirrorOf", "creates", "unsure"]
+    ratings = [labels_by_pair_ordered[pid] for pid in kappa_eligible_ids]
+
+    # Garantía: mismo k y mismo orden de anotadores
+    if any(len(r) != k for r in ratings):
         print(
-            "ADVERTENCIA: los ítems completos tienen distinto número de anotadores. "
-            "Fleiss' kappa requiere k fijo; se usará el mínimo común truncando.",
+            "ERROR interno: longitudes inconsistentes tras filtrado; no se calcula kappa.",
             file=sys.stderr,
         )
-        k = min(lengths)
-        ratings_map = {pid: labs[:k] for pid, labs in complete_pairs.items()}
-    else:
-        k = lengths.pop()
-        ratings_map = complete_pairs
-
-    categories = ["none", "mirrorOf", "creates", "unsure"]
-    ordered_ids = sorted(ratings_map)
-    ratings = [ratings_map[pid] for pid in ordered_ids]
+        return 1
 
     kappa = fleiss_kappa(ratings, categories)
 
     majority: dict[str, str] = {}
     unanimous = 0
-    for pid, labs in ratings_map.items():
+    for pid in kappa_eligible_ids:
+        labs = labels_by_pair_ordered[pid]
         cnt = Counter(labs)
         maj_lab, maj_n = cnt.most_common(1)[0]
         majority[pid] = maj_lab
         if maj_n == len(labs):
             unanimous += 1
 
+    # Mayoría también para ítems fuera de kappa (informativo, no entra en kappa)
+    majority_all = dict(majority)
+    for pid, labs in labels_by_pair_ordered.items():
+        if pid not in majority_all and labs:
+            majority_all[pid] = Counter(labs).most_common(1)[0][0]
+
     rule_ref = load_rule_reference()
-    # Post-hoc solo sobre ítems con rule_label definido (no "unspecified")
     comparable = {
         pid: maj
         for pid, maj in majority.items()
@@ -320,24 +368,32 @@ def main() -> int:
 
     report = {
         "status": status,
+        "evaluation_mode": meta.get("evaluation_mode"),
         "n_pairs_total": n_total,
-        "n_pairs_complete": n_complete,
+        "n_pairs_in_kappa": n_kappa,
         "n_pairs_incomplete": n_incomplete,
-        "min_annotators_required": args.min_annotators,
-        "n_annotators_per_complete_item": k,
+        "n_pairs_heterogeneous_respondent_set": n_heterogeneous,
+        "min_annotators_required": k_required,
+        "kappa_annotators": list(kappa_annotators),
+        "n_annotators_per_kappa_item": k,
         "fleiss_kappa": None if (isinstance(kappa, float) and kappa != kappa) else round(kappa, 4),
-        "unanimous_fraction": round(unanimous / n_complete, 4) if n_complete else None,
-        "majority_labels": majority,
+        "unanimous_fraction": round(unanimous / n_kappa, 4) if n_kappa else None,
+        "majority_labels_in_kappa": majority,
+        "majority_labels_all_with_any_response": majority_all,
         "label_distribution_present": dict(present_counts),
         "unsure_count_by_pair": dict(unsure_counts),
         "posthoc_agreement_with_rule_reference": agreement_with_rules,
         "n_posthoc_comparable": len(comparable),
         "incomplete_detail": incomplete_pairs if incomplete_pairs else {},
+        "heterogeneous_detail": heterogeneous if heterogeneous else {},
+        "policy": (
+            "Fleiss' kappa solo sobre ítems con exactamente k anotadores no nulos "
+            "y el mismo conjunto de respondentes. No se trunca ni se rellena. "
+            "null ≠ unsure."
+        ),
         "note": (
-            "Fleiss' kappa y mayoría son el objetivo primario. "
-            "posthoc_agreement_with_rule_reference excluye rule_label=unspecified "
-            "y es solo post-hoc (no valida el marco empíricamente). "
-            "null/ausente no se sustituye por 'unsure'."
+            "Fleiss' kappa y mayoría (sobre el panel kappa) son el objetivo primario. "
+            "posthoc_agreement_with_rule_reference excluye unspecified y es solo post-hoc."
         ),
     }
 

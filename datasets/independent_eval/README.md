@@ -1,59 +1,51 @@
-# Evaluación independiente (interpretación de relaciones)
+# Evaluación independiente (capa C)
 
-Este conjunto **no** es una partición del generador de 390 candidatos. Incluye controles, casos fuera de reglas, cross-tríada, conceptos nuevos y casos ambiguos.
+**Estado:** protocolo v1.3.0 listo; anotaciones humanas **pendientes**. No hay resultados de acuerdo inter-anotador.
 
-**Estado actual:** protocolo v1.2.0 listo; anotaciones humanas **pendientes** (`status: pending_human_collection`). No hay resultados de acuerdo inter-anotador todavía.
+## Dos modos (no confundir)
 
-## Materiales (separación ciega)
+| Modo | Archivo de pares | Qué se entrega al anotador | Pregunta |
+|---|---|---|---|
+| **interpretation_independent** (por defecto) | `annotator_pairs.csv` | Solo conceptos + contexto neutral; **sin** definiciones de reglas ni fase/posición | ¿Hay interpretación compartida *sin* enseñar IOM? |
+| **rule_application** | `annotator_pairs_rule_application.csv` | Definiciones de `RELACIONES_OPERATIVAS.md` + contexto con fase/posición (sin etiqueta gold) | ¿Se aplican las reglas de forma consistente *una vez enseñadas*? |
 
-| Archivo | Audiencia | Contenido |
-|---|---|---|
-| **`annotator_pairs.csv`** | Anotadores | id, etiquetas de conceptos, contexto **neutral** (sin pistas de clasificación) |
-| **`annotations_template.json`** | Anotadores / recolector | Hoja de respuestas (`null` = no respondido) |
-| **`PROTOCOL.json`** | Anotadores / recolector | Instrucciones, cegamiento, outcomes |
-| `independent_pairs.csv` | **Solo análisis** | kind, node_ids, contexto técnico |
-| `rule_reference.json` | **Solo análisis** | Etiquetas de regla (ocultas a anotadores) |
+Ambos modos usan la misma hoja de respuestas (`annotations_template.json`). Indica el modo en el campo opcional `evaluation_mode` del JSON rellenado.
 
-## Formato de respuestas (oficial)
+## Materiales
 
-```json
-{
-  "annotators": ["A1", "A2", "A3"],
-  "status": "pending_human_collection",
-  "items": [
-    {
-      "id": "NR01",
-      "annotations": {"A1": null, "A2": null, "A3": null},
-      "free_text": {"A1": "", "A2": "", "A3": ""}
-    }
-  ]
-}
-```
+| Archivo | Audiencia |
+|---|---|
+| `annotator_pairs.csv` | Anotadores (modo interpretación) |
+| `annotator_pairs_rule_application.csv` | Anotadores (modo aplicación de reglas) |
+| `annotations_template.json` | Respuestas |
+| `PROTOCOL.json` | Instrucciones |
+| `independent_pairs.csv` / `rule_reference.json` | **Solo análisis** |
 
-- `null` → el anotador **aún no** evaluó el caso (dato ausente).
-- `"unsure"` → el anotador evaluó y **no puede decidir** con la definición.
-- Etiquetas válidas: `none` | `mirrorOf` | `creates` | `unsure`.
-
-## Scoring
+## Scoring (sin truncar)
 
 ```bash
 python scripts/score_independent_eval.py
 python scripts/score_independent_eval.py --min-annotators 3
 ```
 
-El script:
-1. Lee el formato de la plantilla (y formatos legacy).
-2. **No** sustituye `null` por `unsure`.
-3. Solo calcula Fleiss' kappa sobre ítems con ≥3 respuestas no nulas.
-4. Reporta ítems incompletos por separado.
-5. La coincidencia con `rule_reference` es **post-hoc** y excluye `unspecified`.
+- `null` ≠ `unsure`.
+- Fleiss' kappa **solo** sobre ítems con exactamente *k* respuestas no nulas del **mismo conjunto** de anotadores.
+- Si un ítem tiene otro subconjunto de respondentes, se excluye del kappa (no se recortan las primeras respuestas).
 
-## Uso legítimo del lenguaje
+## Dependencias de la suite completa
+
+`tests/test_ontology.py` requiere `pyshacl` (y `rdflib`). Instalar con:
+
+```bash
+python -m pip install -r requirements-lock.txt
+```
+
+Sin esas dependencias, esas pruebas se omiten con mensaje claro; **no** implica fallo de la ontología. Lean se verifica con `lake build`.
+
+## Lenguaje legítimo
 
 | Legítimo | No legítimo |
 |---|---|
-| «Protocolo de anotación ciega preparado; recolección pendiente» | «El marco está validado por anotadores humanos» |
-| «Acuerdo inter-anotador (kappa) sobre definiciones» | «Accuracy del modelo sobre independent_eval» |
-| «Mapa de desacuerdos y tasa de unsure» | «Los anotadores confirman las reglas SHACL» |
-
-Las cifras de accuracy de PI-HGAT-T en `experiments/results/` son **recuperación de relaciones generadas por reglas** (capa B), no evaluación de este protocolo (capa C).
+| «Protocolo listo; recolección pendiente» | «IOM validado por humanos» |
+| «Kappa de acuerdo en modo X» | «Accuracy del modelo sobre independent_eval» |
+| «Consistencia al aplicar reglas enseñadas» | «Validez universal del marco» |
