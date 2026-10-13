@@ -1,7 +1,8 @@
 {
   "title": "Protocolo de anotación independiente (ciego)",
-  "version": "1.0.0",
-  "purpose": "Estudiar la interpretación humana de relaciones estructurales del marco I.O. sobre pares que incluyen controles canónicos, casos fuera de las cuatro reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado.",
+  "version": "1.1.0",
+  "purpose": "Estudiar la interpretación humana de relaciones estructurales del marco I.O. sobre pares que incluyen controles canónicos, casos fuera de las cuatro reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado. Las etiquetas de prueba NO se derivan del generador de relation_candidates.csv.",
+  "epistemological_status": "Capa C — validación empírica / interpretabilidad (véase docs/DELIMITACION_EPISTEMOLOGICA.md). Distinta de la recuperación sintética de reglas (capa B).",
   "blinding": [
     "Los anotadores no reciben rule_label ni consensus previo.",
     "No se muestra experiments/results ni relation_candidates gold.",
@@ -15,7 +16,7 @@
     "No consultar a otros anotadores hasta cerrar la ronda.",
     "Registrar en free_text una justificación breve (≤2 frases)."
   ],
-  "recruitment": "≥3 anotadores independientes, sin participación en la generación del gold JSON.",
+  "recruitment": "≥3 anotadores independientes, sin participación en la generación del gold JSON ni en el entrenamiento de PI-HGAT-T.",
   "metrics_to_publish": [
     "acuerdo por par (mayoría / unánime)",
     "Fleiss' kappa global y por kind",
@@ -23,5 +24,12 @@
     "coincidencia con rule_reference (solo post-hoc, no es objetivo primario)",
     "tasa de 'unsure' por kind"
   ],
+  "separation_from_synthetic_eval": [
+    "Los pares de independent_pairs.csv no son una partición de relation_candidates.csv.",
+    "Incluyen out_of_rules, cross_triad, new_concept y ambiguous — etiquetas que el oracle SHACL no define como gold de entrenamiento.",
+    "PI-HGAT-T no debe reentrenarse sobre estos pares para reportar 'validación externa'.",
+    "Un script de scoring post-hoc puede comparar anotaciones humanas vs rule_reference; ese score no sustituye el acuerdo inter-anotador."
+  ],
+  "scoring_script": "scripts/score_independent_eval.py",
   "note": "Los ítems detallados están en independent_pairs.csv; rule_label solo en rule_reference.json (oculto a anotadores)."
 }
