@@ -6,6 +6,18 @@ Este informe describe un marco verificable de extremo a extremo. El documento de
 
 Las hipótesis estructurales del marco se someten a pruebas formales (Lean, OWL/SHACL) y a evaluación de **recuperación de relaciones generadas por reglas** (validación cruzada, ablaciones, baselines). La interpretación humana independiente se estudia en `datasets/independent_eval/`.
 
+## Delimitación epistemológica
+
+Tres capas no intercambiables (detalle en [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)):
+
+| Capa | Artefactos | Afirmación legítima |
+|---|---|---|
+| **A. Formal** | Lean 4, teoremas sin `sorry` | Corrección *dentro del sistema formal* |
+| **B. Sintética** | SHACL, CSV canónicos, PI-HGAT-T, baselines | Recuperabilidad de relaciones *generadas por reglas* |
+| **C. Empírica** | `independent_eval/`, `external_eval/`, anotación humana ciega | Interpretabilidad y acuerdo inter-anotador sobre datos *no* derivados del generador |
+
+Las métricas de la capa B **no** se interpretan como validación empírica del marco en el mundo real.
+
 ## Ejemplo narrativo de anclaje: depredador–presa y mercado
 
 Para aterrizar las cinco perspectivas antes de la formalización, consideremos dos escenarios:
@@ -43,7 +55,7 @@ RDF conserva por separado el índice visual, el eje, la etiqueta y la flecha. So
 
 ## Ontología y restricciones
 
-`scripts/generate_ontology.py` consume la especificación JSON y genera `ontology/io_ontology.ttl` más tres CSV. El grafo declara vocabulario OWL: clases, propiedades de objeto y de datos, dominios, rangos, propiedades funcionales y simetría de `io:mirrorOf`. `scripts/validate_shacl.py` verifica axiomas esperados, ejecuta expansión OWL RL y evalúa `ontology/io_shapes.ttl`.
+`scripts/generate_ontology.py` consume la especificación JSON y genera `ontology/io_ontology.ttl` más tres CSV. El grafo declara vocabulario OWL: clases, propiedades de objeto y de datos, dominios, rangos, propiedades funcionales y simetría de `io:mirrorOf`. `scripts/validate_shacl.py` verifica axiomas esperados, ejecuta expansión OWL RL y evalúa `ontology/io_shapes.ttl`. La sincronización spec↔CSV↔ontología se verifica con `scripts/sync_spec_artifacts.py --check`.
 
 ## Ingesta de dominios personalizados (propuesta de valor central)
 
@@ -53,12 +65,21 @@ La ontología de 78 nodos es inmutable. La herramienta `scripts/importar_datos_p
 
 La Fase 1 (Lean + SHACL + datasets deterministas) demuestra *corrección estructural* en un universo sin ruido. La Fase 2 (PI-HGAT-T, ablaciones, baselines) responde a una pregunta complementaria: **¿las relaciones generadas por reglas siguen siendo recuperables cuando un modelo inductivo solo ve atributos parciales y particiones leave-one-triad-out?**
 
-Esta validación empírica es útil porque:
+Esta validación (capa B) es útil porque:
 
 1. **Demuestra aprendibilidad.** La recuperación perfecta (accuracy/F1 = 1.0) bajo leave-one-triad-out muestra que la ontología no es un artefacto ad hoc: un modelo puede reconstruir `mirrorOf` y `creates` a partir de fase y posición.
 2. **Cuantifica robustez estructural.** Las ablaciones (sin fase → accuracy 0.60; sin posición → ~0.64) revelan la contribución de cada factor y los puntos de fragilidad ante información incompleta.
-3. **Puentea lo determinista y lo probabilístico.** Fase 1 produce el gold determinista; Fase 2 mide si un learner generaliza ese gold. El mismo pipeline admite, en extensiones, CSV de dominios externos con su ruido inherente, permitiendo evaluar robustez frente a perturbaciones del mundo real sin alterar la bóveda formal.
-4. **No sustituye la validación externa.** Las métricas miden recuperabilidad de relaciones *generadas por reglas*, no la verdad del marco sobre datos independientes. Para eso existen `datasets/independent_eval/` y `datasets/external_eval/`.
+3. **Puentea lo determinista y lo probabilístico.** Fase 1 produce el gold determinista; Fase 2 mide si un learner generaliza ese gold. El mismo pipeline admite CSV de dominios externos con ruido, sin alterar la bóveda formal.
+4. **No sustituye la validación externa (capa C).** Las métricas miden recuperabilidad de relaciones *generadas por reglas*, no la verdad del marco sobre datos independientes. Para eso existen `datasets/independent_eval/` y `datasets/external_eval/`.
+
+## Auditoría de las métricas perfectas (100 %)
+
+Investigación reproducible (`scripts/audit_perfect_metrics.py`, [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)):
+
+1. **Independencia LOO:** ninguna pareja de la tríada held-out aparece en entrenamiento; el modelo no recibe índice de tríada ni etiqueta léxica.
+2. **Función determinista:** la etiqueta gold es función exclusiva de `(fase_src, pos_src, fase_tgt, pos_tgt)`, idéntica en las 13 tríadas.
+3. **Consecuencia:** en cada fold, el 100 % de los pares de prueba es recuperable por lookup de features visto en train. El oracle de reglas y el MLP también alcanzan 1.0.
+4. **Implicación:** la arquitectura GAT no es necesaria para este corpus sintético; el 100 % demuestra recuperabilidad estructural, no superioridad del modelo ni validación empírica del marco.
 
 ## Experimento PI-HGAT-T (recuperación de relaciones por reglas)
 
@@ -105,10 +126,25 @@ Las métricas miden la **recuperación de relaciones estructurales generadas por
 
 La puntuación perfecta del modelo completo y del oracle SHACL confirma la **recuperación de relaciones estructurales generadas por reglas** (`io:mirrorOf` y `io:creates`) a partir de fase y posición bajo leave-one-triad-out. Estas cifras **no** constituyen por sí solas una validación empírica del marco sobre datos del mundo real; para interpretación humana independiente véase `datasets/independent_eval/`.
 
-## Evaluación independiente
+## Evaluación independiente (capa C)
 
-`datasets/independent_eval/` define pares fuera de las cuatro reglas, conceptos nuevos y casos ambiguos, con protocolo de anotación **ciega** por anotadores humanos independientes y publicación de desacuerdos y métricas de acuerdo.
+`datasets/independent_eval/` define pares fuera de las cuatro reglas, conceptos nuevos y casos ambiguos, con protocolo de anotación **ciega** por anotadores humanos independientes (PROTOCOL.json v1.1.0). Las etiquetas de prueba **no** se derivan de `relation_candidates.csv`. El scoring post-hoc (`scripts/score_independent_eval.py`) publica Fleiss' kappa y acuerdo mayoritario; la coincidencia con `rule_reference` es solo post-hoc.
 
 ## Reproducción y verificación
 
-Sigue [`REPRODUCCION.md`](REPRODUCCION.md). La CI compila Lean, regenera los artefactos, ejecuta las pruebas (incluido el puente formal), valida OWL RL/SHACL, ejecuta PI-HGAT-T, compara baselines y genera la auditoría automática.
+```bash
+lake build
+python scripts/verify_e2e.py          # pipeline Python completo
+# o paso a paso:
+python scripts/validate_spec.py
+python scripts/sync_spec_artifacts.py --check
+python scripts/generate_ontology.py
+python -m unittest discover -s tests -v
+python scripts/validate_shacl.py
+python experiments/pi_hgat_t.py
+python experiments/baselines.py
+python scripts/audit_perfect_metrics.py
+python scripts/generate_audit_report.py
+```
+
+La CI compila Lean, regenera artefactos, ejecuta pruebas (incluidas property-based y auditoría de métricas), valida OWL RL/SHACL, ejecuta experimentos y genera la auditoría automática. Véase [`REPRODUCCION.md`](REPRODUCCION.md).

@@ -1,10 +1,10 @@
 # IOM — de reglas formales a evaluación reproducible con modelos
 
-**Resumen ejecutivo.** El marco IOM modela la **evolución y la disolución de sistemas complejos** —desde redes ecológicas y ciclos de mercado hasta transiciones cognitivas o de software— mediante cinco perspectivas interrelacionadas: Individualidad, Dualidad, Totalidad, Evolución e Involución. No es un catálogo de etiquetas: es una arquitectura formal que genera relaciones deterministas (`mirrorOf`, `creates`) a partir de 13 tríadas y cuatro secuencias vectoriales, y que puede verificarse matemáticamente (Lean) y someterse a pruebas empíricas de recuperación (modelos de machine learning).
+**Resumen ejecutivo.** El marco IOM modela la **evolución y la disolución de sistemas complejos** —desde redes ecológicas y ciclos de mercado hasta transiciones cognitivas o de software— mediante cinco perspectivas interrelacionadas: Individualidad, Dualidad, Totalidad, Evolución e Involución. No es un catálogo de etiquetas: es una arquitectura formal que genera relaciones deterministas (`mirrorOf`, `creates`) a partir de 13 tríadas y cuatro secuencias vectoriales, y que puede verificarse matemáticamente (Lean) y someterse a pruebas de recuperación (modelos de machine learning).
 
-El marco se presenta como una **arquitectura diseñada para clasificar y predecir la evolución de sistemas complejos**, demostrada formalmente en Lean 4 (teoremas sin `sorry` ni `admit`) y evaluada empíricamente mediante recuperación de relaciones generadas por reglas. Las métricas de los modelos miden recuperabilidad estructural, no validación independiente de la teoría en el mundo exterior.
+El marco se presenta como una **arquitectura diseñada para clasificar y predecir la evolución de sistemas complejos**, demostrada formalmente en Lean 4 (teoremas sin `sorry` ni `admit`) y evaluada mediante recuperación de relaciones generadas por reglas. Las métricas de los modelos miden recuperabilidad estructural (**capa B**), no validación independiente de la teoría en el mundo exterior (**capa C**). Véase [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md).
 
-**Proyecto:** [IOM en GitHub](https://github.com/luisreygarciafigueroa-creator/IOM) · [temas (topics)](https://github.com/luisreygarciafigueroa-creator/IOM)
+**Proyecto:** [IOM en GitHub](https://github.com/luisreygarciafigueroa-creator/IOM)
 
 ---
 
@@ -96,106 +96,79 @@ Después elige la ruta adecuada a tu perfil. Para trabajar fuera del contenedor,
 
 ---
 
-## Dos fases claramente separadas
-
-El repositorio se organiza en **dos bloques lógicos** que no deben confundirse:
+## Dos fases y tres capas epistemológicas
 
 | | **Fase 1 — Motor de reglas formales** | **Fase 2 — Modelado predictivo** |
 |---|---|---|
-| **Naturaleza** | Determinista, deductiva | Empírica, inductiva |
+| **Naturaleza** | Determinista, deductiva | Inductiva sobre datos sintéticos |
+| **Capa** | A (formal) + B (estructural) | B (recuperación sintética) |
 | **Artefactos** | Lean, RDF/OWL, SHACL, CSV canónicos | PI-HGAT-T, baselines, métricas |
-| **Pregunta que responde** | «¿Estas relaciones son estructuralmente válidas según las reglas?» | «¿Un modelo puede recuperar esas relaciones a partir de los datos generados?» |
-| **Scripts principales** | `validate_spec.py`, `generate_ontology.py`, `validate_shacl.py`, `lake build` | `experiments/pi_hgat_t.py`, `experiments/baselines.py` |
+| **Pregunta** | «¿Estas relaciones son válidas según las reglas?» | «¿Un modelo puede recuperar esas relaciones?» |
+
+La **capa C** (validación empírica real) vive en [`datasets/independent_eval/`](datasets/independent_eval/) y [`datasets/external_eval/`](datasets/external_eval/): etiquetas de anotadores humanos, **no** derivadas del generador.
 
 ### Fase 1 — Motor de reglas formales
 
-Adecuado para modificar reglas, revisar propiedades o comprobar los artefactos derivados. La fuente canónica está en [`data/iom_spec.json`](data/iom_spec.json):
-
 ```bash
 python scripts/validate_spec.py
+python scripts/sync_spec_artifacts.py --check
 python scripts/generate_ontology.py
 lake build
 python -m unittest discover -s tests -v
 python scripts/validate_shacl.py
 ```
 
-Lean formaliza operadores, reglas y teoremas; RDF/OWL representa la ontología y SHACL valida restricciones. Para explorar los fundamentos: [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md), [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md) y el documento de referencia [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt).
+### Puente metodológico y auditoría del 100 %
 
-### Puente metodológico: de lo determinista a lo probabilístico
+Las reglas formales demuestran *corrección estructural* sin ruido. El ML pregunta si esas relaciones son recuperables bajo LOO y features parciales.
 
-Una vez que la **Fase 1 garantiza la estructura absoluta de las relaciones** (teoremas Lean + restricciones SHACL + datasets regenerados de forma determinista), la **Fase 2 toma ese universo puramente matemático** y lo somete a aprendizaje automático.
+**Hallazgo de la auditoría** ([`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)): el 100 % de PI-HGAT-T y del MLP se debe a que la etiqueta es una **función determinista de (fase, posición)**, idéntica en las 13 tríadas. LOO es independiente a nivel de tríada, pero la función a aprender es compartida; el oracle de reglas también alcanza 1.0. La arquitectura GAT no es necesaria para este corpus sintético.
 
-**¿Por qué es útil la validación empírica mediante ML?**  
-Las reglas formales demuestran *corrección estructural* en un mundo sin ruido. El aprendizaje automático responde a una pregunta distinta y complementaria: **¿esas mismas relaciones siguen siendo recuperables cuando el modelo solo ve atributos parciales, particiones leave-one-triad-out y, en extensiones futuras, datos alineados de dominios externos con su ruido inherente?**  
-
-- Las ablaciones (sin fase / sin posición) cuantifican la contribución de cada factor estructural y revelan puntos de fragilidad.  
-- La recuperación perfecta bajo leave-one-triad-out demuestra que la ontología es *aprendible* a partir de rasgos mínimos, no un artefacto ad hoc.  
-- El puente entre fases es explícito: Fase 1 produce el gold determinista; Fase 2 mide si un modelo inductivo reconstruye ese gold bajo condiciones de generalización.  
-- Cuando se incorporan CSV de dominios personalizados (biología, economía, etc.), el mismo pipeline permite evaluar robustez frente a perturbaciones del mundo real sin alterar la bóveda formal.
-
-Las métricas **no demuestran el marco en el mundo exterior**; demuestran que las relaciones generadas por reglas son recuperables por aprendizaje automático y, por tanto, que la ontología ofrece una base estable sobre la cual construir evaluaciones empíricas posteriores.
-
-### Fase 2 — Modelado predictivo y aprendizaje automático
-
-Adecuado para reproducir el clasificador, sus ablaciones y los baselines. Ejecuta primero la Fase 1 y luego:
+### Fase 2 — Modelado predictivo
 
 ```bash
 python experiments/pi_hgat_t.py
 python experiments/baselines.py
+python scripts/audit_perfect_metrics.py
 ```
-
-PI-HGAT-T clasifica pares dirigidos como `none`, `mirrorOf` o `creates`, usando validación cruzada leave-one-triad-out. Las etiquetas objetivo provienen de reglas RDF/SHACL explícitas: las métricas evalúan recuperación de relaciones generadas por reglas, **no validación independiente de la teoría**. El protocolo de evaluación humana independiente está separado en [`datasets/independent_eval/`](datasets/independent_eval/); la evaluación externa de reglas, en [`datasets/external_eval/`](datasets/external_eval/).
 
 ---
 
-## Flujo de datos: de las reglas a los modelos
+## Verificación integral (P0)
 
-```mermaid
-flowchart LR
-    A[Marco I.O. de referencia] --> B[Especificación canónica<br/>data/iom_spec.json]
-    B --> C[Reglas y propiedades]
-    C --> D[Lean<br/>teoremas y compilación]
-    C --> E[Generador]
-    E --> F[Ontología RDF/OWL<br/>y restricciones SHACL]
-    E --> G[Datasets CSV<br/>nodos, pasos y candidatos]
-    F --> H[Validación formal/estructural<br/>tests + SHACL]
-    G --> H
-    G --> I[PI-HGAT-T<br/>y ablaciones]
-    G --> J[Baselines<br/>reglas, logística y MLP]
-    H --> K[Resultados reproducibles<br/>métricas, auditoría y hashes]
-    I --> K
-    J --> K
-    L[Ingesta CSV de dominios<br/>biología, economía, …] --> G
+En un entorno limpio con dependencias instaladas:
+
+```bash
+lake build                          # job CI 'lean'
+python scripts/verify_e2e.py        # pipeline Python completo + auditoría
 ```
+
+O paso a paso (equivalente a la CI):
+
+```bash
+python scripts/validate_spec.py
+python scripts/migrate_spec.py --check
+python scripts/sync_spec_artifacts.py --check
+python scripts/generate_ontology.py
+python -m unittest discover -s tests -v
+python scripts/validate_shacl.py
+python experiments/pi_hgat_t.py
+python experiments/baselines.py
+python scripts/audit_perfect_metrics.py
+python scripts/generate_audit_report.py
+```
+
+La CI ejecuta todos estos pasos. Documentación: [`REPRODUCCION.md`](REPRODUCCION.md), [`EXPERIMENTOS.md`](EXPERIMENTOS.md), [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md).
 
 ---
 
 ## Qué incluye
 
-- **Cinco perspectivas:** Individualidad (`Ind`), Dualidad (`D`), Totalidad (`Tot`), Evolución (`Evol`) e Involución (`Invol`). Las tres primeras son posicionales en cada tríada; las dos últimas vectoriales.
-- **Especificación:** 13 tríadas de avance y 13 de retroceso; cuatro secuencias vectoriales de cinco pasos.
-- **Lean 4.9.0:** operadores temporales, espejos, reglas `creates` y teoremas; sin `sorry` ni `admit`.
-- **RDF/OWL + SHACL:** axiomas, dominios/rangos y restricciones para estructura, espejo, creación y secuencias.
-- **Datos:** `datasets/triad_nodes.csv` (78 filas), `datasets/vector_steps.csv` (20) y `datasets/relation_candidates.csv` (390).
-- **Experimentos:** PI-HGAT-T, ablaciones, reglas deterministas, regresión logística y MLP, con particiones comparables.
-- **Ingesta de dominios (funcionalidad central):** plantillas CSV, script de alineación y catálogo interdisciplinario para conectar biólogos, economistas y otras profesiones sin modificar el core.
-- **Reproducibilidad:** pruebas, informe de auditoría, captura de entorno, manifiesto SHA-256 y empaquetado reproducible.
-
----
-
-## Verificación integral
-
-Con dependencias instaladas en el Dev Container, ejecuta la secuencia completa:
-
-```bash
-lake build
-python scripts/validate_spec.py
-python scripts/generate_ontology.py
-python -m unittest discover -s tests -v
-python scripts/validate_shacl.py
-python experiments/pi_hgat_t.py
-python experiments/baselines.py
-python scripts/generate_audit_report.py
-```
-
-La CI ejecuta compilación, generación de artefactos, pruebas, validación OWL RL/SHACL, experimentos y auditoría. Para el procedimiento ampliado, dependencias y empaquetado, consulta [`REPRODUCCION.md`](REPRODUCCION.md); para la metodología y las métricas, [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+- **Cinco perspectivas** posicionales y vectoriales.
+- **Lean 4.9.0** sin `sorry` ni `admit`.
+- **RDF/OWL + SHACL** y sincronización automática spec↔CSV↔ontología.
+- **Pruebas property-based** y casos negativos (`tests/test_property_based.py`).
+- **Auditoría de métricas 100 %** (`scripts/audit_perfect_metrics.py`).
+- **Ingesta de dominios CSV** (funcionalidad central).
+- **Protocolo de evaluación independiente** (capa C) con scoring post-hoc.
+- **Reproducibilidad:** CI, hashes, manifiesto, `verify_e2e.py`.
