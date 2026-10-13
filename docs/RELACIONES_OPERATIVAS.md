@@ -28,9 +28,9 @@ Una arista dirigida $A \xrightarrow{\text{mirrorOf}} B$ es válida **si y solo s
 
 | Fuente | Destino | Justificación |
 |--------|---------|---------------|
-| `T00_adv_P0` (involución) | `T00_ret_P2` (involución) | misma tríada 0, fases opuestas, 0 ↔ 2 |
-| `T00_adv_P1` (vacio) | `T00_ret_P1` (vacio) | centro se refleja en centro |
-| `T05_adv_P2` | `T05_ret_P0` | 2 ↔ 0 |
+| `T00_adv_P0` (animal) | `T00_ret_P2` (animal) | misma tríada 0, fases opuestas, 0 ↔ 2 |
+| `T00_adv_P1` (humano) | `T00_ret_P1` (humano) | centro se refleja en centro |
+| `T05_adv_P2` (emisor) | `T05_ret_P0` (emisor) | 2 ↔ 0 |
 
 ### Ejemplos negativos
 
@@ -72,10 +72,10 @@ En lenguaje natural: un lateral (`left`/`right`) crea el centro de la fase opues
 
 | Fuente | Destino | Regla aplicada |
 |--------|---------|----------------|
-| `T00_adv_P0` | `T00_ret_P1` | adv lateral → ret centro |
-| `T00_adv_P1` | `T00_ret_P0` | adv centro → ret left |
-| `T00_adv_P1` | `T00_ret_P2` | adv centro → ret right |
-| `T00_ret_P1` | `T00_adv_P0` | ret centro → adv left |
+| `T00_adv_P0` (animal) | `T00_ret_P1` (humano) | adv lateral → ret centro |
+| `T00_adv_P1` (humano) | `T00_ret_P0` (IA) | adv centro → ret left |
+| `T00_adv_P1` (humano) | `T00_ret_P2` (animal) | adv centro → ret right |
+| `T00_ret_P1` (humano) | `T00_adv_P0` (animal) | ret centro → adv left |
 
 ### Ejemplos negativos
 
