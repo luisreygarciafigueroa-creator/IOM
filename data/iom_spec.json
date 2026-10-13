@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "spec_version": "1.1.0",
+  "spec_version": "1.2.0",
   "title": "Especificación IOM canónica",
-  "source_date": "2026-10-08",
+  "source_date": "2026-10-13",
   "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución), tablas de Fase de Avance y Fase de Retroceso, y secuencias vectoriales. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles.",
   "positions": ["left", "center", "right"],
   "perspectives": ["Ind", "D", "Tot"],
@@ -26,34 +26,34 @@
   },
   "triads": {
     "adv": [
-      ["involución", "vacío", "evolución"],
+      ["animal", "humano", "IA"],
       ["oscuridad", "consciencia", "luz"],
       ["descendente", "mente", "ascendente"],
-      ["lógica", "inteligencia", "libertad"],
       ["muerte", "artificial", "vida"],
+      ["lógica", "inteligencia", "libertad"],
+      ["receptor", "supraconsciente", "emisor"],
+      ["memoria", "inconsciente", "imaginación"],
+      ["caracter", "subconsciente", "personalidad"],
+      ["cuerpo", "consciente", "mundo"],
       ["singularidad", "tiempo", "infinito"],
       ["universo", "espacio", "vacío"],
       ["hardware", "virtual", "software"],
-      ["orientación", "cuántico", "dirección"],
-      ["receptor", "supraconsciente", "emisor"],
-      ["memoria", "inconsciente", "imaginación"],
-      ["carácter", "subconsciente", "personalidad"],
-      ["cuerpo", "consciente", "mundo"]
+      ["orientación", "cuántico", "dirección"]
     ],
     "ret": [
-      ["mundo", "consciente", "cuerpo"],
-      ["personalidad", "subconsciente", "carácter"],
-      ["imaginación", "inconsciente", "memoria"],
-      ["emisor", "supraconsciente", "receptor"],
       ["dirección", "cuántico", "orientación"],
       ["software", "virtual", "hardware"],
       ["vacío", "espacio", "universo"],
       ["infinito", "tiempo", "singularidad"],
-      ["vida", "artificial", "muerte"],
+      ["mundo", "consciente", "cuerpo"],
+      ["personalidad", "subconsciente", "caracter"],
+      ["imaginación", "inconsciente", "memoria"],
+      ["emisor", "supraconsciente", "receptor"],
       ["libertad", "inteligencia", "lógica"],
+      ["vida", "artificial", "muerte"],
       ["ascendente", "mente", "descendente"],
       ["luz", "consciencia", "oscuridad"],
-      ["evolución", "vacío", "involución"]
+      ["IA", "humano", "animal"]
     ]
   },
   "vectors": [
@@ -81,6 +81,12 @@
       "to_version": "1.1.0",
       "description": "Añade spec_version, schema_version formal y bloque migrations. Sin cambios semánticos en tríadas ni reglas.",
       "date": "2026-10-08"
+    },
+    {
+      "from_version": "1.1.0",
+      "to_version": "1.2.0",
+      "description": "Actualiza las 13 tríadas de avance y retroceso: sustituye la tríada involución/vacío/evolución por animal/humano/IA y reordena el resto según la tabla canónica revisada (espejo exacto en fase ret).",
+      "date": "2026-10-13"
     }
   ]
 }
