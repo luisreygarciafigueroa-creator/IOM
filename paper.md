@@ -8,7 +8,7 @@ Las hipótesis estructurales del marco se someten a pruebas formales (Lean, OWL/
 
 ## Especificación categorial actualizada
 
-La fuente canónica define trece tríadas por fase. La fase de avance comienza con `involución | vacío | evolución`; la fase de retroceso termina con `evolución | vacío | involución`. Las otras doce filas de cada fase conservan el orden y las etiquetas de la tabla de referencia. Cada concepto se representa como `io:OntoNode` con índices de fila, fase, posición, perspectiva posicional, dirección y etiqueta.
+La fuente canónica define trece tríadas por fase (spec_version 1.2.0). La fase de avance comienza con `animal | humano | IA`; la fase de retroceso (índice homólogo) termina el ciclo con `IA | humano | animal`. Cada concepto se representa como `io:OntoNode` con índices de fila, fase, posición, perspectiva posicional, dirección y etiqueta.
 
 El marco comprende **cinco perspectivas**: Individualidad (`Ind`), Dualidad (`D`), Totalidad (`Tot`), Evolución (`Evol`) e Involución (`Invol`). Las tres primeras son posicionales (izquierda/centro/derecha en cada tríada) y no sustituyen las etiquetas categoriales de las filas. Las dos últimas son vectoriales y describen las direcciones de flujo informativo.
 
