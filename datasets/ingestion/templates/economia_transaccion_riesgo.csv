@@ -1,7 +1,7 @@
 external_id,external_label,mapped_node_id,perspective,phase,position,relation_candidate,notes
-econ_agent_01,trader_A,T05_adv_P0,Ind,adv,left,none,"Agente individual (tríada singularidad/tiempo/infinito)"
-econ_asset_01,derivado_X,T05_ret_P2,Ind,ret,right,mirrorOf,"Activo / contraparte como singularidad reflejada"
-econ_risk_01,exposicion,T05_adv_P1,D,adv,center,creates,"Riesgo como dualidad mediadora que crea el centro opuesto"
-econ_mkt_01,mercado,T05_ret_P1,Tot,ret,center,none,"Mercado como totalidad del sistema"
-econ_bubble_01,expansion,T00_adv_P2,Evol,adv,right,none,"Burbuja / expansión alineada a evolución"
-econ_crash_01,liquidacion,T00_ret_P0,Invol,ret,left,none,"Crash / liquidación alineada a involución"
+econ_agent_01,trader_A,T09_adv_P0,Ind,adv,left,none,"Agente individual (tríada singularidad/tiempo/infinito)"
+econ_asset_01,derivado_X,T09_ret_P2,Ind,ret,right,mirrorOf,"Activo / contraparte como singularidad reflejada"
+econ_risk_01,exposicion,T09_adv_P1,D,adv,center,creates,"Riesgo como dualidad mediadora que crea el centro opuesto"
+econ_mkt_01,mercado,T09_ret_P1,Tot,ret,center,none,"Mercado como totalidad del sistema"
+econ_bubble_01,expansion,T10_adv_P0,Evol,adv,left,none,"Burbuja / expansión alineada a universo (evolución)"
+econ_crash_01,liquidacion,T10_ret_P2,Invol,ret,right,none,"Crash / liquidación alineada a vacío (involución)"
