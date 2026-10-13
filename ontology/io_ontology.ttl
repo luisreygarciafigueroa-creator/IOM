@@ -4,4 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# PLACEHOLDER - will replace with full content via script approach
+io:Ontology a owl:Ontology ;
+    rdfs:label "Ontología IOM"@es ;
+    rdfs:comment "Operacionalización canónica del marco I.O. — regenerar con scripts/generate_ontology.py"@es ;
+    owl:versionInfo "1.1.0" .
