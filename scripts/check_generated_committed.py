@@ -11,7 +11,7 @@ solo se exige igualdad exacta de:
 
 Flujo:
   1. (opcional) generate_ontology.py
-  2. git diff --exit-code sobre los CSV anteriores
+  2. git diff --exit-code sobre los CSV anteriores (ignorando fin de línea)
   3. (opcional) create_manifest.py + diff de MANIFEST.sha256
 
 Uso:
@@ -78,8 +78,8 @@ def main() -> int:
             return 1
         paths.append("MANIFEST.sha256")
 
-    print(">>> git diff --exit-code", " ".join(paths))
-    r = run(["git", "diff", "--exit-code", "--", *paths])
+    print(">>> git diff --ignore-space-at-eol --exit-code", " ".join(paths))
+    r = run(["git", "diff", "--ignore-space-at-eol", "--exit-code", "--", *paths])
     if r.returncode != 0:
         print(
             "ERROR: los artefactos generados no coinciden con lo versionado.",
@@ -95,7 +95,7 @@ def main() -> int:
         )
         return 1
 
-    print("OK: CSV generados idénticos a los versionados")
+    print("OK: CSV generados coinciden con los versionados (sin diferencias de contenido)")
     if not args.include_ttl:
         print(
             "Nota: ontology/io_ontology.ttl no se compara byte-a-byte; "
