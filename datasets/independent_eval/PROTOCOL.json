@@ -1,35 +1,75 @@
 {
   "title": "Protocolo de anotación independiente (ciego)",
-  "version": "1.1.0",
-  "purpose": "Estudiar la interpretación humana de relaciones estructurales del marco I.O. sobre pares que incluyen controles canónicos, casos fuera de las cuatro reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado. Las etiquetas de prueba NO se derivan del generador de relation_candidates.csv.",
-  "epistemological_status": "Capa C — validación empírica / interpretabilidad (véase docs/DELIMITACION_EPISTEMOLOGICA.md). Distinta de la recuperación sintética de reglas (capa B).",
+  "version": "1.2.0",
+  "purpose": "Estudiar si anotadores humanos aplican de forma consistente las definiciones de mirrorOf y creates sobre pares que incluyen controles, casos fuera de reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado.",
+  "epistemological_status": "Capa C — validación empírica / interpretabilidad (docs/DELIMITACION_EPISTEMOLOGICA.md). Distinta de la recuperación sintética de reglas (capa B).",
+  "materials": {
+    "for_annotators": {
+      "pairs": "annotator_pairs.csv",
+      "definitions": "docs/RELACIONES_OPERATIVAS.md (solo secciones de definición; no tablas de ejemplos del ítem)",
+      "note": "annotator_pairs.csv no contiene kind, node_id, ni expresiones que revelen la etiqueta esperada (p. ej. 'Espejo canónico')."
+    },
+    "for_analysis_only": {
+      "pairs_with_kind": "independent_pairs.csv",
+      "rule_labels": "rule_reference.json",
+      "note": "Nunca distribuir a anotadores."
+    },
+    "response_sheet": "annotations_template.json"
+  },
   "blinding": [
-    "Los anotadores no reciben rule_label ni consensus previo.",
-    "No se muestra experiments/results ni relation_candidates gold.",
-    "Solo ven: id, source/target (o etiquetas), context y las definiciones de RELACIONES_OPERATIVAS.md sin ejemplos resueltos del ítem."
+    "Los anotadores reciben únicamente annotator_pairs.csv y las definiciones de RELACIONES_OPERATIVAS.md.",
+    "No reciben independent_pairs.csv, rule_reference.json, experiments/results ni relation_candidates gold.",
+    "No se muestra el campo kind ni expresiones del tipo 'canónico', 'control' o 'debe ser'.",
+    "Los anotadores no reciben rule_label ni consensus previo."
   ],
   "labels": ["none", "mirrorOf", "creates", "unsure"],
   "instructions": [
-    "Leer docs/RELACIONES_OPERATIVAS.md (secciones de definición, no las tablas de ejemplos del ítem).",
-    "Para cada par, asignar exactamente una etiqueta de labels.",
-    "Usar 'unsure' cuando la definición no baste (conceptos nuevos o ambigüedad).",
+    "Leer las definiciones de mirrorOf y creates en docs/RELACIONES_OPERATIVAS.md (secciones de definición).",
+    "Para cada par de annotator_pairs.csv, asignar exactamente una etiqueta: none | mirrorOf | creates | unsure.",
+    "Usar 'unsure' solo cuando la definición no baste para decidir (conceptos nuevos o ambigüedad semántica).",
+    "No dejar campos vacíos: si no puedes decidir, marca unsure (eso es distinto de no haber respondido).",
     "No consultar a otros anotadores hasta cerrar la ronda.",
     "Registrar en free_text una justificación breve (≤2 frases)."
   ],
-  "recruitment": "≥3 anotadores independientes, sin participación en la generación del gold JSON ni en el entrenamiento de PI-HGAT-T.",
-  "metrics_to_publish": [
-    "acuerdo por par (mayoría / unánime)",
-    "Fleiss' kappa global y por kind",
+  "recruitment": "≥3 anotadores independientes, sin participación en la generación del gold JSON, en FormalRules.lean ni en el entrenamiento de PI-HGAT-T.",
+  "primary_outcomes": [
+    "acuerdo inter-anotador (Fleiss' kappa) sobre ítems con ≥3 respuestas no nulas",
+    "fracción unánime",
     "tabla de desacuerdos ítem a ítem",
-    "coincidencia con rule_reference (solo post-hoc, no es objetivo primario)",
-    "tasa de 'unsure' por kind"
+    "tasa de 'unsure' por tipo de caso (kind se conoce solo en análisis)",
+    "dónde discrepan y qué casos quedan sin resolver"
   ],
-  "separation_from_synthetic_eval": [
-    "Los pares de independent_pairs.csv no son una partición de relation_candidates.csv.",
-    "Incluyen out_of_rules, cross_triad, new_concept y ambiguous — etiquetas que el oracle SHACL no define como gold de entrenamiento.",
-    "PI-HGAT-T no debe reentrenarse sobre estos pares para reportar 'validación externa'.",
-    "Un script de scoring post-hoc puede comparar anotaciones humanas vs rule_reference; ese score no sustituye el acuerdo inter-anotador."
+  "secondary_posthoc": [
+    "coincidencia de la mayoría con rule_reference (excluye rule_label=unspecified)",
+    "este score NO es el objetivo primario ni valida el marco empíricamente"
+  ],
+  "missing_vs_unsure": {
+    "null": "el anotador aún no ha evaluado el caso (dato ausente)",
+    "unsure": "el anotador evaluó el caso y considera que la definición no permite resolverlo",
+    "scoring_policy": "scripts/score_independent_eval.py no sustituye null por unsure; solo incluye ítems con ≥ min_annotators respuestas no nulas"
+  },
+  "interpretation_limits": [
+    "out_of_rules y cross_triad tienen respuesta estructural determinada por las reglas (none).",
+    "new_concept y ambiguous no tienen necesariamente una respuesta objetivamente determinada: la analogía posicional no implica la misma relación semántica.",
+    "El resultado más importante es la consistencia entre anotadores y el mapa de desacuerdos, no la coincidencia con rule_reference."
   ],
   "scoring_script": "scripts/score_independent_eval.py",
-  "note": "Los ítems detallados están en independent_pairs.csv; rule_label solo en rule_reference.json (oculto a anotadores)."
+  "protocol_freeze": "Cualquier cambio a este protocolo tras el inicio de la recolección debe registrarse en protocol_changelog con fecha y motivo.",
+  "protocol_changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-06",
+      "change": "Versión inicial"
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-13",
+      "change": "Separación capa C; scoring_script"
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-10-13",
+      "change": "Material ciego (annotator_pairs.csv); null≠unsure; primary_outcomes centrados en acuerdo, no en rule_reference; protocol_freeze"
+    }
+  ]
 }
