@@ -14,6 +14,8 @@ Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tre
 
 Las etiquetas se guardan en minúscula por convención de datos.
 
+> **Nota de almacenamiento:** en `data/iom_spec.json` el array `triads.ret` se guarda en **orden de índice homólogo** (la fila `ret[i]` es el espejo posicional de `adv[i]`). La tabla visual de retroceso que sigue se muestra en el orden de lectura habitual (de la última tríada a la primera).
+
 ## Fase de Avance
 
 | Izquierda | Centro | Derecha |
@@ -32,7 +34,7 @@ Las etiquetas se guardan en minúscula por convención de datos.
 | hardware | virtual | software |
 | orientación | cuántico | dirección |
 
-## Fase de Retroceso
+## Fase de Retroceso (orden visual)
 
 | Izquierda | Centro | Derecha |
 |---|---|---|
@@ -57,4 +59,4 @@ Las etiquetas se guardan en minúscula por convención de datos.
 - El centro del retroceso crea ambos laterales del avance.
 - Izquierda y derecha del retroceso crean el centro del avance.
 
-Las filas homólogas (mismo índice) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Los rótulos son la codificación operativa canónica de las categorías del marco; alimentan datasets, ontología y experimentos empíricos.
+Las filas homólogas (mismo índice en el JSON) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Ejemplo: `T00_adv` (animal | humano | IA) ↔ `T00_ret` (IA | humano | animal).
