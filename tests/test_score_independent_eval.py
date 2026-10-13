@@ -52,8 +52,6 @@ class TemplateFormatTests(unittest.TestCase):
 
 
 class NoTruncatePolicyTests(unittest.TestCase):
-    """Kappa no debe truncar; solo ítems con el mismo conjunto de respondentes."""
-
     def test_heterogeneous_respondent_sets_excluded(self):
         payload = {
             "annotators": ["A1", "A2", "A3", "A4"],
@@ -61,15 +59,6 @@ class NoTruncatePolicyTests(unittest.TestCase):
             "items": [
                 {
                     "id": "P1",
-                    "annotations": {
-                        "A1": "none",
-                        "A2": "none",
-                        "A3": "none",
-                        "A4": None,
-                    },
-                },
-                {
-                    "id": "P2",
                     "annotations": {
                         "A1": "none",
                         "A2": "none",
@@ -95,7 +84,6 @@ class NoTruncatePolicyTests(unittest.TestCase):
             path = Path(fh.name)
         try:
             aids, by_pair, _meta = mod.load_annotations(path)
-            # Simular la lógica de agrupación del main
             k_required = 3
             respondent_sets = {}
             for pid, ann_map in by_pair.items():
@@ -104,7 +92,6 @@ class NoTruncatePolicyTests(unittest.TestCase):
                 )
                 if len(respondents) == k_required:
                     respondent_sets[pid] = respondents
-            # P1 y P2: (A1,A2,A3); P3: (A1,A2,A4) — conjuntos distintos
             self.assertEqual(respondent_sets["P1"], ("A1", "A2", "A3"))
             self.assertEqual(respondent_sets["P3"], ("A1", "A2", "A4"))
             self.assertNotEqual(respondent_sets["P1"], respondent_sets["P3"])
@@ -143,13 +130,30 @@ class AnnotatorPairsBlindTests(unittest.TestCase):
             "retroceso",
             "canónico",
             "canonico",
+            "vocabulario",
+            "13 filas",
+            "ajeno",
+            "new_concept",
+            "out_of_rules",
         ]
         for word in forbidden:
             self.assertNotIn(
                 word,
                 text,
-                f"annotator_pairs.csv no debe contener la pista estructural {word!r}",
+                f"annotator_pairs.csv no debe contener la pista {word!r}",
             )
+
+    def test_nc_items_use_generic_context(self):
+        path = ROOT / "datasets" / "independent_eval" / "annotator_pairs.csv"
+        lines = {
+            row.split(",")[0]: row
+            for row in path.read_text(encoding="utf-8").strip().splitlines()[1:]
+        }
+        for nid in ("NC01", "NC02", "NC03"):
+            self.assertIn(nid, lines)
+            self.assertIn("Par de conceptos", lines[nid])
+            self.assertNotIn("vocabulario", lines[nid].lower())
+            self.assertNotIn("13", lines[nid])
 
 
 if __name__ == "__main__":

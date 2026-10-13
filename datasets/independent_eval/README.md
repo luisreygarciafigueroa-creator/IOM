@@ -11,15 +11,18 @@
 
 Ambos modos usan la misma hoja de respuestas (`annotations_template.json`). Indica el modo en el campo opcional `evaluation_mode` del JSON rellenado.
 
-## Materiales
+## Separación estricta de materiales
 
-| Archivo | Audiencia |
+| Archivo | ¿Se distribuye a anotadores? |
 |---|---|
-| `annotator_pairs.csv` | Anotadores (modo interpretación) |
-| `annotator_pairs_rule_application.csv` | Anotadores (modo aplicación de reglas) |
-| `annotations_template.json` | Respuestas |
-| `PROTOCOL.json` | Instrucciones |
-| `independent_pairs.csv` / `rule_reference.json` | **Solo análisis** |
+| `annotator_pairs.csv` | **Sí** (modo interpretación) |
+| `annotator_pairs_rule_application.csv` | **Sí** (modo aplicación de reglas) |
+| `annotations_template.json` | **Sí** |
+| `PROTOCOL.json` (instrucciones del modo) | **Sí** |
+| `independent_pairs.csv` | **No** — solo análisis (kind, node_ids, contexto técnico) |
+| `rule_reference.json` | **No** — solo análisis (etiquetas de regla) |
+
+La categoría `new_concept` (y el resto de `kind`) existe **únicamente** en `independent_pairs.csv` / análisis. Los materiales para anotadores no indican que un concepto sea ajeno al vocabulario de las 13 filas.
 
 ## Scoring (sin truncar)
 
