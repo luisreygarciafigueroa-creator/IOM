@@ -22,9 +22,11 @@ Antes de sumergirnos en la abstracción matemática, anclamos las cinco perspect
 
 En el marco, el lobo en fase de avance puede alinearse a un nodo de Individualidad (izquierda); el ciervo, como su reflejo en fase de retroceso, a Individualidad (derecha). La depredación ocupa el centro (Dualidad) y genera una arista `creates` hacia el centro de la fase opuesta. El colapso poblacional se lee como un paso del vector Involución; la recuperación, como un paso de Evolución.
 
-El mismo esquema se aplica a un escenario de mercado (trader ↔ activo ↔ riesgo ↔ mercado ↔ burbuja/crash). La abstracción de las cinco perspectivas deja de flotar: cada una corresponde a una lectura operativa de un sistema real.
+El mismo esquema se aplica a un escenario de mercado (trader ↔ activo ↔ riesgo ↔ mercado ↔ burbuja/crash). La abstracción de las cinco perspectivas deja de flotar: cada una corresponde a una **lectura categorial** de un sistema real.
 
-> Plantilla lista para usar: [`datasets/ingestion/templates/biologia_depredador_presa.csv`](datasets/ingestion/templates/biologia_depredador_presa.csv). Catálogo completo de mapeos: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
+> **Límite del ejemplo.** Que el marco *represente* un ciclo depredador–presa (o de mercado) mediante sus categorías **no demuestra** que explique la dinámica poblacional, los precios o cualquier variable observable. Para sostener afirmaciones predictivas harían falta variables medidas, predicciones específicas, datos longitudinales y comparación con modelos de referencia del dominio. El ejemplo solo aterriza la abstracción; no es evidencia empírica.
+
+> Plantilla de alineación: [`datasets/ingestion/templates/biologia_depredador_presa.csv`](datasets/ingestion/templates/biologia_depredador_presa.csv). Catálogo: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
 
 ---
 
@@ -56,7 +58,7 @@ flowchart TB
     style Invol fill:#fce4ec
 ```
 
-Cada **tríada** ocupa las tres posiciones (izquierda–centro–derecha) bajo las perspectivas Ind / D / Tot. Las dos direcciones vectoriales (Evol / Invol) atraviesan las fases de avance y retroceso. Las relaciones admisibles entre nodos son únicamente `mirrorOf` (fase opuesta + posición reflejada) y `creates` (cuatro reglas de creación lateral↔centro).
+Cada **tríada** ocupa las tres posiciones (izquierda–centro–derecha) bajo las perspectivas Ind / D / Tot. Las dos direcciones vectoriales (Evol / Invol) atraviesan las fases de avance y retroceso. Las relaciones admisibles entre nodos son únicamente `mirrorOf` (misma tríada, fase opuesta + posición reflejada) y `creates` (misma tríada, cuatro reglas lateral↔centro).
 
 ---
 
@@ -105,7 +107,15 @@ Después elige la ruta adecuada a tu perfil. Para trabajar fuera del contenedor,
 | **Artefactos** | Lean, RDF/OWL, SHACL, CSV canónicos | PI-HGAT-T, baselines, métricas |
 | **Pregunta** | «¿Estas relaciones son válidas según las reglas?» | «¿Un modelo puede recuperar esas relaciones?» |
 
-La **capa C** (validación empírica real) vive en [`datasets/independent_eval/`](datasets/independent_eval/) y [`datasets/external_eval/`](datasets/external_eval/): etiquetas de anotadores humanos, **no** derivadas del generador.
+La **capa C** (interpretabilidad humana) vive en [`datasets/independent_eval/`](datasets/independent_eval/):
+
+| Evaluación | Estado |
+|---|---|
+| Recuperación de reglas sintéticas (PI-HGAT-T / baselines) | Resultados guardados; métricas perfectas auditadas |
+| Evaluación ciega de 14 pares (`independent_eval`) | **Protocolo v1.2.0 listo; anotaciones humanas pendientes** |
+| 60 pares externos (`external_eval`) | Candidatos y protocolo; independencia humana no establecida |
+
+Material ciego para anotadores: `annotator_pairs.csv` (sin pistas de clasificación). Análisis reservado: `independent_pairs.csv` + `rule_reference.json`. Scoring: `scripts/score_independent_eval.py` (null ≠ unsure).
 
 ### Fase 1 — Motor de reglas formales
 
@@ -122,7 +132,7 @@ python scripts/validate_shacl.py
 
 Las reglas formales demuestran *corrección estructural* sin ruido. El ML pregunta si esas relaciones son recuperables bajo LOO y features parciales.
 
-**Hallazgo de la auditoría** ([`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)): el 100 % de PI-HGAT-T y del MLP se debe a que la etiqueta es una **función determinista de (fase, posición)**, idéntica en las 13 tríadas. LOO es independiente a nivel de tríada, pero la función a aprender es compartida; el oracle de reglas también alcanza 1.0. La arquitectura GAT no es necesaria para este corpus sintético.
+**Hallazgo de la auditoría** ([`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)): el 100 % de PI-HGAT-T y del MLP se debe a que la etiqueta es una **función determinista de (fase, posición)**, idéntica en las 13 tríadas. LOO es independiente a nivel de tríada, pero la función a aprender es compartida; el oracle de reglas también alcanza 1.0. La arquitectura GAT no es necesaria para este corpus sintético. El modelo **recupera una estructura sintética determinada por reglas conocidas**; no demuestra que descubra leyes generales de evolución de sistemas complejos.
 
 ### Fase 2 — Modelado predictivo
 
@@ -165,10 +175,10 @@ La CI ejecuta todos estos pasos. Documentación: [`REPRODUCCION.md`](REPRODUCCIO
 ## Qué incluye
 
 - **Cinco perspectivas** posicionales y vectoriales.
-- **Lean 4.9.0** sin `sorry` ni `admit`.
+- **Lean 4.9.0** con `sameTriad` / `isMirrorRel` / `isCreatesRel` (sin `sorry` ni `admit`).
 - **RDF/OWL + SHACL** y sincronización automática spec↔CSV↔ontología.
 - **Pruebas property-based** y casos negativos (`tests/test_property_based.py`).
 - **Auditoría de métricas 100 %** (`scripts/audit_perfect_metrics.py`).
 - **Ingesta de dominios CSV** (funcionalidad central).
-- **Protocolo de evaluación independiente** (capa C) con scoring post-hoc.
+- **Protocolo de evaluación independiente v1.2.0** (capa C): material ciego, null≠unsure, scoring corregido — **recolección humana pendiente**.
 - **Reproducibilidad:** CI, hashes, manifiesto, `verify_e2e.py`.
