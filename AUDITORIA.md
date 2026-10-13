@@ -11,7 +11,7 @@
 | Cinco perspectivas | Individualidad, Dualidad, Totalidad, Evolución, Involución | RDF `io:Perspective`, `five_perspectives` en JSON |
 | Posiciones de tríada (persp. 1–3) | izquierda=0/`Ind`; centro=1/`D`; derecha=2/`Tot` | RDF/OWL, SHACL, pruebas y `TriadPosition` Lean |
 | Avance/retroceso actualizados | 13 filas por fase; 78 nodos | CSV, RDF, SHACL, pruebas literales |
-| Extremos actualizados | avance comienza `involución | vacío | evolución`; retroceso termina `evolución | vacío | involución` | Fuente JSON, RDF y pruebas |
+| Extremos actualizados | avance comienza `animal | humano | IA`; retroceso (índice 0) es `IA | humano | animal` | Fuente JSON, RDF y pruebas |
 | Espejos laterales | misma fila, fase opuesta, `pos_ret = 2 - pos_adv` | OWL `mirrorOf` simétrica, SHACL y Lean |
 | Dinámicas `creates` | cuatro reglas, 8 aristas por fila = 104 | Generador, SHACL y comparación exacta |
 | Perspectivas 4–5 (Evolución, Involución) | cuatro secuencias de 5 pasos = 20 | RDF, SHACL semántico y pruebas |
@@ -21,9 +21,9 @@
 ## Decisiones de transcripción
 
 - Las **cinco perspectivas** del marco son Individualidad, Dualidad, Totalidad, Evolución e Involución. `Ind`, `D` y `Tot` son metadatos posicionales de las tres primeras; `Evol` e `Invol` son las perspectivas vectoriales. No se confunden con las etiquetas categoriales de las 13 filas de cada fase.
-- Los rótulos se guardan en minúscula con ortografía canónica del español (incluidos acentos). La etiqueta `vacío` unifica las apariciones en extremos y en la fila Universo/Espacio.
+- Los rótulos se guardan en minúscula. La etiqueta `vacío` aparece en la fila Universo/Espacio y en los vectores.
 - Los vectores de retroceso se actualizan a `evol · tot · dua · ind · vacío` y `vacío · ind · dua · tot · invol`. La orientación visible y el índice del eje son campos diferentes.
-- El archivo de referencia `docs/MARCOI.O.txt` se conserva; las tablas operativas se documentan en `data/iom_spec.json` (`spec_version` 1.1.0).
+- El archivo de referencia `docs/MARCOI.O.txt` se conserva; las tablas operativas se documentan en `data/iom_spec.json` (`spec_version` 1.2.0).
 
 ## Métricas y verificación empírica
 
