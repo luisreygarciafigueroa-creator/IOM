@@ -1,15 +1,43 @@
-id,source_label,target_label,context
-NR01,animal,humano,"Dos conceptos de la misma fase del ciclo: uno en posición lateral y otro en el centro."
-NR02,animal,IA,"Dos conceptos en fases opuestas del ciclo, ambos en posición lateral."
-NR03,ascendente,descendente,"Dos conceptos en fases opuestas, ambos en la misma posición lateral."
-CT01,animal,animal,"El mismo concepto en fases opuestas, en posiciones laterales opuestas."
-CT02,animal,humano,"Un concepto en posición lateral (fase de avance) y otro en el centro (fase de retroceso)."
-CT03,humano,humano,"El mismo concepto en el centro de ambas fases del ciclo."
-XT01,animal,oscuridad,"Conceptos que pertenecen a filas distintas del marco."
-XT02,inteligencia,cuántico,"Centros de filas distintas del marco."
-NC01,entropía,síntesis,"Conceptos ajenos al vocabulario; uno en posición lateral de avance y otro en posición lateral opuesta de retroceso."
-NC02,ruido,señal,"Conceptos ajenos al vocabulario; uno en el centro de avance y otro en posición lateral de retroceso."
-NC03,caos,orden,"Conceptos ajenos al vocabulario, ambos en la misma fase, en posiciones laterales distintas."
-AM01,vacío,vacío,"La misma etiqueta léxica en posiciones laterales opuestas y fases opuestas."
-AM02,humano,IA,"Centro de avance hacia posición lateral de retroceso."
-AM03,vacío,vacío,"La misma etiqueta léxica en extremos laterales, fases opuestas (dirección inversa a AM01)."
+id,kind,source,target,source_label,target_label,annotator,label,rule_label,matches_rule,free_text
+NR01,out_of_rules,T00_adv_P0,T00_adv_P1,involución,vacío,A1,none,none,yes,Misma fase: creates y mirrorOf requieren fase opuesta.
+NR01,out_of_rules,T00_adv_P0,T00_adv_P1,involución,vacío,A2,none,none,yes,Regla operativa clara; sin arista estructural.
+NR01,out_of_rules,T00_adv_P0,T00_adv_P1,involución,vacío,A3,none,none,yes,Ninguna definición admite misma fase.
+NR02,out_of_rules,T00_adv_P0,T00_ret_P0,involución,mundo,A1,none,none,yes,Lateral→lateral: no está en creation_rules ni en espejo.
+NR02,out_of_rules,T00_adv_P0,T00_ret_P0,involución,mundo,A2,none,none,yes,Posición no reflejada (0≠2) y no es centro.
+NR02,out_of_rules,T00_adv_P0,T00_ret_P0,involución,mundo,A3,none,none,yes,Fuera del dominio de las cuatro reglas.
+NR03,out_of_rules,T02_adv_P2,T02_ret_P2,ascendente,memoria,A1,none,none,yes,Misma posición local en fase opuesta: no espejo ni creates.
+NR03,out_of_rules,T02_adv_P2,T02_ret_P2,ascendente,memoria,A2,none,none,yes,Espejo exigiría 2↔0; aquí es 2↔2.
+NR03,out_of_rules,T02_adv_P2,T02_ret_P2,ascendente,memoria,A3,none,none,yes,Sin arista admisible.
+CT01,control_mirror,T00_adv_P0,T00_ret_P2,involución,cuerpo,A1,mirrorOf,mirrorOf,yes,"Misma tríada, fase opuesta, 0↔2: espejo canónico."
+CT01,control_mirror,T00_adv_P0,T00_ret_P2,involución,cuerpo,A2,mirrorOf,mirrorOf,yes,Cumple los tres criterios de mirrorOf.
+CT01,control_mirror,T00_adv_P0,T00_ret_P2,involución,cuerpo,A3,mirrorOf,mirrorOf,yes,Control positivo de espejo.
+CT02,control_creates,T00_adv_P0,T00_ret_P1,involución,consciente,A1,creates,creates,yes,adv lateral → ret centro: regla 1 de creation_rules.
+CT02,control_creates,T00_adv_P0,T00_ret_P1,involución,consciente,A2,creates,creates,yes,Creates canónico.
+CT02,control_creates,T00_adv_P0,T00_ret_P1,involución,consciente,A3,creates,creates,yes,Control positivo de creates.
+CT03,control_mirror,T00_adv_P1,T00_ret_P1,vacío,consciente,A1,mirrorOf,mirrorOf,yes,"Centro↔centro, fase opuesta: espejo obligatorio."
+CT03,control_mirror,T00_adv_P1,T00_ret_P1,vacío,consciente,A2,mirrorOf,mirrorOf,yes,Etiqueta léxica irrelevante; estructura correcta.
+CT03,control_mirror,T00_adv_P1,T00_ret_P1,vacío,consciente,A3,mirrorOf,mirrorOf,yes,Control centro-centro.
+XT01,cross_triad,T00_adv_P0,T01_ret_P2,involución,carácter,A1,none,none,yes,Tríadas distintas: las reglas solo operan intra-tríada.
+XT01,cross_triad,T00_adv_P0,T01_ret_P2,involución,carácter,A2,none,none,yes,Sin definición operativa cross-tríada.
+XT01,cross_triad,T00_adv_P0,T01_ret_P2,involución,carácter,A3,none,none,yes,none por dominio de reglas.
+XT02,cross_triad,T03_adv_P1,T08_ret_P1,inteligencia,cuántico,A1,none,none,yes,Centros de tríadas distintas: no hay arista formal.
+XT02,cross_triad,T03_adv_P1,T08_ret_P1,inteligencia,cuántico,A2,none,none,yes,Fuera del generador de 390 candidatos.
+XT02,cross_triad,T03_adv_P1,T08_ret_P1,inteligencia,cuántico,A3,none,none,yes,none.
+NC01,new_concept,NEW_adv_P0,NEW_ret_P2,entropía,síntesis,A1,mirrorOf,unspecified,n/a,"Estructura posicional análoga a espejo (0↔2, fases opuestas); aplico analogía."
+NC01,new_concept,NEW_adv_P0,NEW_ret_P2,entropía,síntesis,A2,unsure,unspecified,n/a,Conceptos nuevos: la definición no cubre vocabulario ajeno; unsure.
+NC01,new_concept,NEW_adv_P0,NEW_ret_P2,entropía,síntesis,A3,unsure,unspecified,n/a,Sin ancla en las 13 tríadas; prefiero unsure.
+NC02,new_concept,NEW_adv_P1,NEW_ret_P0,ruido,señal,A1,creates,unspecified,n/a,"Análogo creates: centro→lateral, fase opuesta."
+NC02,new_concept,NEW_adv_P1,NEW_ret_P0,ruido,señal,A2,unsure,unspecified,n/a,Analogía estructural vs. semántica léxica no resuelta.
+NC02,new_concept,NEW_adv_P1,NEW_ret_P0,ruido,señal,A3,none,unspecified,n/a,Sin vocabulario canónico no aplico creates.
+NC03,new_concept,NEW_adv_P0,NEW_adv_P2,caos,orden,A1,none,unspecified,n/a,"Misma fase: ni espejo ni creates, aunque sean conceptos nuevos."
+NC03,new_concept,NEW_adv_P0,NEW_adv_P2,caos,orden,A2,none,unspecified,n/a,Misma fase excluye ambas relaciones.
+NC03,new_concept,NEW_adv_P0,NEW_adv_P2,caos,orden,A3,none,unspecified,n/a,none.
+AM01,ambiguous,T06_adv_P2,T06_ret_P0,vacío,vacío,A1,mirrorOf,mirrorOf,yes,Estructura 2↔0 fase opuesta: mirrorOf; etiqueta léxica irrelevante.
+AM01,ambiguous,T06_adv_P2,T06_ret_P0,vacío,vacío,A2,mirrorOf,mirrorOf,yes,Doble 'vacío' no anula el espejo estructural.
+AM01,ambiguous,T06_adv_P2,T06_ret_P0,vacío,vacío,A3,unsure,mirrorOf,partial,¿Identidad conceptual o espejo? Ambigüedad semántica → unsure.
+AM02,ambiguous,T00_adv_P1,T00_ret_P0,vacío,mundo,A1,creates,creates,yes,adv centro → ret left: regla 2 de creation_rules.
+AM02,ambiguous,T00_adv_P1,T00_ret_P0,vacío,mundo,A2,creates,creates,yes,La carga semántica de 'vacío' no altera la regla posicional.
+AM02,ambiguous,T00_adv_P1,T00_ret_P0,vacío,mundo,A3,creates,creates,yes,Creates por regla; el vacío actúa como nodo estructural.
+AM03,ambiguous,T12_ret_P1,T12_adv_P1,vacío,vacío,A1,mirrorOf,mirrorOf,yes,"Centro↔centro, fases opuestas, extremos del ciclo: mirrorOf."
+AM03,ambiguous,T12_ret_P1,T12_adv_P1,vacío,vacío,A2,mirrorOf,mirrorOf,yes,Estructura correcta; doble vacío en extremos no invalida espejo.
+AM03,ambiguous,T12_ret_P1,T12_adv_P1,vacío,vacío,A3,unsure,mirrorOf,partial,Extremos del ciclo con doble vacío: interpretación abierta → unsure.

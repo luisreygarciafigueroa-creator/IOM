@@ -1,6 +1,6 @@
 # Auditoría de correspondencia con la especificación IOM
 
-**Fuentes:** [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt) y la especificación operativa normalizada en [`data/iom_spec.json`](data/iom_spec.json). La especificación JSON alimenta generador, ontología, CSV, pruebas y experimentos.
+**Fuentes:** [`docs/MARCOI.O.txt`](docs/MARCOI.O.txt) y la especificación operativa normalizada en [`data/iom_spec.json`](data/iom_spec.json).
 
 ## Correspondencia y comprobación
 
@@ -10,42 +10,18 @@
 | Cuatro operadores temporales | `E`, `S_fwd`, `Ivo`, `S_rev` | Teoremas Lean compilados |
 | Cinco perspectivas | Individualidad, Dualidad, Totalidad, Evolución, Involución | RDF `io:Perspective`, `five_perspectives` en JSON |
 | Posiciones de tríada (persp. 1–3) | izquierda=0/`Ind`; centro=1/`D`; derecha=2/`Tot` | RDF/OWL, SHACL, pruebas y `TriadPosition` Lean |
-| Avance/retroceso actualizados | 13 filas por fase; 78 nodos | CSV, RDF, SHACL, pruebas literales |
-| Extremos actualizados | avance comienza `animal | humano | IA`; retroceso (índice 0) es `IA | humano | animal` | Fuente JSON, RDF y pruebas |
-| Espejos laterales | misma fila, fase opuesta, `pos_ret = 2 - pos_adv` | OWL `mirrorOf` simétrica, SHACL y Lean |
-| Dinámicas `creates` | cuatro reglas, 8 aristas por fila = 104 | Generador, SHACL y comparación exacta |
-| Perspectivas 4–5 (Evolución, Involución) | cuatro secuencias de 5 pasos = 20 | RDF, SHACL semántico y pruebas |
-| Axiomas de ontología | clases, dominios, rangos, simetría y funcionalidad | Aserciones OWL más expansión OWL RL |
-| PI-HGAT-T | clasificación de relación estructural en 13 folds | JSON de métricas, logs, configuración y CI |
-| Sincronización spec↔CSV↔ontología | conteos derivados de `iom_spec.json` | `scripts/sync_spec_artifacts.py --check` |
-| Métricas 100 % | función determinista fase+posición | `scripts/audit_perfect_metrics.py`, `docs/AUDITORIA_METRICAS.md` |
+| Espejos laterales | misma fila, fase opuesta, `pos_ret = 2 - pos_adv` | OWL `mirrorOf`, SHACL y Lean |
+| Dinámicas `creates` | cuatro reglas, 104 aristas | Generador, SHACL y comparación exacta |
+| Perspectivas 4–5 | cuatro secuencias de 5 pasos = 20 | RDF, SHACL y pruebas |
+| PI-HGAT-T | recuperación de relaciones por reglas | JSON de métricas, CI |
 
-## Decisiones de transcripción
+## Premisas frente a teoremas
 
-- Las **cinco perspectivas** del marco son Individualidad, Dualidad, Totalidad, Evolución e Involución. `Ind`, `D` y `Tot` son metadatos posicionales de las tres primeras; `Evol` e `Invol` son las perspectivas vectoriales. No se confunden con las etiquetas categoriales de las 13 filas de cada fase.
-- Los rótulos se guardan en minúscula. La etiqueta `vacío` aparece en la fila Universo/Espacio y en los vectores.
-- Los vectores de retroceso se actualizan a `evol · tot · dua · ind · vacío` y `vacío · ind · dua · tot · invol`. La orientación visible y el índice del eje son campos diferentes.
-- El archivo de referencia `docs/MARCOI.O.txt` se conserva; las tablas operativas se documentan en `data/iom_spec.json` (`spec_version` 1.2.0).
+Véase [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md). Predicados `isMirror` / `isCreates` en `IOM/FormalRules.lean`; verificación CSV en `tests/test_formal_rules_bridge.py`.
 
-## Delimitación epistemológica (tres capas)
+## Métricas de recuperación estructural (reglas)
 
-| Capa | Qué demuestra | Qué no demuestra |
-|---|---|---|
-| **A. Formal (Lean)** | Corrección de operadores y reglas *dentro del sistema formal* | Verdad empírica sobre el mundo |
-| **B. Sintética (SHACL, PI-HGAT-T, baselines)** | Consistencia estructural y recuperabilidad de relaciones *generadas por reglas* | Validación del marco en datos independientes del generador |
-| **C. Empírica (independent_eval, external_eval, ingesta anotada)** | Acuerdo inter-anotador e interpretabilidad sobre pares no derivados del gold sintético | — (única vía hacia afirmaciones empíricas) |
-
-Documento completo: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md).
-
-## Métricas y verificación empírica
-
-Las métricas de aristas de PI-HGAT-T están ligadas a `io:mirrorOf` y `io:creates` y a sus reglas SHACL. El criterio de referencia es la reconstrucción exacta (1.0) de la estructura ontológica determinista. El score observado del modelo se reporta junto con ablaciones, baselines y matrices de confusión por fold.
-
-**Por qué el 100 %:** las etiquetas son una función determinista de (fase, posición), idéntica en las 13 tríadas. Leave-one-triad-out es independiente a nivel de tríada, pero la función a aprender es compartida; el oracle y el MLP también alcanzan 1.0. Detalle en [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md).
-
-El dataset operativo comprende 13 tríadas y 78 nodos. Los experimentos miden, bajo leave-one-triad-out, la recuperabilidad empírica de las relaciones estructurales y la contribución de cada factor (fase, posición, estructura de grafo). Véase [`EXPERIMENTOS.md`](EXPERIMENTOS.md) para tablas completas, matrices de confusión y variabilidad por fold.
-
-### Resumen numérico registrado
+El criterio de referencia es la **recuperación exacta (1.0) de relaciones generadas por reglas**. No equivale a validación empírica del marco sobre datos independientes.
 
 | Método | Accuracy | Macro-F1 | mirrorOf F1 | creates F1 |
 |---|---:|---:|---:|---:|
@@ -56,4 +32,19 @@ El dataset operativo comprende 13 tríadas y 78 nodos. Los experimentos miden, b
 | MLP sin grafo | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
 | Regresión logística | 0.5333 | 0.2424 | 0.0000 | 0.0000 |
 
-OWL RL expande inferencias de dominios/rangos; SHACL valida restricciones cerradas y reglas de estructura. Lean formaliza operadores, espejos y cotas de índice. Juntos, Lean + OWL/SHACL + PI-HGAT-T + baselines constituyen la cadena de verificación **formal y sintética** del marco; la capa empírica queda en `datasets/independent_eval/`.
+## Evaluación independiente — cierre
+
+**Estado: Completado.** Artefactos en `datasets/independent_eval/` y métricas en `experiments/results/independent_eval_metrics.json`.
+
+| Métrica | Valor |
+|---|---:|
+| Fleiss' κ | 0.6871 |
+| Unánime | 10/14 |
+| Mayoría (≥2) | 13/14 |
+| Acuerdo post-hoc con reglas | 0.9394 |
+| Controles (CT01–CT03) unánimes | sí |
+| Fuera de reglas (NR01–NR03) unánimes | sí |
+
+Desacuerdos publicados (NC01, NC02, AM01, AM03). Puntuación: `python scripts/score_independent_eval.py`.
+
+Este cierre valida la **interpretabilidad del protocolo de relaciones** bajo tres aplicaciones independientes del protocolo; no redefine las métricas de recuperación estructural de PI-HGAT-T.
