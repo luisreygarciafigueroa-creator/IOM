@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "integrity": "ok",
+  "n_items": 14,
+  "n_annotators": 3,
+  "n_judgments": 42,
+  "fleiss_kappa": 0.6871,
+  "unanimous_fraction": 0.7143,
+  "majority_fraction": 0.9286,
+  "unanimous_count": 10,
+  "majority_count": 13,
+  "unsure_rate_by_kind": {
+    "ambiguous": 0.2222,
+    "control_creates": 0.0,
+    "control_mirror": 0.0,
+    "cross_triad": 0.0,
+    "new_concept": 0.3333,
+    "out_of_rules": 0.0
+  },
+  "posthoc_agreement_with_rules": 0.9394,
+  "posthoc_comparable_judgments": 33,
+  "disagreements": [
+    {"id": "NC01", "kind": "new_concept", "labels": {"A1": "mirrorOf", "A2": "unsure", "A3": "unsure"}, "majority": "unsure", "rule_label": "unspecified"},
+    {"id": "NC02", "kind": "new_concept", "labels": {"A1": "creates", "A2": "unsure", "A3": "none"}, "majority": "tie", "rule_label": "unspecified"},
+    {"id": "AM01", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"},
+    {"id": "AM03", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"}
+  ],
+  "control_unanimous": true,
+  "out_of_rules_unanimous": true
+}
