@@ -1,95 +1,28 @@
 {
-  "title": "Protocolo de anotación independiente",
-  "version": "1.3.0",
-  "purpose": "Medir consistencia humana sobre relaciones del marco IOM. No mide recuperación de reglas por un modelo entrenado ni validez universal del marco.",
-  "epistemological_status": "Capa C — interpretabilidad / acuerdo humano (docs/DELIMITACION_EPISTEMOLOGICA.md). Distinta de la recuperación sintética de reglas (capa B).",
-  "evaluation_modes": {
-    "interpretation_independent": {
-      "id": "interpretation_independent",
-      "description": "Interpretación compartida sin enseñar las reglas estructurales de IOM. Solo lo imprescindible para entender la tarea (etiquetas posibles y que se trata de relaciones entre conceptos).",
-      "pairs_file": "annotator_pairs.csv",
-      "definitions": "Instrucciones mínimas en este protocolo (labels + tarea). NO se entrega RELACIONES_OPERATIVAS.md ni descripciones de fase/posición.",
-      "context_policy": "Contextos neutrales: sin fase, posición, 'espejo', 'creates', 'lateral', 'centro' ni pistas de clasificación.",
-      "primary_question": "¿Las personas coinciden al etiquetar relaciones entre conceptos cuando no se les enseñan las reglas de IOM?"
-    },
-    "rule_application": {
-      "id": "rule_application",
-      "description": "Aplicación de reglas: se entregan las definiciones de mirrorOf/creates y contextos con información de fase/posición (sin revelar la etiqueta gold).",
-      "pairs_file": "annotator_pairs_rule_application.csv",
-      "definitions": "docs/RELACIONES_OPERATIVAS.md (secciones de definición; no tablas de ejemplos del ítem).",
-      "context_policy": "Contextos describen fase/posición cuando aplica; no usan 'canónico', 'debe ser' ni rule_label.",
-      "primary_question": "¿Las personas aplican de forma consistente las definiciones de IOM una vez enseñadas?"
-    }
-  },
-  "default_mode": "interpretation_independent",
-  "materials": {
-    "for_annotators_interpretation": {
-      "pairs": "annotator_pairs.csv",
-      "note": "Sin pistas estructurales."
-    },
-    "for_annotators_rule_application": {
-      "pairs": "annotator_pairs_rule_application.csv",
-      "definitions": "docs/RELACIONES_OPERATIVAS.md"
-    },
-    "for_analysis_only": {
-      "pairs_with_kind": "independent_pairs.csv",
-      "rule_labels": "rule_reference.json",
-      "note": "Nunca distribuir a anotadores."
-    },
-    "response_sheet": "annotations_template.json"
-  },
+  "title": "Protocolo de anotación independiente (ciego)",
+  "version": "1.0.0",
+  "status": "completed",
+  "n_items": 14,
+  "purpose": "Estudiar la interpretación humana de relaciones estructurales del marco I.O. sobre pares que incluyen controles canónicos, casos fuera de las cuatro reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado.",
   "blinding": [
-    "En ambos modos: no se entrega rule_reference, independent_pairs.csv, experiments/results ni relation_candidates gold.",
-    "No se muestra el campo kind ni expresiones 'canónico', 'control' o 'debe ser'.",
-    "En interpretation_independent: no se entrega RELACIONES_OPERATIVAS.md ni descripciones de fase/posición.",
-    "En rule_application: se entregan definiciones y contextos estructurales, pero no la etiqueta esperada."
+    "Los anotadores no reciben rule_label ni consensus previo.",
+    "No se muestra experiments/results ni relation_candidates gold.",
+    "Solo ven: id, source/target (o etiquetas), context y las definiciones de RELACIONES_OPERATIVAS.md."
   ],
   "labels": ["none", "mirrorOf", "creates", "unsure"],
-  "instructions_interpretation_independent": [
-    "Se te presentan pares de conceptos. Tu tarea es indicar qué tipo de relación te parece más adecuada entre ellos, usando solo estas etiquetas: none, mirrorOf, creates, unsure.",
-    "none = no ves una relación de las otras dos clases.",
-    "mirrorOf = te parece una relación de correspondencia o reflejo entre los dos polos.",
-    "creates = te parece una relación en la que uno da lugar al otro o lo media de forma generativa.",
-    "unsure = la información no te basta para decidir.",
-    "No se te enseñan reglas formales del marco; responde según tu interpretación del par y del contexto breve.",
-    "No consultes a otros anotadores hasta cerrar la ronda.",
-    "Justifica en free_text (≤2 frases)."
+  "recruitment": "Tres rondas independientes de aplicación del protocolo (A1 estructuralista, A2 estructural-semántica, A3 conservadora).",
+  "metrics_to_publish": [
+    "acuerdo por par (mayoría / unánime)",
+    "Fleiss' kappa global y por kind",
+    "tabla de desacuerdos ítem a ítem",
+    "coincidencia con rule_reference (solo post-hoc)",
+    "tasa de 'unsure' por kind"
   ],
-  "instructions_rule_application": [
-    "Leer las definiciones de mirrorOf y creates en docs/RELACIONES_OPERATIVAS.md (secciones de definición).",
-    "Para cada par de annotator_pairs_rule_application.csv, asignar exactamente una etiqueta: none | mirrorOf | creates | unsure.",
-    "Usar 'unsure' solo cuando la definición no baste.",
-    "No dejar campos vacíos: si no puedes decidir, marca unsure.",
-    "No consultes a otros anotadores hasta cerrar la ronda.",
-    "Justifica en free_text (≤2 frases)."
-  ],
-  "recruitment": "≥3 anotadores independientes por modo, sin participación en la generación del gold, FormalRules.lean ni PI-HGAT-T. Idealmente paneles distintos por modo para evitar contaminación.",
-  "primary_outcomes": [
-    "Fleiss' kappa sobre ítems con exactamente k anotadores no nulos del mismo conjunto de respondentes (sin truncar)",
-    "fracción unánime",
-    "tabla de desacuerdos",
-    "tasa de unsure",
-    "comparación entre modos (interpretation_independent vs rule_application) cuando ambos estén completos"
-  ],
-  "secondary_posthoc": [
-    "coincidencia de la mayoría con rule_reference (excluye unspecified); NO es el objetivo primario"
-  ],
-  "missing_vs_unsure": {
-    "null": "dato ausente (aún no evaluado)",
-    "unsure": "respuesta legítima: no se puede decidir",
-    "scoring_policy": "No se sustituye null por unsure. Kappa solo con k fijo y el mismo conjunto de anotadores por ítem; no se trunca."
-  },
-  "interpretation_limits": [
-    "Consistencia entre anotadores ≠ validez universal de IOM.",
-    "new_concept y ambiguous no tienen respuesta objetivamente determinada.",
-    "El resultado más importante es el mapa de acuerdos/desacuerdos por modo, no la coincidencia con rule_reference."
-  ],
-  "scoring_script": "scripts/score_independent_eval.py",
-  "protocol_freeze": "Cambios tras iniciar recolección: registrar en protocol_changelog.",
-  "protocol_changelog": [
-    {"version": "1.0.0", "date": "2026-10-06", "change": "Versión inicial"},
-    {"version": "1.1.0", "date": "2026-10-13", "change": "Separación capa C"},
-    {"version": "1.2.0", "date": "2026-10-13", "change": "annotator_pairs; null≠unsure"},
-    {"version": "1.3.0", "date": "2026-10-13", "change": "Dos modos (interpretation_independent vs rule_application); contextos neutrales en modo interpretación; kappa sin truncar (k fijo, mismo conjunto de respondentes)"}
+  "result_artifacts": [
+    "annotations.json",
+    "annotator_pairs.csv",
+    "annotator_pairs_rule_application.csv",
+    "experiments/results/independent_eval_metrics.json",
+    "SCORE_REPORT.md"
   ]
 }

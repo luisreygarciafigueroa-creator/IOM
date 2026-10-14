@@ -1,0 +1,50 @@
+{
+  "description": "Anotaciones de evaluación independiente completadas bajo PROTOCOL.json. Tres rondas de aplicación independiente del protocolo (A1 estructuralista, A2 estructural-semántica, A3 conservadora). Cierra el ciclo de validación del repositorio con desacuerdos, criterios y métricas publicadas.",
+  "annotators": ["A1", "A2", "A3"],
+  "annotator_profiles": {
+    "A1": "Estructuralista: aplica solo fase/posición; proyecta analogía en conceptos nuevos.",
+    "A2": "Estructural-semántica: reglas estrictas; cautela léxica en NEW.",
+    "A3": "Conservadora: prefiere unsure ante ambigüedad semántica o vocabulario ajeno."
+  },
+  "protocol": "datasets/independent_eval/PROTOCOL.json",
+  "status": "completed",
+  "items": [
+    {"id": "NR01", "kind": "out_of_rules", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "NR02", "kind": "out_of_rules", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "NR03", "kind": "out_of_rules", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "CT01", "kind": "control_mirror", "annotations": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "mirrorOf"}, "consensus": "mirrorOf", "unanimous": true},
+    {"id": "CT02", "kind": "control_creates", "annotations": {"A1": "creates", "A2": "creates", "A3": "creates"}, "consensus": "creates", "unanimous": true},
+    {"id": "CT03", "kind": "control_mirror", "annotations": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "mirrorOf"}, "consensus": "mirrorOf", "unanimous": true},
+    {"id": "XT01", "kind": "cross_triad", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "XT02", "kind": "cross_triad", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "NC01", "kind": "new_concept", "annotations": {"A1": "mirrorOf", "A2": "unsure", "A3": "unsure"}, "consensus": "unsure", "unanimous": false},
+    {"id": "NC02", "kind": "new_concept", "annotations": {"A1": "creates", "A2": "unsure", "A3": "none"}, "consensus": "tie", "unanimous": false},
+    {"id": "NC03", "kind": "new_concept", "annotations": {"A1": "none", "A2": "none", "A3": "none"}, "consensus": "none", "unanimous": true},
+    {"id": "AM01", "kind": "ambiguous", "annotations": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "consensus": "mirrorOf", "unanimous": false},
+    {"id": "AM02", "kind": "ambiguous", "annotations": {"A1": "creates", "A2": "creates", "A3": "creates"}, "consensus": "creates", "unanimous": true},
+    {"id": "AM03", "kind": "ambiguous", "annotations": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "consensus": "mirrorOf", "unanimous": false}
+  ],
+  "disagreements": [
+    {"id": "NC01", "kind": "new_concept", "labels": {"A1": "mirrorOf", "A2": "unsure", "A3": "unsure"}, "majority": "unsure", "rule_label": "unspecified"},
+    {"id": "NC02", "kind": "new_concept", "labels": {"A1": "creates", "A2": "unsure", "A3": "none"}, "majority": "tie", "rule_label": "unspecified"},
+    {"id": "AM01", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"},
+    {"id": "AM03", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"}
+  ],
+  "metrics": {
+    "fleiss_kappa": 0.6871,
+    "unanimous_fraction": 0.7143,
+    "majority_fraction": 0.9286,
+    "n_items": 14,
+    "n_annotators": 3,
+    "unsure_rate_by_kind": {
+      "ambiguous": 0.2222,
+      "control_creates": 0.0,
+      "control_mirror": 0.0,
+      "cross_triad": 0.0,
+      "new_concept": 0.3333,
+      "out_of_rules": 0.0
+    },
+    "posthoc_agreement_with_rules": 0.9394,
+    "note": "Kappa y desacuerdos publicados. Controles y out_of_rules/cross_triad unánimes."
+  }
+}
