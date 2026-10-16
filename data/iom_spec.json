@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "spec_version": "1.3.0",
+  "spec_version": "1.4.0",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-16",
   "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución), tablas de Fase de Avance y Fase de Retroceso, y secuencias vectoriales. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles.",
@@ -36,7 +36,7 @@
       ["caracter", "subconsciente", "personalidad"],
       ["cuerpo", "consciente", "mundo"],
       ["singularidad", "tiempo", "infinito"],
-      ["universo", "espacio", "vacío"],
+      ["todo", "espacio", "nada"],
       ["hardware", "virtual", "software"],
       ["orientación", "cuántico", "dirección"]
     ],
@@ -51,7 +51,7 @@
       ["personalidad", "subconsciente", "caracter"],
       ["mundo", "consciente", "cuerpo"],
       ["infinito", "tiempo", "singularidad"],
-      ["vacío", "espacio", "universo"],
+      ["nada", "espacio", "todo"],
       ["software", "virtual", "hardware"],
       ["dirección", "cuántico", "orientación"]
     ]
@@ -92,6 +92,12 @@
       "from_version": "1.2.0",
       "to_version": "1.3.0",
       "description": "Actualiza secuencias de retroceso de las perspectivas vectoriales 4 y 5: Evol ret = vacío·ind·dua·tot·invol (ejes 0–4, ←); Invol ret = evol·tot·dua·ind·vacío (ejes 4–0, ←). Avances de Evol e Invol se conservan.",
+      "date": "2026-10-16"
+    },
+    {
+      "from_version": "1.3.0",
+      "to_version": "1.4.0",
+      "description": "Sustituye la tríada índice 10: universo|espacio|vacío → todo|espacio|nada (avance); espejo vacío|espacio|universo → nada|espacio|todo (retroceso).",
       "date": "2026-10-16"
     }
   ]

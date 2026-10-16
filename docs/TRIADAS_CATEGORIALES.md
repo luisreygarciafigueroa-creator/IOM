@@ -1,20 +1,10 @@
-# Tríadas categoriales I.O.
-
-> **Procedencia:** transcripción operativa de las fases de avance y retroceso. Fuente estructurada canónica: [`data/iom_spec.json`](../data/iom_spec.json) (spec_version 1.2.0).
-
-El marco I.O. se articula con **cinco perspectivas**:
-
-1. **Individualidad** (`Ind`)
-2. **Dualidad** (`D`)
-3. **Totalidad** (`Tot`)
-4. **Evolución** (`Evol`)
-5. **Involución** (`Invol`)
-
-Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tres primeras perspectivas (`Ind`, `D`, `Tot`), posiciones 0, 1 y 2. Las perspectivas cuarta y quinta (Evolución e Involución) no añaden columnas; se representan como secuencias vectoriales en [`VECTORES_4_5.md`](VECTORES_4_5.md).
+# Tríadas categoriales del marco I.O.
 
 Las etiquetas se guardan en minúscula por convención de datos. Las **13 tríadas** se enumeran del **0 al 12** (índice canónico = `triad_index`).
 
 > **Nota de almacenamiento:** en `data/iom_spec.json` el array `triads.ret` se guarda en **orden de índice homólogo** (la fila `ret[i]` es el espejo posicional de `adv[i]`). La tabla visual de retroceso se muestra en el orden de lectura habitual (de la última a la primera).
+
+Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tres primeras perspectivas (`Ind`, `D`, `Tot`), posiciones 0, 1 y 2. Las perspectivas cuarta y quinta (Evolución e Involución) no añaden columnas; se representan como secuencias vectoriales en [`VECTORES_4_5.md`](VECTORES_4_5.md).
 
 ## Fase de Avance
 
@@ -30,7 +20,7 @@ Las etiquetas se guardan en minúscula por convención de datos. Las **13 tríad
 | 7 | caracter | subconsciente | personalidad |
 | 8 | cuerpo | consciente | mundo |
 | 9 | singularidad | tiempo | infinito |
-| 10 | universo | espacio | vacío |
+| 10 | todo | espacio | nada |
 | 11 | hardware | virtual | software |
 | 12 | orientación | cuántico | dirección |
 
@@ -40,7 +30,7 @@ Las etiquetas se guardan en minúscula por convención de datos. Las **13 tríad
 |---|-----------|--------|--------|
 | 12 | dirección | cuántico | orientación |
 | 11 | software | virtual | hardware |
-| 10 | vacío | espacio | universo |
+| 10 | nada | espacio | todo |
 | 9 | infinito | tiempo | singularidad |
 | 8 | mundo | consciente | cuerpo |
 | 7 | personalidad | subconsciente | caracter |
@@ -60,3 +50,5 @@ Las etiquetas se guardan en minúscula por convención de datos. Las **13 tríad
 - Izquierda y derecha del retroceso crean el centro del avance.
 
 Las filas homólogas (mismo índice 0–12) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Ejemplo: `T00_adv` (animal | humano | IA) ↔ `T00_ret` (IA | humano | animal).
+
+`spec_version` ≥ **1.4.0**.
