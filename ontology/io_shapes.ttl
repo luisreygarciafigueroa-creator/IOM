@@ -77,7 +77,7 @@ io:VectorStepShape a sh:NodeShape ;
     sh:property [ sh:path io:displayArrow ; sh:in ( "→"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:sparql [
-        sh:message "Etiqueta, fase, paso, eje y flecha deben ajustarse a las cuatro secuencias vectoriales declaradas." ;
+        sh:message "Etiqueta, fase, paso, eje y flecha deben ajustarse a las cuatro secuencias vectoriales declaradas (spec 1.3.0)." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -91,17 +91,17 @@ io:VectorStepShape a sh:NodeShape ;
                      !((?axis = 0 && ?text = "vacío") || (?axis = 1 && ?text = "ind") ||
                        (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
                   (?vector = io:Evol && ?phase = "ret" &&
-                    (?axis != 4 - ?step || ?arrow != "←" ||
+                    (?axis != ?step || ?arrow != "←" ||
                      !((?axis = 0 && ?text = "vacío") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol")))) ||
                   (?vector = io:Invol && ?phase = "adv" &&
                     (?axis != 4 - ?step || ?arrow != "→" ||
                      !((?axis = 0 && ?text = "vacío") || (?axis = 1 && ?text = "ind") ||
                        (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol")))) ||
                   (?vector = io:Invol && ?phase = "ret" &&
-                    (?axis != ?step || ?arrow != "←" ||
+                    (?axis != 4 - ?step || ?arrow != "←" ||
                      !((?axis = 0 && ?text = "vacío") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol"))))
+                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol"))))
                 )
             }
         """
