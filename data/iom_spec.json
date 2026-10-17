@@ -3,7 +3,7 @@
   "spec_version": "1.4.0",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-16",
-  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución), tablas de Fase de Avance y Fase de Retroceso, y secuencias vectoriales. Fuente de datos estructurados para ontología, datasets, pruebas formales y experimentos empíricos reproducibles.",
+  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución). Define la estructura semántica bajo prueba para demostrar validez semántica en el mundo real (anotación independiente, alineación de dominios); no constituye por sí sola evidencia empírica de esa validez.",
   "positions": ["left", "center", "right"],
   "perspectives": ["Ind", "D", "Tot"],
   "five_perspectives": [
