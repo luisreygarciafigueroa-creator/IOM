@@ -1,6 +1,8 @@
-# Catálogo de dominios: cómo mapear fenómenos externos al marco IOM
+# Catálogo de dominios: demostración de alineación semántica al mundo real
 
-Este documento ofrece **traducciones conceptuales prefabricadas** para que investigadores de otras disciplinas puedan alinear sus datos con la ontología canónica de 78 nodos (13 tríadas × 2 fases × 3 posiciones) sin romper las restricciones formales (Lean, RDF/OWL, SHACL).
+Este documento ofrece **traducciones conceptuales** para demostrar cómo fenómenos de disciplinas reales pueden alinearse con la ontología canónica de 78 nodos (13 tríadas × 2 fases × 3 posiciones) sin romper las restricciones formales (Lean, RDF/OWL, SHACL).
+
+En el carácter actual del repositorio, estos mapeos son **demostraciones de aplicabilidad semántica**, no teorías de dominio validadas en campo. La prueba primaria de validez semántica sigue siendo la anotación ciega independiente (`datasets/independent_eval/`).
 
 La ontología core permanece **inmutable**. Los datos externos se mapean como *instancias de alineación* o *candidatos de relación* que se validan estructuralmente antes de cualquier experimento predictivo.
 
@@ -13,6 +15,7 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 3. **Dos direcciones vectoriales**: Evolución (proyección del vacío hacia estructura) e Involución (disolución de estructura hacia el vacío).
 4. **Relaciones admisibles**: solo `mirrorOf` (fase opuesta + posición reflejada) y `creates` (las cuatro reglas de creación). Cualquier otra arista se etiqueta `none`.
 5. **Validación previa**: todo CSV de entrada debe pasar por `scripts/importar_datos_personalizados.py` antes de mezclarse con los candidatos canónicos.
+6. **Validez semántica de campo**: un mapeo de dominio solo cuenta como evidencia de mundo real tras etiquetado ciego independiente propio (mismo estándar que `independent_eval`).
 
 ---
 
@@ -93,12 +96,14 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
    ```
 4. El script valida que los `mapped_node_id` existan en los 78 nodos canónicos y genera un informe de alineación.
 5. Los datos alineados pueden usarse como *candidatos externos* en evaluación independiente o como features adicionales, **sin modificar** `data/iom_spec.json` ni la ontología core.
+6. Para que el dominio cuente como **prueba de validez semántica**, someter un subconjunto a anotación ciega independiente y publicar κ y desacuerdos.
 
 ---
 
 ## 6. Referencias internas
 
 - Nodos canónicos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
+- Método de la prueba semántica: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
 - Reglas de relaciones: [`docs/RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
 - Especificación: [`data/iom_spec.json`](../data/iom_spec.json)
 - Script de ingesta: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
