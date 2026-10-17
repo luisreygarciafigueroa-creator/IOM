@@ -2,9 +2,16 @@
 
 Las etiquetas se guardan en minúscula por convención de datos. Las **13 tríadas** se enumeran del **0 al 12** (índice canónico = `triad_index`).
 
-> **Nota de almacenamiento:** en `data/iom_spec.json` el array `triads.ret` se guarda en **orden de índice homólogo** (la fila `ret[i]` es el espejo posicional de `adv[i]`). La tabla visual de retroceso se muestra en el orden de lectura habitual (de la última a la primera).
+> **Nota de almacenamiento:** en `data/iom_spec.json` el array `triads.ret` se guarda en **orden de índice homólogo** (la fila `ret[i]` es el espejo posicional de `adv[i]`). Las tablas siguientes usan el mismo orden 0→12 en ambas fases.
 
 Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tres primeras perspectivas (`Ind`, `D`, `Tot`), posiciones 0, 1 y 2. Las perspectivas cuarta y quinta (Evolución e Involución) no añaden columnas; se representan como secuencias vectoriales en [`VECTORES_4_5.md`](VECTORES_4_5.md).
+
+Eje posicional de cada fila:
+
+```
+         ←               0               →
+| Izquierda | Centro | Derecha |
+```
 
 ## Fase de Avance
 
@@ -24,23 +31,23 @@ Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tre
 | 11 | hardware | virtual | software |
 | 12 | orientación | cuántico | dirección |
 
-## Fase de Retroceso (orden visual)
+## Fase de Retroceso
 
 | # | Izquierda | Centro | Derecha |
 |---|-----------|--------|--------|
-| 12 | dirección | cuántico | orientación |
-| 11 | software | virtual | hardware |
-| 10 | nada | espacio | todo |
-| 9 | infinito | tiempo | singularidad |
-| 8 | mundo | consciente | cuerpo |
-| 7 | personalidad | subconsciente | caracter |
-| 6 | imaginación | inconsciente | memoria |
-| 5 | emisor | supraconsciente | receptor |
-| 4 | libertad | inteligencia | lógica |
-| 3 | vida | artificial | muerte |
-| 2 | ascendente | mente | descendente |
-| 1 | luz | consciencia | oscuridad |
 | 0 | IA | humano | animal |
+| 1 | luz | consciencia | oscuridad |
+| 2 | ascendente | mente | descendente |
+| 3 | vida | artificial | muerte |
+| 4 | libertad | inteligencia | lógica |
+| 5 | emisor | supraconsciente | receptor |
+| 6 | imaginación | inconsciente | memoria |
+| 7 | personalidad | subconsciente | caracter |
+| 8 | mundo | consciente | cuerpo |
+| 9 | infinito | tiempo | singularidad |
+| 10 | nada | espacio | todo |
+| 11 | software | virtual | hardware |
+| 12 | dirección | cuántico | orientación |
 
 ## Dinámicas de creación y espejos
 
