@@ -1,34 +1,36 @@
-# Premisas y teoremas del marco I.O.
+# Premisas asumidas y teoremas derivados del marco I.O.
 
 Este documento separa **afirmaciones asumidas** (premisas del marco) de **resultados demostrados** en Lean o comprobados de forma determinista sobre la especificación estructurada. No confunde recuperación de reglas con validación empírica del marco sobre datos independientes.
 
 ---
 
-## 1. Vacío, unidad informativa, infinito y transformación
+## 1. Qué afirma el marco (núcleo conceptual)
 
-### Vacío
-
-| Afirmación | Tipo |
-|---|---|
-| El infinito se reinterpreta como **ausencia de información** (vacío ontológico, $V$), no como magnitud ilimitada. | **Premisa** (filosófica) |
-| El vacío estructurado es el punto de partida y de retorno del ciclo evolutivo–involutivo. | **Premisa** operativa |
-| $S_{\mathrm{rev}}(Ivo(E(V_t))) = V_t$ (punto fijo estricto del vacío). | **Teorema** (Lean: `strict_fixed_point`) |
-
-### Unidad informativa
+### 1.1 Vacío ($V$)
 
 | Afirmación | Tipo |
 |---|---|
-| La unidad informativa ($U$) es el átomo de presencia informativa frente al vacío. | **Premisa** |
-| Los operadores $E$, $S_{\mathrm{fwd}}$, $Ivo$, $S_{\mathrm{rev}}$ actúan sobre estados que combinan tiempo discreto y carga informativa. | **Premisa** formalizada en `IOM/Core.lean` |
+| El vacío es la **ausencia de carga informativa** en un instante $t$: $V_t = (t, \emptyset)$. | **Premisa** (definición operativa) |
+| El vacío no es aniquilación: es condición de posibilidad de nueva emergencia. | **Premisa** (interpretación ontológica) |
+| Bajo los operadores formales, el vacío es **punto fijo estricto** de la composición $S_{\mathrm{rev}} \circ Ivo \circ E$. | **Teorema** (demostrado en Lean: `strict_fixed_point`) |
+| $E(V_t)=V_{t+1}$, $S_{\mathrm{fwd}}(V_t)=V_t$, $Ivo(V_t)=V_{t-1}$, $S_{\mathrm{rev}}(V_t)=V_t$. | **Teoremas** (Lean: `E_vacuum`, `S_fwd_vacuum`, `Ivo_vacuum`, `S_rev_vacuum`) |
 
-### Infinito
+### 1.2 Unidad informativa ($U$)
 
 | Afirmación | Tipo |
 |---|---|
-| Tratar el infinito como repetición perpetua exigiría un registro informativo infinito; la ausencia total de información carece de él. | **Premisa** argumentativa |
-| El vacío como infinito informacional es una **reinterpretación**, no un teorema empírico. | **Premisa** |
+| Un estado informativo es $s=(t,A)$ con $A$ lista finita de unidades (cadenas). | **Premisa** (definición en `State`) |
+| La «unidad informativa» del marco es la carga mínima que puede ocupar un estado no vacío; no se identifica con un bit físico ni con una medida estadística empírica. | **Premisa** (alcance del modelo) |
+| $E$ conserva la carga; $S_{\mathrm{fwd}}$ aplica deduplicación; $Ivo$ invierte la secuencia y retrocede el tiempo. | **Teoremas / definiciones** (Lean: `E_preserves_payload`, `S_fwd_applies_red`, `Ivo_applies_inversion`) |
 
-### Transformación
+### 1.3 Infinito
+
+| Afirmación | Tipo |
+|---|---|
+| El marco **reinterpreta** el infinito como **ausencia de información** (vacío), no como magnitud ilimitada ni sucesión interminable de registros. | **Premisa** (tesis filosófica del marco; no es teorema matemático sobre $\mathbb{R}$ o cardinales) |
+| Esta reinterpretación es una **hipótesis de trabajo** del marco, no un resultado empírico ni un teorema de Lean. | **Premisa** |
+
+### 1.4 Transformación
 
 | Afirmación | Tipo |
 |---|---|
@@ -77,11 +79,11 @@ Demostrados en `IOM/Core.lean`, `IOM/Operators.lean`, `IOM/Specification.lean`, 
 
 ## 5. Correspondencia con artefactos
 
-| Capa | Artefacto |
+| Concepto | Artefacto |
 |---|---|
-| Premisas filosóficas | `docs/MARCOI.O.txt`, este documento |
-| Premisas estructurales | `data/iom_spec.json` |
-| Teoremas | `IOM/*.lean` |
-| Conformidad | SHACL, CSV, puentes de prueba |
+| Premisas tabuladas | `data/iom_spec.json` |
+| Teoremas de operadores | `IOM/Operators.lean` |
+| Teoremas de posición / espejo / creates | `IOM/Specification.lean`, `IOM/FormalRules.lean` |
+| Comprobación JSON ⇄ reglas | `tests/test_property_links.py`, `tests/test_formal_rules_bridge.py` |
 | Validez semántica (mundo real) | `datasets/independent_eval/` |
 | Recuperabilidad sintética | PI-HGAT-T, baselines |
