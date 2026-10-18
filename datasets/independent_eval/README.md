@@ -1,6 +1,6 @@
-# Evaluación independiente (eje de validación del repositorio)
+# Evaluación independiente (prueba de validez semántica)
 
-**Estado: Completado** · Este directorio es el **centro de la validación independiente** del marco IOM. No es un anexo del generador de 390 candidatos.
+**Estado: Completado** · Este directorio es el **centro de la prueba de validez semántica** del marco IOM en el mundo real. No es un anexo del generador de 390 candidatos.
 
 ## Principio
 
@@ -36,5 +36,5 @@ python scripts/score_independent_eval.py --annotations datasets/independent_eval
 
 ## Lenguaje
 
-Este conjunto autoriza afirmaciones de **validación independiente / interpretabilidad**.  
+Este conjunto autoriza afirmaciones de **validez semántica / interpretabilidad** bajo protocolo ciego.  
 Las métricas de PI-HGAT-T **no** se interpretan como validación independiente del marco.
