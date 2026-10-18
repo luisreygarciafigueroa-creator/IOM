@@ -9,7 +9,7 @@ Las columnas de cada tríada (izquierda, centro, derecha) corresponden a las tre
 Eje posicional de cada fila:
 
 ```
-         ←               0               →
+← 0 →
 | Izquierda | Centro | Derecha |
 ```
 
@@ -27,7 +27,7 @@ Eje posicional de cada fila:
 | 7 | caracter | subconsciente | personalidad |
 | 8 | cuerpo | consciente | mundo |
 | 9 | singularidad | tiempo | infinito |
-| 10 | todo | espacio | nada |
+| 10 | universo | espacio | vacío |
 | 11 | hardware | virtual | software |
 | 12 | orientación | cuántico | dirección |
 
@@ -45,7 +45,7 @@ Eje posicional de cada fila:
 | 7 | personalidad | subconsciente | caracter |
 | 8 | mundo | consciente | cuerpo |
 | 9 | infinito | tiempo | singularidad |
-| 10 | nada | espacio | todo |
+| 10 | vacío | espacio | universo |
 | 11 | software | virtual | hardware |
 | 12 | dirección | cuántico | orientación |
 
@@ -58,4 +58,4 @@ Eje posicional de cada fila:
 
 Las filas homólogas (mismo índice 0–12) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Ejemplo: `T00_adv` (animal | humano | IA) ↔ `T00_ret` (IA | humano | animal).
 
-`spec_version` ≥ **1.4.0**.
+`spec_version` ≥ **1.5.0**.

@@ -17,36 +17,36 @@ Fuente estructurada: [`data/iom_spec.json`](../data/iom_spec.json) (`five_perspe
 ## Cuarta perspectiva — Evolución
 
 ```
-vacío | ind | dua | tot | evol
+invol | ind | dua | tot | evol
   0   |  1  |  2  |  3  |  4
       |  →  |  →  |  →  |  →
-  -------------------
-      |  ←  |  ←  |  ←  |  ←
-  0   |  1  |  2  |  3  |  4
-vacío | ind | dua | tot | invol
+  ---------------------
+  ←   |  ←  |  ←  |  ←  |
+  4   |  3  |  2  |  1  |  0
+evol  | tot | dua | ind | invol
 ```
 
 | Fase | Etiquetas de izquierda a derecha | Posiciones del eje | Flecha |
 |---|---|---|---|
-| Avance | `vacío · ind · dua · tot · evol` | `0 · 1 · 2 · 3 · 4` | → |
-| Retroceso | `vacío · ind · dua · tot · invol` | `0 · 1 · 2 · 3 · 4` | ← |
+| Avance | `invol · ind · dua · tot · evol` | `0 · 1 · 2 · 3 · 4` | → |
+| Retroceso | `evol · tot · dua · ind · invol` | `4 · 3 · 2 · 1 · 0` | ← |
 
 ## Quinta perspectiva — Involución
 
 ```
-invol | tot | dua | ind | vacío
+invol | tot | dua | ind | evol
   4   |  3  |  2  |  1  |  0
   →   |  →  |  →  |  →  |
-  -------------------
-  ←   |  ←  |  ←  |  ←  |
-  4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | vacío
+  ---------------------
+      |  ←  |  ←  |  ←  |  ←
+  0   |  1  |  2  |  3  |  4
+evol  | ind | dua | tot | invol
 ```
 
 | Fase | Etiquetas de izquierda a derecha | Posiciones del eje | Flecha |
 |---|---|---|---|
-| Avance | `invol · tot · dua · ind · vacío` | `4 · 3 · 2 · 1 · 0` | → |
-| Retroceso | `evol · tot · dua · ind · vacío` | `4 · 3 · 2 · 1 · 0` | ← |
+| Avance | `invol · tot · dua · ind · evol` | `4 · 3 · 2 · 1 · 0` | → |
+| Retroceso | `evol · ind · dua · tot · invol` | `0 · 1 · 2 · 3 · 4` | ← |
 
 ## Representación formal
 
@@ -54,4 +54,4 @@ Cada fila se materializa como cinco instancias `io:VectorStep`. Cada instancia c
 
 En la ontología, las cinco perspectivas son individuos de `io:Perspective` con etiquetas en español: Individualidad, Dualidad, Totalidad, Evolución e Involución.
 
-`spec_version` ≥ **1.3.0**.
+`spec_version` ≥ **1.5.0**.
