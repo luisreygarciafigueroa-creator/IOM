@@ -33,34 +33,6 @@ En resumen: el ML no «prueba» la ontología; demuestra que es **aprendible y e
 - `datasets/vector_steps.csv`: 20 pasos, cuatro secuencias de cinco posiciones.
 - Validación **leave-one-triad-out** en 13 folds: ninguna pareja de una tríada de prueba aparece en entrenamiento.
 
-Los datos constituyen el corpus empírico de evaluación estructural del marco. Los experimentos miden, de forma reproducible, la capacidad del modelo y de los baselines para recuperar las relaciones predichas por la ontología bajo partición rigurosa.
-
-## Correspondencia de métricas y propiedades
-
-| Métrica | Propiedad formal evaluada | Referencia semántica |
-|---|---|---|
-| `mirrorOf` precision/recall/F1 | `io:mirrorOf` | SHACL: misma tríada, fase opuesta, enlace recíproco, `pos_ret = 2 - pos_adv` |
-| `creates` precision/recall/F1 | `io:creates` y cuatro reglas `creation_rules` | SHACL: misma tríada, fase opuesta; lateral→centro o centro→lateral |
-| Exactitud y macro-F1 de relación | Etiqueta triclase derivada de `io:mirrorOf`, `io:creates` y ausencia de enlace | Conteos y matriz de confusión, sin filtrado de casos |
-| Conformidad de aristas predichas | Condiciones posicionales de `io:mirrorOf` / `io:creates` | Proporción observada de aristas no nulas que respetan las reglas SHACL codificadas |
-| Comprobación estructural externa al modelo | `io:hasPhase`, `io:hasDirection`, posición, perspectiva y vectores | SHACL valida cada nodo/paso frente a sus reglas y secuencias literales |
-
-El criterio de referencia es la reconstrucción exacta de las relaciones ontológicas (score 1.0). Las métricas se publican completas por fold, clase y ablación, con matrices de confusión e intervalos de variabilidad (media ± desviación estándar sobre los 13 folds). SHACL y Lean aportan verificación formal independiente del desempeño estadístico del modelo.
-
-## Reproducción y artefactos
-
-Desde la raíz, `python experiments/pi_hgat_t.py` lee los CSV y [`experiments/config.json`](experiments/config.json), fija semilla, ejecuta 39 entrenamientos deterministas en CPU (3 variantes × 13 folds) y escribe:
-
-- `experiments/results/pi_hgat_t_metrics.json`: métricas, folds, matriz de confusión, configuración y versiones;
-- `experiments/logs/pi_hgat_t.log`: resumen de ejecución.
-
-El script de generación [`scripts/generate_ontology.py`](scripts/generate_ontology.py) recrea Turtle y CSV a partir del JSON canónico. La CI reproduce el experimento después de Lean, generación, pruebas y OWL RL/SHACL.
-
-```bash
-python experiments/pi_hgat_t.py
-python experiments/baselines.py
-```
-
 ## Resultados numéricos finales — PI-HGAT-T y ablaciones
 
 Semilla fija `20261008`, 100 épocas, AdamW, leave-one-triad-out (13 folds), 390 candidatos por evaluación agregada.
@@ -81,81 +53,34 @@ Semilla fija `20261008`, 100 épocas, AdamW, leave-one-triad-out (13 folds), 390
 | mirrorOf | 1.0000 | 1.0000 | 1.0000 | 78 |
 | creates | 1.0000 | 1.0000 | 1.0000 | 104 |
 
-### Tabla 3. Matrices de confusión (filas = gold, columnas = predicted: none / mirrorOf / creates)
-
-**PI-HGAT-T completo**
-
-| | none | mirrorOf | creates |
-|---|---:|---:|---:|
-| none | 208 | 0 | 0 |
-| mirrorOf | 0 | 78 | 0 |
-| creates | 0 | 0 | 104 |
-
-**Ablación sin fase**
-
-| | none | mirrorOf | creates |
-|---|---:|---:|---:|
-| none | 52 | 52 | 104 |
-| mirrorOf | 0 | 78 | 0 |
-| creates | 0 | 0 | 104 |
-
-**Ablación sin posición**
-
-| | none | mirrorOf | creates |
-|---|---:|---:|---:|
-| none | 156 | 24 | 28 |
-| mirrorOf | 0 | 36 | 42 |
-| creates | 0 | 48 | 56 |
-
-### Tabla 4. Variabilidad por fold (accuracy leave-one-triad-out)
-
-| Variante | Media | Desv. estándar | Rango (min–max) |
-|---|---:|---:|---|
-| PI-HGAT-T (fase + posición) | 1.0000 | 0.0000 | 1.0000 – 1.0000 |
-| Ablación sin fase | 0.6000 | 0.0000 | 0.6000 – 0.6000 |
-| Ablación sin posición | 0.6359 | 0.0253 | 0.6000 – 0.6667 |
-
-La puntuación perfecta del modelo completo confirma que las relaciones `io:mirrorOf` y `io:creates` son recuperables de forma determinista a partir de fase y posición bajo la partición leave-one-triad-out. Las ablaciones cuantifican la contribución empírica de cada factor: sin fase la accuracy cae a 0.60; sin posición a ~0.64.
-
 Fuente: `experiments/results/pi_hgat_t_metrics.json`.
 
 ## Resultados numéricos finales — Baselines
 
-Misma partición leave-one-triad-out y mismos 390 candidatos. Artefacto: `experiments/results/baselines_comparison.json`.
+| Método | Accuracy | Macro-F1 |
+|---|---:|---:|
+| **Reglas deterministas (oracle SHACL)** | **1.0000** | **1.0000** |
+| **MLP sin grafo** | **1.0000** | **1.0000** |
+| Regresión logística | 0.5333 | 0.2424 |
+| PI-HGAT-T (referencia) | 1.0000 | 1.0000 |
 
-### Tabla 5. Comparación de baselines
+## Suite experimental integrada (capas A–E)
 
-| Método | Accuracy | Macro-F1 | none F1 | mirrorOf F1 | creates F1 |
-|---|---:|---:|---:|---:|---:|
-| **Reglas deterministas (oracle SHACL)** | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **1.0000** |
-| **MLP sin grafo** (2 capas ocultas) | **1.0000** | **1.0000** | **1.0000** | **1.0000** | **1.0000** |
-| Regresión logística (softmax lineal, 10-dim) | 0.5333 | 0.2424 | 0.7273 | 0.0000 | 0.0000 |
-| PI-HGAT-T (referencia) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+Registro: [`experiments/domain_mapping/registry.json`](experiments/domain_mapping/registry.json).
 
-### Tabla 6. Matrices de confusión de baselines
+| ID | Experimento | Capa | Runner | Afirmación legítima |
+|---|---|---|---|---|
+| **EXP-A** | Evaluación ciega inter-anotador | Validez semántica (mundo real) | `scripts/score_independent_eval.py` | κ = 0.6871 — interpretabilidad provisional (n=14) |
+| EXP-B | Lean 4 | Formal | `lake build` | Solidez deductiva |
+| EXP-C | SHACL / CSV | Estructural | `scripts/validate_shacl.py` | Conformidad de formas |
+| EXP-D | PI-HGAT-T + baselines | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de relaciones *generadas por reglas* |
+| **EXP-E** | Alineación de dominios (bio/econ) | Demostración de mapeo | `experiments/domain_mapping/validate_examples.py` | Cartografía a 13 tríadas sin romper reglas |
 
-**Reglas deterministas / MLP sin grafo** (idénticas al modelo completo):
+Protocolos metodológicos: [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) · [`docs/INTEGRACION_METODOLOGICA.md`](docs/INTEGRACION_METODOLOGICA.md) · [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md).
 
-| | none | mirrorOf | creates |
-|---|---:|---:|---:|
-| none | 208 | 0 | 0 |
-| mirrorOf | 0 | 78 | 0 |
-| creates | 0 | 0 | 104 |
+```bash
+python experiments/domain_mapping/validate_examples.py
+# → experiments/results/domain_mapping_validation.json
+```
 
-**Regresión logística**
-
-| | none | mirrorOf | creates |
-|---|---:|---:|---:|
-| none | 208 | 0 | 0 |
-| mirrorOf | 52 | 0 | 26 |
-| creates | 104 | 0 | 0 |
-
-Interpretación: el oracle SHACL y el MLP no-grafo (con features de fase+posición) recuperan exactamente la estructura; la regresión logística lineal no separa `mirrorOf`/`creates` y colapsa hacia `none`. PI-HGAT-T iguala el techo determinista bajo atención de grafo.
-
-## Evaluación externa
-
-El conjunto de evaluación externa está en `datasets/external_eval/` (60 pares + protocolo de anotación por evaluadores independientes). Ver `docs/RELACIONES_OPERATIVAS.md` para la semántica exacta de `mirrorOf` y `creates`.
-
-## Resultados por partición y variabilidad
-
-Las matrices de confusión y métricas por fold se publican en `experiments/results/pi_hgat_t_metrics.json` y `experiments/results/baselines_comparison.json`. Los intervalos de variabilidad (media ± std de los 13 folds) se resumen en las Tablas 4 y 5.
+Los resultados de EXP-E (4/4 OK) demuestran que los ejemplos de biología y economía del protocolo pueden anclarse a nodos canónicos con relaciones `mirrorOf`/`creates` admisibles. **No** constituyen κ de dominio ni validación de campo.
