@@ -3,3 +3,7 @@ BIO-01,biologia,Replicación de ADN,Transcripción de ARNm,creates,Individualida
 BIO-02,biologia,Diferenciación celular,Mantenimiento de pluripotencia,mirrorOf,Evolución / Involución,Especialización vs Restricción,T02_adv_P2,T02_ret_P0
 ECO-01,economia,Restricciones de liquidez,Solvencia sistémica,mirrorOf,Dualidad / Totalidad,Equilibrio estructural,T09_adv_P0,T09_ret_P2
 ECO-02,economia,Descubrimiento de precios,Dinámica del libro de órdenes,creates,Evolución / Totalidad,Emergencia de mercado,T09_adv_P0,T09_ret_P1
+BIO-03,biologia,Enzima,Sustrato,mirrorOf,Dualidad,Complementariedad estructural (llave-cerradura),T04_adv_P0,T04_ret_P2
+BIO-04,biologia,Mutación adaptativa,Diferenciación tisular,creates,Evolución,Transformación progresiva,T02_adv_P0,T02_ret_P1
+ECO-03,economia,Tasa de interés de banco central,Tasa de inflación,creates,Evolución / Dualidad,Transmisión de política monetaria,T09_adv_P2,T09_ret_P1
+ECO-04,economia,Innovación tecnológica disruptiva,Cadena de valor redefinida,creates,Evolución,Reestructuración de mercado,T11_adv_P0,T11_ret_P1

@@ -1,45 +1,17 @@
 {
   "experiment": "EXP-E-DOMAIN-ALIGNMENT",
-  "ok": 4,
+  "ok": 8,
   "warn": 0,
   "fail": 0,
   "pairs": [
-    {
-      "id": "BIO-01",
-      "source": "T06_adv_P0",
-      "target": "T06_ret_P1",
-      "proposed": "creates",
-      "gold_relation": "creates",
-      "status": "OK",
-      "reason": "relación propuesta coincide con gold canónico"
-    },
-    {
-      "id": "BIO-02",
-      "source": "T02_adv_P2",
-      "target": "T02_ret_P0",
-      "proposed": "mirrorOf",
-      "gold_relation": "mirrorOf",
-      "status": "OK",
-      "reason": "relación propuesta coincide con gold canónico"
-    },
-    {
-      "id": "ECO-01",
-      "source": "T09_adv_P0",
-      "target": "T09_ret_P2",
-      "proposed": "mirrorOf",
-      "gold_relation": "mirrorOf",
-      "status": "OK",
-      "reason": "relación propuesta coincide con gold canónico"
-    },
-    {
-      "id": "ECO-02",
-      "source": "T09_adv_P0",
-      "target": "T09_ret_P1",
-      "proposed": "creates",
-      "gold_relation": "creates",
-      "status": "OK",
-      "reason": "relación propuesta coincide con gold canónico"
-    }
+    {"id": "BIO-01", "source": "T06_adv_P0", "target": "T06_ret_P1", "proposed": "creates", "gold_relation": "creates", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "BIO-02", "source": "T02_adv_P2", "target": "T02_ret_P0", "proposed": "mirrorOf", "gold_relation": "mirrorOf", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "ECO-01", "source": "T09_adv_P0", "target": "T09_ret_P2", "proposed": "mirrorOf", "gold_relation": "mirrorOf", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "ECO-02", "source": "T09_adv_P0", "target": "T09_ret_P1", "proposed": "creates", "gold_relation": "creates", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "BIO-03", "source": "T04_adv_P0", "target": "T04_ret_P2", "proposed": "mirrorOf", "gold_relation": "mirrorOf", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "BIO-04", "source": "T02_adv_P0", "target": "T02_ret_P1", "proposed": "creates", "gold_relation": "creates", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "ECO-03", "source": "T09_adv_P2", "target": "T09_ret_P1", "proposed": "creates", "gold_relation": "creates", "status": "OK", "reason": "relación propuesta coincide con gold canónico"},
+    {"id": "ECO-04", "source": "T11_adv_P0", "target": "T11_ret_P1", "proposed": "creates", "gold_relation": "creates", "status": "OK", "reason": "relación propuesta coincide con gold canónico"}
   ],
-  "interpretation": "OK = el par sugerido existe en el gold canónico con la misma etiqueta. WARN = mapeo demostrativo no idéntico al gold (esperado en demos de dominio). FAIL = nodo inválido. Este script no mide validez semántica de biología/economía."
+  "interpretation": "OK = el par sugerido existe en el gold canónico con la misma etiqueta. Este script no mide validez semántica de biología/economía ni κ de dominio."
 }
