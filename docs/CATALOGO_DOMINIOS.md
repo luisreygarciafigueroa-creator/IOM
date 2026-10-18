@@ -76,7 +76,7 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
 
 | Disciplina | Fenómeno típico | Tríada sugerida | Vector dominante |
 |------------|-----------------|-----------------|------------------|
-| Sociología | Cambio de norma social | caracter / subconsciente / personalidad | Invol → Evol |
+| Sociología | Cambio de norma social | carácter / subconsciente / personalidad | Invol → Evol |
 | Física / sistemas complejos | Transición de fase | oscuridad / consciencia / luz | Evol / Invol |
 | Psicología | Insight / represión | imaginación / inconsciente / memoria | Invol |
 | Ingeniería de software | Refactoring / deuda técnica | hardware / virtual / software | Invol (deuda) → Evol (refactor) |
