@@ -13,7 +13,7 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 | ¿Pueden anotadores independientes, ciegos a las reglas, etiquetar relaciones semánticas sobre pares reales/nuevos/ambiguos? | Protocolo ciego + Fleiss' κ en `datasets/independent_eval/` |
 | ¿La estructura formal es internamente coherente? | Lean 4 + SHACL (prerrequisito, no prueba de mundo real) |
 | ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (diagnóstico interno; **no** validez semántica real) |
-| ¿Se puede alinear un dominio empírico (biología, economía, …) a las 13 tríadas? | Catálogo e ingesta en `docs/CATALOGO_DOMINIOS.md` |
+| ¿Se puede alinear un dominio empírico (biología, economía, …) a las 13 tríadas? | Catálogo e ingesta en `docs/CATALOGO_DOMINIOS.md` + EXP-E |
 
 ## Evidencia actual de validez semántica (mundo real)
 
@@ -27,6 +27,18 @@ Estos números son una **demostración provisional** de interpretabilidad semán
 
 Datos: [`datasets/independent_eval/`](datasets/independent_eval/)  
 Puntuación: `python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json`
+
+## Experimentos integrados
+
+Registro de capas A–E: [`experiments/domain_mapping/registry.json`](experiments/domain_mapping/registry.json) · Mapeo de dominios: [`experiments/domain_mapping/`](experiments/domain_mapping/) · Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md)
+
+| ID | Capa | Runner |
+|---|---|---|
+| EXP-A | Validez semántica (ciego) | `scripts/score_independent_eval.py` |
+| EXP-B | Formal | `lake build` |
+| EXP-C | Estructural | `scripts/validate_shacl.py` |
+| EXP-D | Diagnóstico sintético | `experiments/pi_hgat_t.py` |
+| EXP-E | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` |
 
 ## Pipeline
 
@@ -42,6 +54,8 @@ lake build
 # Diagnóstico sintético (no mide validez en el mundo real)
 .venv/bin/python experiments/pi_hgat_t.py
 .venv/bin/python experiments/baselines.py
+# Demostración de mapeo de dominios (EXP-E)
+.venv/bin/python experiments/domain_mapping/validate_examples.py
 .venv/bin/python scripts/generate_audit_report.py
 ```
 
