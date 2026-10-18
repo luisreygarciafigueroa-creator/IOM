@@ -3,69 +3,20 @@
   "source_docs": [
     "docs/INTEGRACION_METODOLOGICA.md",
     "docs/CATALOGO_DOMINIOS.md",
-    "docs/PROTOCOLO_DE_MAPEO.md"
+    "docs/PROTOCOLO_DE_MAPEO.md",
+    "docs/ESPECIFICACION_METODOLOGICA.md",
+    "docs/AUDITORIA_EPISTEMOLOGICA.md",
+    "docs/ARQUITECTURA_ONTOLOGICA.md"
   ],
   "note": "Demostraciones de mapeo; no sustituyen anotación ciega de dominio ni κ propio.",
   "pairs": [
-    {
-      "id": "BIO-01",
-      "domain": "biologia",
-      "source_label": "Replicación de ADN",
-      "target_label": "Transcripción de ARNm",
-      "perspective": "Individualidad / Evolución",
-      "phase_hint": "Transmisión y Expresión",
-      "relation": "creates",
-      "analytic_impact": "Formaliza la direccionalidad del flujo informacional entre conservación de código y síntesis proteica.",
-      "suggested_nodes": {
-        "source": "T06_adv_P0",
-        "target": "T06_ret_P1",
-        "note": "memoria→imaginación / inconsciente como análogo informacional (demostrativo)"
-      }
-    },
-    {
-      "id": "BIO-02",
-      "domain": "biologia",
-      "source_label": "Diferenciación celular",
-      "target_label": "Mantenimiento de pluripotencia",
-      "perspective": "Evolución / Involución",
-      "phase_hint": "Especialización vs Restricción",
-      "relation": "mirrorOf",
-      "analytic_impact": "Reflejo entre especialización tisular y conservación del estado germinal.",
-      "suggested_nodes": {
-        "source": "T02_adv_P2",
-        "target": "T02_ret_P0",
-        "note": "ascendente ↔ descendente como espejo posicional"
-      }
-    },
-    {
-      "id": "ECO-01",
-      "domain": "economia",
-      "source_label": "Restricciones de liquidez",
-      "target_label": "Solvencia sistémica",
-      "perspective": "Dualidad / Totalidad",
-      "phase_hint": "Equilibrio estructural",
-      "relation": "mirrorOf",
-      "analytic_impact": "Isomorfismo entre tensión individual de caja y riesgo macro de solvencia.",
-      "suggested_nodes": {
-        "source": "T09_adv_P0",
-        "target": "T09_ret_P2",
-        "note": "singularidad ↔ infinito como tensión micro/macro"
-      }
-    },
-    {
-      "id": "ECO-02",
-      "domain": "economia",
-      "source_label": "Descubrimiento de precios",
-      "target_label": "Dinámica del libro de órdenes",
-      "perspective": "Evolución / Totalidad",
-      "phase_hint": "Emergencia de mercado",
-      "relation": "creates",
-      "analytic_impact": "Emergencia causal del precio de equilibrio a partir de agregación microestructural.",
-      "suggested_nodes": {
-        "source": "T09_adv_P0",
-        "target": "T09_ret_P1",
-        "note": "singularidad (lateral adv) creates tiempo (centro ret) — regla lateral→centro"
-      }
-    }
+    {"id": "BIO-01", "domain": "biologia", "source_label": "Replicación de ADN", "target_label": "Transcripción de ARNm", "perspective": "Individualidad / Evolución", "phase_hint": "Transmisión y Expresión", "relation": "creates", "analytic_impact": "Direccionalidad del flujo informacional.", "suggested_nodes": {"source": "T06_adv_P0", "target": "T06_ret_P1", "note": "demostrativo"}},
+    {"id": "BIO-02", "domain": "biologia", "source_label": "Diferenciación celular", "target_label": "Mantenimiento de pluripotencia", "perspective": "Evolución / Involución", "phase_hint": "Especialización vs Restricción", "relation": "mirrorOf", "analytic_impact": "Reflejo especialización/estado germinal.", "suggested_nodes": {"source": "T02_adv_P2", "target": "T02_ret_P0", "note": "espejo posicional"}},
+    {"id": "ECO-01", "domain": "economia", "source_label": "Restricciones de liquidez", "target_label": "Solvencia sistémica", "perspective": "Dualidad / Totalidad", "phase_hint": "Equilibrio estructural", "relation": "mirrorOf", "analytic_impact": "Isomorfismo micro/macro.", "suggested_nodes": {"source": "T09_adv_P0", "target": "T09_ret_P2", "note": "espejo"}},
+    {"id": "ECO-02", "domain": "economia", "source_label": "Descubrimiento de precios", "target_label": "Dinámica del libro de órdenes", "perspective": "Evolución / Totalidad", "phase_hint": "Emergencia de mercado", "relation": "creates", "analytic_impact": "Emergencia causal del precio.", "suggested_nodes": {"source": "T09_adv_P0", "target": "T09_ret_P1", "note": "lateral→centro"}},
+    {"id": "BIO-03", "domain": "biologia", "source_label": "Enzima", "target_label": "Sustrato", "perspective": "Dualidad", "phase_hint": "Complementariedad estructural (llave-cerradura)", "relation": "mirrorOf", "analytic_impact": "Simetría de reconocimiento molecular.", "suggested_nodes": {"source": "T04_adv_P0", "target": "T04_ret_P2", "note": "espejo"}},
+    {"id": "BIO-04", "domain": "biologia", "source_label": "Mutación adaptativa", "target_label": "Diferenciación tisular", "perspective": "Evolución", "phase_hint": "Transformación progresiva", "relation": "creates", "analytic_impact": "Emergencia de nueva estructura celular.", "suggested_nodes": {"source": "T02_adv_P0", "target": "T02_ret_P1", "note": "creates"}},
+    {"id": "ECO-03", "domain": "economia", "source_label": "Tasa de interés de banco central", "target_label": "Tasa de inflación", "perspective": "Evolución / Dualidad", "phase_hint": "Transmisión de política monetaria", "relation": "creates", "analytic_impact": "Mecanismo de transmisión sobre demanda agregada.", "suggested_nodes": {"source": "T09_adv_P2", "target": "T09_ret_P1", "note": "creates"}},
+    {"id": "ECO-04", "domain": "economia", "source_label": "Innovación tecnológica disruptiva", "target_label": "Cadena de valor redefinida", "perspective": "Evolución", "phase_hint": "Reestructuración de mercado", "relation": "creates", "analytic_impact": "Emergencia de nueva estructura sectorial.", "suggested_nodes": {"source": "T11_adv_P0", "target": "T11_ret_P1", "note": "creates"}}
   ]
 }
