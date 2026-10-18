@@ -1,0 +1,5 @@
+id,domain,source_label,target_label,relation,perspective,phase_hint,suggested_source_node,suggested_target_node
+BIO-01,biologia,Replicación de ADN,Transcripción de ARNm,creates,Individualidad / Evolución,Transmisión y Expresión,T06_adv_P0,T06_ret_P1
+BIO-02,biologia,Diferenciación celular,Mantenimiento de pluripotencia,mirrorOf,Evolución / Involución,Especialización vs Restricción,T02_adv_P2,T02_ret_P0
+ECO-01,economia,Restricciones de liquidez,Solvencia sistémica,mirrorOf,Dualidad / Totalidad,Equilibrio estructural,T09_adv_P0,T09_ret_P2
+ECO-02,economia,Descubrimiento de precios,Dinámica del libro de órdenes,creates,Evolución / Totalidad,Emergencia de mercado,T09_adv_P0,T09_ret_P1

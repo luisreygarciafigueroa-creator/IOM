@@ -1,0 +1,84 @@
+{
+  "title": "Registro experimental del marco I.O. (integración metodológica)",
+  "spec_version": "1.5.1",
+  "character": "prueba de validez semántica en el mundo real (no validez universal; no producto de software)",
+  "experiments": [
+    {
+      "id": "EXP-A-INDEPENDENT-BLIND",
+      "name": "Evaluación semántica ciega inter-anotador",
+      "layer": "validez_semantica_mundo_real",
+      "primary": true,
+      "protocol": "datasets/independent_eval/PROTOCOL.json",
+      "data": [
+        "datasets/independent_eval/annotator_pairs.csv",
+        "datasets/independent_eval/independent_pairs.csv",
+        "datasets/independent_eval/annotations.json"
+      ],
+      "runner": "scripts/score_independent_eval.py",
+      "metrics": {
+        "fleiss_kappa": 0.6871,
+        "unanimous": "10/14",
+        "disagreements": ["NC01", "NC02", "AM01", "AM03"]
+      },
+      "legitimate_claim": "Interpretabilidad y acuerdo inter-anotador sobre conceptos externos al generador de reglas (demostración provisional; n=14).",
+      "not_a_claim": "Validez universal del marco; prueba de software comercial."
+    },
+    {
+      "id": "EXP-B-FORMAL-LEAN",
+      "name": "Verificación deductiva Lean 4",
+      "layer": "formal",
+      "primary": false,
+      "runner": "lake build",
+      "artifacts": ["IOM/FormalRules.lean", "IOM/Operators.lean", "IOM/Core.lean"],
+      "legitimate_claim": "Solidez deductiva y ausencia de contradicción axiomática dentro del sistema formal.",
+      "not_a_claim": "Validez semántica en el mundo real."
+    },
+    {
+      "id": "EXP-C-STRUCTURAL-SHACL",
+      "name": "Conformidad estructural OWL/SHACL + CSV",
+      "layer": "estructural",
+      "primary": false,
+      "runner": "scripts/validate_shacl.py",
+      "legitimate_claim": "Conformidad intencional y extensional del grafo RDF frente a la especificación.",
+      "not_a_claim": "Interpretabilidad empírica ni validez de mundo real."
+    },
+    {
+      "id": "EXP-D-PI-HGAT-T",
+      "name": "Recuperación sintética PI-HGAT-T + baselines",
+      "layer": "diagnostico_sintetico",
+      "primary": false,
+      "runner": "experiments/pi_hgat_t.py",
+      "baselines": "experiments/baselines.py",
+      "metrics_full": {"accuracy": 1.0, "macro_f1": 1.0},
+      "legitimate_claim": "Recuperabilidad de relaciones generadas por reglas bajo leave-one-triad-out.",
+      "not_a_claim": "Validez semántica en el mundo real; comprensión empírica del marco."
+    },
+    {
+      "id": "EXP-E-DOMAIN-ALIGNMENT",
+      "name": "Alineación de dominios empíricos (biología / economía)",
+      "layer": "validez_semantica_mundo_real",
+      "primary": false,
+      "status": "demostracion_de_mapeo",
+      "catalog": "docs/CATALOGO_DOMINIOS.md",
+      "protocol": "docs/PROTOCOLO_DE_MAPEO.md",
+      "integration": "docs/INTEGRACION_METODOLOGICA.md",
+      "examples": "experiments/domain_mapping/examples.json",
+      "templates": "datasets/ingestion/templates/",
+      "legitimate_claim": "Demostración de que fenómenos de dominio pueden cartografiarse a las 13 tríadas respetando mirrorOf/creates.",
+      "not_a_claim": "Validación de campo de teorías de biología o economía; κ de dominio propio."
+    }
+  ],
+  "pipeline": [
+    "python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt",
+    "lake build",
+    ".venv/bin/python scripts/validate_spec.py",
+    ".venv/bin/python scripts/generate_ontology.py",
+    ".venv/bin/python -m unittest discover -s tests -v",
+    ".venv/bin/python scripts/validate_shacl.py",
+    ".venv/bin/python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json",
+    ".venv/bin/python experiments/pi_hgat_t.py",
+    ".venv/bin/python experiments/baselines.py",
+    ".venv/bin/python experiments/domain_mapping/validate_examples.py",
+    ".venv/bin/python scripts/generate_audit_report.py"
+  ]
+}
