@@ -4,7 +4,7 @@ Repositorio del marco I.O. (cinco perspectivas: **Individualidad**, **Dualidad**
 
 > **Carácter del proyecto:** este repositorio es una **prueba y demostración** de si la estructura semántica del marco I.O. (`mirrorOf`, `creates`, perspectivas y fases) puede aplicarse de forma **interpretable y medible** a conceptos y pares del mundo real — no un producto de software ni una validación sintética de reglas generadas por el propio sistema.
 
-Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md) · Dominios reales: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
+Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md) · Dominios reales: [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · Protocolo de mapeo: [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md)
 
 ## Qué se está probando
 
@@ -57,6 +57,9 @@ lake build
 ## Documentación
 
 - [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) — método de la prueba semántica
+- [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) — protocolo de alineación y validación ciega de dominios
+- [`docs/INTEGRACION_METODOLOGICA.md`](docs/INTEGRACION_METODOLOGICA.md) — integración metodológica biología/economía
+- [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md) — informe de evaluación técnica (κ, capas, dictamen)
 - [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) — alineación a fenómenos reales
 - [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) — vacío, unidad, infinito, transformación
 - [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md) — `mirrorOf` / `creates`

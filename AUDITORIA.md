@@ -43,3 +43,9 @@ Recuperación de relaciones **generadas por reglas** bajo leave-one-triad-out:
 | Regresión logística | 0.5333 | 0.2424 |
 
 Estas cifras **no** se reportan como validez semántica en el mundo real. Véase [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md).
+
+## Documentos de evaluación técnica ampliados
+
+- [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md) — validez semántica, κ y dictamen
+- [`docs/INTEGRACION_METODOLOGICA.md`](docs/INTEGRACION_METODOLOGICA.md) — mapeo de dominios empíricos
+- [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) — protocolo de alineación y validación ciega
