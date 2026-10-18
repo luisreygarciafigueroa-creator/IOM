@@ -10,10 +10,10 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 
 | Pregunta | Cómo se responde en el repo |
 |---|---|
-| ¿Pueden anotadores independientes, ciegos a las reglas, etiquetar relaciones semánticas sobre pares reales/nuevos/ambiguos? | Protocolo ciego + Fleiss' κ (EXP-A) |
-| ¿La estructura formal es internamente coherente? | Lean 4 + SHACL (prerrequisito) |
-| ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (diagnóstico interno; **no** validez semántica real) |
-| ¿Se puede alinear un dominio empírico a las 13 tríadas? | EXP-E (8 pares bio/econ) |
+| ¿Pueden anotadores independientes, ciegos a las reglas, etiquetar relaciones semánticas sobre pares reales/nuevos/ambiguos? | Protocolo ciego + Fleiss' κ (**EXP-A**) |
+| ¿La estructura formal es internamente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
+| ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (**EXP-D**; diagnóstico interno — **no** validez semántica real) |
+| ¿Se puede alinear un dominio empírico a las 13 tríadas? | **EXP-E** (8 pares bio/econ) |
 
 ## Evidencia actual de validez semántica (mundo real)
 
@@ -25,40 +25,50 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 
 **Demostración provisional** bajo protocolo ciego; no prueba universal del marco.
 
-## Experimentos integrados (A–E)
+## Experimentos integrados (EXP-A a EXP-E)
 
-| ID | Capa | Runner |
-|---|---|---|
-| EXP-A | Validez semántica (ciego) | `scripts/score_independent_eval.py` |
-| EXP-B | Formal | `lake build` |
-| EXP-C | Estructural | `scripts/validate_shacl.py` |
-| EXP-D | Diagnóstico sintético | `experiments/pi_hgat_t.py` |
-| EXP-E | Mapeo de dominios (8 pares) | `experiments/domain_mapping/validate_examples.py` |
+| ID | Capa | Runner | Afirmación legítima |
+|---|---|---|---|
+| **EXP-A** | Validez semántica (ciego) | `scripts/score_independent_eval.py` | κ = 0.6871 — interpretabilidad provisional |
+| **EXP-B** | Formal | `lake build` | Solidez deductiva (Lean 4) |
+| **EXP-C** | Estructural | `scripts/validate_shacl.py` | Conformidad RDF/SHACL |
+| **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de reglas *generadas por el sistema* |
+| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | 8 pares bio/econ → 13 tríadas |
 
-Aprendizaje (pedagógico, no métrica del marco): [`experiments/learning/`](experiments/learning/)
+Detalle completo: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+
+Aprendizaje (pedagógico, **no** métrica del marco): [`experiments/learning/`](experiments/learning/)
 
 ## Pipeline
 
 ```bash
 python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt
-lake build
+lake build                                                                    # EXP-B
 .venv/bin/python scripts/validate_spec.py
 .venv/bin/python scripts/generate_ontology.py
 .venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python scripts/validate_shacl.py
-.venv/bin/python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
-.venv/bin/python experiments/pi_hgat_t.py
+.venv/bin/python scripts/validate_shacl.py                                    # EXP-C
+.venv/bin/python scripts/score_independent_eval.py \
+  --annotations datasets/independent_eval/annotations.json                    # EXP-A
+.venv/bin/python experiments/pi_hgat_t.py                                     # EXP-D
 .venv/bin/python experiments/baselines.py
-.venv/bin/python experiments/domain_mapping/validate_examples.py
+.venv/bin/python experiments/domain_mapping/validate_examples.py              # EXP-E
 .venv/bin/python scripts/generate_audit_report.py
 ```
 
 ## Documentación
 
+### Guías integradas (suite experimental y perspectivas)
+- [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md) — fundamentos, mapeo a 13 tríadas, gobernanza
+- [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md) — las cinco perspectivas y matriz comparativa
+- [`docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md`](docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md) — protocolo ciego, Fleiss' κ y jerarquía EXP-A…E
+- [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md) — dictamen técnico y condicionantes
+- [`EXPERIMENTOS.md`](EXPERIMENTOS.md) — arquitectura multinivel EXP-A a EXP-E
+
+### Núcleo metodológico
 - [`docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md`](docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md) — manual del protocolo ciego
 - [`docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md`](docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md) — manual de concordancia semántica
-- [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md) — dictamen técnico y epistemológico
 - [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · [`docs/ESPECIFICACION_METODOLOGICA.md`](docs/ESPECIFICACION_METODOLOGICA.md) · [`docs/AUDITORIA_EPISTEMOLOGICA.md`](docs/AUDITORIA_EPISTEMOLOGICA.md)
 - [`docs/ARQUITECTURA_ONTOLOGICA.md`](docs/ARQUITECTURA_ONTOLOGICA.md) · [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) · [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
 - [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) · [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md)
-- [`paper.md`](paper.md) · [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`AUDITORIA.md`](AUDITORIA.md) · [`REPRODUCCION.md`](REPRODUCCION.md)
+- [`paper.md`](paper.md) · [`AUDITORIA.md`](AUDITORIA.md) · [`REPRODUCCION.md`](REPRODUCCION.md)
