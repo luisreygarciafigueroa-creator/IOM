@@ -1,0 +1,61 @@
+{
+  "title": "Autoevaluación: protocolo ciego y capas A–E",
+  "source_docs": [
+    "docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md",
+    "docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md",
+    "docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md"
+  ],
+  "experiment_focus": "EXP-A",
+  "questions": [
+    {
+      "id": "Q1",
+      "prompt": "¿Cuál es la función principal de EXP-A frente a EXP-D?",
+      "options": {
+        "a": "EXP-A demuestra teoremas Lean; EXP-D valida OWL/SHACL.",
+        "b": "EXP-A evalúa interpretabilidad externa ciega; EXP-D recupera relaciones generadas por reglas internas.",
+        "c": "EXP-A exige 100% de acuerdo; EXP-D analiza el pipeline de instalación."
+      },
+      "answer": "b",
+      "rationale": "Solo EXP-A mide validez semántica en el mundo real; EXP-D es diagnóstico sintético."
+    },
+    {
+      "id": "Q2",
+      "prompt": "¿Qué significa Fleiss' κ = 0.6871 en el experimento actual?",
+      "options": {
+        "a": "Fallo en la verificación formal Lean 4.",
+        "b": "Acuerdo inter-anotador moderado-sustancial sobre 14 pares (1.0 = perfecto).",
+        "c": "Validación sintética perfecta de reglas preprogramadas."
+      },
+      "answer": "b",
+      "rationale": "κ corrige por azar; 0.6871 es moderado-sustancial, demostración provisional."
+    },
+    {
+      "id": "Q3",
+      "prompt": "¿Cómo se clasifican NC01, NC02, AM01 y AM03?",
+      "options": {
+        "a": "Errores de sintaxis OWL/SHACL.",
+        "b": "Fallos de compilación del entorno .venv.",
+        "c": "Conceptos nuevos (NC) y casos ambiguos (AM)."
+      },
+      "answer": "c",
+      "rationale": "Desacuerdos concentrados en fronteras semánticas deliberadas del diseño experimental."
+    },
+    {
+      "id": "Q4",
+      "prompt": "¿Puede PI-HGAT-T (EXP-D) usarse como prueba de validez ontológica en el mundo real?",
+      "options": {
+        "a": "Sí, si accuracy = 1.0.",
+        "b": "Sí, si se combina con SHACL.",
+        "c": "No; solo mide recuperación de relaciones generadas por reglas."
+      },
+      "answer": "c",
+      "rationale": "Dictamen técnico: prohibido presentar métricas sintéticas como validez semántica real."
+    }
+  ],
+  "metrics_reference": {
+    "fleiss_kappa": 0.6871,
+    "unanimous": "10/14",
+    "disagreements": ["NC01", "NC02", "AM01", "AM03"],
+    "domain_mapping_pairs_ok": 8
+  }
+}
