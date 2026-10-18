@@ -3,5 +3,5 @@ bio_pred_01,lobo,T00_adv_P0,Ind,adv,left,creates,"Depredador (individualidad ava
 bio_prey_01,ciervo,T00_ret_P2,Ind,ret,right,mirrorOf,"Presa (individualidad reflejada)"
 bio_interact_01,depredacion,T00_adv_P1,D,adv,center,creates,"Interacción Dualidad"
 bio_network_01,red_trofica,T00_adv_P2,Tot,adv,right,none,"Totalidad / sistema"
-bio_collapse_01,extincion_local,T10_ret_P0,Invol,ret,left,none,"Colapso poblacional alineado a nada/espacio/todo (involución)"
-bio_recovery_01,recolonizacion,T10_adv_P2,Evol,adv,right,none,"Recuperación alineada a todo/espacio/nada (evolución)"
+bio_collapse_01,extincion_local,T10_ret_P0,Invol,ret,left,none,"Colapso poblacional alineado a vacío/espacio/universo (involución)"
+bio_recovery_01,recolonizacion,T10_adv_P2,Evol,adv,right,none,"Recuperación alineada a universo/espacio/vacío (evolución)"

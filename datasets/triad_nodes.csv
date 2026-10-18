@@ -29,9 +29,9 @@ T08_adv_P2,8,adv,evol,2,right,Tot,mundo
 T09_adv_P0,9,adv,evol,0,left,Ind,singularidad
 T09_adv_P1,9,adv,evol,1,center,D,tiempo
 T09_adv_P2,9,adv,evol,2,right,Tot,infinito
-T10_adv_P0,10,adv,evol,0,left,Ind,todo
+T10_adv_P0,10,adv,evol,0,left,Ind,universo
 T10_adv_P1,10,adv,evol,1,center,D,espacio
-T10_adv_P2,10,adv,evol,2,right,Tot,nada
+T10_adv_P2,10,adv,evol,2,right,Tot,vacío
 T11_adv_P0,11,adv,evol,0,left,Ind,hardware
 T11_adv_P1,11,adv,evol,1,center,D,virtual
 T11_adv_P2,11,adv,evol,2,right,Tot,software
@@ -68,9 +68,9 @@ T08_ret_P2,8,ret,invol,2,right,Tot,cuerpo
 T09_ret_P0,9,ret,invol,0,left,Ind,infinito
 T09_ret_P1,9,ret,invol,1,center,D,tiempo
 T09_ret_P2,9,ret,invol,2,right,Tot,singularidad
-T10_ret_P0,10,ret,invol,0,left,Ind,nada
+T10_ret_P0,10,ret,invol,0,left,Ind,vacío
 T10_ret_P1,10,ret,invol,1,center,D,espacio
-T10_ret_P2,10,ret,invol,2,right,Tot,todo
+T10_ret_P2,10,ret,invol,2,right,Tot,universo
 T11_ret_P0,11,ret,invol,0,left,Ind,software
 T11_ret_P1,11,ret,invol,1,center,D,virtual
 T11_ret_P2,11,ret,invol,2,right,Tot,hardware
