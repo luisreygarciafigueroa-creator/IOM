@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "spec_version": "1.5.0",
+  "spec_version": "1.5.1",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-18",
   "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución). Define la estructura semántica bajo prueba para demostrar validez semántica en el mundo real (anotación independiente, alineación de dominios); no constituye por sí sola evidencia empírica de esa validez.",
@@ -33,7 +33,7 @@
       ["lógica", "inteligencia", "libertad"],
       ["receptor", "supraconsciente", "emisor"],
       ["memoria", "inconsciente", "imaginación"],
-      ["caracter", "subconsciente", "personalidad"],
+      ["carácter", "subconsciente", "personalidad"],
       ["cuerpo", "consciente", "mundo"],
       ["singularidad", "tiempo", "infinito"],
       ["universo", "espacio", "vacío"],
@@ -48,7 +48,7 @@
       ["libertad", "inteligencia", "lógica"],
       ["emisor", "supraconsciente", "receptor"],
       ["imaginación", "inconsciente", "memoria"],
-      ["personalidad", "subconsciente", "caracter"],
+      ["personalidad", "subconsciente", "carácter"],
       ["mundo", "consciente", "cuerpo"],
       ["infinito", "tiempo", "singularidad"],
       ["vacío", "espacio", "universo"],
@@ -80,6 +80,7 @@
     {"from_version": "1.1.0", "to_version": "1.2.0", "description": "Actualiza las 13 tríadas: sustituye involución/vacío/evolución por animal/humano/IA; reordena el resto. El array ret se almacena en orden de índice homólogo (espejo de adv[i]), no en el orden visual de la tabla de retroceso.", "date": "2026-10-13"},
     {"from_version": "1.2.0", "to_version": "1.3.0", "description": "Actualiza secuencias de retroceso de las perspectivas vectoriales 4 y 5: Evol ret = vacío·ind·dua·tot·invol (ejes 0–4, ←); Invol ret = evol·tot·dua·ind·vacío (ejes 4–0, ←). Avances de Evol e Invol se conservan.", "date": "2026-10-16"},
     {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Sustituye la tríada índice 10: universo|espacio|vacío → todo|espacio|nada (avance); espejo vacío|espacio|universo → nada|espacio|todo (retroceso).", "date": "2026-10-16"},
-    {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Tríada 10: todo|espacio|nada → universo|espacio|vacío (y espejo). Vectores 4/5: Evol adv=invol·ind·dua·tot·evol (0–4,→), Evol ret=evol·tot·dua·ind·invol (4–0,←); Invol adv=invol·tot·dua·ind·evol (4–0,→), Invol ret=evol·ind·dua·tot·invol (0–4,←).", "date": "2026-10-18"}
+    {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Tríada 10: todo|espacio|nada → universo|espacio|vacío (y espejo). Vectores 4/5: Evol adv=invol·ind·dua·tot·evol (0–4,→), Evol ret=evol·tot·dua·ind·invol (4–0,←); Invol adv=invol·tot·dua·ind·evol (4–0,→), Invol ret=evol·ind·dua·tot·invol (0–4,←).", "date": "2026-10-18"},
+    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía de etiquetas de datos: caracter → carácter (tríada índice 7). Identificadores estructurales (T07_*, Ind, D, Tot) sin cambio.", "date": "2026-10-18"}
   ]
 }

@@ -24,7 +24,7 @@ Eje posicional de cada fila:
 | 4 | lógica | inteligencia | libertad |
 | 5 | receptor | supraconsciente | emisor |
 | 6 | memoria | inconsciente | imaginación |
-| 7 | caracter | subconsciente | personalidad |
+| 7 | carácter | subconsciente | personalidad |
 | 8 | cuerpo | consciente | mundo |
 | 9 | singularidad | tiempo | infinito |
 | 10 | universo | espacio | vacío |
@@ -42,7 +42,7 @@ Eje posicional de cada fila:
 | 4 | libertad | inteligencia | lógica |
 | 5 | emisor | supraconsciente | receptor |
 | 6 | imaginación | inconsciente | memoria |
-| 7 | personalidad | subconsciente | caracter |
+| 7 | personalidad | subconsciente | carácter |
 | 8 | mundo | consciente | cuerpo |
 | 9 | infinito | tiempo | singularidad |
 | 10 | vacío | espacio | universo |
@@ -58,4 +58,4 @@ Eje posicional de cada fila:
 
 Las filas homólogas (mismo índice 0–12) son parejas de espejo entre fases: izquierda y derecha intercambian; el centro conserva su posición. Ejemplo: `T00_adv` (animal | humano | IA) ↔ `T00_ret` (IA | humano | animal).
 
-`spec_version` ≥ **1.5.0**.
+`spec_version` ≥ **1.5.1**.
