@@ -32,16 +32,7 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 | Colapso poblacional | Involución | vector Invol | ret | Disolución de estructura hacia vacío |
 | Recuperación / sucesión | Evolución | vector Evol | adv | Proyección del vacío hacia nueva estructura |
 
-**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/biologia_depredador_presa.csv`):
-
-```csv
-external_id,external_label,mapped_node_id,perspective,phase,position,notes
-bio_pred_01,lobo,T03_adv_P0,Ind,adv,left,"Depredador como singularidad en fase de avance (muerte/artificial/vida)"
-bio_prey_01,ciervo,T03_ret_P2,Ind,ret,right,"Presa como singularidad reflejada"
-bio_inter_01,depredacion,T03_adv_P1,D,adv,center,"Relación dual que crea el centro de la fase opuesta"
-```
-
-**Uso de vectores de involución**: un biólogo puede modelar la extinción local como un paso del vector `Invol` (disolución) y la recolonización como un paso del vector `Evol`.
+**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/biologia_depredador_presa.csv`).
 
 ---
 
@@ -58,21 +49,32 @@ bio_inter_01,depredacion,T03_adv_P1,D,adv,center,"Relación dual que crea el cen
 | Burbuja / expansión | Evolución | vector Evol | adv | Proyección hacia estructura |
 | Crash / liquidación | Involución | vector Invol | ret | Disolución hacia vacío |
 
-**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/economia_transaccion_riesgo.csv`):
-
-```csv
-external_id,external_label,mapped_node_id,perspective,phase,position,notes
-econ_agent_01,trader_A,T09_adv_P0,Ind,adv,left,"Agente como singularidad (singularidad/tiempo/infinito)"
-econ_asset_01,derivado_X,T09_ret_P2,Ind,ret,right,"Activo como singularidad reflejada"
-econ_risk_01,exposicion,T09_adv_P1,D,adv,center,"Riesgo como dualidad mediadora"
-econ_mkt_01,mercado,T09_ret_P1,Tot,ret,center,"Mercado como totalidad"
-```
-
-Las tres tríadas más útiles para economistas suelen ser las de *singularidad/tiempo/infinito*, *hardware/virtual/software* (por analogía con instrumentos) y *muerte/artificial/vida* (ciclo de creación-destrucción de valor).
+**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/economia_transaccion_riesgo.csv`).
 
 ---
 
-## 4. Otras disciplinas (plantilla rápida)
+## 4. Cosmología náhuatl — Cinco Soles y camino al Mictlán
+
+Documento completo: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).
+
+Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
+
+| Concepto | Perspectiva IOM | Relación candidata | Notas |
+|----------|-----------------|--------------------|-------|
+| Cada Sol (edad) | Individualidad / Totalidad | — | Unidad temporal del ciclo |
+| Lucha Tezcatlipoca ↔ Quetzalcóatl | Dualidad | `mirrorOf` | Polaridad de fuerzas divinas |
+| Cataclismo que cierra una edad | Involución | `creates` | Disolución estructura → vacío |
+| Aparición de un nuevo Sol | Evolución | `creates` | Proyección vacío → estructura |
+| Vida ↔ muerte | Dualidad | `mirrorOf` | Dicotomía mesoamericana |
+| Camino al Mictlán (9 niveles) | Involución | `creates` | Retorno al origen / descomposición |
+| Tlaltecuhtli | Dualidad + Involución | `mirrorOf` | Tierra devoradora-partidora |
+| *teyolia* → Mictlán | Individualidad → Totalidad | `creates` | Entidad anímica hacia región de muertos |
+
+Fuentes de trabajo: Moreno de los Arcos (*Los cinco soles cosmogónicos*); Luna López (*El camino al Mictlán*, 2017). **No** aporta κ propio hasta anotación ciega independiente.
+
+---
+
+## 5. Otras disciplinas (plantilla rápida)
 
 | Disciplina | Fenómeno típico | Tríada sugerida | Vector dominante |
 |------------|-----------------|-----------------|------------------|
@@ -84,7 +86,7 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
 
 ---
 
-## 5. Cómo contribuir un nuevo dominio
+## 6. Cómo contribuir un nuevo dominio
 
 1. Copia la plantilla `datasets/ingestion/templates/plantilla_dominio.csv`.
 2. Rellena las columnas obligatorias (`external_id`, `external_label`, `mapped_node_id` o `proposed_label`).
@@ -100,10 +102,11 @@ Las tres tríadas más útiles para economistas suelen ser las de *singularidad/
 
 ---
 
-## 6. Referencias internas
+## 7. Referencias internas
 
 - Nodos canónicos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
 - Método de la prueba semántica: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
 - Reglas de relaciones: [`docs/RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
+- Cosmología náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
 - Especificación: [`data/iom_spec.json`](../data/iom_spec.json)
 - Script de ingesta: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
