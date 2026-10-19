@@ -13,17 +13,18 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 | ¿Pueden anotadores independientes, ciegos a las reglas, etiquetar relaciones semánticas sobre pares reales/nuevos/ambiguos? | Protocolo ciego + Fleiss' κ (**EXP-A**) |
 | ¿La estructura formal es internamente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
 | ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (**EXP-D**; diagnóstico interno — **no** validez semántica real) |
-| ¿Se puede alinear un dominio empírico a las 13 tríadas? | **EXP-E** (8 pares bio/econ) + catálogo de dominios |
+| ¿Se puede alinear un dominio empírico a las 13 tríadas? | **EXP-E** + [`MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
 
 ## Evidencia actual de validez semántica (mundo real)
 
 | Métrica | Valor | Lectura |
 |---|---:|---|
-| Fleiss' κ | **0.6871** | Acuerdo moderado-sustancial (14 pares) |
+| Fleiss' κ | **0.6871** | Acuerdo sustancial (14 pares; Landis & Koch 0.61–0.80) |
 | Unánime | 10/14 | Controles estructurales estables |
 | Desacuerdos | NC01, NC02, AM01, AM03 | Conceptos nuevos y casos ambiguos |
 
-**Demostración provisional** bajo protocolo ciego; no prueba universal del marco.
+**Demostración provisional** bajo protocolo ciego; no prueba universal del marco.  
+Módulo didáctico: [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md).
 
 ## Experimentos integrados (EXP-A a EXP-E)
 
@@ -35,7 +36,7 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de reglas *generadas por el sistema* |
 | **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | 8 pares bio/econ → 13 tríadas |
 
-Detalle completo: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · Alineación: [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md).
 
 Aprendizaje (pedagógico, **no** métrica del marco): [`experiments/learning/`](experiments/learning/)
 
@@ -46,7 +47,8 @@ Demostraciones de mapeo (sin κ propio hasta anotación ciega):
 | Dominio | Documento |
 |---------|-----------|
 | Biología / Economía | [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · EXP-E |
-| **Cosmología náhuatl** (Cinco Soles, Mictlán) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
+| Cosmología náhuatl (Cinco Soles, Mictlán) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
+| Manual unificado de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
 
 ## Pipeline
 
@@ -67,21 +69,21 @@ lake build                                                                    # 
 
 ## Documentación
 
-### Guías integradas (suite experimental y perspectivas)
-- [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md) — fundamentos, mapeo a 13 tríadas, gobernanza
-- [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md) — las cinco perspectivas y matriz comparativa
-- [`docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md`](docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md) — protocolo ciego, Fleiss' κ y jerarquía EXP-A…E
-- [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md) — dictamen técnico y condicionantes
+### Guías integradas
+- [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) — invarianza del núcleo, reglas, ingesta, catálogo, EXP-A…E
+- [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md) — protocolo ciego, Fleiss' κ, 14 pares, cuestionario
+- [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md) — fundamentos y gobernanza
+- [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md) — cinco perspectivas
+- [`docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md`](docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md) — introducción al protocolo ciego
+- [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md) — dictamen técnico
 - [`EXPERIMENTOS.md`](EXPERIMENTOS.md) — arquitectura multinivel EXP-A a EXP-E
 
 ### Dominios y mapeo
-- [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) — biología, economía, cosmología náhuatl
-- [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) — Cinco Soles y camino al Mictlán
+- [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md)
 - [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) · [`docs/ARQUITECTURA_ONTOLOGICA.md`](docs/ARQUITECTURA_ONTOLOGICA.md)
 
 ### Núcleo metodológico
-- [`docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md`](docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md) — manual del protocolo ciego
-- [`docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md`](docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md) — manual de concordancia semántica
+- [`docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md`](docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md) · [`docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md`](docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md)
 - [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · [`docs/ESPECIFICACION_METODOLOGICA.md`](docs/ESPECIFICACION_METODOLOGICA.md) · [`docs/AUDITORIA_EPISTEMOLOGICA.md`](docs/AUDITORIA_EPISTEMOLOGICA.md)
 - [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) · [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md)
 - [`paper.md`](paper.md) · [`AUDITORIA.md`](AUDITORIA.md) · [`REPRODUCCION.md`](REPRODUCCION.md)
