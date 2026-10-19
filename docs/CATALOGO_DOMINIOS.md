@@ -21,92 +21,98 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 
 ## 2. Biología — Depredador / presa y ciclos ecológicos
 
-### Mapeo de una relación depredador-presa
+Plantilla: `datasets/ingestion/templates/biologia_depredador_presa.csv`.
 
-| Concepto biológico | Perspectiva IOM | Posición sugerida | Fase | Justificación operativa |
-|--------------------|-----------------|-------------------|------|-------------------------|
-| Depredador (individuo) | Individualidad | left o right | adv | Unidad singular que actúa |
-| Presa (individuo) | Individualidad | left o right (opuesta) | ret | Unidad singular que es afectada |
-| Interacción depredación | Dualidad | center | adv/ret | Relación / diferencia entre dos unidades |
-| Población / red trófica | Totalidad | center | adv | Sistema integrado |
-| Colapso poblacional | Involución | vector Invol | ret | Disolución de estructura hacia vacío |
-| Recuperación / sucesión | Evolución | vector Evol | adv | Proyección del vacío hacia nueva estructura |
-
-**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/biologia_depredador_presa.csv`).
+| Concepto | Perspectiva IOM | Fase | Justificación |
+|----------|-----------------|------|---------------|
+| Depredador / presa | Ind | adv / ret | Singularidades reflejadas |
+| Interacción depredación | D | adv | Tensión binaria |
+| Red trófica | Tot | adv | Sistema integrado |
+| Extinción / recolonización | Invol / Evol | ret / adv | Disolución / emergencia |
 
 ---
 
-## 3. Economía — Transacciones de alto riesgo y ciclos de mercado
+## 3. Economía — Transacciones de alto riesgo y mercado
 
-### Mapeo de una transacción de alto riesgo
+Plantilla: `datasets/ingestion/templates/economia_transaccion_riesgo.csv`.
 
-| Concepto económico | Perspectiva IOM | Posición sugerida | Fase | Justificación operativa |
-|--------------------|-----------------|-------------------|------|-------------------------|
-| Agente individual (trader) | Individualidad | left | adv | Unidad decisora |
-| Activo / contraparte | Individualidad | right | ret | Unidad reflejada |
-| Contrato / riesgo | Dualidad | center | adv | Relación que media |
-| Mercado / sistema financiero | Totalidad | center | ret | Integración sistémica |
-| Burbuja / expansión | Evolución | vector Evol | adv | Proyección hacia estructura |
-| Crash / liquidación | Involución | vector Invol | ret | Disolución hacia vacío |
-
-**Ejemplo de alineación CSV** (ver `datasets/ingestion/templates/economia_transaccion_riesgo.csv`).
+| Concepto | Perspectiva IOM | Fase | Justificación |
+|----------|-----------------|------|---------------|
+| Trader / activo | Ind | adv / ret | Agente y contraparte |
+| Riesgo contractual | D | adv | Mediación |
+| Mercado | Tot | ret | Sistema |
+| Burbuja / crash | Evol / Invol | adv / ret | Expansión / disolución |
 
 ---
 
-## 4. Cosmología náhuatl — Cinco Soles y camino al Mictlán
+## 4. Cosmología náhuatl — Cinco Soles y Mictlán
 
-Documento completo: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).
-
+Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
 Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
 
-| Concepto | Perspectiva IOM | Relación candidata | Notas |
-|----------|-----------------|--------------------|-------|
-| Cada Sol (edad) | Individualidad / Totalidad | — | Unidad temporal del ciclo |
-| Lucha Tezcatlipoca ↔ Quetzalcóatl | Dualidad | `mirrorOf` | Polaridad de fuerzas divinas |
-| Cataclismo que cierra una edad | Involución | `creates` | Disolución estructura → vacío |
-| Aparición de un nuevo Sol | Evolución | `creates` | Proyección vacío → estructura |
-| Vida ↔ muerte | Dualidad | `mirrorOf` | Dicotomía mesoamericana |
-| Camino al Mictlán (9 niveles) | Involución | `creates` | Retorno al origen / descomposición |
-| Tlaltecuhtli | Dualidad + Involución | `mirrorOf` | Tierra devoradora-partidora |
-| *teyolia* → Mictlán | Individualidad → Totalidad | `creates` | Entidad anímica hacia región de muertos |
+| Concepto | Perspectiva | Relación candidata |
+|----------|-------------|--------------------|
+| Lucha Tezcatlipoca ↔ Quetzalcóatl | D | `mirrorOf` |
+| Cataclismo / nuevo Sol | Invol / Evol | `creates` |
+| Camino al Mictlán | Invol | `creates` |
+| Vida ↔ muerte | D | `mirrorOf` |
 
-Fuentes de trabajo: Moreno de los Arcos (*Los cinco soles cosmogónicos*); Luna López (*El camino al Mictlán*, 2017). **No** aporta κ propio hasta anotación ciega independiente.
+Fuentes: Moreno de los Arcos; Luna López (2017).
 
 ---
 
-## 5. Otras disciplinas (plantilla rápida)
+## 5. Mitología comparada e historia de las religiones
 
-| Disciplina | Fenómeno típico | Tríada sugerida | Vector dominante |
-|------------|-----------------|-----------------|------------------|
-| Sociología | Cambio de norma social | carácter / subconsciente / personalidad | Invol → Evol |
-| Física / sistemas complejos | Transición de fase | oscuridad / consciencia / luz | Evol / Invol |
-| Psicología | Insight / represión | imaginación / inconsciente / memoria | Invol |
-| Ingeniería de software | Refactoring / deuda técnica | hardware / virtual / software | Invol (deuda) → Evol (refactor) |
-| IA / cognición artificial | Transición animal→humano→IA | animal / humano / IA | Evol / Invol |
+Documento: [`DOMINIO_MITOLOGIA_RELIGIONES.md`](DOMINIO_MITOLOGIA_RELIGIONES.md).  
+Plantilla: `datasets/ingestion/templates/mitologia_religiones.csv`.
+
+| Concepto transversal | Perspectiva | Relación candidata |
+|----------------------|-------------|--------------------|
+| Sagrado ↔ profano | Dualidad | `mirrorOf` |
+| Cielo ↔ inframundo | Dualidad | `mirrorOf` |
+| Caos → cosmos ordenado | Evolución | `creates` |
+| Edad del mundo → cataclismo | Involución | `creates` |
+| Dios singular → panteón | Ind → Tot | — |
+| Sacrificio individual → fecundidad colectiva | Ind → Tot | `creates` |
+| Camino al más allá → origen/matriz | Involución | `creates` |
+
+Fuentes de trabajo: Díez de Velasco (*Historia de las religiones*); Lora Cam (*Mitologías Universales y Latinoamericanas*). **No** se reproduce texto de las obras; solo mapeo de roles. Sin κ propio hasta anotación ciega.
 
 ---
 
-## 6. Cómo contribuir un nuevo dominio
+## 6. Otras disciplinas (plantilla rápida)
 
-1. Copia la plantilla `datasets/ingestion/templates/plantilla_dominio.csv`.
-2. Rellena las columnas obligatorias (`external_id`, `external_label`, `mapped_node_id` o `proposed_label`).
+| Disciplina | Fenómeno típico | Vector dominante |
+|------------|-----------------|------------------|
+| Sociología | Cambio de norma social | Invol → Evol |
+| Física / sistemas complejos | Transición de fase | Evol / Invol |
+| Psicología | Insight / represión | Invol |
+| Ingeniería de software | Deuda técnica / refactor | Invol → Evol |
+| IA / cognición artificial | Animal → humano → IA | Evol / Invol |
+
+---
+
+## 7. Cómo contribuir un nuevo dominio
+
+1. Copia `datasets/ingestion/templates/plantilla_dominio.csv`.
+2. Rellena `external_id`, `external_label`, `mapped_node_id`.
 3. Ejecuta:
    ```bash
    python scripts/importar_datos_personalizados.py \
        --input datasets/ingestion/templates/mi_dominio.csv \
        --output datasets/ingestion/aligned/mi_dominio_aligned.csv
    ```
-4. El script valida que los `mapped_node_id` existan en los 78 nodos canónicos y genera un informe de alineación.
-5. Los datos alineados pueden usarse como *candidatos externos* en evaluación independiente o como features adicionales, **sin modificar** `data/iom_spec.json` ni la ontología core.
-6. Para que el dominio cuente como **prueba de validez semántica**, someter un subconjunto a anotación ciega independiente y publicar κ y desacuerdos.
+4. Validar IDs contra los 78 nodos canónicos.
+5. **Sin modificar** `data/iom_spec.json` ni la ontología core.
+6. Para validez semántica de campo: anotación ciega independiente + κ.
 
 ---
 
-## 7. Referencias internas
+## 8. Referencias internas
 
-- Nodos canónicos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
-- Método de la prueba semántica: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
-- Reglas de relaciones: [`docs/RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
-- Cosmología náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
-- Especificación: [`data/iom_spec.json`](../data/iom_spec.json)
-- Script de ingesta: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
+- Nodos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
+- Alineación: [`MANUAL_ALINEACION_DOMINIOS.md`](MANUAL_ALINEACION_DOMINIOS.md)
+- Náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
+- Mitología / religiones: [`DOMINIO_MITOLOGIA_RELIGIONES.md`](DOMINIO_MITOLOGIA_RELIGIONES.md)
+- Reglas: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
+- Script: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
