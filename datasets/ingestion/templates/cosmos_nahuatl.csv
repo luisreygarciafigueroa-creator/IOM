@@ -1,0 +1,19 @@
+external_id,external_label,mapped_node_id,perspective,phase,position,relation_candidate,notes
+# Demostración de alineación — no gold de validez semántica de campo
+# mapped_node_id: uno de los 78 de datasets/triad_nodes.csv (ajustar tras validar con triad_nodes)
+# perspective: Ind | D | Tot | Evol | Invol
+nah_sol_viento,Nahui_Ehecatl_Sol_Viento,T00_adv_P0,Evol,adv,left,none,"Primera edad (orden Piedra del Sol/Chavero); destrucción por viento"
+nah_sol_fuego,Nahui_Quiahuitl_Sol_Fuego,T00_adv_P1,Invol,adv,center,creates,"Lluvia de fuego; disolución de la edad"
+nah_sol_agua,Nahui_Atl_Sol_Agua,T00_ret_P1,Invol,ret,center,creates,"Diluvio; hombres a peces"
+nah_sol_tierra,Nahui_Ocelotl_Sol_Tierra,T00_ret_P2,Invol,ret,right,creates,"Temblores/ocelotes; gigantes devorados"
+nah_sol_ollin,Nahui_Ollin_Sol_Movimiento,T00_adv_P2,Tot,adv,right,none,"Quinto Sol / edad presente"
+nah_tezcatlipoca,Tezcatlipoca,T03_adv_P0,Ind,adv,left,none,"Fuerza divina singular"
+nah_quetzalcoatl,Quetzalcoatl,T03_ret_P2,Ind,ret,right,none,"Fuerza divina reflejada"
+nah_lucha_dioses,lucha_Tezcatlipoca_Quetzalcoatl,T03_adv_P1,D,adv,center,mirrorOf,"Dualidad de fuerzas en la creación de soles"
+nah_vida,vida,T02_adv_P0,Ind,adv,left,none,"Polo vida"
+nah_muerte,muerte,T02_ret_P2,Ind,ret,right,none,"Polo muerte"
+nah_vida_muerte,vida_muerte,T02_adv_P1,D,adv,center,mirrorOf,"Dicotomía mesoamericana fundamental"
+nah_tlaltecuhtli,Tlaltecuhtli,T03_ret_P1,Invol,ret,center,creates,"Tierra devoradora-partidora; matriz del retorno"
+nah_mictlan,Mictlan,T03_ret_P1,Tot,ret,center,none,"Lugar de los muertos; noveno nivel"
+nah_teyolia,teyolia,T02_adv_P0,Ind,adv,left,creates,"Entidad anímica (corazón) hacia región de muertos"
+nah_camino_mictlan,camino_al_Mictlan,T03_ret_P0,Invol,ret,left,creates,"Ruta de descomposición / retorno al origen"
