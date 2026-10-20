@@ -19,10 +19,52 @@
     "note": "Pedagógico; no modifica métricas del marco."
   },
   "experiments": [
-    {"id": "EXP-A-INDEPENDENT-BLIND", "name": "Evaluación semántica ciega inter-anotador", "layer": "validez_semantica_mundo_real", "primary": true, "runner": "scripts/score_independent_eval.py", "metrics": {"fleiss_kappa": 0.6871, "unanimous": "10/14"}, "legitimate_claim": "Interpretabilidad provisional (n=14).", "not_a_claim": "Validez universal."},
-    {"id": "EXP-B-FORMAL-LEAN", "name": "Verificación deductiva Lean 4", "layer": "formal", "runner": "lake build", "legitimate_claim": "Solidez deductiva.", "not_a_claim": "Validez semántica en el mundo real."},
-    {"id": "EXP-C-STRUCTURAL-SHACL", "name": "Conformidad OWL/SHACL + CSV", "layer": "estructural", "runner": "scripts/validate_shacl.py", "legitimate_claim": "Conformidad de formas.", "not_a_claim": "Interpretabilidad empírica."},
-    {"id": "EXP-D-PI-HGAT-T", "name": "Recuperación sintética PI-HGAT-T + baselines", "layer": "diagnostico_sintetico", "runner": "experiments/pi_hgat_t.py", "legitimate_claim": "Recuperabilidad de relaciones generadas por reglas.", "not_a_claim": "Validez semántica en el mundo real."},
-    {"id": "EXP-E-DOMAIN-ALIGNMENT", "name": "Alineación de dominios empíricos (biología / economía)", "layer": "validez_semantica_mundo_real", "status": "demostracion_de_mapeo", "runner": "experiments/domain_mapping/validate_examples.py", "n_pairs": 8, "legitimate_claim": "Cartografía a 13 tríadas respetando mirrorOf/creates.", "not_a_claim": "κ de dominio; validación de campo."}
+    {
+      "id": "EXP-A-INDEPENDENT-BLIND",
+      "name": "Evaluación semántica ciega inter-anotador",
+      "layer": "validez_semantica_mundo_real",
+      "primary": true,
+      "runner": "scripts/score_independent_eval.py",
+      "metrics": {
+        "fleiss_kappa": 0.6871,
+        "unanimous": "10/14"
+      },
+      "legitimate_claim": "Interpretabilidad provisional (n=14).",
+      "not_a_claim": "Validez universal."
+    },
+    {
+      "id": "EXP-B-FORMAL-LEAN",
+      "name": "Verificación deductiva Lean 4",
+      "layer": "formal",
+      "runner": "lake build",
+      "legitimate_claim": "Solidez deductiva.",
+      "not_a_claim": "Validez semántica en el mundo real."
+    },
+    {
+      "id": "EXP-C-STRUCTURAL-SHACL",
+      "name": "Conformidad OWL/SHACL + CSV",
+      "layer": "estructural",
+      "runner": "scripts/validate_shacl.py",
+      "legitimate_claim": "Conformidad de formas.",
+      "not_a_claim": "Interpretabilidad empírica."
+    },
+    {
+      "id": "EXP-D-PI-HGAT-T",
+      "name": "Recuperación sintética PI-HGAT-T + baselines",
+      "layer": "diagnostico_sintetico",
+      "runner": "experiments/pi_hgat_t.py",
+      "legitimate_claim": "Recuperabilidad de relaciones generadas por reglas.",
+      "not_a_claim": "Validez semántica en el mundo real."
+    },
+    {
+      "id": "EXP-E-DOMAIN-ALIGNMENT",
+      "name": "Alineación de dominios empíricos (cosmología náhuatl)",
+      "layer": "validez_semantica_mundo_real",
+      "status": "demostracion_de_mapeo",
+      "runner": "experiments/domain_mapping/validate_examples.py",
+      "n_pairs": 5,
+      "legitimate_claim": "Cartografía Cinco Soles / Mictlán a 13 tríadas respetando mirrorOf/creates.",
+      "not_a_claim": "κ de dominio; validación de campo."
+    }
   ]
 }
