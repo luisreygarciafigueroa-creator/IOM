@@ -6,7 +6,7 @@
 
 ## 1. Principios de invarianza del núcleo
 
-El núcleo canónico de **78 nodos** (13 tríadas × 2 fases × 3 posiciones) opera como ancla semántica invariante. Al cartografiar dominios heterogéneos (biología, economía, cosmogonías, etc.), todo concepto externo se asimila como instancia o proyección **sin alterar** `data/iom_spec.json`, Lean 4 ni SHACL.
+El núcleo canónico de **78 nodos** (13 tríadas × 2 fases × 3 posiciones) opera como ancla semántica invariante. Al cartografiar dominios heterogéneos (cosmogonías náhuatl y otros), todo concepto externo se asimila como instancia o proyección **sin alterar** `data/iom_spec.json`, Lean 4 ni SHACL.
 
 ### Cuatro axiomas ontológicos
 
@@ -21,9 +21,9 @@ El núcleo canónico de **78 nodos** (13 tríadas × 2 fases × 3 posiciones) op
 
 | ID | Perspectiva | Tipo | Rol operativo |
 |----|-------------|------|---------------|
-| Ind | Individualidad | Posicional | Unidad / singularidad (left) |
-| D | Dualidad | Posicional | Relación / tensión (center) |
-| Tot | Totalidad | Posicional | Integración / sistema (right) |
+| Ind | Individualidad | Posicional | Unidad / singularidad (→) |
+| D | Dualidad | Posicional | Relación / tensión (0) |
+| Tot | Totalidad | Posicional | Integración / sistema (←) |
 | Evol | Evolución | Vectorial | Vacío → estructura (adv) |
 | Invol | Involución | Vectorial | Estructura → vacío (ret) |
 
@@ -44,10 +44,10 @@ Solo dos conectores admisibles entre nodos canónicos **intra-tríada**:
 
 | Regla | Origen | Destino |
 |-------|--------|---------|
-| 1 | Lateral adv (`pos ∈ {0,2}`) | Centro ret (`pos = 1`) |
-| 2 | Centro adv (`pos = 1`) | Laterales ret (`pos ∈ {0,2}`) |
-| 3 | Centro ret (`pos = 1`) | Laterales adv (`pos ∈ {0,2}`) |
-| 4 | Lateral ret (`pos ∈ {0,2}`) | Centro adv (`pos = 1`) |
+| 1 | Lateral adv (`pos ∈ {0,2}`) | 0 ret (`pos = 1`) |
+| 2 | 0 adv (`pos = 1`) | Laterales ret (`pos ∈ {0,2}`) |
+| 3 | 0 ret (`pos = 1`) | Laterales adv (`pos ∈ {0,2}`) |
+| 4 | Lateral ret (`pos ∈ {0,2}`) | 0 adv (`pos = 1`) |
 
 Cualquier otro par → `none` (incluye cross-tríada e intra-fase).
 
@@ -79,33 +79,7 @@ Opcionales: `perspective`, `phase`, `position`, `relation_candidate`, `notes`.
 
 ## 4. Catálogo de dominios ilustrativos
 
-### 4.1 Biología — depredador / presa
-
-Plantilla: `datasets/ingestion/templates/biologia_depredador_presa.csv`.
-
-| Concepto | Perspectiva | Pos | Fase | Justificación |
-|----------|-------------|-----|------|---------------|
-| Depredador | Ind | left | adv | Agente singular |
-| Presa | Ind | right | ret | Singularidad reflejada |
-| Depredación | D | center | adv | Tensión binaria |
-| Red trófica | Tot | right | adv | Sistema integrado |
-| Extinción local | Invol | — | ret | Disolución |
-| Recolonización | Evol | — | adv | Emergencia |
-
-### 4.2 Economía — transacción de riesgo
-
-Plantilla: `datasets/ingestion/templates/economia_transaccion_riesgo.csv`.
-
-| Concepto | Perspectiva | Pos | Fase | Justificación |
-|----------|-------------|-----|------|---------------|
-| Trader | Ind | left | adv | Agente decisor |
-| Activo | Ind | right | ret | Contraparte |
-| Riesgo contractual | D | center | adv | Mediación |
-| Mercado | Tot | right | adv | Sistema |
-| Expansión / burbuja | Evol | — | adv | Crecimiento |
-| Liquidación / crash | Invol | — | ret | Disolución |
-
-### 4.3 Cosmología náhuatl — Cinco Soles y Mictlán
+### 4.1 Cosmología náhuatl — Cinco Soles y Mictlán
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
 Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
