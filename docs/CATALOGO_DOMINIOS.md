@@ -19,33 +19,7 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 
 ---
 
-## 2. Biología — Depredador / presa y ciclos ecológicos
-
-Plantilla: `datasets/ingestion/templates/biologia_depredador_presa.csv`.
-
-| Concepto | Perspectiva IOM | Fase | Justificación |
-|----------|-----------------|------|---------------|
-| Depredador / presa | Ind | adv / ret | Singularidades reflejadas |
-| Interacción depredación | D | adv | Tensión binaria |
-| Red trófica | Tot | adv | Sistema integrado |
-| Extinción / recolonización | Invol / Evol | ret / adv | Disolución / emergencia |
-
----
-
-## 3. Economía — Transacciones de alto riesgo y mercado
-
-Plantilla: `datasets/ingestion/templates/economia_transaccion_riesgo.csv`.
-
-| Concepto | Perspectiva IOM | Fase | Justificación |
-|----------|-----------------|------|---------------|
-| Trader / activo | Ind | adv / ret | Agente y contraparte |
-| Riesgo contractual | D | adv | Mediación |
-| Mercado | Tot | ret | Sistema |
-| Burbuja / crash | Evol / Invol | adv / ret | Expansión / disolución |
-
----
-
-## 4. Cosmología náhuatl — Cinco Soles y Mictlán
+## 2. Cosmología náhuatl — Cinco Soles y Mictlán
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
 Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
@@ -61,7 +35,7 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 
 ---
 
-## 5. Otras disciplinas (plantilla rápida)
+## 3. Otras disciplinas (plantilla rápida)
 
 | Disciplina | Fenómeno típico | Vector dominante |
 |------------|-----------------|------------------|
@@ -73,7 +47,7 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 
 ---
 
-## 6. Cómo contribuir un nuevo dominio
+## 4. Cómo contribuir un nuevo dominio
 
 1. Copia `datasets/ingestion/templates/plantilla_dominio.csv`.
 2. Rellena `external_id`, `external_label`, `mapped_node_id`.
@@ -89,7 +63,7 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 
 ---
 
-## 7. Referencias internas
+## 5. Referencias internas
 
 - Nodos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
 - Alineación: [`MANUAL_ALINEACION_DOMINIOS.md`](MANUAL_ALINEACION_DOMINIOS.md)
