@@ -3,9 +3,8 @@
 **13 tríadas** × **2 fases** × **3 posiciones** = **78 nodos**  
 `spec_version` **1.7.0** · [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv) · [`data/iom_spec.json`](../data/iom_spec.json)
 
-- Índice de tríada: **1 … 13** (`T01` … `T13`)
-- Posiciones avance: **→ \| 0 \| →**
-- Posiciones retroceso: **← \| 0 \| ←**
+- Índice: **1 … 13** (`T01` … `T13`)
+- Avance: **→ \| 0 \| →**· Retroceso: **← \| 0 \| ←**
 - `position_index`: 0 = lateral izq. · 1 = centro · 2 = lateral der.
 
 ---
@@ -13,23 +12,21 @@
 ## Fase de Avance (`adv` / evol)
 
 ```
-# |       →       |       0       |       →       |
-  | --- | --- | --- |
-1 | oscuridad | consciencia | luz |
-2 | descendente | mente | ascendente |
-3 | muerte | artificial | vida |
-4 | lógica | inteligencia | libertad |
-5 | memoria | inconsciente | imaginación |
-6 | receptor | supraconsciente | emisor |
-7 | animal | humano | IA |
-8 | carácter | subconsciente | personalidad |
-9 | cuerpo | consciente | mundo |
-10 | singularidad | tiempo | infinito |
-11 | universo | espacio | vacío |
-12 | hardware | virtual | software |
-13 | orientación | cuántico | dirección |
-  | --- | --- | --- |
-# |       ←       |       0       |       ←       |
+#   |       →       |       0       |       →       |
+1   | oscuridad | consciencia | luz |
+2   | descendente | mente | ascendente |
+3   | muerte | artificial | vida |
+4   | lógica | inteligencia | libertad |
+5   | memoria | inconsciente | imaginación |
+6   | receptor | supraconsciente | emisor |
+7   | animal | humano | IA |
+8   | carácter | subconsciente | personalidad |
+9   | cuerpo | consciente | mundo |
+10  | singularidad | tiempo | infinito |
+11  | universo | espacio | vacío |
+12  | hardware | virtual | software |
+13  | orientación | cuántico | dirección |
+#   |       ←       |       0       |       ←       |
 ```
 
 | # | → | 0 | → | node_id |
@@ -53,23 +50,21 @@
 ## Fase de Retroceso (`ret` / invol)
 
 ```
-# |       →       |       0       |       →       |
-  | --- | --- | --- |
-1 | luz | consciencia | oscuridad |
-2 | ascendente | mente | descendente |
-3 | vida | artificial | muerte |
-4 | libertad | inteligencia | lógica |
-5 | imaginación | inconsciente | memoria |
-6 | emisor | supraconsciente | receptor |
-7 | IA | humano | animal |
-8 | personalidad | subconsciente | carácter |
-9 | mundo | consciente | cuerpo |
-10 | infinito | tiempo | singularidad |
-11 | vacío | espacio | universo |
-12 | software | virtual | hardware |
-13 | dirección | cuántico | orientación |
-  | --- | --- | --- |
-# |       ←       |       0       |       ←       |
+#   |       →       |       0       |       →       |
+1   | luz | consciencia | oscuridad |
+2   | ascendente | mente | descendente |
+3   | vida | artificial | muerte |
+4   | libertad | inteligencia | lógica |
+5   | imaginación | inconsciente | memoria |
+6   | emisor | supraconsciente | receptor |
+7   | IA | humano | animal |
+8   | personalidad | subconsciente | carácter |
+9   | mundo | consciente | cuerpo |
+10  | infinito | tiempo | singularidad |
+11  | vacío | espacio | universo |
+12  | software | virtual | hardware |
+13  | dirección | cuántico | orientación |
+#   |       ←       |       0       |       ←       |
 ```
 
 | # | ← | 0 | ← | node_id |
