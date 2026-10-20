@@ -1,21 +1,35 @@
-# IOM — prueba de validez semántica en el mundo real
+# IOM — marco de las cinco perspectivas como Cinco Soles y Mictlán
 
-Repositorio del marco I.O. (cinco perspectivas: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**).
+Repositorio del marco I.O.: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**, leídas en equivalencia operativa con la cosmología náhuatl.
 
-> **Carácter del proyecto:** este repositorio es una **prueba y demostración** de si la estructura semántica del marco I.O. (`mirrorOf`, `creates`, perspectivas y fases) puede aplicarse de forma **interpretable y medible** a conceptos y pares del mundo real — no un producto de software ni una validación sintética de reglas generadas por el propio sistema.
+> **Carácter del proyecto:** equiparar las **cinco perspectivas** con los **Cinco Soles**; anclar **Nanahuatzin** → Individualidad, **Xólotl** → Dualidad, **Tecuciztécatl** → Totalidad, **Mictecacíhuatl** → Evolución, **Mictlantecuhtli** → Involución; y leer las **13 tríadas** como **arquitectura del Mictlán**. No es un producto de software comercial: es un marco formal (Lean / OWL / SHACL) cuyo sentido es esta cartografía cosmológica.
 
-Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md) · Dictamen: [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md) · Aprendizaje: [`docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md`](docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md)
+Carácter canónico: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) · Dominio: [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
 
-## Qué se está probando
+## Equivalencia central
 
-| Pregunta | Cómo se responde en el repo |
+| Perspectiva | Figura ancla | Principio |
+|-------------|--------------|-----------|
+| Individualidad | **Nanahuatzin** | Singularidad que se entrega al fuego (sol) |
+| Dualidad | **Xólotl** | Doble / tránsito / reflejo |
+| Totalidad | **Tecuciztécatl** | Plenitud ambicionada (luna / sistema) |
+| Evolución | **Mictecacíhuatl** | Ciclo de la señora del Mictlán |
+| Involución | **Mictlantecuhtli** | Señor del Mictlán; retorno al vacío |
+
+Las **13 tríadas** ↔ **Mictlán** (umbrales del camino; posiciones → / 0 / ←; fases adv / ret).
+
+Detalle: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md).
+
+## Qué se verifica en el repo
+
+| Pregunta | Cómo se responde |
 |---|---|
-| ¿Pueden anotadores independientes, ciegos a las reglas, etiquetar relaciones semánticas sobre pares reales/nuevos/ambiguos? | Protocolo ciego + Fleiss' κ (**EXP-A**) |
-| ¿La estructura formal es internamente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
-| ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (**EXP-D**; diagnóstico interno — **no** validez semántica real) |
-| ¿Se puede alinear un dominio empírico a las 13 tríadas? | **EXP-E** + [`MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
+| ¿La equivalencia cosmológica es formalmente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
+| ¿Se puede cartografiar el dominio Cinco Soles / Mictlán a las 13 tríadas? | **EXP-E** + [`MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
+| ¿Hay acuerdo inter-anotador bajo protocolo ciego? | Protocolo ciego + Fleiss' κ (**EXP-A**) — capa auxiliar de interpretabilidad |
+| ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (**EXP-D**; diagnóstico interno) |
 
-## Evidencia actual de validez semántica (mundo real)
+## Evidencia auxiliar de interpretabilidad (EXP-A)
 
 | Métrica | Valor | Lectura |
 |---|---:|---|
@@ -23,30 +37,28 @@ Metodología: [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE
 | Unánime | 10/14 | Controles estructurales estables |
 | Desacuerdos | NC01, NC02, AM01, AM03 | Conceptos nuevos y casos ambiguos |
 
-**Demostración provisional** bajo protocolo ciego; no prueba universal del marco.  
 Módulo didáctico: [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md).
 
 ## Experimentos integrados (EXP-A a EXP-E)
 
 | ID | Capa | Runner | Afirmación legítima |
 |---|---|---|---|
-| **EXP-A** | Validez semántica (ciego) | `scripts/score_independent_eval.py` | κ = 0.6871 — interpretabilidad provisional |
+| **EXP-A** | Interpretabilidad (ciego) | `scripts/score_independent_eval.py` | κ = 0.6871 — acuerdo provisional |
 | **EXP-B** | Formal | `lake build` | Solidez deductiva (Lean 4) |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Conformidad RDF/SHACL |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de reglas *generadas por el sistema* |
-| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación cosmología náhuatl (Cinco Soles, Mictlán) |
+| **EXP-E** | Cartografía cosmológica | `experiments/domain_mapping/validate_examples.py` | Alineación Cinco Soles / Mictlán (Nanahuatzin…Mictlantecuhtli) |
 
-Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · Alineación: [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md).
+Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
 
-## Dominios de alineación (catálogo)
-
-Demostraciones de mapeo (sin κ propio hasta anotación ciega):
+## Dominio prioritario
 
 | Dominio | Documento |
 |---------|-----------|
-| Cosmología náhuatl (Cinco Soles, Mictlán) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
-| Manual unificado de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
-| Catálogo general | [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · EXP-E |
+| Cosmología náhuatl (Cinco Soles, Mictlán, figuras ancla) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
+| Carácter del repositorio | [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) |
+| Manual de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
+| Medios (Piedra del Sol, códices) | [`docs/media/cosmos_nahuatl/`](docs/media/cosmos_nahuatl/) |
 
 ## Pipeline
 
@@ -67,19 +79,14 @@ lake build                                                                    # 
 
 ## Documentación
 
-### Guías integradas
-- [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) — invarianza del núcleo, reglas, ingesta, catálogo, EXP-A…E
-- [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md) — protocolo ciego, Fleiss' κ, 14 pares, cuestionario
-- [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md) · [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md)
-- [`docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md`](docs/GUIA_DIDACTICA_PROTOCOLO_CIEGO.md) · [`docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md`](docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md)
-- [`EXPERIMENTOS.md`](EXPERIMENTOS.md)
-
-### Dominios y mapeo
-- [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
+### Núcleo de sentido
+- [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md)
 - [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md)
-- [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) · [`docs/ARQUITECTURA_ONTOLOGICA.md`](docs/ARQUITECTURA_ONTOLOGICA.md)
+- [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
+- [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md)
 
-### Núcleo metodológico
-- [`docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md`](docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md) · [`docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md`](docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md)
-- [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) · [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md)
-- [`paper.md`](paper.md) · [`AUDITORIA.md`](AUDITORIA.md) · [`REPRODUCCION.md`](REPRODUCCION.md)
+### Formal y metodológico
+- [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) · [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md)
+- [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md)
+- [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md) · [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+- [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`paper.md`](paper.md) · [`REPRODUCCION.md`](REPRODUCCION.md)
