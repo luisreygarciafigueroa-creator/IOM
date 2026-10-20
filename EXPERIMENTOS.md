@@ -17,7 +17,7 @@ Guías: [`docs/ESPECIFICACION_ONTOLOGICA.md`](docs/ESPECIFICACION_ONTOLOGICA.md)
 | **EXP-B** | Formal | `lake build` | Teoremas y no-contradicción en Lean 4 | Solidez deductiva |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Restricciones RDF/SHACL sobre el grafo ontológico | Conformidad de formas |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperabilidad de relaciones *generadas por reglas* | **No** validez semántica real |
-| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación de 8 pares bio/econ a 13 tríadas | Cartografía sin romper reglas |
+| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación cosmología náhuatl (Cinco Soles, Mictlán) a 13 tríadas | Cartografía sin romper reglas |
 
 ### Jerarquía epistemológica
 
@@ -96,7 +96,7 @@ python experiments/baselines.py
 
 ## 5. EXP-E — Mapeo de dominios empíricos
 
-8 pares biológicos y económicos alineados a las 13 tríadas sin alterar axiomas.
+Pares de cosmología náhuatl (Cinco Soles, Mictlán) alineados a las 13 tríadas sin alterar axiomas.
 
 ```bash
 python experiments/domain_mapping/validate_examples.py
