@@ -2,13 +2,20 @@
 import unittest
 import torch
 
-from experiments.pi_hgat_t import PIHGATT, admissible_relation, features_for_node
+from experiments.pi_hgat_t import PIHGATT, admissible_relation, features_for_node, read_data
 
 
 class PIHGATTTests(unittest.TestCase):
     def test_feature_vector_uses_only_phase_and_position(self):
         self.assertEqual(features_for_node("T12_adv_P0"), [1.0, 0.0, 1.0, 0.0, 0.0])
-        self.assertEqual(features_for_node("T00_ret_P2"), [0.0, 1.0, 0.0, 0.0, 1.0])
+        self.assertEqual(features_for_node("T07_ret_P2"), [0.0, 1.0, 0.0, 0.0, 1.0])
+
+    def test_loaders_use_public_triad_ids_one_through_thirteen(self):
+        nodes, pairs = read_data()
+        expected = set(range(1, 14))
+        self.assertEqual(set(nodes), expected)
+        self.assertEqual(set(pairs), expected)
+        self.assertTrue(all(len(pairs[triad_id]) == 30 for triad_id in expected))
 
     def test_attention_model_returns_three_relation_logits_per_candidate(self):
         model = PIHGATT(dim=16, heads=4)

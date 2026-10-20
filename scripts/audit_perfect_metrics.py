@@ -81,7 +81,7 @@ def main() -> int:
     #    Sí, con la misma etiqueta — por eso un learner que memoriza la
     #    función feature→label generaliza al 100%.
     triad_feature_overlap = {}
-    for held in range(13):
+    for held in range(1, 14):
         train_map = {}
         test_keys = set()
         for row in rows:

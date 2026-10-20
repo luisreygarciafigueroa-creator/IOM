@@ -56,7 +56,7 @@ class PerfectMetricsAuditTests(unittest.TestCase):
 
     def test_loo_features_fully_recoverable_from_train(self):
         """En cada fold LOO, todo par de test es recuperable por lookup de features."""
-        for held in range(13):
+        for held in range(1, 14):
             train = {}
             test = []
             for row in self.rows:

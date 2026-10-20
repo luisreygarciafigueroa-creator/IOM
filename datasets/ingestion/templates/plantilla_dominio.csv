@@ -1,9 +1,9 @@
 external_id,external_label,mapped_node_id,perspective,phase,position,relation_candidate,notes
 # Obligatorio: external_id, external_label
-# mapped_node_id: uno de los 78 node_id de datasets/triad_nodes.csv (ej. T00_adv_P0)
+# mapped_node_id: uno de los 78 node_id de datasets/triad_nodes.csv (ej. T01_adv_P0)
 # perspective: Ind | D | Tot | Evol | Invol
 # phase: adv | ret
 # position: left | center | right
 # relation_candidate: none | mirrorOf | creates (opcional; se valida contra reglas)
 # notes: texto libre
-ejemplo_01,mi_concepto,T00_adv_P0,Ind,adv,left,none,"Descripción breve del mapeo"
+ejemplo_01,mi_concepto,T01_adv_P0,Ind,adv,left,none,"Descripción breve del mapeo"

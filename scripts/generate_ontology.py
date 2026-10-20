@@ -46,6 +46,7 @@ datatype_properties = {
     "hasTriadIndex": ("OntoNode", XSD.integer),
     "hasPhase": ("OntoNode", XSD.string),
     "hasLocalPos": ("OntoNode", XSD.integer),
+    "displayLabel": ("OntoNode", XSD.string),
     "hasCyclePhase": ("VectorStep", XSD.string),
     "hasAxisPosition": ("VectorStep", XSD.integer),
     "hasStepIndex": ("VectorStep", XSD.integer),
@@ -66,7 +67,7 @@ for name, (domain, range_) in datatype_properties.items():
     g.add((prop, RDF.type, OWL.DatatypeProperty))
     g.add((prop, RDFS.domain, IO[domain]))
     g.add((prop, RDFS.range, range_))
-for name in ("hasPerspective", "hasPosition", "hasDirection", "hasVector", "hasTriadIndex", "hasPhase", "hasLocalPos", "hasCyclePhase", "hasAxisPosition", "hasStepIndex", "displayArrow", "hasLevel"):
+for name in ("hasPerspective", "hasPosition", "hasDirection", "hasVector", "hasTriadIndex", "hasPhase", "hasLocalPos", "displayLabel", "hasCyclePhase", "hasAxisPosition", "hasStepIndex", "displayArrow", "hasLevel"):
     g.add((IO[name], RDF.type, OWL.FunctionalProperty))
 g.add((IO.mirrorOf, RDF.type, OWL.SymmetricProperty))
 
@@ -86,29 +87,41 @@ for name, label in _perspective_labels.items():
     g.add((IO[name], RDF.type, IO.Perspective))
     g.add((IO[name], RDFS.label, Literal(label, lang="es")))
 
-perspectives = [IO[name] for name in SPEC["perspectives"]]
-position_names = SPEC["positions"]
-triad_rows = SPEC["triads"]
+position_meta = SPEC["positions"]
+position_indices = position_meta["indices"]
+position_names = ["left", "center", "right"]
+perspective_names = position_meta["perspectives"]
+perspectives = [IO[name] for name in perspective_names]
+triad_meta = SPEC["triads"]
+triad_rows = {phase: triad_meta[phase] for phase in ("adv", "ret")}
+index_base = triad_meta.get("index_base", 0)
+n_triads = len(triad_rows["adv"])
+triad_ids = range(index_base, index_base + n_triads)
 nodes_csv = []
 for phase, rows in triad_rows.items():
     direction = IO[SPEC["phases"][phase]["direction"]]
-    for triad_idx, labels in enumerate(rows):
+    for row_index, labels in enumerate(rows):
+        triad_idx = index_base + row_index
         for pos_idx, label in enumerate(labels):
             node = IO[f"T{triad_idx:02d}_{phase}_P{pos_idx}"]
             g.add((node, RDF.type, IO.OntoNode))
             g.add((node, IO.hasTriadIndex, Literal(triad_idx, datatype=XSD.integer)))
             g.add((node, IO.hasPhase, Literal(phase, datatype=XSD.string)))
             g.add((node, IO.hasLocalPos, Literal(pos_idx, datatype=XSD.integer)))
+            display_labels = position_meta["adv_labels" if phase == "adv" else "ret_labels"]
+            display_label = display_labels[pos_idx]
+            g.add((node, IO.displayLabel, Literal(display_label, datatype=XSD.string)))
             g.add((node, IO.hasPosition, IO[position_names[pos_idx]]))
             g.add((node, IO.hasPerspective, perspectives[pos_idx]))
             g.add((node, IO.hasDirection, direction))
             g.add((node, RDFS.label, Literal(label, lang="es")))
             nodes_csv.append({"node_id": str(node).split("#", 1)[1], "triad_index": triad_idx, "phase": phase,
                               "direction": str(direction).split("#", 1)[1], "position_index": pos_idx,
-                              "position": position_names[pos_idx], "perspective": SPEC["perspectives"][pos_idx], "label": label})
+                              "position": position_names[pos_idx], "display_label": display_label,
+                              "perspective": perspective_names[pos_idx], "label": label})
 
 # Espejos entre fases: se invierten laterales y se conserva el centro.
-for triad_idx in range(len(triad_rows["adv"])):
+for triad_idx in triad_ids:
     for pos_idx in range(3):
         adv = IO[f"T{triad_idx:02d}_adv_P{pos_idx}"]
         ret = IO[f"T{triad_idx:02d}_ret_P{2-pos_idx}"]
@@ -116,7 +129,7 @@ for triad_idx in range(len(triad_rows["adv"])):
         g.add((ret, IO.mirrorOf, adv))
 
 # Aplicar las cuatro reglas de creación indicadas en la fuente estructurada.
-for triad_idx in range(len(triad_rows["adv"])):
+for triad_idx in triad_ids:
     for rule in SPEC["creation_rules"]:
         for source_pos in rule["source_positions"]:
             for target_pos in rule["target_positions"]:
@@ -160,7 +173,7 @@ for subject, _, obj in g.triples((None, IO.mirrorOf, None)):
     relation_lookup[(str(subject), str(obj))] = "mirrorOf"
 for subject, _, obj in g.triples((None, IO.creates, None)):
     relation_lookup[(str(subject), str(obj))] = "creates"
-for triad_idx in range(13):
+for triad_idx in triad_ids:
     ids = [IO[f"T{triad_idx:02d}_{phase}_P{pos}"] for phase in ("adv", "ret") for pos in range(3)]
     for source in ids:
         for target in ids:
@@ -171,6 +184,7 @@ for triad_idx in range(13):
                                  "relation": relation_lookup.get((str(source), str(target)), "none")})
 
 assert len(triad_rows["adv"]) == len(triad_rows["ret"]) == 13
+assert position_indices == [0, 1, 2]
 assert len(nodes_csv) == 78
 assert len(vector_csv) == 20
 assert sum(1 for _ in g.triples((None, IO.creates, None))) == 104
@@ -190,6 +204,6 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 write_csv(ROOT / "datasets" / "triad_nodes.csv", nodes_csv)
 write_csv(ROOT / "datasets" / "vector_steps.csv", vector_csv)
 write_csv(ROOT / "datasets" / "relation_candidates.csv", relation_csv)
-print(f"Tríadas: 13 por fase; nodos: {len(nodes_csv)}; creates: 104; espejos: 78")
+print(f"Tríadas: {n_triads} por fase (índice {index_base}–{index_base + n_triads - 1}); nodos: {len(nodes_csv)}; creates: 104; espejos: 78")
 print(f"Pasos vectoriales: {len(vector_csv)}; candidatos PI-HGAT-T: {len(relation_csv)}")
 print(f"OWL/Turtle: {out}")

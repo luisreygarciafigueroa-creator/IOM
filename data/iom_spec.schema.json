@@ -9,6 +9,7 @@
     "spec_version",
     "title",
     "source_date",
+    "triad_index_range",
     "positions",
     "perspectives",
     "phases",
@@ -148,8 +149,10 @@
     "triads": {
       "type": "object",
       "required": [
+        "index_base",
         "adv",
-        "ret"
+        "ret",
+        "note"
       ],
       "properties": {
         "adv": {
@@ -313,6 +316,22 @@
           }
         }
       }
+    },
+    "triad_index_range": {
+      "type": "object",
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "const": 1
+        },
+        "max": {
+          "const": 13
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

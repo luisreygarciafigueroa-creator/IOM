@@ -46,11 +46,11 @@ def parse_pair_index(node_id: str) -> int:
 
 
 def read_data():
-    nodes: dict[int, list[list[float]]] = {i: [None] * 6 for i in range(13)}
+    nodes: dict[int, list[list[float]]] = {i: [None] * 6 for i in range(1, 14)}
     with (ROOT / "datasets" / "triad_nodes.csv").open(encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
             nodes[int(row["triad_index"])][parse_pair_index(row["node_id"])] = features_for_node(row["node_id"])
-    pairs: dict[int, list[tuple[int, int, int]]] = {i: [] for i in range(13)}
+    pairs: dict[int, list[tuple[int, int, int]]] = {i: [] for i in range(1, 14)}
     with (ROOT / "datasets" / "relation_candidates.csv").open(encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
             pairs[int(row["triad_index"])].append((parse_pair_index(row["source"]),
@@ -140,7 +140,7 @@ def run_variant(name: str, columns: list[int], nodes, relations, cfg: dict) -> d
     all_gold, all_pred, predicted_edges, fold_results = [], [], [], []
     pair_indices = torch.tensor([(s, t) for s in range(6) for t in range(6) if s != t], dtype=torch.long)
     for held_out in sorted(nodes):
-        seed_everything(int(cfg["seed"]) + held_out)
+        seed_everything(int(cfg["seed"]) + held_out - 1)
         train_ids = [i for i in nodes if i != held_out]
         x_train = torch.stack([nodes[i][:, columns] for i in train_ids])
         y_train = torch.tensor([label for i in train_ids for _s, _t, label in relations[i]], dtype=torch.long)

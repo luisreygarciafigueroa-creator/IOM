@@ -118,10 +118,10 @@ class FormalRulesBridgeTests(unittest.TestCase):
 
     def test_cross_triad_positional_mirror_is_not_rel(self):
         """Un par cross-tríada puede cumplir la condición posicional pero no isMirrorRel."""
-        # T00_adv_P0 y T01_ret_P2: posicional mirror, distinta tríada
-        self.assertTrue(is_mirror_positional("T00_adv_P0", "T01_ret_P2"))
-        self.assertFalse(same_triad("T00_adv_P0", "T01_ret_P2"))
-        self.assertFalse(is_mirror_rel("T00_adv_P0", "T01_ret_P2"))
+        # T07_adv_P0 y T01_ret_P2: posicional mirror, distinta tríada
+        self.assertTrue(is_mirror_positional("T07_adv_P0", "T01_ret_P2"))
+        self.assertFalse(same_triad("T07_adv_P0", "T01_ret_P2"))
+        self.assertFalse(is_mirror_rel("T07_adv_P0", "T01_ret_P2"))
 
     def test_counts_match_lean_constants(self):
         from collections import Counter

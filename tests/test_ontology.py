@@ -35,6 +35,8 @@ class IOMValidationTests(unittest.TestCase):
         cls.DATA = ROOT / "ontology" / "io_ontology.ttl"
         cls.SHAPES = ROOT / "ontology" / "io_shapes.ttl"
         cls.SPEC = json.loads((ROOT / "data" / "iom_spec.json").read_text(encoding="utf-8"))
+        with (ROOT / "datasets" / "triad_nodes.csv").open(encoding="utf-8", newline="") as handle:
+            cls.NODE_ROWS = list(csv.DictReader(handle))
 
     def setUp(self):
         self.data = Graph().parse(self.DATA, format="turtle")
@@ -50,25 +52,51 @@ class IOMValidationTests(unittest.TestCase):
         )
         return result, text
 
+    def test_spec_matches_canonical_numbered_triad_matrices(self):
+        expected_adv = [
+            ["oscuridad", "consciencia", "luz"],
+            ["descendente", "mente", "ascendente"],
+            ["muerte", "artificial", "vida"],
+            ["lógica", "inteligencia", "libertad"],
+            ["memoria", "inconsciente", "imaginación"],
+            ["receptor", "supraconsciente", "emisor"],
+            ["animal", "humano", "IA"],
+            ["caracter", "subconsciente", "personalidad"],
+            ["cuerpo", "consciente", "mundo"],
+            ["singularidad", "tiempo", "infinito"],
+            ["universo", "espacio", "vacío"],
+            ["hardware", "virtual", "software"],
+            ["orientación", "cuántico", "dirección"],
+        ]
+        self.assertEqual(self.SPEC["triads"]["adv"], expected_adv)
+        self.assertEqual(self.SPEC["triads"]["ret"], [row[::-1] for row in expected_adv])
+        self.assertEqual(self.SPEC["triads"]["index_base"], 1)
+        self.assertEqual(self.SPEC["positions"]["adv_labels"], ["→", "0", "→"])
+        self.assertEqual(self.SPEC["positions"]["ret_labels"], ["←", "0", "←"])
+
     def test_exact_triad_dataset_and_shacl_conformance(self):
         IO = self.IO
         nodes = set(self.data.subjects(RDF.type, IO.OntoNode))
         expected = {
             IO[f"T{i:02d}_{phase}_P{pos}"]
-            for i in range(13)
+            for i in range(1, 14)
             for phase in ("adv", "ret")
             for pos in range(3)
         }
         self.assertEqual(nodes, expected)
         self.assertTrue(self.conforms()[0], self.conforms()[1])
-        for phase, rows in self.SPEC["triads"].items():
-            for i, row in enumerate(rows):
+        for phase in ("adv", "ret"):
+            rows = self.SPEC["triads"][phase]
+            for row_index, row in enumerate(rows):
+                triad_index = row_index + 1
                 for pos, label in enumerate(row):
-                    node = IO[f"T{i:02d}_{phase}_P{pos}"]
+                    node = IO[f"T{triad_index:02d}_{phase}_P{pos}"]
                     self.assertEqual(str(self.data.value(node, RDFS.label)), label)
+                    visual_label = self.SPEC["positions"]["adv_labels" if phase == "adv" else "ret_labels"][pos]
+                    self.assertEqual(str(self.data.value(node, IO.displayLabel)), visual_label)
                     self.assertEqual(
                         self.data.value(node, IO.hasTriadIndex),
-                        Literal(i, datatype=XSD.integer),
+                        Literal(triad_index, datatype=XSD.integer),
                     )
                     self.assertEqual(
                         self.data.value(node, IO.hasLocalPos),
@@ -80,12 +108,15 @@ class IOMValidationTests(unittest.TestCase):
                     )
                     self.assertEqual(
                         self.data.value(node, IO.hasPosition),
-                        IO[self.SPEC["positions"][pos]],
+                        IO[["left", "center", "right"][pos]],
                     )
+                    display_labels = self.SPEC["positions"]["adv_labels" if phase == "adv" else "ret_labels"]
+                    generated = next(r for r in self.NODE_ROWS if r["node_id"] == f"T{triad_index:02d}_{phase}_P{pos}")
+                    self.assertEqual(generated["display_label"], display_labels[pos])
 
     def test_mirrors_are_reciprocal_and_swap_laterals(self):
         IO = self.IO
-        for i in range(13):
+        for i in range(1, 14):
             for pos in range(3):
                 adv, ret = IO[f"T{i:02d}_adv_P{pos}"], IO[f"T{i:02d}_ret_P{2 - pos}"]
                 self.assertEqual(self.data.value(adv, IO.mirrorOf), ret)
@@ -95,7 +126,7 @@ class IOMValidationTests(unittest.TestCase):
         IO = self.IO
         actual = set(self.data.triples((None, IO.creates, None)))
         expected = set()
-        for i in range(13):
+        for i in range(1, 14):
             for rule in self.SPEC["creation_rules"]:
                 for src in rule["source_positions"]:
                     for dst in rule["target_positions"]:
@@ -153,6 +184,8 @@ class IOMValidationTests(unittest.TestCase):
             self.assertIn((prop, RDF.type, OWL.ObjectProperty), self.data)
             self.assertIsNotNone(self.data.value(prop, RDFS.domain))
             self.assertIsNotNone(self.data.value(prop, RDFS.range))
+        self.assertIn((IO.displayLabel, RDF.type, OWL.DatatypeProperty), self.data)
+        self.assertIn((IO.displayLabel, RDF.type, OWL.FunctionalProperty), self.data)
         self.assertIn((IO.mirrorOf, RDF.type, OWL.SymmetricProperty), self.data)
         for resource in (IO.Ind, IO.D, IO.Tot, IO.Evol, IO.Invol):
             self.assertIn((resource, RDF.type, IO.Perspective), self.data)
@@ -182,12 +215,22 @@ class IOMValidationTests(unittest.TestCase):
             with (ROOT / "datasets" / name).open(encoding="utf-8", newline="") as f:
                 self.assertEqual(len(list(csv.DictReader(f))), count, name)
 
+    def test_wrong_visual_position_label_is_rejected(self):
+        IO = self.IO
+        graph = Graph()
+        for triple in self.data:
+            graph.add(triple)
+        node = IO["T01_adv_P0"]
+        graph.remove((node, IO.displayLabel, Literal("→", datatype=XSD.string)))
+        graph.add((node, IO.displayLabel, Literal("←", datatype=XSD.string)))
+        self.assertFalse(self.conforms(graph, [node])[0])
+
     def test_wrong_phase_direction_is_rejected(self):
         IO = self.IO
         graph = Graph()
         for triple in self.data:
             graph.add(triple)
-        node = IO["T00_adv_P0"]
+        node = IO["T01_adv_P0"]
         graph.remove((node, IO.hasDirection, IO.evol))
         graph.add((node, IO.hasDirection, IO.invol))
         self.assertFalse(self.conforms(graph, [node])[0])
@@ -197,7 +240,7 @@ class IOMValidationTests(unittest.TestCase):
         graph = Graph()
         for triple in self.data:
             graph.add(triple)
-        node, good, wrong = IO["T00_adv_P0"], IO["T00_ret_P2"], IO["T00_ret_P0"]
+        node, good, wrong = IO["T01_adv_P0"], IO["T01_ret_P2"], IO["T01_ret_P0"]
         graph.remove((node, IO.mirrorOf, good))
         graph.add((node, IO.mirrorOf, wrong))
         self.assertFalse(self.conforms(graph, [node])[0])
@@ -207,7 +250,7 @@ class IOMValidationTests(unittest.TestCase):
         graph = Graph()
         for triple in self.data:
             graph.add(triple)
-        node, good, wrong = IO["T00_adv_P0"], IO["T00_ret_P1"], IO["T01_ret_P1"]
+        node, good, wrong = IO["T01_adv_P0"], IO["T01_ret_P1"], IO["T01_ret_P0"]
         graph.remove((node, IO.creates, good))
         graph.add((node, IO.creates, wrong))
         self.assertFalse(self.conforms(graph, [node])[0])

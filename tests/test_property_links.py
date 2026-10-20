@@ -40,7 +40,17 @@ class PropertyLinksTests(unittest.TestCase):
         expected = self.n_triads * 2 * 3
         self.assertEqual(len(self.nodes), expected)
         indices = {int(r["triad_index"]) for r in self.nodes}
-        self.assertEqual(indices, set(range(self.n_triads)))
+        self.assertEqual(indices, set(range(1, self.n_triads + 1)))
+
+    def test_external_candidate_ids_follow_public_triad_numbers(self):
+        with (ROOT / "datasets" / "external_eval" / "external_relation_candidates.csv").open(encoding="utf-8", newline="") as fh:
+            rows = list(csv.DictReader(fh))
+        self.assertTrue(rows)
+        for row in rows:
+            triad_index = int(row["triad_index"])
+            self.assertIn(triad_index, range(1, self.n_triads + 1))
+            self.assertTrue(row["source"].startswith(f"T{triad_index:02d}_"), row)
+            self.assertTrue(row["target"].startswith(f"T{triad_index:02d}_"), row)
 
     def test_relation_candidate_count(self):
         # 13 × 6 × 5 = 390 pares dirigidos no reflexivos

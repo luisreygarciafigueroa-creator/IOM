@@ -45,7 +45,7 @@ def parse_pair_index(node_id: str) -> int:
 
 
 def read_pairs():
-    pairs: dict[int, list[tuple[str, str, int]]] = {i: [] for i in range(13)}
+    pairs: dict[int, list[tuple[str, str, int]]] = {i: [] for i in range(1, 14)}
     with (ROOT / "datasets" / "relation_candidates.csv").open(encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             pairs[int(row["triad_index"])].append(
@@ -141,7 +141,7 @@ def leave_one_triad_out(pairs: dict, model_factory, epochs: int = 200) -> dict:
     all_gold, all_pred = [], []
     fold_accs = []
     for held in sorted(pairs):
-        seed_everything(20261008 + held)
+        seed_everything(20261008 + held - 1)
         train_X, train_y = [], []
         test_X, test_y, test_meta = [], [], []
         for tid, plist in pairs.items():

@@ -1,24 +1,77 @@
 {
-  "schema_version": "1.0.0",
-  "spec_version": "1.7.0",
+  "schema_version": "1.1.0",
+  "spec_version": "1.8.0",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-20",
   "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución). Define la estructura semántica bajo prueba para demostrar validez semántica en el mundo real (anotación independiente, alineación de dominios); no constituye por sí sola evidencia empírica de esa validez.",
-  "triad_index_range": {"min": 1, "max": 13},
+  "triad_index_range": {
+    "min": 1,
+    "max": 13
+  },
   "positions": {
-    "indices": [0, 1, 2],
-    "adv_labels": ["→", "0", "→"],
-    "ret_labels": ["←", "0", "←"],
-    "perspectives": ["Ind", "D", "Tot"],
+    "indices": [
+      0,
+      1,
+      2
+    ],
+    "adv_labels": [
+      "→",
+      "0",
+      "→"
+    ],
+    "ret_labels": [
+      "←",
+      "0",
+      "←"
+    ],
+    "perspectives": [
+      "Ind",
+      "D",
+      "Tot"
+    ],
     "note": "En avance las columnas se etiquetan → | 0 | →; en retroceso ← | 0 | ←. El centro es siempre 0. position_index 0 y 2 distinguen los laterales aunque compartan símbolo de flecha."
   },
-  "perspectives": ["Ind", "D", "Tot"],
+  "perspectives": [
+    "Ind",
+    "D",
+    "Tot"
+  ],
   "five_perspectives": [
-    {"id": "Ind", "label": "Individualidad", "index": 1, "kind": "positional", "description": "Modo de actualización: unidad / singularidad del fenómeno."},
-    {"id": "D", "label": "Dualidad", "index": 2, "kind": "positional", "description": "Modo de actualización: relación / diferencia."},
-    {"id": "Tot", "label": "Totalidad", "index": 3, "kind": "positional", "description": "Modo de actualización: integración / sistema."},
-    {"id": "Evol", "label": "Evolución", "index": 4, "kind": "vectorial", "description": "Dirección de flujo: proyección del vacío hacia la estructura."},
-    {"id": "Invol", "label": "Involución", "index": 5, "kind": "vectorial", "description": "Dirección de flujo: disolución de la estructura hacia el vacío."}
+    {
+      "id": "Ind",
+      "label": "Individualidad",
+      "index": 1,
+      "kind": "positional",
+      "description": "Modo de actualización: unidad / singularidad del fenómeno."
+    },
+    {
+      "id": "D",
+      "label": "Dualidad",
+      "index": 2,
+      "kind": "positional",
+      "description": "Modo de actualización: relación / diferencia."
+    },
+    {
+      "id": "Tot",
+      "label": "Totalidad",
+      "index": 3,
+      "kind": "positional",
+      "description": "Modo de actualización: integración / sistema."
+    },
+    {
+      "id": "Evol",
+      "label": "Evolución",
+      "index": 4,
+      "kind": "vectorial",
+      "description": "Dirección de flujo: proyección del vacío hacia la estructura."
+    },
+    {
+      "id": "Invol",
+      "label": "Involución",
+      "index": 5,
+      "kind": "vectorial",
+      "description": "Dirección de flujo: disolución de la estructura hacia el vacío."
+    }
   ],
   "perspective_labels": {
     "Ind": "Individualidad",
@@ -28,70 +81,366 @@
     "Invol": "Involución"
   },
   "phases": {
-    "adv": {"label": "Fase de Avance", "direction": "evol", "arrow": "→"},
-    "ret": {"label": "Fase de Retroceso", "direction": "invol", "arrow": "←"}
+    "adv": {
+      "label": "Fase de Avance",
+      "direction": "evol",
+      "arrow": "→"
+    },
+    "ret": {
+      "label": "Fase de Retroceso",
+      "direction": "invol",
+      "arrow": "←"
+    }
   },
   "triads": {
     "index_base": 1,
     "adv": [
-      ["oscuridad", "consciencia", "luz"],
-      ["descendente", "mente", "ascendente"],
-      ["muerte", "artificial", "vida"],
-      ["lógica", "inteligencia", "libertad"],
-      ["memoria", "inconsciente", "imaginación"],
-      ["receptor", "supraconsciente", "emisor"],
-      ["animal", "humano", "IA"],
-      ["carácter", "subconsciente", "personalidad"],
-      ["cuerpo", "consciente", "mundo"],
-      ["singularidad", "tiempo", "infinito"],
-      ["universo", "espacio", "vacío"],
-      ["hardware", "virtual", "software"],
-      ["orientación", "cuántico", "dirección"]
+      [
+        "oscuridad",
+        "consciencia",
+        "luz"
+      ],
+      [
+        "descendente",
+        "mente",
+        "ascendente"
+      ],
+      [
+        "muerte",
+        "artificial",
+        "vida"
+      ],
+      [
+        "lógica",
+        "inteligencia",
+        "libertad"
+      ],
+      [
+        "memoria",
+        "inconsciente",
+        "imaginación"
+      ],
+      [
+        "receptor",
+        "supraconsciente",
+        "emisor"
+      ],
+      [
+        "animal",
+        "humano",
+        "IA"
+      ],
+      [
+        "caracter",
+        "subconsciente",
+        "personalidad"
+      ],
+      [
+        "cuerpo",
+        "consciente",
+        "mundo"
+      ],
+      [
+        "singularidad",
+        "tiempo",
+        "infinito"
+      ],
+      [
+        "universo",
+        "espacio",
+        "vacío"
+      ],
+      [
+        "hardware",
+        "virtual",
+        "software"
+      ],
+      [
+        "orientación",
+        "cuántico",
+        "dirección"
+      ]
     ],
     "ret": [
-      ["luz", "consciencia", "oscuridad"],
-      ["ascendente", "mente", "descendente"],
-      ["vida", "artificial", "muerte"],
-      ["libertad", "inteligencia", "lógica"],
-      ["imaginación", "inconsciente", "memoria"],
-      ["emisor", "supraconsciente", "receptor"],
-      ["IA", "humano", "animal"],
-      ["personalidad", "subconsciente", "carácter"],
-      ["mundo", "consciente", "cuerpo"],
-      ["infinito", "tiempo", "singularidad"],
-      ["vacío", "espacio", "universo"],
-      ["software", "virtual", "hardware"],
-      ["dirección", "cuántico", "orientación"]
+      [
+        "luz",
+        "consciencia",
+        "oscuridad"
+      ],
+      [
+        "ascendente",
+        "mente",
+        "descendente"
+      ],
+      [
+        "vida",
+        "artificial",
+        "muerte"
+      ],
+      [
+        "libertad",
+        "inteligencia",
+        "lógica"
+      ],
+      [
+        "imaginación",
+        "inconsciente",
+        "memoria"
+      ],
+      [
+        "emisor",
+        "supraconsciente",
+        "receptor"
+      ],
+      [
+        "IA",
+        "humano",
+        "animal"
+      ],
+      [
+        "personalidad",
+        "subconsciente",
+        "caracter"
+      ],
+      [
+        "mundo",
+        "consciente",
+        "cuerpo"
+      ],
+      [
+        "infinito",
+        "tiempo",
+        "singularidad"
+      ],
+      [
+        "vacío",
+        "espacio",
+        "universo"
+      ],
+      [
+        "software",
+        "virtual",
+        "hardware"
+      ],
+      [
+        "dirección",
+        "cuántico",
+        "orientación"
+      ]
     ],
     "note": "triads.adv[0] = tríada #1 (T01); triads.adv[12] = tríada #13 (T13). Arrays 0-based; triad_index y node_id 1-based."
   },
   "vectors": [
-    {"name": "Evol", "phase": "adv", "labels": ["invol", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
-    {"name": "Evol", "phase": "ret", "labels": ["evol", "tot", "dua", "ind", "invol"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "←"},
-    {"name": "Invol", "phase": "adv", "labels": ["invol", "tot", "dua", "ind", "evol"], "axis_positions": [4, 3, 2, 1, 0], "arrow": "→"},
-    {"name": "Invol", "phase": "ret", "labels": ["evol", "ind", "dua", "tot", "invol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "←"}
+    {
+      "name": "Evol",
+      "phase": "adv",
+      "labels": [
+        "invol",
+        "ind",
+        "dua",
+        "tot",
+        "evol"
+      ],
+      "axis_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "arrow": "→"
+    },
+    {
+      "name": "Evol",
+      "phase": "ret",
+      "labels": [
+        "evol",
+        "tot",
+        "dua",
+        "ind",
+        "invol"
+      ],
+      "axis_positions": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "arrow": "←"
+    },
+    {
+      "name": "Invol",
+      "phase": "adv",
+      "labels": [
+        "invol",
+        "tot",
+        "dua",
+        "ind",
+        "evol"
+      ],
+      "axis_positions": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "arrow": "→"
+    },
+    {
+      "name": "Invol",
+      "phase": "ret",
+      "labels": [
+        "evol",
+        "ind",
+        "dua",
+        "tot",
+        "invol"
+      ],
+      "axis_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "arrow": "←"
+    }
   ],
   "creation_rules": [
-    {"source_phase": "adv", "source_positions": [0, 2], "target_phase": "ret", "target_positions": [1]},
-    {"source_phase": "adv", "source_positions": [1], "target_phase": "ret", "target_positions": [0, 2]},
-    {"source_phase": "ret", "source_positions": [1], "target_phase": "adv", "target_positions": [0, 2]},
-    {"source_phase": "ret", "source_positions": [0, 2], "target_phase": "adv", "target_positions": [1]}
+    {
+      "source_phase": "adv",
+      "source_positions": [
+        0,
+        2
+      ],
+      "target_phase": "ret",
+      "target_positions": [
+        1
+      ]
+    },
+    {
+      "source_phase": "adv",
+      "source_positions": [
+        1
+      ],
+      "target_phase": "ret",
+      "target_positions": [
+        0,
+        2
+      ]
+    },
+    {
+      "source_phase": "ret",
+      "source_positions": [
+        1
+      ],
+      "target_phase": "adv",
+      "target_positions": [
+        0,
+        2
+      ]
+    },
+    {
+      "source_phase": "ret",
+      "source_positions": [
+        0,
+        2
+      ],
+      "target_phase": "adv",
+      "target_positions": [
+        1
+      ]
+    }
   ],
   "expanded_categories": {
-    "0": ["Vacío Generativo (V)"],
-    "1": ["Potencia", "Acto", "Percepción", "Acción"],
-    "2": ["Sujeto-Objeto", "Causa-Efecto", "Presencia-Ausencia", "Símbolo-Significado", "Límite-Transgresión", "Mediación"],
-    "3": ["Sistema", "Entorno", "Red", "Holismo", "Emergencia", "Colapso"],
-    "4": ["E", "S_fwd", "Ivo", "S_rev"]
+    "0": [
+      "Vacío Generativo (V)"
+    ],
+    "1": [
+      "Potencia",
+      "Acto",
+      "Percepción",
+      "Acción"
+    ],
+    "2": [
+      "Sujeto-Objeto",
+      "Causa-Efecto",
+      "Presencia-Ausencia",
+      "Símbolo-Significado",
+      "Límite-Transgresión",
+      "Mediación"
+    ],
+    "3": [
+      "Sistema",
+      "Entorno",
+      "Red",
+      "Holismo",
+      "Emergencia",
+      "Colapso"
+    ],
+    "4": [
+      "E",
+      "S_fwd",
+      "Ivo",
+      "S_rev"
+    ]
   },
   "migrations": [
-    {"from_version": "1.0.0", "to_version": "1.1.0", "description": "Añade spec_version, schema_version formal y bloque migrations.", "date": "2026-10-08"},
-    {"from_version": "1.1.0", "to_version": "1.2.0", "description": "Actualiza las 13 tríadas; ret en orden de índice homólogo.", "date": "2026-10-13"},
-    {"from_version": "1.2.0", "to_version": "1.3.0", "description": "Secuencias de retroceso de perspectivas vectoriales 4 y 5.", "date": "2026-10-16"},
-    {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Tríada 10: universo|espacio|vacío → todo|espacio|nada.", "date": "2026-10-16"},
-    {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Tríada 10 revertida a universo|espacio|vacío; vectores 4/5 actualizados.", "date": "2026-10-18"},
-    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía: caracter → carácter.", "date": "2026-10-18"},
-    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena tríadas al orden visual (oscuridad primero; animal en posición 7 del 1-based).", "date": "2026-10-20"},
-    {"from_version": "1.6.0", "to_version": "1.7.0", "description": "Índice de tríada 1–13 (antes 0–12). node_id T01…T13 (antes T00…T12). Posiciones visuales: avance →|0|→, retroceso ←|0|← (sustituye left|center|right). position_index 0/1/2 se conserva para distinguir laterales.", "date": "2026-10-20"}
+    {
+      "from_version": "1.0.0",
+      "to_version": "1.1.0",
+      "description": "Añade spec_version, schema_version formal y bloque migrations.",
+      "date": "2026-10-08"
+    },
+    {
+      "from_version": "1.1.0",
+      "to_version": "1.2.0",
+      "description": "Actualiza las 13 tríadas; ret en orden de índice homólogo.",
+      "date": "2026-10-13"
+    },
+    {
+      "from_version": "1.2.0",
+      "to_version": "1.3.0",
+      "description": "Secuencias de retroceso de perspectivas vectoriales 4 y 5.",
+      "date": "2026-10-16"
+    },
+    {
+      "from_version": "1.3.0",
+      "to_version": "1.4.0",
+      "description": "Tríada 10: universo|espacio|vacío → todo|espacio|nada.",
+      "date": "2026-10-16"
+    },
+    {
+      "from_version": "1.4.0",
+      "to_version": "1.5.0",
+      "description": "Tríada 10 revertida a universo|espacio|vacío; vectores 4/5 actualizados.",
+      "date": "2026-10-18"
+    },
+    {
+      "from_version": "1.5.0",
+      "to_version": "1.5.1",
+      "description": "Ortografía: caracter → caracter.",
+      "date": "2026-10-18"
+    },
+    {
+      "from_version": "1.5.1",
+      "to_version": "1.6.0",
+      "description": "Reordena tríadas al orden visual (oscuridad primero; animal en posición 7 del 1-based).",
+      "date": "2026-10-20"
+    },
+    {
+      "from_version": "1.6.0",
+      "to_version": "1.7.0",
+      "description": "Índice de tríada 1–13 (antes 0–12); node_id T01…T13. position_index 0/1/2 se conserva para diferenciar los laterales aunque sus etiquetas visuales sean flechas iguales.",
+      "date": "2026-10-20"
+    },
+    {
+      "from_version": "1.7.0",
+      "to_version": "1.8.0",
+      "description": "Propaga triadas públicas T01–T13 y posiciones visuales con flechas laterales duplicadas y centro 0 a datasets, ontología, SHACL, experimentos, pruebas y documentación; conserva position_index 0–2. Ortografía canónica «caracter».",
+      "date": "2026-10-20"
+    }
   ]
 }

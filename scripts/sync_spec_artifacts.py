@@ -36,7 +36,7 @@ def count_csv(name: str) -> int:
 
 def expected_counts(spec: dict) -> dict:
     n_triads = len(spec["triads"]["adv"])
-    n_positions = len(spec["positions"])
+    n_positions = len(spec["positions"]["indices"])
     n_vectors = len(spec["vectors"])
     steps_per_vector = len(spec["vectors"][0]["labels"]) if spec["vectors"] else 5
     # 6 nodos por tríada (2 fases × 3 pos), 5 destinos no reflexivos → 6*5=30 pares/tríada

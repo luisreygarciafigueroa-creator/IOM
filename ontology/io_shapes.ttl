@@ -5,9 +5,10 @@
 
 io:StructuralShape a sh:NodeShape ;
     sh:targetClass io:OntoNode ;
-    sh:property [ sh:path io:hasTriadIndex ; sh:datatype xsd:integer ; sh:minInclusive 0 ; sh:maxInclusive 12 ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasTriadIndex ; sh:datatype xsd:integer ; sh:minInclusive 1 ; sh:maxInclusive 13 ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPhase ; sh:datatype xsd:string ; sh:in ( "adv"^^xsd:string "ret"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasLocalPos ; sh:datatype xsd:integer ; sh:in ( 0 1 2 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:displayLabel ; sh:datatype xsd:string ; sh:in ( "→"^^xsd:string "0"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPosition ; sh:in ( io:left io:center io:right ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPerspective ; sh:in ( io:Ind io:D io:Tot ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasDirection ; sh:in ( io:evol io:invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
@@ -23,6 +24,19 @@ io:StructuralShape a sh:NodeShape ;
                 FILTER ((?pos = 0 && (?perspective != io:Ind || ?position != io:left)) ||
                         (?pos = 1 && (?perspective != io:D || ?position != io:center)) ||
                         (?pos = 2 && (?perspective != io:Tot || ?position != io:right)))
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "Las etiquetas visuales son → | 0 | → en avance y ← | 0 | ← en retroceso; los laterales se distinguen por position_index." ;
+        sh:select """
+            PREFIX io: <http://example.org/iom#>
+            SELECT $this WHERE {
+                $this io:hasPhase ?phase ; io:hasLocalPos ?pos ; io:displayLabel ?label .
+                FILTER ((?phase = "adv" &&
+                         !((?pos = 0 && ?label = "→") || (?pos = 1 && ?label = "0") || (?pos = 2 && ?label = "→"))) ||
+                        (?phase = "ret" &&
+                         !((?pos = 0 && ?label = "←") || (?pos = 1 && ?label = "0") || (?pos = 2 && ?label = "←"))))
             }
         """
     ] ;
