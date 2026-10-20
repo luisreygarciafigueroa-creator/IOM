@@ -71,10 +71,12 @@ for name in ("hasPerspective", "hasPosition", "hasDirection", "hasVector", "hasT
     g.add((IO[name], RDF.type, OWL.FunctionalProperty))
 g.add((IO.mirrorOf, RDF.type, OWL.SymmetricProperty))
 
-for pos in ("left", "center", "right"):
+# Posiciones canónicas: → / 0 / → (avance) y ← / 0 / ← (retroceso).
+# Los individuos de posición se nombran por el símbolo de display.
+for pos, label in [("→", "→"), ("0", "0"), ("←", "←")]:
     g.add((IO[pos], RDF.type, OWL.NamedIndividual))
     g.add((IO[pos], RDF.type, IO.Position))
-    g.add((IO[pos], RDFS.label, Literal({"left": "Izquierda", "center": "Centro", "right": "Derecha"}[pos], lang="es")))
+    g.add((IO[pos], RDFS.label, Literal(label, lang="es")))
 for direction in ("evol", "invol"):
     g.add((IO[direction], RDF.type, OWL.NamedIndividual))
     g.add((IO[direction], RDF.type, IO.Direction))
@@ -89,7 +91,8 @@ for name, label in _perspective_labels.items():
 
 position_meta = SPEC["positions"]
 position_indices = position_meta["indices"]
-position_names = ["left", "center", "right"]
+position_names_adv = ["→", "0", "→"]
+position_names_ret = ["←", "0", "←"]
 perspective_names = position_meta["perspectives"]
 perspectives = [IO[name] for name in perspective_names]
 triad_meta = SPEC["triads"]
@@ -111,13 +114,14 @@ for phase, rows in triad_rows.items():
             display_labels = position_meta["adv_labels" if phase == "adv" else "ret_labels"]
             display_label = display_labels[pos_idx]
             g.add((node, IO.displayLabel, Literal(display_label, datatype=XSD.string)))
-            g.add((node, IO.hasPosition, IO[position_names[pos_idx]]))
+            pos_names = position_names_adv if phase == "adv" else position_names_ret
+            g.add((node, IO.hasPosition, IO[pos_names[pos_idx]]))
             g.add((node, IO.hasPerspective, perspectives[pos_idx]))
             g.add((node, IO.hasDirection, direction))
             g.add((node, RDFS.label, Literal(label, lang="es")))
             nodes_csv.append({"node_id": str(node).split("#", 1)[1], "triad_index": triad_idx, "phase": phase,
                               "direction": str(direction).split("#", 1)[1], "position_index": pos_idx,
-                              "position": position_names[pos_idx], "display_label": display_label,
+                              "position": pos_names[pos_idx], "display_label": display_label,
                               "perspective": perspective_names[pos_idx], "label": label})
 
 # Espejos entre fases: se invierten laterales y se conserva el centro.
