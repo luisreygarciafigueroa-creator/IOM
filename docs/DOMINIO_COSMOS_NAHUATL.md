@@ -126,3 +126,17 @@ Pares ilustrativos (material *no ciego* — sólo demostración de mapeo):
 - León-Portilla, M. *La filosofía náhuatl* (categorías cosmológicas).
 - López Austin, A.; Matos Moctezuma, E.; Johansson, P. (cosmovisión, muerte, inframundo).
 - Interno: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) · [`PROTOCOLO_DE_MAPEO.md`](PROTOCOLO_DE_MAPEO.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+
+---
+
+## 6. Medios de referencia
+
+Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
+
+| Recurso | Rol |
+|---------|-----|
+| Piedra del Sol (`Piedra_del_Sol.png`) | Iconografía del Quinto Sol (Nahui Ollin) y edades previas |
+| Láminas codiciales (`4_Kingdoms.jpg`, `xolotl1.jpg`, `CodexBorgia.jpg`) | Dualidad, Xólotl / inframundo, ciclo ritual |
+| Tesis *Códice Xólotl* (`PECDSV03T.pdf`) | Edición de divulgación (Peña Cisneros, UAEM 2017) |
+
+Catálogo de medios: [`media/cosmos_nahuatl/README.md`](media/cosmos_nahuatl/README.md).
