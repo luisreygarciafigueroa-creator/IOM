@@ -9,8 +9,7 @@ datasets/ingestion/
 ├── README.md                 ← este archivo
 ├── templates/
 │   ├── plantilla_dominio.csv                 ← plantilla vacía
-│   ├── biologia_depredador_presa.csv         ← ejemplo biología
-│   └── economia_transaccion_riesgo.csv       ← ejemplo economía
+│   └── cosmos_nahuatl.csv                    ← Cinco Soles / Mictlán
 └── aligned/                  ← salida del script (generada)
 ```
 
@@ -26,15 +25,15 @@ datasets/ingestion/
 
 ```bash
 python scripts/importar_datos_personalizados.py \
-    --input datasets/ingestion/templates/biologia_depredador_presa.csv \
-    --output datasets/ingestion/aligned/biologia_aligned.csv
+    --input datasets/ingestion/templates/cosmos_nahuatl.csv \
+    --output datasets/ingestion/aligned/cosmos_nahuatl_aligned.csv
 ```
 
 3. Revisa el informe JSON generado junto al CSV alineado. Solo se aceptan mapeos a nodos existentes.
 
 ## Documentación de mapeo por dominio
 
-Consulta el catálogo completo con ejemplos de biología, economía y otras disciplinas:
+Consulta el catálogo completo con ejemplos de cosmología náhuatl y otras disciplinas:
 
 → [`docs/CATALOGO_DOMINIOS.md`](../../docs/CATALOGO_DOMINIOS.md)
 
