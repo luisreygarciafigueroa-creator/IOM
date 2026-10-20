@@ -61,26 +61,7 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 
 ---
 
-## 5. Mitología comparada e historia de las religiones
-
-Documento: [`DOMINIO_MITOLOGIA_RELIGIONES.md`](DOMINIO_MITOLOGIA_RELIGIONES.md).  
-Plantilla: `datasets/ingestion/templates/mitologia_religiones.csv`.
-
-| Concepto transversal | Perspectiva | Relación candidata |
-|----------------------|-------------|--------------------|
-| Sagrado ↔ profano | Dualidad | `mirrorOf` |
-| Cielo ↔ inframundo | Dualidad | `mirrorOf` |
-| Caos → cosmos ordenado | Evolución | `creates` |
-| Edad del mundo → cataclismo | Involución | `creates` |
-| Dios singular → panteón | Ind → Tot | — |
-| Sacrificio individual → fecundidad colectiva | Ind → Tot | `creates` |
-| Camino al más allá → origen/matriz | Involución | `creates` |
-
-Fuentes de trabajo: Díez de Velasco (*Historia de las religiones*); Lora Cam (*Mitologías Universales y Latinoamericanas*). **No** se reproduce texto de las obras; solo mapeo de roles. Sin κ propio hasta anotación ciega.
-
----
-
-## 6. Otras disciplinas (plantilla rápida)
+## 5. Otras disciplinas (plantilla rápida)
 
 | Disciplina | Fenómeno típico | Vector dominante |
 |------------|-----------------|------------------|
@@ -92,7 +73,7 @@ Fuentes de trabajo: Díez de Velasco (*Historia de las religiones*); Lora Cam (*
 
 ---
 
-## 7. Cómo contribuir un nuevo dominio
+## 6. Cómo contribuir un nuevo dominio
 
 1. Copia `datasets/ingestion/templates/plantilla_dominio.csv`.
 2. Rellena `external_id`, `external_label`, `mapped_node_id`.
@@ -108,11 +89,10 @@ Fuentes de trabajo: Díez de Velasco (*Historia de las religiones*); Lora Cam (*
 
 ---
 
-## 8. Referencias internas
+## 7. Referencias internas
 
 - Nodos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
 - Alineación: [`MANUAL_ALINEACION_DOMINIOS.md`](MANUAL_ALINEACION_DOMINIOS.md)
 - Náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
-- Mitología / religiones: [`DOMINIO_MITOLOGIA_RELIGIONES.md`](DOMINIO_MITOLOGIA_RELIGIONES.md)
 - Reglas: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
 - Script: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
