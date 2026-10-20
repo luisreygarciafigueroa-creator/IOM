@@ -46,7 +46,6 @@ Demostraciones de mapeo (sin κ propio hasta anotación ciega):
 |---------|-----------|
 | Biología / Economía | [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · EXP-E |
 | Cosmología náhuatl (Cinco Soles, Mictlán) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
-| **Mitología / historia de las religiones** | [`docs/DOMINIO_MITOLOGIA_RELIGIONES.md`](docs/DOMINIO_MITOLOGIA_RELIGIONES.md) |
 | Manual unificado de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
 
 ## Pipeline
@@ -78,7 +77,6 @@ lake build                                                                    # 
 ### Dominios y mapeo
 - [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
 - [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md)
-- [`docs/DOMINIO_MITOLOGIA_RELIGIONES.md`](docs/DOMINIO_MITOLOGIA_RELIGIONES.md)
 - [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) · [`docs/ARQUITECTURA_ONTOLOGICA.md`](docs/ARQUITECTURA_ONTOLOGICA.md)
 
 ### Núcleo metodológico
