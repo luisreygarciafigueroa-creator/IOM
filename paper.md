@@ -33,7 +33,7 @@ Lectura: demostración **provisional** de interpretabilidad semántica bajo prot
 
 Scoring: `python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json`. La coincidencia post-hoc con `rule_reference` es informativa, no el objetivo primario.
 
-Alineación a dominios reales (biología, economía, …): [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
+Alineación a dominios reales (cosmología náhuatl): [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
 
 ## Especificación categorial
 
