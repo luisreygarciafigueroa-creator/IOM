@@ -20,7 +20,7 @@ T06_adv_P2,6,adv,evol,2,right,→,Tot,emisor
 T07_adv_P0,7,adv,evol,0,left,→,Ind,animal
 T07_adv_P1,7,adv,evol,1,center,0,D,humano
 T07_adv_P2,7,adv,evol,2,right,→,Tot,IA
-T08_adv_P0,8,adv,evol,0,left,→,Ind,caracter
+T08_adv_P0,8,adv,evol,0,left,→,Ind,carácter
 T08_adv_P1,8,adv,evol,1,center,0,D,subconsciente
 T08_adv_P2,8,adv,evol,2,right,→,Tot,personalidad
 T09_adv_P0,9,adv,evol,0,left,→,Ind,cuerpo
@@ -61,7 +61,7 @@ T07_ret_P1,7,ret,invol,1,center,0,D,humano
 T07_ret_P2,7,ret,invol,2,right,←,Tot,animal
 T08_ret_P0,8,ret,invol,0,left,←,Ind,personalidad
 T08_ret_P1,8,ret,invol,1,center,0,D,subconsciente
-T08_ret_P2,8,ret,invol,2,right,←,Tot,caracter
+T08_ret_P2,8,ret,invol,2,right,←,Tot,carácter
 T09_ret_P0,9,ret,invol,0,left,←,Ind,mundo
 T09_ret_P1,9,ret,invol,1,center,0,D,consciente
 T09_ret_P2,9,ret,invol,2,right,←,Tot,cuerpo
