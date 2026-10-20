@@ -14,7 +14,7 @@ Delimitación operacional ([`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPIST
 - **Demostración provisional** bajo protocolo ciego, no prueba universal.
 - **No** es producto de software comercial.
 - **Separación estricta** entre diagnóstico sintético y validez semántica empírica.
-- Mapeo empírico acotado (8 pares bio/econ; 14 pares en evaluación ciega).
+- Mapeo empírico acotado (cosmología náhuatl; 14 pares en evaluación ciega).
 - Módulos pedagógicos (`experiments/learning/`) **excluidos** de las métricas de validez.
 
 ---
@@ -55,7 +55,7 @@ Los desacuerdos se localizan en conceptos nuevos y ambiguos: delimitan fronteras
 | **EXP-B** | Formal | `lake build` | No-contradicción en Lean 4 |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Conformidad RDF/SHACL |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperabilidad de reglas autogeneradas — **no** validez real |
-| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | 8 pares bio/econ → 13 tríadas |
+| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | cosmología náhuatl (Cinco Soles, Mictlán) → 13 tríadas |
 
 **Advertencia:** usar solo PI-HGAT-T (EXP-D) como prueba de validez implica circularidad epistemológica. La validez sustantiva reside en EXP-A y, de forma acotada, en EXP-E.
 
