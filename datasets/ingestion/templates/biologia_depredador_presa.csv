@@ -1,7 +1,7 @@
 record_id,concept_label,mapped_node_id,perspective,phase,position,relation_hint,notes
-bio_pred_01,lobo,T06_adv_P0,Ind,adv,left,creates,"Depredador (individualidad; tríada animal|humano|IA)"
-bio_prey_01,ciervo,T06_ret_P2,Ind,ret,right,mirrorOf,"Presa (individualidad reflejada)"
-bio_interact_01,depredacion,T06_adv_P1,D,adv,center,creates,"Interacción Dualidad"
-bio_network_01,red_trofica,T06_adv_P2,Tot,adv,right,none,"Totalidad / sistema"
-bio_collapse_01,extincion_local,T10_ret_P0,Invol,ret,left,none,"Colapso poblacional alineado a vacío (involución)"
-bio_recovery_01,recolonizacion,T10_adv_P2,Evol,adv,right,none,"Recuperación alineada a vacío/universo (evolución)"
+bio_pred_01,lobo,T07_adv_P0,Ind,adv,→,creates,"Depredador (tríada #7 animal|humano|IA)"
+bio_prey_01,ciervo,T07_ret_P2,Ind,ret,←,mirrorOf,"Presa reflejada"
+bio_interact_01,depredacion,T07_adv_P1,D,adv,0,creates,"Interacción Dualidad"
+bio_network_01,red_trofica,T07_adv_P2,Tot,adv,→,none,"Totalidad / sistema"
+bio_collapse_01,extincion_local,T11_ret_P0,Invol,ret,←,none,"Colapso → vacío (tríada #11)"
+bio_recovery_01,recolonizacion,T11_adv_P2,Evol,adv,→,none,"Recuperación (tríada #11)"
