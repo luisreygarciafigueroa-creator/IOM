@@ -1,23 +1,25 @@
 namespace IOM
 
-/-- Posición discreta de un concepto en una tríada, izquierda-centro-derecha. -/
+/-- Posición discreta de un concepto en una tríada.
+    Etiquetas canónicas: avance → | 0 | → ; retroceso ← | 0 | ← .
+    Constructores formales: → / ₀ / ← (índice 0/1/2). El espejo intercambia laterales. -/
 inductive TriadPosition where
-  | left
-  | center
-  | right
+  | →
+  | ₀
+  | ←
   deriving DecidableEq, Repr
 
 /-- Coordenada ordinal asociada a cada posición de la tríada. -/
 def TriadPosition.index : TriadPosition → Nat
-  | .left => 0
-  | .center => 1
-  | .right => 2
+  | .→ => 0
+  | .₀ => 1
+  | .← => 2
 
 /-- Intercambio lateral usado al espejar avance y retroceso. -/
 def TriadPosition.mirror : TriadPosition → TriadPosition
-  | .left => .right
-  | .center => .center
-  | .right => .left
+  | .→ => .←
+  | .₀ => .₀
+  | .← => .→
 
 theorem mirror_involutive (p : TriadPosition) : p.mirror.mirror = p := by
   cases p <;> rfl
