@@ -1,6 +1,6 @@
 # Propuesta de integración metodológica: mapeo de dominios empíricos al marco I.O.
 
-> Guía operativa para alinear dominios empíricos (biología, economía, …) a las cinco perspectivas y 13 tríadas, sin confundir capas formales, estructurales y de validez semántica.  
+> Guía operativa para alinear dominios empíricos (cosmología náhuatl) a las cinco perspectivas y 13 tríadas, sin confundir capas formales, estructurales y de validez semántica.  
 > Catálogo: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) · Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Protocolo: [`PROTOCOLO_DE_MAPEO.md`](PROTOCOLO_DE_MAPEO.md)
 
 ---
@@ -9,7 +9,7 @@
 
 ### 1.1 Contexto estratégico y estructura semántica multicapa
 
-La arquitectura metodológica del marco I.O. traduce la complejidad de dominios empíricos heterogéneos —sistemas biológicos, fenómenos económicos— en estructuras semánticas medibles e interoperables. El compromiso epistémico central es **desacoplar** la deducción lógica interna de la validación cognitiva externa, evitando la autorreferencialidad (un sistema que convalida reglas generadas por sí mismo).
+La arquitectura metodológica del marco I.O. traduce la complejidad de dominios empíricos heterogéneos —cosmogonías náhuatl y otros dominios empíricos— en estructuras semánticas medibles e interoperables. El compromiso epistémico central es **desacoplar** la deducción lógica interna de la validación cognitiva externa, evitando la autorreferencialidad (un sistema que convalida reglas generadas por sí mismo).
 
 | Perspectiva | Función |
 |---|---|
@@ -52,10 +52,10 @@ Procedimiento ([`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md), [`PROTOCOLO_DE_MA
 
 | Dominio | Ejemplo de entidades | Perspectiva / fase | Relación | Impacto analítico |
 |---|---|---|---|---|
-| Biología | Replicación de ADN → transcripción de ARNm | Individualidad / Evolución | `creates` | Formaliza direccionalidad del flujo informacional |
-| Biología | Diferenciación celular ↔ mantenimiento de pluripotencia | Evolución / Involución | `mirrorOf` | Reflejo entre especialización y estado germinal |
-| Economía | Restricciones de liquidez ↔ solvencia sistémica | Dualidad / Totalidad | `mirrorOf` | Isomorfismo entre tensión individual y riesgo macro |
-| Economía | Descubrimiento de precios → libro de órdenes | Evolución / Totalidad | `creates` | Emergencia causal del precio de equilibrio |
+| Cosmología náhuatl | Tezcatlipoca ↔ Quetzalcóatl | Dualidad | `mirrorOf` | Reflejo de fuerzas cósmicas polares |
+| Cosmología náhuatl | Vida ↔ muerte | Dualidad | `mirrorOf` | Dicotomía mesoamericana |
+| Cosmología náhuatl | Sol de fuego → Sol de agua | Involución | `creates` | Transición entre edades / cataclismo |
+| Cosmología náhuatl | Camino al Mictlán → Mictlán | Involución | `creates` | Retorno al vacío |
 
 ### 2.2 Delimitación epistemológica del mapeo
 
