@@ -22,7 +22,8 @@ La ontología core permanece **inmutable**. Los datos externos se mapean como *i
 ## 2. Cosmología náhuatl — Cinco Soles y Mictlán
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
-Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
+Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.  
+Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/) (Piedra del Sol, láminas codiciales, tesis *Códice Xólotl*).
 
 | Concepto | Perspectiva | Relación candidata |
 |----------|-------------|--------------------|
@@ -68,5 +69,6 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 - Nodos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
 - Alineación: [`MANUAL_ALINEACION_DOMINIOS.md`](MANUAL_ALINEACION_DOMINIOS.md)
 - Náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
+- Medios: [`media/cosmos_nahuatl/README.md`](media/cosmos_nahuatl/README.md)
 - Reglas: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
 - Script: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
