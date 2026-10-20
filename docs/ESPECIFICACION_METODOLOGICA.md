@@ -33,7 +33,7 @@
 3. **Estructural** — OWL/SHACL, CSV canónicos.
 4. **Diagnóstico sintético** — PI-HGAT-T / baselines; solo recuperación de reglas.
 
-## 3. Alineación de dominios (biología y economía)
+## 3. Alineación de dominios (cosmología náhuatl)
 
 Secuencia:
 
@@ -46,11 +46,11 @@ Ejemplos operativos (EXP-E):
 
 | Dominio | Par | Relación típica |
 |---|---|---|
-| Biología | Enzima ↔ Sustrato | `mirrorOf` (complementariedad) |
-| Biología | Complejo enzima-sustrato → Producto | `creates` |
-| Biología | Transcripción ADN → ARNm | `creates` |
-| Economía | Tasa de interés ↔ Inflación | `creates` o `mirrorOf` según el mecanismo |
-| Economía | Oferta monetaria → Nivel de precios | `creates` |
+| Cosmología náhuatl | Tezcatlipoca ↔ Quetzalcóatl | `mirrorOf` |
+| Cosmología náhuatl | Vida ↔ muerte | `mirrorOf` |
+| Cosmología náhuatl | Sol de fuego → Sol de agua | `creates` |
+| Cosmología náhuatl | Camino al Mictlán → Mictlán | `creates` |
+| Cosmología náhuatl | Nahui Ollin vs Sol de viento | `none` (contraste de edades) |
 
 Artefactos: [`experiments/domain_mapping/examples.json`](../experiments/domain_mapping/examples.json).
 
