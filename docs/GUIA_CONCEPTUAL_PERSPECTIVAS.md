@@ -16,10 +16,9 @@ Componentes clave:
 
 ### 2.1 Individualidad
 
-Aísla y define una entidad en su forma singular. Delimita fronteras íntrínsecas antes de analizar interacciones.
+Aísla y define una entidad en su forma singular. Delimita fronteras intrínsecas antes de analizar interacciones.
 
-- Biología: célula, especie.
-- Economía: unidad productiva, activo específico.
+- Cosmología náhuatl: Sol/edad, entidad anímica (teyolia).
 
 ### 2.2 Dualidad
 
@@ -29,7 +28,7 @@ Categoriza pares en correspondencia, polaridad u oposición especular. Usa de fo
 
 ### 2.3 Totalidad
 
-Agrupa entidades e interacciones dentro de un sistema integrado (ecosistema, mercado global).
+Agrupa entidades e interacciones dentro de un sistema integrado (edad cosmológica, horizonte del Quinto Sol).
 
 ### 2.4 Evolución
 
@@ -37,7 +36,7 @@ Describe el dinamismo mediante el cual conceptos generan nuevos estados. Se apoy
 
 ### 2.5 Involución
 
-Complemento de la evolución: repliegue, concentración o reestructuración interna dentro del ciclo de fases.
+Complemento de la evolución: repliegue, concentración o reestructuración interna dentro del ciclo de fases (p. ej. camino al Mictlán).
 
 ---
 
@@ -53,7 +52,7 @@ Complemento de la evolución: repliegue, concentración o reestructuración inte
 
 ### Mapeo empírico (EXP-E)
 
-El experimento EXP-E (`experiments/domain_mapping/validate_examples.py`) analiza **8 pares** biológicos y económicos para comprobar si las 13 tríadas se sostienen al aplicarse a la realidad. Estandariza áreas heterogéneas bajo un lenguaje común e asegura interpretabilidad para especialistas de ciencias naturales y sociales.
+El experimento EXP-E (`experiments/domain_mapping/validate_examples.py`) analiza **5 pares** de cosmología náhuatl (Cinco Soles, Mictlán) para comprobar si las 13 tríadas se sostienen al aplicarse a la realidad. Estandariza el dominio bajo un lenguaje común e asegura interpretabilidad para especialistas del dominio alineado.
 
 ---
 
@@ -78,6 +77,6 @@ Identificar desacuerdos NC/AM no es falla: delimita los límites del sistema.
 
 ## 5. Lista de Cotejo para Categorizar
 
-1. **Individualidad** — ¿He aislado la entidad en sus términos íntrínsecos?
+1. **Individualidad** — ¿He aislado la entidad en sus términos intrínsecos?
 2. **Dualidad / Totalidad** — ¿Identifiqué su par (`mirrorOf`) y el sistema que los engloba?
 3. **Evolución / Involución** — ¿La interacción genera un nuevo estado (`creates`) o un repliegue de fases?
