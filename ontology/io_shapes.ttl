@@ -9,21 +9,21 @@ io:StructuralShape a sh:NodeShape ;
     sh:property [ sh:path io:hasPhase ; sh:datatype xsd:string ; sh:in ( "adv"^^xsd:string "ret"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasLocalPos ; sh:datatype xsd:integer ; sh:in ( 0 1 2 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:displayLabel ; sh:datatype xsd:string ; sh:in ( "→"^^xsd:string "0"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path io:hasPosition ; sh:in ( io:left io:center io:right ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPosition ; sh:in ( io:→ io:0 io:← ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPerspective ; sh:in ( io:Ind io:D io:Tot ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasDirection ; sh:in ( io:evol io:invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:mirrorOf ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:creates ; sh:class io:OntoNode ; sh:minCount 1 ; sh:maxCount 2 ] ;
     sh:sparql [
-        sh:message "La posición izquierda/centro/derecha debe corresponder a Ind/D/Tot." ;
+        sh:message "La posición →/0/← debe corresponder a Ind/D/Tot." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
                 $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective ; io:hasPosition ?position .
-                FILTER ((?pos = 0 && (?perspective != io:Ind || ?position != io:left)) ||
-                        (?pos = 1 && (?perspective != io:D || ?position != io:center)) ||
-                        (?pos = 2 && (?perspective != io:Tot || ?position != io:right)))
+                FILTER ((?pos = 0 && (?perspective != io:Ind || ?position != io:→)) ||
+                        (?pos = 1 && (?perspective != io:D || ?position != io:0)) ||
+                        (?pos = 2 && (?perspective != io:Tot || ?position != io:←)))
             }
         """
     ] ;
@@ -64,7 +64,7 @@ io:StructuralShape a sh:NodeShape ;
         """
     ] ;
     sh:sparql [
-        sh:message "io:creates debe respetar la misma tríada, la fase opuesta y una de las cuatro reglas laterales/centro." ;
+        sh:message "io:creates debe respetar la misma tríada, la fase opuesta y una de las cuatro reglas laterales/0." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
