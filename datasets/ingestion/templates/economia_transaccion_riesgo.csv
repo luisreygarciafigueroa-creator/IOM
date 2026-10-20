@@ -1,7 +1,7 @@
 record_id,concept_label,mapped_node_id,perspective,phase,position,relation_hint,notes
-econ_trader_01,trader,T06_adv_P0,Ind,adv,left,creates,"Agente (individualidad; tríada animal|humano|IA como análogo de agente)"
-econ_asset_01,activo,T06_ret_P2,Ind,ret,right,mirrorOf,"Activo reflejado"
-econ_risk_01,riesgo_contrato,T06_adv_P1,D,adv,center,creates,"Dualidad riesgo/contrato"
-econ_market_01,mercado,T06_adv_P2,Tot,adv,right,none,"Totalidad mercado"
-econ_bubble_01,expansion,T10_adv_P0,Evol,adv,left,none,"Burbuja / expansión alineada a universo (evolución)"
-econ_crash_01,liquidacion,T10_ret_P0,Invol,ret,left,none,"Crash / liquidación alineada a vacío (involución)"
+econ_trader_01,trader,T07_adv_P0,Ind,adv,→,creates,"Agente (tríada #7)"
+econ_asset_01,activo,T07_ret_P2,Ind,ret,←,mirrorOf,"Activo reflejado"
+econ_risk_01,riesgo_contrato,T07_adv_P1,D,adv,0,creates,"Dualidad riesgo/contrato"
+econ_market_01,mercado,T07_adv_P2,Tot,adv,→,none,"Totalidad mercado"
+econ_bubble_01,expansion,T11_adv_P0,Evol,adv,→,none,"Burbuja (tríada #11 universo)"
+econ_crash_01,liquidacion,T11_ret_P0,Invol,ret,←,none,"Crash (tríada #11 vacío)"
