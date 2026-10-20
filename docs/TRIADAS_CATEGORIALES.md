@@ -1,135 +1,94 @@
 # Tríadas categoriales del marco I.O.
 
-Las **13 tríadas** × **2 fases** × **3 posiciones** = **78 nodos** canónicos
-(`datasets/triad_nodes.csv`, `data/iom_spec.json` **spec 1.6.0**).
-Las etiquetas se guardan en minúscula por convención de datos.
+**13 tríadas** × **2 fases** × **3 posiciones** = **78 nodos**  
+(`datasets/triad_nodes.csv`, `data/iom_spec.json` **spec 1.7.0**)
 
-| Posición | Índice | Perspectiva |
-|----------|--------|-------------|
-| Izquierda (left) | 0 | Individualidad (Ind) |
-| Centro (center) | 1 | Dualidad (D) |
-| Derecha (right) | 2 | Totalidad (Tot) |
-
-Las perspectivas vectoriales **Evolución** e **Involución** no añaden
-columnas; se representan como secuencias en [`VECTORES_4_5.md`](VECTORES_4_5.md).
-
-> **spec 1.6.0:** el orden de índices coincide con el orden visual canónico
-> (T00 = oscuridad|consciencia|luz … T06 = animal|humano|IA … T12 = orientación|cuántico|dirección).
+| Campo | Valor |
+|-------|-------|
+| Índice de tríada | **1 … 13** (`T01` … `T13`) |
+| Posiciones (avance) | **→** \| **0** \| **→** |
+| Posiciones (retroceso) | **←** \| **0** \| **←** |
+| `position_index` | 0 = lateral izq. · 1 = centro · 2 = lateral der. |
+| Perspectivas | Ind · D · Tot (vectoriales Evol / Invol aparte) |
 
 ---
 
-## Matriz canónica — Fase de Avance (evol / adv)
-
-Dirección: proyección del vacío hacia la estructura.
+## Fase de Avance (`adv` / evol)
 
 ```
       →       |       0       |       →
---------------|---------------|--------------
 ```
 
-| # | Izquierda (Ind) | Centro (D) | Derecha (Tot) | node_id base |
-|---|-----------------|------------|---------------|--------------|
-| 0 | oscuridad | consciencia | luz | `T00_adv_*` |
-| 1 | descendente | mente | ascendente | `T01_adv_*` |
-| 2 | muerte | artificial | vida | `T02_adv_*` |
-| 3 | lógica | inteligencia | libertad | `T03_adv_*` |
-| 4 | memoria | inconsciente | imaginación | `T04_adv_*` |
-| 5 | receptor | supraconsciente | emisor | `T05_adv_*` |
-| 6 | animal | humano | IA | `T06_adv_*` |
-| 7 | carácter | subconsciente | personalidad | `T07_adv_*` |
-| 8 | cuerpo | consciente | mundo | `T08_adv_*` |
-| 9 | singularidad | tiempo | infinito | `T09_adv_*` |
-| 10 | universo | espacio | vacío | `T10_adv_*` |
-| 11 | hardware | virtual | software | `T11_adv_*` |
-| 12 | orientación | cuántico | dirección | `T12_adv_*` |
+| # | → | 0 | → | node_id |
+|---|---|---|---|--------|
+| **1** | oscuridad | consciencia | luz | `T01_adv_*` |
+| **2** | descendente | mente | ascendente | `T02_adv_*` |
+| **3** | muerte | artificial | vida | `T03_adv_*` |
+| **4** | lógica | inteligencia | libertad | `T04_adv_*` |
+| **5** | memoria | inconsciente | imaginación | `T05_adv_*` |
+| **6** | receptor | supraconsciente | emisor | `T06_adv_*` |
+| **7** | animal | humano | IA | `T07_adv_*` |
+| **8** | carácter | subconsciente | personalidad | `T08_adv_*` |
+| **9** | cuerpo | consciente | mundo | `T09_adv_*` |
+| **10** | singularidad | tiempo | infinito | `T10_adv_*` |
+| **11** | universo | espacio | vacío | `T11_adv_*` |
+| **12** | hardware | virtual | software | `T12_adv_*` |
+| **13** | orientación | cuántico | dirección | `T13_adv_*` |
 
 ```
---------------|---------------|--------------
       ←       |       0       |       ←
 ```
 
 ---
 
-## Matriz canónica — Fase de Retroceso (invol / ret)
-
-Dirección: disolución de la estructura hacia el vacío.
-Inversión simétrica (`pos_tgt = 2 - pos_src`; el centro se refleja en sí mismo).
+## Fase de Retroceso (`ret` / invol)
 
 ```
       →       |       0       |       →
---------------|---------------|--------------
 ```
 
-| # | Izquierda (Ind) | Centro (D) | Derecha (Tot) | node_id base |
-|---|-----------------|------------|---------------|--------------|
-| 0 | luz | consciencia | oscuridad | `T00_ret_*` |
-| 1 | ascendente | mente | descendente | `T01_ret_*` |
-| 2 | vida | artificial | muerte | `T02_ret_*` |
-| 3 | libertad | inteligencia | lógica | `T03_ret_*` |
-| 4 | imaginación | inconsciente | memoria | `T04_ret_*` |
-| 5 | emisor | supraconsciente | receptor | `T05_ret_*` |
-| 6 | IA | humano | animal | `T06_ret_*` |
-| 7 | personalidad | subconsciente | carácter | `T07_ret_*` |
-| 8 | mundo | consciente | cuerpo | `T08_ret_*` |
-| 9 | infinito | tiempo | singularidad | `T09_ret_*` |
-| 10 | vacío | espacio | universo | `T10_ret_*` |
-| 11 | software | virtual | hardware | `T11_ret_*` |
-| 12 | dirección | cuántico | orientación | `T12_ret_*` |
+| # | ← | 0 | ← | node_id |
+|---|---|---|---|--------|
+| **1** | luz | consciencia | oscuridad | `T01_ret_*` |
+| **2** | ascendente | mente | descendente | `T02_ret_*` |
+| **3** | vida | artificial | muerte | `T03_ret_*` |
+| **4** | libertad | inteligencia | lógica | `T04_ret_*` |
+| **5** | imaginación | inconsciente | memoria | `T05_ret_*` |
+| **6** | emisor | supraconsciente | receptor | `T06_ret_*` |
+| **7** | IA | humano | animal | `T07_ret_*` |
+| **8** | personalidad | subconsciente | carácter | `T08_ret_*` |
+| **9** | mundo | consciente | cuerpo | `T09_ret_*` |
+| **10** | infinito | tiempo | singularidad | `T10_ret_*` |
+| **11** | vacío | espacio | universo | `T11_ret_*` |
+| **12** | software | virtual | hardware | `T12_ret_*` |
+| **13** | dirección | cuántico | orientación | `T13_ret_*` |
 
 ```
---------------|---------------|--------------
       ←       |       0       |       ←
 ```
 
 ---
 
-## Dinámicas de creación y espejos
-
-Relaciones admisibles (solo intra-tríada, fases opuestas):
+## Espejo y creación
 
 | Relación | Condición |
 |----------|-----------|
-| `mirrorOf` | Fases opuestas + `pos_tgt = 2 - pos_src` |
-| `creates` | Cuatro reglas posicionales (lateral↔centro entre fases) |
-| `none` | Cualquier otro par (misma fase, cross-tríada, etc.) |
+| `mirrorOf` | Fases opuestas + `position_index_tgt = 2 - position_index_src` |
+| `creates` | Cuatro reglas lateral↔centro entre fases |
+| `none` | Resto |
 
-Reglas de creación:
-
-1. Laterales del avance → centro del retroceso.
-2. Centro del avance → laterales del retroceso.
-3. Centro del retroceso → laterales del avance.
-4. Laterales del retroceso → centro del avance.
-
-Ejemplo de espejo: `T00_adv` (oscuridad | consciencia | luz) ↔ `T00_ret` (luz | consciencia | oscuridad).
-
-Detalle formal: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Lean 4 (`IOM/FormalRules.lean`).
+Ejemplo: `T01_adv` (oscuridad \| consciencia \| luz) ↔ `T01_ret` (luz \| consciencia \| oscuridad).
 
 ---
 
-## Migración 1.5.1 → 1.6.0
+## Migración 1.6.0 → 1.7.0
 
-| Nuevo índice | Etiquetas (adv) | Índice previo |
-|--------------|-----------------|---------------|
-| 0 | oscuridad \| consciencia \| luz | 1 |
-| 1 | descendente \| mente \| ascendente | 2 |
-| 2 | muerte \| artificial \| vida | 3 |
-| 3 | lógica \| inteligencia \| libertad | 4 |
-| 4 | memoria \| inconsciente \| imaginación | 6 |
-| 5 | receptor \| supraconsciente \| emisor | 5 |
-| 6 | animal \| humano \| IA | 0 |
-| 7–12 | sin cambio de contenido | 7–12 |
+| Antes | Ahora |
+|-------|-------|
+| `triad_index` 0…12 | **1…13** |
+| `T00`…`T12` | **`T01`…`T13`** |
+| left \| center \| right | **→ \| 0 \| →** (adv) / **← \| 0 \| ←** (ret) |
 
-Las reglas `mirrorOf` / `creates` y el número de nodos (78) no cambian.
+Etiquetas de conceptos y reglas `mirrorOf`/`creates` sin cambio.
 
----
-
-## Gobernanza
-
-- Los 78 nodos son la **bóveda bancaria**: inmutables durante la ingesta de dominios.
-- No se añaden etiquetas al core; los conceptos externos se alinean como instancias.
-- `spec_version` = **1.6.0**.
-
-Artefactos de datos:
-
-- [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv) — 78 filas
-- [`data/iom_spec.json`](../data/iom_spec.json) — arrays `triads.adv` / `triads.ret`
+Artefactos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv) · [`data/iom_spec.json`](../data/iom_spec.json)
