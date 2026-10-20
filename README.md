@@ -34,7 +34,7 @@ Módulo didáctico: [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DI
 | **EXP-B** | Formal | `lake build` | Solidez deductiva (Lean 4) |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Conformidad RDF/SHACL |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de reglas *generadas por el sistema* |
-| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | 8 pares bio/econ → 13 tríadas |
+| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación cosmología náhuatl (Cinco Soles, Mictlán) |
 
 Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · Alineación: [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md).
 
@@ -44,9 +44,9 @@ Demostraciones de mapeo (sin κ propio hasta anotación ciega):
 
 | Dominio | Documento |
 |---------|-----------|
-| Biología / Economía | [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · EXP-E |
 | Cosmología náhuatl (Cinco Soles, Mictlán) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
 | Manual unificado de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
+| Catálogo general | [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md) · EXP-E |
 
 ## Pipeline
 
