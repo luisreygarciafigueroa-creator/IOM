@@ -14,7 +14,7 @@ la comprobación automática está en `tests/test_formal_rules_bridge.py`.
 | Condición | Predicado Lean | Capa de datos |
 |---|---|---|
 | Fase opuesta + posición espejada | `isMirror` | CSV / SHACL |
-| Fase opuesta + lateral↔centro | `isCreates` | CSV / SHACL |
+| Fase opuesta + lateral↔₀ | `isCreates` | CSV / SHACL |
 | **Misma tríada** (índice de fila) | `sameTriad` + `isMirrorRel` / `isCreatesRel` | CSV (`same_triad` en Python), SHACL (mismo prefijo Txx) |
 
 `TriadNode` incluye `triadId` para que la pertenencia a la misma tríada sea
@@ -72,11 +72,11 @@ theorem isMirrorRel_implies_same_triad (a b : TriadNode) (h : isMirrorRel a b) :
     sameTriad a b := h.1
 
 /-- Las cuatro reglas de creación entre fases opuestas (solo posicional). -/
-def lateral (p : TriadPosition) : Prop := p = .left ∨ p = .right
+def lateral (p : TriadPosition) : Prop := p = .→ ∨ p = .←
 
 def isCreatesPositional (a b : TriadNode) : Prop :=
   a.phase.opposite = b.phase ∧
-    ((lateral a.pos ∧ b.pos = .center) ∨ (a.pos = .center ∧ lateral b.pos))
+    ((lateral a.pos ∧ b.pos = .₀) ∨ (a.pos = .₀ ∧ lateral b.pos))
 
 /-- `creates` operativo: misma tríada ∧ condición posicional de creación. -/
 def isCreatesRel (a b : TriadNode) : Prop :=
