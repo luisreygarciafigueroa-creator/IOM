@@ -24,7 +24,7 @@ La operatividad se articula mediante el álgebra de relaciones `creates` (depend
 | **EXP-B** | Formal | `lake build` | Coherencia lógica y teoremas en Lean 4 |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Restricciones de forma RDF/SHACL |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperabilidad de reglas *generadas por el sistema* (no validez real) |
-| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación de 8 pares bio/econ a las 13 tríadas |
+| **EXP-E** | Mapeo de dominios | `experiments/domain_mapping/validate_examples.py` | Alineación de cosmología náhuatl a las 13 tríadas |
 
 ### Evidencia EXP-A (validez semántica empírica)
 
@@ -49,8 +49,7 @@ Protocolo de proyección sistemática:
 
 Ejemplos EXP-E:
 
-- **Biología** — diferenciación celular bajo Evolución con `creates` entre progenitor y estado especializado.
-- **Economía** — liquidez / flujos bajo Dualidad o Totalidad con `mirrorOf` oferta–demanda.
+- **Cosmología náhuatl** — Cinco Soles y camino al Mictlán bajo Evolución/Involución con `mirrorOf` y `creates`.
 
 Guía operativa: [`PROTOCOLO_DE_MAPEO.md`](PROTOCOLO_DE_MAPEO.md) · Catálogo: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
 
