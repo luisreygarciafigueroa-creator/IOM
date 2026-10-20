@@ -1,9 +1,6 @@
 id,domain,source_label,target_label,relation,perspective,phase_hint,suggested_source_node,suggested_target_node
-BIO-01,biologia,Replicación de ADN,Transcripción de ARNm,creates,Individualidad / Evolución,Transmisión y Expresión,T06_adv_P0,T06_ret_P1
-BIO-02,biologia,Diferenciación celular,Mantenimiento de pluripotencia,mirrorOf,Evolución / Involución,Especialización vs Restricción,T02_adv_P2,T02_ret_P0
-ECO-01,economia,Restricciones de liquidez,Solvencia sistémica,mirrorOf,Dualidad / Totalidad,Equilibrio estructural,T09_adv_P0,T09_ret_P2
-ECO-02,economia,Descubrimiento de precios,Dinámica del libro de órdenes,creates,Evolución / Totalidad,Emergencia de mercado,T09_adv_P0,T09_ret_P1
-BIO-03,biologia,Enzima,Sustrato,mirrorOf,Dualidad,Complementariedad estructural (llave-cerradura),T04_adv_P0,T04_ret_P2
-BIO-04,biologia,Mutación adaptativa,Diferenciación tisular,creates,Evolución,Transformación progresiva,T02_adv_P0,T02_ret_P1
-ECO-03,economia,Tasa de interés de banco central,Tasa de inflación,creates,Evolución / Dualidad,Transmisión de política monetaria,T09_adv_P2,T09_ret_P1
-ECO-04,economia,Innovación tecnológica disruptiva,Cadena de valor redefinida,creates,Evolución,Reestructuración de mercado,T11_adv_P0,T11_ret_P1
+NAH-01,cosmos_nahuatl,Tezcatlipoca,Quetzalcoatl,mirrorOf,Dualidad,Lucha de fuerzas cósmicas,T01_adv_P0,T01_ret_P0
+NAH-02,cosmos_nahuatl,vida,muerte,mirrorOf,Dualidad,Dicotomía mesoamericana,T03_adv_P2,T03_adv_P0
+NAH-03,cosmos_nahuatl,Nahui_Quiahuitl_Sol_Fuego,Nahui_Atl_Sol_Agua,creates,Involución,Cataclismo / transición de edades,T01_adv_P1,T01_ret_P1
+NAH-04,cosmos_nahuatl,camino_al_Mictlan,Mictlan,creates,Involución,Retorno al vacío,T11_ret_P0,T11_ret_P0
+NAH-05,cosmos_nahuatl,Nahui_Ollin_Sol_Movimiento,Nahui_Ehecatl_Sol_Viento,none,Totalidad / Evolución,Quinto Sol vs primera edad,T01_adv_P2,T01_adv_P0
