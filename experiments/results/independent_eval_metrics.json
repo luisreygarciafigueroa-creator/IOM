@@ -17,14 +17,40 @@
     "new_concept": 0.3333,
     "out_of_rules": 0.0
   },
-  "posthoc_agreement_with_rules": 0.9394,
-  "posthoc_comparable_judgments": 33,
+  "posthoc_agreement_with_rules": 1.0,
+  "posthoc_comparable_judgments": 11,
   "disagreements": [
-    {"id": "NC01", "kind": "new_concept", "labels": {"A1": "mirrorOf", "A2": "unsure", "A3": "unsure"}, "majority": "unsure", "rule_label": "unspecified"},
-    {"id": "NC02", "kind": "new_concept", "labels": {"A1": "creates", "A2": "unsure", "A3": "none"}, "majority": "tie", "rule_label": "unspecified"},
-    {"id": "AM01", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"},
-    {"id": "AM03", "kind": "ambiguous", "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"}, "majority": "mirrorOf", "rule_label": "mirrorOf"}
+    {
+      "id": "NC01",
+      "kind": "new_concept",
+      "labels": {"A1": "mirrorOf", "A2": "unsure", "A3": "unsure"},
+      "majority": "unsure",
+      "rule_label": "unspecified"
+    },
+    {
+      "id": "NC02",
+      "kind": "new_concept",
+      "labels": {"A1": "creates", "A2": "unsure", "A3": "none"},
+      "majority": "tie",
+      "rule_label": "unspecified"
+    },
+    {
+      "id": "AM01",
+      "kind": "ambiguous",
+      "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"},
+      "majority": "mirrorOf",
+      "rule_label": "mirrorOf"
+    },
+    {
+      "id": "AM03",
+      "kind": "ambiguous",
+      "labels": {"A1": "mirrorOf", "A2": "mirrorOf", "A3": "unsure"},
+      "majority": "mirrorOf",
+      "rule_label": "mirrorOf"
+    }
   ],
   "control_unanimous": true,
-  "out_of_rules_unanimous": true
+  "out_of_rules_unanimous": true,
+  "source": "recomputed scripts/score_independent_eval.py",
+  "spec_version": "1.8.1"
 }
