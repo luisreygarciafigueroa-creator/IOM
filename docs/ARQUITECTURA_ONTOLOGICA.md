@@ -1,6 +1,6 @@
 # Propuesta de arquitectura ontológica: marco semántico I.O. para la alineación de dominios empíricos
 
-> Arquitectura de alineación interdisciplinaria (biología, economía, …) sobre las cinco perspectivas y 13 tríadas.  
+> Arquitectura de alineación interdisciplinaria (cosmología náhuatl) sobre las cinco perspectivas y 13 tríadas.  
 > Premisas: [`PREMISAS_Y_TEOREMAS.md`](PREMISAS_Y_TEOREMAS.md) · Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Catálogo: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md)
 
 ---
@@ -29,19 +29,19 @@ Axiomas: vacío, unidad, infinito, transformación.
 | Estructural | Gobernanza CSV/OWL/SHACL |
 | Diagnóstico sintético | Calibración interna (no validez real) |
 
-## 3. Alineación biología / economía
+## 3. Alineación cosmología náhuatl
 
 Proceso de 6 pasos: fenómeno → perspectiva → tríada → fase → `mirrorOf`/`creates` → validación SHACL.
 
-### Matriz comparativa (EXP-E ampliado)
+### Matriz comparativa (EXP-E — cosmología náhuatl)
 
-| Perspectiva | Biología (expresión celular) | Economía (reestructuración de mercado) | Operación |
-|---|---|---|---|
-| Individualidad | Célula madre pluripotente | Start-up disruptiva | `mirrorOf` potencial |
-| Dualidad | Activación vs represión génica | Oferta vs restricción de demanda | `mirrorOf` tensión |
-| Totalidad | Tejido especializado | Sector consolidado | Integración |
-| Evolución | Mutación adaptativa | Innovación tecnológica | `creates` emergencia |
-| Involución | Apoptosis / senescencia | Quiebra / liquidación | `creates` reorganización |
+| Perspectiva | Cosmología náhuatl | Operación |
+|---|---|---|
+| Individualidad | Tezcatlipoca / Quetzalcóatl (fuerzas polares) | `mirrorOf` |
+| Dualidad | Vida ↔ muerte; lucha de dioses | `mirrorOf` |
+| Totalidad | Nahui Ollin (Quinto Sol) | Integración de la edad presente |
+| Evolución | Sucesión de Soles / nuevo ciclo | `creates` emergencia |
+| Involución | Camino al Mictlán / cataclismo | `creates` retorno al vacío |
 
 Ejemplos ejecutables: [`experiments/domain_mapping/examples.json`](../experiments/domain_mapping/examples.json).
 
