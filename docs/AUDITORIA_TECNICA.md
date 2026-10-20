@@ -33,7 +33,7 @@ Para guiar esta evaluación técnica, el marco responde formalmente a cuatro pre
 1. **Evaluación de validez semántica externa:** ¿Pueden anotadores independientes, ciegos a las reglas axiomáticas internas del sistema, etiquetar relaciones semánticas sobre pares reales, nuevos y ambiguos de manera consistente y replicable?
 2. **Coherencia formal interna:** ¿Es la estructura axiomática del marco internamente consistente, deductivamente sólida y libre de contradicciones lógicas?
 3. **Diagnóstico de recuperación sintética:** ¿Las reglas generadas sintéticamente por el marco son recuperables mediante arquitecturas de aprendizaje profundo en grafos?
-4. **Alineación empírica de dominios:** ¿Es posible cartografiar fenómenos de ciencias empíricas (como la biología o la economía) hacia la estructura de 13 tríadas del marco I.O.?
+4. **Alineación empírica de dominios:** ¿Es posible cartografiar fenómenos de ciencias empíricas (como la cosmología náhuatl) hacia la estructura de 13 tríadas del marco I.O.?
 
 ## 2. Diferenciación modular de las capas del repositorio
 
@@ -98,7 +98,7 @@ lake build
 
 ### 4.2 Alineación a dominios empíricos
 
-Documentada en [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) (biología, economía, …). Arquitectura documental de apoyo:
+Documentada en [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) (cosmología náhuatl). Arquitectura documental de apoyo:
 
 - [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
 - [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md)
