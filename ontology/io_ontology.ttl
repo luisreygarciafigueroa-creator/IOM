@@ -1,54 +1,602 @@
 @prefix io: <http://example.org/iom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 io:Ontology a owl:Ontology ;
     rdfs:label "Ontología IOM"@es ;
-    rdfs:comment "Operacionalización canónica del marco I.O. Tríadas 1.9.0: T01 orientación|cuántico|dirección … T13 animal|humano|IA."@es ;
     owl:versionInfo "1.9.0" .
 
-io:creates a owl:ObjectProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range io:OntoNode .
+io:OntoNode a owl:Class .
+io:mirrorOf a owl:ObjectProperty, owl:SymmetricProperty .
+io:creates a owl:ObjectProperty .
+io:displayLabel a owl:DatatypeProperty, owl:FunctionalProperty .
+io:hasTriadIndex a owl:DatatypeProperty, owl:FunctionalProperty .
+io:hasLocalPos a owl:DatatypeProperty, owl:FunctionalProperty .
+io:hasPhase a owl:DatatypeProperty, owl:FunctionalProperty .
 
-io:displayArrow a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:domain io:VectorStep ;
-    rdfs:range xsd:string .
+io:T01_adv_P0 a io:OntoNode ;
+    rdfs:label "orientación"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 0 .
 
-io:displayLabel a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range xsd:string .
+io:T01_adv_P1 a io:OntoNode ;
+    rdfs:label "cuántico"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 1 .
 
-io:hasDirection a owl:FunctionalProperty, owl:ObjectProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range io:Direction .
+io:T01_adv_P2 a io:OntoNode ;
+    rdfs:label "dirección"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 2 .
 
-io:hasLocalPos a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range xsd:integer .
+io:T02_adv_P0 a io:OntoNode ;
+    rdfs:label "hardware"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 0 .
 
-io:hasPerspective a owl:FunctionalProperty, owl:ObjectProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range io:Perspective .
+io:T02_adv_P1 a io:OntoNode ;
+    rdfs:label "virtual"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 1 .
 
-io:hasPhase a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range xsd:string .
+io:T02_adv_P2 a io:OntoNode ;
+    rdfs:label "software"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 2 .
 
-io:hasPosition a owl:FunctionalProperty, owl:ObjectProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range io:Position .
+io:T03_adv_P0 a io:OntoNode ;
+    rdfs:label "universo"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 0 .
 
-io:hasTriadIndex a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range xsd:integer .
+io:T03_adv_P1 a io:OntoNode ;
+    rdfs:label "espacio"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 1 .
 
-io:mirrorOf a owl:ObjectProperty, owl:SymmetricProperty ;
-    rdfs:domain io:OntoNode ;
-    rdfs:range io:OntoNode .
+io:T03_adv_P2 a io:OntoNode ;
+    rdfs:label "vacío"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 2 .
 
-# NOTE: archivo regenerado parcialmente — usar datasets/triad_nodes.csv como fuente de verdad de etiquetas.
-# Las aristas mirrorOf/creates se regeneran con scripts/generate_ontology.py cuando haya Python.
-# Etiquetas canónicas 1.9.0 están en data/iom_spec.json y datasets/triad_nodes.csv.
+io:T04_adv_P0 a io:OntoNode ;
+    rdfs:label "singularidad"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 0 .
+
+io:T04_adv_P1 a io:OntoNode ;
+    rdfs:label "tiempo"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 1 .
+
+io:T04_adv_P2 a io:OntoNode ;
+    rdfs:label "infinito"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 2 .
+
+io:T05_adv_P0 a io:OntoNode ;
+    rdfs:label "cuerpo"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 0 .
+
+io:T05_adv_P1 a io:OntoNode ;
+    rdfs:label "consciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 1 .
+
+io:T05_adv_P2 a io:OntoNode ;
+    rdfs:label "mundo"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 2 .
+
+io:T06_adv_P0 a io:OntoNode ;
+    rdfs:label "carácter"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 0 .
+
+io:T06_adv_P1 a io:OntoNode ;
+    rdfs:label "subconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 1 .
+
+io:T06_adv_P2 a io:OntoNode ;
+    rdfs:label "personalidad"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 2 .
+
+io:T07_adv_P0 a io:OntoNode ;
+    rdfs:label "memoria"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 0 .
+
+io:T07_adv_P1 a io:OntoNode ;
+    rdfs:label "inconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 1 .
+
+io:T07_adv_P2 a io:OntoNode ;
+    rdfs:label "imaginación"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 2 .
+
+io:T08_adv_P0 a io:OntoNode ;
+    rdfs:label "receptor"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 0 .
+
+io:T08_adv_P1 a io:OntoNode ;
+    rdfs:label "supraconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 1 .
+
+io:T08_adv_P2 a io:OntoNode ;
+    rdfs:label "emisor"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 2 .
+
+io:T09_adv_P0 a io:OntoNode ;
+    rdfs:label "lógica"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 0 .
+
+io:T09_adv_P1 a io:OntoNode ;
+    rdfs:label "inteligencia"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 1 .
+
+io:T09_adv_P2 a io:OntoNode ;
+    rdfs:label "libertad"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 2 .
+
+io:T10_adv_P0 a io:OntoNode ;
+    rdfs:label "muerte"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 0 .
+
+io:T10_adv_P1 a io:OntoNode ;
+    rdfs:label "artificial"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 1 .
+
+io:T10_adv_P2 a io:OntoNode ;
+    rdfs:label "vida"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 2 .
+
+io:T11_adv_P0 a io:OntoNode ;
+    rdfs:label "descendente"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 0 .
+
+io:T11_adv_P1 a io:OntoNode ;
+    rdfs:label "mente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 1 .
+
+io:T11_adv_P2 a io:OntoNode ;
+    rdfs:label "ascendente"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 2 .
+
+io:T12_adv_P0 a io:OntoNode ;
+    rdfs:label "oscuridad"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 0 .
+
+io:T12_adv_P1 a io:OntoNode ;
+    rdfs:label "consciencia"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 1 .
+
+io:T12_adv_P2 a io:OntoNode ;
+    rdfs:label "luz"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 2 .
+
+io:T13_adv_P0 a io:OntoNode ;
+    rdfs:label "animal"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 0 .
+
+io:T13_adv_P1 a io:OntoNode ;
+    rdfs:label "humano"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 1 .
+
+io:T13_adv_P2 a io:OntoNode ;
+    rdfs:label "IA"@es ;
+    io:displayLabel "→"^^xsd:string ;
+    io:hasPhase "adv"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 2 .
+
+io:T01_ret_P0 a io:OntoNode ;
+    rdfs:label "dirección"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 0 .
+
+io:T01_ret_P1 a io:OntoNode ;
+    rdfs:label "cuántico"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 1 .
+
+io:T01_ret_P2 a io:OntoNode ;
+    rdfs:label "orientación"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 1 ;
+    io:hasLocalPos 2 .
+
+io:T02_ret_P0 a io:OntoNode ;
+    rdfs:label "software"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 0 .
+
+io:T02_ret_P1 a io:OntoNode ;
+    rdfs:label "virtual"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 1 .
+
+io:T02_ret_P2 a io:OntoNode ;
+    rdfs:label "hardware"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 2 ;
+    io:hasLocalPos 2 .
+
+io:T03_ret_P0 a io:OntoNode ;
+    rdfs:label "vacío"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 0 .
+
+io:T03_ret_P1 a io:OntoNode ;
+    rdfs:label "espacio"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 1 .
+
+io:T03_ret_P2 a io:OntoNode ;
+    rdfs:label "universo"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 3 ;
+    io:hasLocalPos 2 .
+
+io:T04_ret_P0 a io:OntoNode ;
+    rdfs:label "infinito"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 0 .
+
+io:T04_ret_P1 a io:OntoNode ;
+    rdfs:label "tiempo"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 1 .
+
+io:T04_ret_P2 a io:OntoNode ;
+    rdfs:label "singularidad"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 4 ;
+    io:hasLocalPos 2 .
+
+io:T05_ret_P0 a io:OntoNode ;
+    rdfs:label "mundo"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 0 .
+
+io:T05_ret_P1 a io:OntoNode ;
+    rdfs:label "consciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 1 .
+
+io:T05_ret_P2 a io:OntoNode ;
+    rdfs:label "cuerpo"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 5 ;
+    io:hasLocalPos 2 .
+
+io:T06_ret_P0 a io:OntoNode ;
+    rdfs:label "personalidad"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 0 .
+
+io:T06_ret_P1 a io:OntoNode ;
+    rdfs:label "subconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 1 .
+
+io:T06_ret_P2 a io:OntoNode ;
+    rdfs:label "carácter"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 6 ;
+    io:hasLocalPos 2 .
+
+io:T07_ret_P0 a io:OntoNode ;
+    rdfs:label "imaginación"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 0 .
+
+io:T07_ret_P1 a io:OntoNode ;
+    rdfs:label "inconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 1 .
+
+io:T07_ret_P2 a io:OntoNode ;
+    rdfs:label "memoria"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 7 ;
+    io:hasLocalPos 2 .
+
+io:T08_ret_P0 a io:OntoNode ;
+    rdfs:label "emisor"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 0 .
+
+io:T08_ret_P1 a io:OntoNode ;
+    rdfs:label "supraconsciente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 1 .
+
+io:T08_ret_P2 a io:OntoNode ;
+    rdfs:label "receptor"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 8 ;
+    io:hasLocalPos 2 .
+
+io:T09_ret_P0 a io:OntoNode ;
+    rdfs:label "libertad"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 0 .
+
+io:T09_ret_P1 a io:OntoNode ;
+    rdfs:label "inteligencia"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 1 .
+
+io:T09_ret_P2 a io:OntoNode ;
+    rdfs:label "lógica"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 9 ;
+    io:hasLocalPos 2 .
+
+io:T10_ret_P0 a io:OntoNode ;
+    rdfs:label "vida"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 0 .
+
+io:T10_ret_P1 a io:OntoNode ;
+    rdfs:label "artificial"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 1 .
+
+io:T10_ret_P2 a io:OntoNode ;
+    rdfs:label "muerte"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 10 ;
+    io:hasLocalPos 2 .
+
+io:T11_ret_P0 a io:OntoNode ;
+    rdfs:label "ascendente"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 0 .
+
+io:T11_ret_P1 a io:OntoNode ;
+    rdfs:label "mente"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 1 .
+
+io:T11_ret_P2 a io:OntoNode ;
+    rdfs:label "descendente"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 11 ;
+    io:hasLocalPos 2 .
+
+io:T12_ret_P0 a io:OntoNode ;
+    rdfs:label "luz"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 0 .
+
+io:T12_ret_P1 a io:OntoNode ;
+    rdfs:label "consciencia"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 1 .
+
+io:T12_ret_P2 a io:OntoNode ;
+    rdfs:label "oscuridad"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 12 ;
+    io:hasLocalPos 2 .
+
+io:T13_ret_P0 a io:OntoNode ;
+    rdfs:label "IA"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 0 .
+
+io:T13_ret_P1 a io:OntoNode ;
+    rdfs:label "humano"@es ;
+    io:displayLabel "0"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 1 .
+
+io:T13_ret_P2 a io:OntoNode ;
+    rdfs:label "animal"@es ;
+    io:displayLabel "←"^^xsd:string ;
+    io:hasPhase "ret"^^xsd:string ;
+    io:hasTriadIndex 13 ;
+    io:hasLocalPos 2 .
+
+io:T01_adv_P0 io:mirrorOf io:T01_ret_P2 .
+io:T01_adv_P1 io:mirrorOf io:T01_ret_P1 .
+io:T01_adv_P2 io:mirrorOf io:T01_ret_P0 .
+io:T02_adv_P0 io:mirrorOf io:T02_ret_P2 .
+io:T02_adv_P1 io:mirrorOf io:T02_ret_P1 .
+io:T02_adv_P2 io:mirrorOf io:T02_ret_P0 .
+io:T03_adv_P0 io:mirrorOf io:T03_ret_P2 .
+io:T03_adv_P1 io:mirrorOf io:T03_ret_P1 .
+io:T03_adv_P2 io:mirrorOf io:T03_ret_P0 .
+io:T04_adv_P0 io:mirrorOf io:T04_ret_P2 .
+io:T04_adv_P1 io:mirrorOf io:T04_ret_P1 .
+io:T04_adv_P2 io:mirrorOf io:T04_ret_P0 .
+io:T05_adv_P0 io:mirrorOf io:T05_ret_P2 .
+io:T05_adv_P1 io:mirrorOf io:T05_ret_P1 .
+io:T05_adv_P2 io:mirrorOf io:T05_ret_P0 .
+io:T06_adv_P0 io:mirrorOf io:T06_ret_P2 .
+io:T06_adv_P1 io:mirrorOf io:T06_ret_P1 .
+io:T06_adv_P2 io:mirrorOf io:T06_ret_P0 .
+io:T07_adv_P0 io:mirrorOf io:T07_ret_P2 .
+io:T07_adv_P1 io:mirrorOf io:T07_ret_P1 .
+io:T07_adv_P2 io:mirrorOf io:T07_ret_P0 .
+io:T08_adv_P0 io:mirrorOf io:T08_ret_P2 .
+io:T08_adv_P1 io:mirrorOf io:T08_ret_P1 .
+io:T08_adv_P2 io:mirrorOf io:T08_ret_P0 .
+io:T09_adv_P0 io:mirrorOf io:T09_ret_P2 .
+io:T09_adv_P1 io:mirrorOf io:T09_ret_P1 .
+io:T09_adv_P2 io:mirrorOf io:T09_ret_P0 .
+io:T10_adv_P0 io:mirrorOf io:T10_ret_P2 .
+io:T10_adv_P1 io:mirrorOf io:T10_ret_P1 .
+io:T10_adv_P2 io:mirrorOf io:T10_ret_P0 .
+io:T11_adv_P0 io:mirrorOf io:T11_ret_P2 .
+io:T11_adv_P1 io:mirrorOf io:T11_ret_P1 .
+io:T11_adv_P2 io:mirrorOf io:T11_ret_P0 .
+io:T12_adv_P0 io:mirrorOf io:T12_ret_P2 .
+io:T12_adv_P1 io:mirrorOf io:T12_ret_P1 .
+io:T12_adv_P2 io:mirrorOf io:T12_ret_P0 .
+io:T13_adv_P0 io:mirrorOf io:T13_ret_P2 .
+io:T13_adv_P1 io:mirrorOf io:T13_ret_P1 .
+io:T13_adv_P2 io:mirrorOf io:T13_ret_P0 .
