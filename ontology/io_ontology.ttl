@@ -1,1 +1,54 @@
-@placeholder
+@prefix io: <http://example.org/iom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+io:Ontology a owl:Ontology ;
+    rdfs:label "Ontología IOM"@es ;
+    rdfs:comment "Operacionalización canónica del marco I.O. Tríadas 1.9.0: T01 orientación|cuántico|dirección … T13 animal|humano|IA."@es ;
+    owl:versionInfo "1.9.0" .
+
+io:creates a owl:ObjectProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range io:OntoNode .
+
+io:displayArrow a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain io:VectorStep ;
+    rdfs:range xsd:string .
+
+io:displayLabel a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range xsd:string .
+
+io:hasDirection a owl:FunctionalProperty, owl:ObjectProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range io:Direction .
+
+io:hasLocalPos a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range xsd:integer .
+
+io:hasPerspective a owl:FunctionalProperty, owl:ObjectProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range io:Perspective .
+
+io:hasPhase a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range xsd:string .
+
+io:hasPosition a owl:FunctionalProperty, owl:ObjectProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range io:Position .
+
+io:hasTriadIndex a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range xsd:integer .
+
+io:mirrorOf a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain io:OntoNode ;
+    rdfs:range io:OntoNode .
+
+# NOTE: archivo regenerado parcialmente — usar datasets/triad_nodes.csv como fuente de verdad de etiquetas.
+# Las aristas mirrorOf/creates se regeneran con scripts/generate_ontology.py cuando haya Python.
+# Etiquetas canónicas 1.9.0 están en data/iom_spec.json y datasets/triad_nodes.csv.
