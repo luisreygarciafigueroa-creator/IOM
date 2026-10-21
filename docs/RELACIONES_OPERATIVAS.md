@@ -20,7 +20,7 @@ Una arista dirigida $A \xrightarrow{\text{mirrorOf}} B$ es válida **si y solo s
 1. **Misma tríada**: `triad_index(A) = triad_index(B)`.
 2. **Fase opuesta**: `phase(A) ≠ phase(B)` (una es `adv`, la otra `ret`).
 3. **Posición reflejada**: `local_pos(B) = 2 - local_pos(A)`.
-   - left (0) ↔ right (2)
+   - position 0 ↔ position 2
    - center (1) ↔ center (1)
 4. **Reciprocidad**: si $A \xrightarrow{\text{mirrorOf}} B$ entonces también $B \xrightarrow{\text{mirrorOf}} A$ (la propiedad OWL es simétrica).
 
@@ -28,18 +28,18 @@ Una arista dirigida $A \xrightarrow{\text{mirrorOf}} B$ es válida **si y solo s
 
 | Fuente | Destino | Justificación |
 |--------|---------|---------------|
-| `T07_adv_P0` (animal) | `T07_ret_P2` (animal) | misma tríada 7, fases opuestas, 0 ↔ 2 |
-| `T07_adv_P1` (humano) | `T07_ret_P1` (humano) | centro se refleja en centro |
-| `T06_adv_P2` (emisor) | `T06_ret_P0` (emisor) | 2 ↔ 0 |
+| `T13_adv_P0` (animal) | `T13_ret_P2` (animal) | misma tríada 13, fases opuestas, 0 ↔ 2 |
+| `T13_adv_P1` (humano) | `T13_ret_P1` (humano) | centro se refleja en centro |
+| `T08_adv_P2` (emisor) | `T08_ret_P0` (emisor) | 2 ↔ 0 |
 
 ### Ejemplos negativos
 
 | Fuente | Destino | Motivo de rechazo |
 |--------|---------|-------------------|
-| `T07_adv_P0` | `T07_adv_P2` | misma fase |
-| `T07_adv_P0` | `T07_ret_P0` | posición no reflejada (0 ≠ 2−0) |
-| `T07_adv_P0` | `T01_ret_P2` | tríada distinta |
-| `T07_adv_P0` | `T07_adv_P0` | reflexivo (excluido de candidatos) |
+| `T13_adv_P0` | `T13_adv_P2` | misma fase |
+| `T13_adv_P0` | `T13_ret_P0` | posición no reflejada (0 ≠ 2−0) |
+| `T13_adv_P0` | `T01_ret_P2` | tríada distinta |
+| `T13_adv_P0` | `T13_adv_P0` | reflexivo (excluido de candidatos) |
 
 ### Casos límite
 
@@ -66,31 +66,31 @@ Una arista dirigida $A \xrightarrow{\text{creates}} B$ es válida **si y solo si
 | ret          | {1}              | adv          | {0, 2}           |
 | ret          | {0, 2}           | adv          | {1}              |
 
-En lenguaje natural: un lateral (`left`/`right`) crea el centro de la fase opuesta, y el centro crea ambos laterales de la fase opuesta.
+En lenguaje natural: un lateral crea el centro de la fase opuesta, y el centro crea ambos laterales de la fase opuesta.
 
 ### Ejemplos positivos
 
 | Fuente | Destino | Regla aplicada |
 |--------|---------|----------------|
-| `T07_adv_P0` (animal) | `T07_ret_P1` (humano) | adv lateral → ret centro |
-| `T07_adv_P1` (humano) | `T07_ret_P0` (IA) | adv centro → ret left |
-| `T07_adv_P1` (humano) | `T07_ret_P2` (animal) | adv centro → ret right |
-| `T07_ret_P1` (humano) | `T07_adv_P0` (animal) | ret centro → adv left |
+| `T13_adv_P0` (animal) | `T13_ret_P1` (humano) | adv lateral → ret centro |
+| `T13_adv_P1` (humano) | `T13_ret_P0` (IA) | adv centro → ret 0 |
+| `T13_adv_P1` (humano) | `T13_ret_P2` (animal) | adv centro → ret 2 |
+| `T13_ret_P1` (humano) | `T13_adv_P0` (animal) | ret centro → adv 0 |
 
 ### Ejemplos negativos
 
 | Fuente | Destino | Motivo |
 |--------|---------|--------|
-| `T07_adv_P0` | `T07_ret_P0` | lateral no crea lateral |
-| `T07_adv_P0` | `T07_ret_P2` | lateral no crea el otro lateral |
-| `T07_adv_P0` | `T07_adv_P1` | misma fase |
-| `T07_adv_P1` | `T07_ret_P1` | centro no crea centro |
+| `T13_adv_P0` | `T13_ret_P0` | lateral no crea lateral |
+| `T13_adv_P0` | `T13_ret_P2` | lateral no crea el otro lateral |
+| `T13_adv_P0` | `T13_adv_P1` | misma fase |
+| `T13_adv_P1` | `T13_ret_P1` | centro no crea centro |
 
 ### Casos límite
 
 - **Múltiples targets**: el centro produce **dos** aristas `creates` (una hacia cada lateral).
 - **No simétrica**: `creates` no es simétrica ni funcional; el grafo de creación es bipartito por fase.
-- **Solapamiento con mirrorOf**: un par puede ser `mirrorOf` **o** `creates`, nunca ambas a la vez (las reglas de posición son disjuntas para un mismo par ordenado).
+- **Solapamiento con mirrorOf**: un par puede ser `mirrorOf` **o** `creates`, nunca ambas a la vez.
 - **Ausencia de arista**: cualquier par que no satisfaga las reglas anteriores se etiqueta `none`.
 
 ---
