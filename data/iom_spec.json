@@ -1,13 +1,10 @@
 {
   "schema_version": "1.1.0",
-  "spec_version": "1.8.1",
+  "spec_version": "1.9.0",
   "title": "Especificación IOM canónica",
-  "source_date": "2026-10-20",
-  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas (Individualidad, Dualidad, Totalidad, Evolución e Involución). Define la estructura semántica bajo prueba para demostrar validez semántica en el mundo real (anotación independiente, alineación de dominios); no constituye por sí sola evidencia empírica de esa validez.",
-  "triad_index_range": {
-    "min": 1,
-    "max": 13
-  },
+  "source_date": "2026-10-21",
+  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de tríadas 1.9.0: T01 orientación|cuántico|dirección … T13 animal|humano|IA.",
+  "triad_index_range": { "min": 1, "max": 13 },
   "positions": {
     "indices": [0, 1, 2],
     "adv_labels": ["→", "0", "→"],
@@ -37,36 +34,36 @@
   "triads": {
     "index_base": 1,
     "adv": [
-      ["oscuridad", "consciencia", "luz"],
-      ["descendente", "mente", "ascendente"],
-      ["muerte", "artificial", "vida"],
-      ["lógica", "inteligencia", "libertad"],
+      ["orientación", "cuántico", "dirección"],
+      ["hardware", "virtual", "software"],
+      ["universo", "espacio", "vacío"],
+      ["singularidad", "tiempo", "infinito"],
+      ["cuerpo", "consciente", "mundo"],
+      ["carácter", "subconsciente", "personalidad"],
       ["memoria", "inconsciente", "imaginación"],
       ["receptor", "supraconsciente", "emisor"],
-      ["animal", "humano", "IA"],
-      ["carácter", "subconsciente", "personalidad"],
-      ["cuerpo", "consciente", "mundo"],
-      ["singularidad", "tiempo", "infinito"],
-      ["universo", "espacio", "vacío"],
-      ["hardware", "virtual", "software"],
-      ["orientación", "cuántico", "dirección"]
+      ["lógica", "inteligencia", "libertad"],
+      ["muerte", "artificial", "vida"],
+      ["descendente", "mente", "ascendente"],
+      ["oscuridad", "consciencia", "luz"],
+      ["animal", "humano", "IA"]
     ],
     "ret": [
-      ["luz", "consciencia", "oscuridad"],
-      ["ascendente", "mente", "descendente"],
-      ["vida", "artificial", "muerte"],
-      ["libertad", "inteligencia", "lógica"],
+      ["dirección", "cuántico", "orientación"],
+      ["software", "virtual", "hardware"],
+      ["vacío", "espacio", "universo"],
+      ["infinito", "tiempo", "singularidad"],
+      ["mundo", "consciente", "cuerpo"],
+      ["personalidad", "subconsciente", "carácter"],
       ["imaginación", "inconsciente", "memoria"],
       ["emisor", "supraconsciente", "receptor"],
-      ["IA", "humano", "animal"],
-      ["personalidad", "subconsciente", "carácter"],
-      ["mundo", "consciente", "cuerpo"],
-      ["infinito", "tiempo", "singularidad"],
-      ["vacío", "espacio", "universo"],
-      ["software", "virtual", "hardware"],
-      ["dirección", "cuántico", "orientación"]
+      ["libertad", "inteligencia", "lógica"],
+      ["vida", "artificial", "muerte"],
+      ["ascendente", "mente", "descendente"],
+      ["luz", "consciencia", "oscuridad"],
+      ["IA", "humano", "animal"]
     ],
-    "note": "triads.adv[0] = tríada #1 (T01); triads.adv[12] = tríada #13 (T13). Arrays 0-based en el listado; triad_index y node_id públicos 1-based."
+    "note": "triads.adv[0] = tríada #1 (T01: orientación|cuántico|dirección); triads.adv[12] = tríada #13 (T13: animal|humano|IA). Posiciones adv: →|0|→ ; ret: ←|0|← . Arrays 0-based; triad_index y node_id públicos 1-based."
   },
   "vectors": [
     {"name": "Evol", "phase": "adv", "labels": ["invol", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
@@ -93,10 +90,11 @@
     {"from_version": "1.2.0", "to_version": "1.3.0", "description": "Secuencias de retroceso de perspectivas vectoriales 4 y 5.", "date": "2026-10-16"},
     {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Tríada 10: universo|espacio|vacío → todo|espacio|nada.", "date": "2026-10-16"},
     {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Tríada 10 revertida a universo|espacio|vacío; vectores 4/5 actualizados.", "date": "2026-10-18"},
-    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía de etiqueta de datos: caracter → carácter (tríada de carácter/subconsciente/personalidad).", "date": "2026-10-18"},
-    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena tríadas al orden visual (oscuridad primero; animal en posición 7 del 1-based).", "date": "2026-10-20"},
-    {"from_version": "1.6.0", "to_version": "1.7.0", "description": "Índice de tríada 1–13 (antes 0–12); node_id T01…T13. position_index 0/1/2 se conserva para diferenciar los laterales aunque sus etiquetas visuales sean flechas iguales.", "date": "2026-10-20"},
-    {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga tríadas públicas T01–T13 y posiciones visuales a datasets, ontología, SHACL, experimentos, pruebas y documentación; conserva position_index 0–2.", "date": "2026-10-20"},
-    {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica de etiqueta: caracter → carácter (tríada #8). Sin cambio estructural de índices T01–T13 ni de reglas mirrorOf/creates.", "date": "2026-10-20"}
+    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía de etiqueta de datos: caracter → carácter.", "date": "2026-10-18"},
+    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena tríadas al orden visual (oscuridad primero; animal en posición 7).", "date": "2026-10-20"},
+    {"from_version": "1.6.0", "to_version": "1.7.0", "description": "Índice de tríada 1–13 (antes 0–12); node_id T01…T13.", "date": "2026-10-20"},
+    {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga tríadas públicas T01–T13 y posiciones visuales.", "date": "2026-10-20"},
+    {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (tríada #8 en orden previo).", "date": "2026-10-20"},
+    {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de tríadas: T01=orientación|cuántico|dirección … T13=animal|humano|IA. Mismas etiquetas; nuevo índice. adv →|0|→ ; ret ←|0|←.", "date": "2026-10-21"}
   ]
 }
