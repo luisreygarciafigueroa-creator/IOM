@@ -1,22 +1,24 @@
-# IOM — marco de las cinco perspectivas como Cinco Soles y Mictlán
+# IOM — marco de las cinco perspectivas como camino al Mictlán y autonomía multiversal
 
-Repositorio del marco I.O.: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**, leídas en equivalencia operativa con la cosmología náhuatl.
+Repositorio del marco I.O.: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**, leídas desde la óptica de la **auto-creación** y el **orden multiversal**.
 
-> **Carácter del proyecto:** equiparar las **cinco perspectivas** con los **Cinco Soles**; anclar **Nanahuatzin** → Individualidad, **Xólotl** → Dualidad, **Tecuciztécatl** → Totalidad, **Mictecacíhuatl** → Evolución, **Mictlantecuhtli** → Involución; y leer las **13 tríadas** como **arquitectura del Mictlán**. No es un producto de software comercial: es un marco formal (Lean / OWL / SHACL) cuyo sentido es esta cartografía cosmológica.
+> **Carácter del proyecto:** el sentido del marco no es encontrar un orden universal exterior cada vez mayor (regresión infinita de contenedores), sino cartografiar el **camino al Mictlán** como tránsito hacia la **autonomía ontológica**: una existencia que se origina desde el vacío y no recibe su identidad de ninguna autoridad exterior. **Orden Definitivo ⟹ ¬∃ Contenedor Exterior.**
+>
+> Texto canónico de sentido: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Carácter: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md)
 
-Carácter canónico: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) · Dominio: [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+La formalización Lean 4 / OWL / SHACL y los 78 nodos son la **bóveda técnica**. El *sentido* es la emancipación vía el sendero del Mictlán (pulso **Mictecacíhuatl** = Evolución / **Mictlantecuhtli** = Involución).
 
-## Equivalencia central
+## Equivalencia central (bajo esta óptica)
 
-| Perspectiva | Figura ancla | Principio |
-|-------------|--------------|-----------|
-| Individualidad | **Nanahuatzin** | Singularidad que se entrega al fuego (sol) |
-| Dualidad | **Xólotl** | Doble / tránsito / reflejo |
-| Totalidad | **Tecuciztécatl** | Plenitud ambicionada (luna / sistema) |
-| Evolución | **Mictecacíhuatl** | Ciclo de la señora del Mictlán |
-| Involución | **Mictlantecuhtli** | Señor del Mictlán; retorno al vacío |
+| Perspectiva | Lectura | Figura ancla (apoyo) |
+|-------------|---------|----------------------|
+| Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
+| Dualidad | Polaridad yo/otro que se disuelve en el tránsito | Xólotl |
+| Totalidad | Cada conciencia constituye **su** totalidad (no la del sistema exterior) | Tecuciztécatl |
+| Evolución | Fuerza ascendente: recombina y perfecciona en el vacío | **Mictecacíhuatl** |
+| Involución | Fuerza descendente: despoja y purifica hacia la raíz | **Mictlantecuhtli** |
 
-Las **13 tríadas** ↔ **Mictlán** (umbrales del camino; posiciones → / 0 / ←; fases adv / ret).
+Las **13 tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema; posiciones → / 0 / ←; fases adv / ret).
 
 Detalle: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md).
 
@@ -24,9 +26,9 @@ Detalle: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md).
 
 | Pregunta | Cómo se responde |
 |---|---|
-| ¿La equivalencia cosmológica es formalmente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
-| ¿Se puede cartografiar el dominio Cinco Soles / Mictlán a las 13 tríadas? | **EXP-E** + [`MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
-| ¿Hay acuerdo inter-anotador bajo protocolo ciego? | Protocolo ciego + Fleiss' κ (**EXP-A**) — capa auxiliar de interpretabilidad |
+| ¿La arquitectura del tránsito es formalmente coherente? | Lean 4 (**EXP-B**) + SHACL (**EXP-C**) |
+| ¿Se puede cartografiar el sendero Mictlán / autonomía a las 13 tríadas? | **EXP-E** + [`MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
+| ¿Hay acuerdo inter-anotador bajo protocolo ciego? | Protocolo ciego + Fleiss' κ (**EXP-A**) — capa auxiliar |
 | ¿Las reglas sintéticas son recuperables por un modelo? | PI-HGAT-T (**EXP-D**; diagnóstico interno) |
 
 ## Evidencia auxiliar de interpretabilidad (EXP-A)
@@ -47,7 +49,7 @@ Módulo didáctico: [`docs/MODULO_DIDACTICO_EVALUACION_CIEGA.md`](docs/MODULO_DI
 | **EXP-B** | Formal | `lake build` | Solidez deductiva (Lean 4) |
 | **EXP-C** | Estructural | `scripts/validate_shacl.py` | Conformidad RDF/SHACL |
 | **EXP-D** | Diagnóstico sintético | `experiments/pi_hgat_t.py` | Recuperación de reglas *generadas por el sistema* |
-| **EXP-E** | Cartografía cosmológica | `experiments/domain_mapping/validate_examples.py` | Alineación Cinco Soles / Mictlán (Nanahuatzin…Mictlantecuhtli) |
+| **EXP-E** | Cartografía del tránsito | `experiments/domain_mapping/validate_examples.py` | Alineación Mictlán / autonomía (Mictecacíhuatl…Mictlantecuhtli) |
 
 Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
 
@@ -55,10 +57,10 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
 
 | Dominio | Documento |
 |---------|-----------|
-| Cosmología náhuatl (Cinco Soles, Mictlán, figuras ancla) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
+| Sendero del Mictlán / autonomía multiversal | [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) |
+| Cosmología náhuatl (apoyo: Cinco Soles, figuras) | [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) |
 | Carácter del repositorio | [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) |
-| Manual de cartografía | [`docs/MANUAL_ALINEACION_DOMINIOS.md`](docs/MANUAL_ALINEACION_DOMINIOS.md) |
-| Medios (Piedra del Sol, códices) | [`docs/media/cosmos_nahuatl/`](docs/media/cosmos_nahuatl/) |
+| Medios | [`docs/media/cosmos_nahuatl/`](docs/media/cosmos_nahuatl/) |
 
 ## Pipeline
 
@@ -80,9 +82,9 @@ lake build                                                                    # 
 ## Documentación
 
 ### Núcleo de sentido
+- [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 - [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md)
 - [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md)
-- [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md)
 - [`docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md`](docs/GUIA_CONCEPTUAL_PERSPECTIVAS.md)
 
 ### Formal y metodológico
