@@ -11,6 +11,7 @@ Fuentes integradas (literatura secundaria):
 - Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl*.
 - Mónica Luna López, «El camino al Mictlán: ¿ruta al tormento o al origen?», *Vita Brevis*, 2017.
 - *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (relato pictográfico; ver §7).
+- *Del Orden Universal a la Creación de Uno Mismo* — ensayo ontológico (ver §8).
 
 ### Figuras ancla ↔ perspectivas I.O.
 
@@ -112,7 +113,7 @@ Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AM
 3. Lecturas de «ruta al origen» vs «tormento» son de la literatura secundaria.
 4. Sin anotación ciega propia, EXP-A no se reclama como prueba universal.
 5. Las fuentes coloniales pueden incorporar categorías cristianas; el mapeo no las «purifica».
-6. *Amoxtli in Atl Miquiztli* es relato original inspirado en tradición nahua, no fuente histórica primaria.
+6. *Amoxtli in Atl Miquiztli* y el ensayo de autonomía son textos de apoyo semántico, no fuentes históricas primarias.
 
 ---
 
@@ -121,7 +122,7 @@ Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AM
 - Moreno de los Arcos, R. «Los cinco soles cosmogónicos». *Estudios de Cultura Náhuatl*.
 - Luna López, M. (2017). «El camino al Mictlán…» *Vita Brevis* 6(11).
 - León-Portilla, M. *La filosofía náhuatl*.
-- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
+- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
 
 ---
 
@@ -133,7 +134,8 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 |---------|-----|
 | Piedra del Sol (`Piedra_del_Sol.png`) | Iconografía del Quinto Sol (Nahui Ollin) |
 | Láminas codiciales | Dualidad, Xólotl / inframundo, ciclo ritual |
-| *Amoxtli in Atl Miquiztli* (`Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`) | Relato pictográfico del Mictlán (9+4=13 marcas) |
+| *Amoxtli in Atl Miquiztli* | Relato pictográfico del Mictlán (9+4=13 marcas) |
+| *Del Orden Universal…* (PDF) | Síntesis ontológica autonomía / Mictlán |
 | Tesis *Códice Xólotl* (`PECDSV03T.pdf`) | Edición de divulgación (Peña Cisneros, UAEM 2017) |
 
 ---
@@ -145,4 +147,22 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 - PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf)
 - Ficha de alineación I.O.: [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md)
 
-El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un solo río** (no trece caminos aislados). La Lámina V articula Tonalli, Mictecacíhuatl y Mictlantecuhtli con esquemas → / ← coherentes con las posiciones canónicas. El xoloitzcuintle opera como guía del primer cruce (eco de **Xólotl** / Dualidad). Colofón: *El río es uno.*
+El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un solo río**. Colofón: *El río es uno.*
+
+---
+
+## 8. Ensayo ontológico: Del orden universal a la autonomía absoluta
+
+Texto de apoyo semántico (no añade nodos al core):
+
+- Markdown: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- PDF (síntesis visual): `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`
+
+| Tema del ensayo | Equivalencia I.O. / Mictlán |
+|-----------------|----------------------------|
+| Regresión infinita de sistemas exteriores | Límite de Totalidad como contenedor externo |
+| Colapso del mundo fenoménico de conciencias separadas | Tránsito por las 13 tríadas |
+| Camino al Mictlán como muerte ontológica | Disolución observador → tejido del sistema |
+| Mictecacíhuatl (ascendente / evolución) | Perspectiva **Evolución** |
+| Mictlantecuhtli (descendente / involución) | Perspectiva **Involución** |
+| Orden multiversal / auto-creación desde el vacío | Individualidad + Totalidad sin contenedor exterior |
