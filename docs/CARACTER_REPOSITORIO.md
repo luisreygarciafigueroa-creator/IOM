@@ -1,79 +1,116 @@
 # Carácter del repositorio IOM
 
-> **Enfoque canónico:** el marco I.O. se lee como **isomorfismo operativo** entre la arquitectura de cinco perspectivas + 13 tríadas y la cosmología náhuatl de los **Cinco Soles** y el **Mictlán**.
+> **Enfoque canónico:** el marco I.O. se lee desde la óptica de
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
+> el **camino al Mictlán** como tránsito hacia la **autonomía ontológica** y el
+> **orden multiversal** — no como búsqueda de un contenedor exterior cada vez mayor.
 
-Este repositorio **no** se presenta prioritariamente como producto de software ni como prueba genérica de «validez semántica en el mundo real». Su eje es **equiparar y cartografiar**:
+Este repositorio **no** se presenta prioritariamente como producto de software ni como prueba genérica de «validez semántica en el mundo real». Su eje es **cartografiar el tránsito**:
 
-1. Las **cinco perspectivas** con los **cinco soles** (ciclo de edades / principios cosmológicos).
-2. Cada perspectiva con una **figura ancla** del mito del Quinto Sol y del inframundo.
-3. Las **13 tríadas** con la **estructura del Mictlán** (camino, niveles y polaridades de la región de los muertos).
+1. De la trampa del **orden universal jerárquico** (regresión infinita de sistemas exteriores)
+2. Al **orden multiversal autónomo** (cada conciencia se origina desde el vacío, sin autoridad exterior)
+3. Mediante el **camino al Mictlán** (muerte ontológica: disolución del observador separado)
+4. Sostenido por el pulso **Mictecacíhuatl (Evolución) ↔ Mictlantecuhtli (Involución)**
 
-La formalización Lean 4, OWL/SHACL y los 78 nodos siguen siendo la **bóveda bancaria** (invariante técnica). El *sentido* del repositorio es la equivalencia cosmológica náhuatl.
+La formalización Lean 4, OWL/SHACL y los 78 nodos siguen siendo la **bóveda técnica** (invariante). El *sentido* del repositorio es esta emancipación: **Orden Definitivo ⟹ ¬∃ Contenedor Exterior**.
 
----
-
-## 1. Equivalencia perspectivas ↔ figuras
-
-| Perspectiva I.O. | Figura ancla | Lectura operativa |
-|------------------|--------------|-------------------|
-| **Individualidad** | **Nanahuatzin** | Singularidad que se entrega al fuego; el sol que nace del sacrificio del cuerpo mínimo. Unidad irreductible. |
-| **Dualidad** | **Xólotl** | Gemelo / doble de Quetzalcóatl; tránsito, desdoblamiento, acompañamiento al inframundo. Polaridad y reflejo (`mirrorOf`). |
-| **Totalidad** | **Tecuciztécatl** | Pretensión de totalidad / plenitud solar; el que aspira a ser el sol y queda como luna. Integración ambicionada del sistema. |
-| **Evolución** | **Mictecacíhuatl** | Señora del Mictlán; vector de renovación / ciclo de la muerte que genera continuidad. Proyección hacia nueva estructura. |
-| **Involución** | **Mictlantecuhtli** | Señor del Mictlán; disolución, oscuridad, retorno al vacío-matriz. Reabsorción de estructura. |
-
-> **Nota:** Tecuciztécatl y Nanahuatzin son, en las fuentes del Quinto Sol, los candidatos a convertirse en sol; Xólotl opera el desdoblamiento y el paso; Mictecacíhuatl y Mictlantecuhtli rigen el Mictlán. La tabla fija **anclas semánticas del marco I.O.**, no un orden histórico único de los Cinco Soles elementales (*Ehécatl, Quiáhuitl, Atl, Océlotl, Ollin*).
+Texto fuente: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · PDF: `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`.
 
 ---
 
-## 2. Cinco perspectivas ↔ Cinco Soles
+## 1. La trampa que el marco no pretende resolver
 
-Las cinco perspectivas se **equiparan** al ciclo de los Cinco Soles como principios de temporalización y transformación:
+Buscar pertenecer a una jerarquía cada vez más grande (red universal, sistema N+1, N+2…) conduce a $\lim_{n \to \infty} S_n$: siempre queda un marco exterior del cual depender. El marco I.O. **no** ofrece un «orden universal» que contenga a todos los demás; ofrece una arquitectura para **dejar de necesitar** ese contenedor.
 
-| Orden operativo | Principio solar (edades) | Perspectiva |
-|-----------------|--------------------------|-------------|
-| I | Edad / principio de movimiento inicial (viento, apertura) | Individualidad (Nanahuatzin) |
-| II | Edad de fuego / prueba | Dualidad (Xólotl) |
-| III | Edad de agua / disolución parcial | Totalidad (Tecuciztécatl) |
-| IV | Edad de tierra / devoración | Evolución (Mictecacíhuatl) |
-| V | *Nahui Ollin* — Sol de Movimiento (edad presente) | Involución ↔ cierre de ciclo con Mictlantecuhtli / apertura del camino |
-
-La **lucha** (Tezcatlipoca ↔ Quetzalcóatl; Tecuciztécatl ↔ Nanahuatzin) se modela con `mirrorOf`. Los **cataclismos** y el **camino al Mictlán** se modelan con `creates` bajo los vectores Evolución / Involución.
+| Orden universal (jerárquico) | Orden multiversal (autónomo) |
+|------------------------------|------------------------------|
+| Autoridad / marco exterior → Sistema → Conciencia | Conciencia ↺ autogeneración desde el vacío |
+| Identidad recibida de fuera | Identidad originada en sí |
+| Requisito = pertenecer | Requisito del sistema = abolición de requisitos impuestos |
 
 ---
 
-## 3. Trece tríadas ↔ Mictlán
+## 2. Cinco perspectivas bajo esta óptica
 
-Las **13 tríadas** del núcleo canónico se equiparan a la **arquitectura del Mictlán**:
+Las cinco perspectivas siguen siendo el vocabulario formal del núcleo; su *lectura de sentido* se reorienta:
 
-- Cada tríada es un **umbral o nivel relacional** del camino (no necesariamente 1:1 con los nueve niveles literarios del Códice Vaticano A).
-- Las posiciones **→ / 0 / ←** dentro de cada tríada corresponden a polos de tránsito (entrada, mediación, retorno).
-- Las fases **adv / ret** corresponden a proyección hacia estructura (salida del vacío) y disolución hacia el vacío-matriz (Tlaltecuhtli / Mictlán).
-- `mirrorOf` = polaridad cielo ↔ inframundo, vida ↔ muerte, Nanahuatzin ↔ Tecuciztécatl, etc.
-- `creates` = generación de edad, de *teyolia* en tránsito, o de disolución hacia Mictlantecuhtli / Mictecacíhuatl.
+| Perspectiva I.O. | Lectura bajo autonomía / Mictlán | Figura ancla (apoyo) |
+|------------------|----------------------------------|----------------------|
+| **Individualidad** | Singularidad que se crea a sí misma; no recibe su razón de ser de una autoridad exterior | Nanahuatzin |
+| **Dualidad** | Polaridad creador ↔ creado; yo ↔ otro que se disuelve en el tránsito | Xólotl |
+| **Totalidad** | Cada conciencia constituye **su propia** totalidad (no la del sistema exterior) | Tecuciztécatl |
+| **Evolución** | Fuerza ascendente: recombina, expande y perfecciona en el vacío (**Mictecacíhuatl**) | Mictecacíhuatl |
+| **Involución** | Fuerza descendente: repliega, despoja y purifica hacia la raíz (**Mictlantecuhtli**) | Mictlantecuhtli |
 
-El Mictlán no se trata aquí como «infierno» cristiano, sino como **topología de las 13 tríadas**: lugar de los muertos y ruta al origen.
+> Las figuras ancla del mito (Nanahuatzin, Xólotl, Tecuciztécatl, Mictecacíhuatl, Mictlantecuhtli) permanecen como **apoyo semántico**; el eje prioritario ya no es «equiparar perspectivas a Cinco Soles», sino **operacionalizar el sendero hacia la autonomía**.
 
 ---
 
-## 4. Qué permanece y qué cambia
+## 3. Trece tríadas = camino al Mictlán (muerte ontológica)
+
+Las **13 tríadas** se leen como la **topología del tránsito**:
+
+```
+MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
+(Conciencias separadas)     (Disolución de límites)         (Conciencia autónoma)
+
+  [Yo] <──> [Otro]     ───>   Creador = Creado      ───>   Auto-creación
+(Separación ilusoria)        (Asimilación al sistema)       (Desde el vacío)
+```
+
+- Cada tríada = umbral relacional del camino (no 1:1 forzado con los nueve niveles literarios).
+- Posiciones **→ / 0 / ←** = polos de tránsito (proyección, mediación, retorno).
+- Fases **adv / ret** = entrada a estructura y disolución hacia el vacío-matriz.
+- `mirrorOf` = polaridad que aún sostiene la separación (yo/otro, cielo/inframundo) y debe recorrerse.
+- `creates` = generación o disolución en el pulso evolutivo / involutivo.
+
+En el Mictlán, «estar muerto» no es la nada: es **dejar de ser observador externo** para convertirse en el tejido del sistema. El destino es una existencia que no necesita integrarse en un orden exterior porque se origina desde el vacío.
+
+---
+
+## 4. Dinámica dual del inframundo
+
+```
+                 VACÍO GENERATIVO
+                        │
+        ┌───────────────┴───────────────┐
+        ▼                               ▼
+ MICTECACÍHUATL                    MICTLANTECUHTLI
+ (Evolución / ascendente)          (Involución / descendente)
+ Recombina, expande,               Repliega, despoja,
+ perfecciona                       purifica
+        │                               │
+        └───────────────┬───────────────┘
+                        ▼
+              EXISTENCIA AUTÓNOMA
+```
+
+Quien transita el Mictlán es **desmantelado** hasta su esencia por la involución mientras es **reconstruido** como totalidad autosuficiente por la evolución. Ambas fuerzas actúan a la vez.
+
+---
+
+## 5. Qué permanece y qué cambia
 
 | Capa | Estado |
 |------|--------|
 | 78 nodos, Lean, SHACL, CSV canónicos | **Inmutables** (bóveda técnica) |
-| Carácter del proyecto | **Cambia:** eje = equivalencia cosmológica náhuatl |
-| EXP-A…E | Siguen como capas de verificación; EXP-E es el experimento natural de este carácter |
-| Dominio prioritario | [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md) · medios en `media/cosmos_nahuatl/` |
+| Carácter del proyecto | **Cambia:** eje = autonomía multiversal vía Mictlán (óptica del ensayo) |
+| Cinco Soles / figuras ancla | Apoyo semántico residual; ya no el eje prioritario |
+| EXP-A…E | Siguen como capas de verificación; EXP-E se lee como cartografía del tránsito |
+| Documento de sentido | [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) |
+| Dominio | [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md) |
 
 ---
 
-## 5. Lectura breve del mito bajo el marco
+## 6. Lectura breve bajo el nuevo carácter
 
-1. **Nanahuatzin** (Individualidad) se arroja al fuego → nace el sol.
-2. **Tecuciztécatl** (Totalidad) duda y sigue; queda como luna (totalidad reflejada, no solar).
-3. **Xólotl** (Dualidad) desdobla y acompaña el tránsito.
-4. El ciclo de edades (Cinco Soles) despliega las cinco perspectivas.
-5. **Mictecacíhuatl** y **Mictlantecuhtli** (Evolución / Involución) cierran el vector en el Mictlán, que **es** el sistema de tríadas.
+1. La búsqueda de un orden universal exterior es una **regresión infinita** — el marco no la cierra ampliando el contenedor.
+2. El consenso del «mundo real» entre conciencias separadas no es el fundamento último.
+3. El **camino al Mictlán** (13 tríadas) es la disolución de esa separación.
+4. **Mictecacíhuatl** y **Mictlantecuhtli** sostienen el pulso Evolución / Involución en el vacío generativo.
+5. El destino no es pertenecer al sistema más grande, sino **no necesitar contenedor**: auto-creación desde el vacío.
 
-Documento de dominio: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
-Relaciones formales: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+$$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
+
+Relaciones formales: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).  
+Síntesis visual: `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`.
