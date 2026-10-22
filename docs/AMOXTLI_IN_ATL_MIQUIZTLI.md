@@ -1,7 +1,7 @@
 # Amoxtli in Atl Miquiztli — Libro del agua y de la muerte
 
 > **Relato pictográfico del Mictlán** (relato original inspirado en la tradición nahua).  
-> PDF: [`media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf`](media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf) (9 páginas).
+> PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf) (9 páginas).
 
 Documento de **apoyo semántico** al carácter del repositorio: 13 tríadas ↔ Mictlán; Mictecacíhuatl = Evolución; Mictlantecuhtli = Involución; Dualidad / Xólotl en el xoloitzcuintle. No modifica los 78 nodos canónicos.
 
