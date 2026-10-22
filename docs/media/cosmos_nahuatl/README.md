@@ -8,7 +8,7 @@ Recursos visuales y de referencia para el dominio de alineación `cosmos_nahuatl
 | `4_Kingdoms.jpg` | Lámina de tradición codicial (cuatro reinos / deidades). | Dualidad y sucesión de fuerzas; pares `mirrorOf` / `creates`. |
 | `xolotl1.jpg` | Lámina asociada a Xólotl / Códice Xólotl. | Dualidad, tránsito, inframundo. |
 | `CodexBorgia.jpg` | Lámina del Códice Borgia. | Ciclo ritual y temporal. |
-| `Amoxtli_in_Atl_Miquiztli.pdf` | *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (9 pp.). | Relato pictográfico del Mictlán: 9 señales + 4 pasos = 13 marcas; río único; xoloitzcuintle; Mictecacíhuatl / Mictlantecuhtli. Ficha: [`docs/AMOXTLI_IN_ATL_MIQUIZTLI.md`](../../AMOXTLI_IN_ATL_MIQUIZTLI.md). |
+| `Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf` | *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (9 pp.). | Relato pictográfico del Mictlán: 9 señales + 4 pasos = 13 marcas; río único; xoloitzcuintle; Mictecacíhuatl / Mictlantecuhtli. Ficha: [`docs/AMOXTLI_IN_ATL_MIQUIZTLI.md`](../../AMOXTLI_IN_ATL_MIQUIZTLI.md). |
 | `PECDSV03T.pdf` | Peña Cisneros, D. (2017). *Códice Xólotl. Edición de divulgación*. UAEM. | Referencia editorial del Códice Xólotl. |
 
 ## Nota metodológica
