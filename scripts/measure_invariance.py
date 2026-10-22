@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
-"""Invariancia interna (EXP-D bajo autonomía).
+"""Invariancia interna no trivial (con control negativo).
 
-En lugar de reportar «accuracy contra un oracle externo», mide:
+Mide autonomía *y* distingue el grafo canónico de uno corrompido:
 
-1. **Auto-regeneración de etiquetas**: cada par (source, target) recibe la
-   misma etiqueta que produce la regla formal aplicada al par (fase, pos).
-2. **Invariancia bajo permutación de índice de tríada**: la etiqueta no
-   depende del número de tríada, solo de (fase, posición).
-3. **Reconstrucción desde subconjunto**: leave-one-triad-out recoverable
-   por lookup de features — el sistema regenera relaciones desde cualquier
-   subconjunto propio de 12 tríadas.
+1. Auto-regeneración: etiqueta ≡ regla (fase, pos) aplicada al par.
+2. Invariancia bajo índice de tríada.
+3. Reconstrucción desde subconjunto (LOO feature lookup sin etiquetas del held-out).
+4. **Control negativo:** al corromper una arista del grafo, (1) o (3) debe fallar.
 
-Las métricas 1.0 se reportan como **invariancia**, no como «acierto vs juez».
+Sin el control negativo, un 1.0 podría ser tautología.
 """
 from __future__ import annotations
 
+import copy
 import csv
 import json
 from collections import defaultdict
@@ -46,6 +44,44 @@ def feature_key(src: str, tgt: str) -> tuple:
     return (sp, spos, tp, tpos)
 
 
+def self_regen_rate(rows: list[dict]) -> float:
+    mism = sum(1 for r in rows if rule_label(r["source"], r["target"]) != r["relation"])
+    return 1.0 - mism / max(len(rows), 1)
+
+
+def triad_invariant(rows: list[dict]) -> bool:
+    by_feat: dict[tuple, set[str]] = defaultdict(set)
+    for r in rows:
+        by_feat[feature_key(r["source"], r["target"])].add(r["relation"])
+    return all(len(v) == 1 for v in by_feat.values())
+
+
+def subset_reconstruction(rows: list[dict]) -> bool:
+    for held in range(1, 14):
+        train: dict[tuple, str] = {}
+        test: list[tuple[tuple, str]] = []
+        for r in rows:
+            key = feature_key(r["source"], r["target"])
+            tid = int(r["triad_index"])
+            if tid == held:
+                test.append((key, r["relation"]))
+            else:
+                train[key] = r["relation"]
+        if any(train.get(k) != lab for k, lab in test):
+            return False
+    return True
+
+
+def corrupt_one_edge(rows: list[dict]) -> list[dict]:
+    """Cambia la etiqueta de la primera arista mirrorOf a none (grafo inválido)."""
+    out = copy.deepcopy(rows)
+    for r in out:
+        if r["relation"] == "mirrorOf":
+            r["relation"] = "none"
+            break
+    return out
+
+
 def main() -> int:
     rows = list(
         csv.DictReader(
@@ -55,80 +91,53 @@ def main() -> int:
         )
     )
 
-    # 1. Auto-regeneración: gold ≡ regla aplicada al par
-    mismatches = [
-        r for r in rows if rule_label(r["source"], r["target"]) != r["relation"]
-    ]
-    self_regen_rate = 1.0 - len(mismatches) / max(len(rows), 1)
+    regen = self_regen_rate(rows)
+    inv = triad_invariant(rows)
+    subset = subset_reconstruction(rows)
 
-    # 2. Invariancia bajo índice de tríada
-    by_feat: dict[tuple, set[str]] = defaultdict(set)
-    for r in rows:
-        by_feat[feature_key(r["source"], r["target"])].add(r["relation"])
-    ambiguous = {str(k): list(v) for k, v in by_feat.items() if len(v) > 1}
-    triad_invariant = len(ambiguous) == 0
+    corrupted = corrupt_one_edge(rows)
+    # Tras corrupción: o bien auto-regeneración cae, o el grafo ya no coincide con la regla
+    corrupted_regen = self_regen_rate(corrupted)
+    negative_control_detects = corrupted_regen < 1.0
 
-    # 3. Reconstrucción desde subconjunto (LOO feature lookup)
-    fold_ok = {}
-    for held in range(1, 14):
-        train = {}
-        test = []
-        for r in rows:
-            key = feature_key(r["source"], r["target"])
-            tid = int(r["triad_index"])
-            if tid == held:
-                test.append((key, r["relation"]))
-            else:
-                train[key] = r["relation"]
-        recoverable = sum(1 for k, lab in test if train.get(k) == lab)
-        fold_ok[held] = recoverable / max(len(test), 1)
-    all_folds_invariant = all(v == 1.0 for v in fold_ok.values())
+    autonomy = regen == 1.0 and inv and subset
+    non_trivial = autonomy and negative_control_detects
 
     report = {
         "framing": (
-            "Métricas de INVARIANCIA (autonomía), no de accuracy contra "
-            "oracle externo. El sistema regenera sus relaciones desde sí mismo."
+            "Invariancia no trivial: el canónico regenera 1.0; un grafo con una "
+            "arista corrupta debe fallar el control negativo."
         ),
-        "self_regeneration": {
-            "rate": round(self_regen_rate, 6),
-            "mismatches": len(mismatches),
-            "interpretation": "fracción de pares cuya etiqueta es reconstruible solo desde (fase, pos)",
+        "canonical": {
+            "self_regeneration_rate": round(regen, 6),
+            "triad_index_invariance": inv,
+            "subset_reconstruction": subset,
+            "autonomy_measurable": autonomy,
         },
-        "triad_index_invariance": {
-            "holds": triad_invariant,
-            "ambiguous_feature_keys": ambiguous,
-            "interpretation": "la etiqueta no depende del índice de tríada",
-        },
-        "reconstruction_from_proper_subset": {
-            "per_fold_recoverable_fraction": fold_ok,
-            "all_folds_full_reconstruction": all_folds_invariant,
+        "negative_control": {
+            "description": "primera arista mirrorOf relabelada a none",
+            "corrupted_self_regeneration_rate": round(corrupted_regen, 6),
+            "detects_corruption": negative_control_detects,
             "interpretation": (
-                "desde cualquier subconjunto de 12 tríadas se regeneran "
-                "las relaciones de la 13ª (punto fijo parcial)"
+                "si detects_corruption es false, la métrica no distingue "
+                "grafo correcto de corrompido (tautología)"
             ),
         },
-        "invariance_summary": {
-            "self_regeneration": self_regen_rate == 1.0,
-            "triad_index_invariance": triad_invariant,
-            "subset_reconstruction": all_folds_invariant,
-            "autonomy_measurable": (
-                self_regen_rate == 1.0 and triad_invariant and all_folds_invariant
-            ),
-        },
+        "invariance_non_trivial": non_trivial,
     }
 
     out = ROOT / "experiments" / "results" / "invariance_metrics.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    out.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    inv = report["invariance_summary"]
-    print("Invariancia interna (autonomía medible)")
-    print(f"  Auto-regeneración de etiquetas: {report['self_regeneration']['rate']}")
-    print(f"  Invariancia bajo índice de tríada: {inv['triad_index_invariance']}")
-    print(f"  Reconstrucción desde subconjunto: {inv['subset_reconstruction']}")
-    print(f"  Autonomía medible (las tres): {inv['autonomy_measurable']}")
+    print("Invariancia interna (con control negativo)")
+    print(f"  Auto-regeneración canónica: {regen}")
+    print(f"  Invariancia bajo índice de tríada: {inv}")
+    print(f"  Reconstrucción desde subconjunto: {subset}")
+    print(f"  Control negativo detecta corrupción: {negative_control_detects} (rate={corrupted_regen:.6f})")
+    print(f"  Invariancia no trivial: {non_trivial}")
     print(f"  Informe: {out}")
-    return 0 if inv["autonomy_measurable"] else 1
+    return 0 if non_trivial else 1
 
 
 if __name__ == "__main__":

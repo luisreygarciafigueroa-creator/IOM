@@ -1,45 +1,59 @@
 import IOM.FormalRules
+import IOM.Specification
 
 namespace IOM
 
 /-!
 # Auto-creación formal (SelfGenesis)
 
-Encarnación Lean de la autonomía: los conteos canónicos y la partición de
-relaciones se derivan de los axiomas de `FormalRules` sin semilla exterior.
+Los conteos canónicos se **derivan** de la estructura finita (13 × 2 × 3,
+espejos por tríada, reglas de creación), no se asumen como literales opacos.
 
-Correspondencia con el ensayo
-[`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](../docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
-
-* **Mictecacíhuatl (Evolución)** ↔ fuerza que recombina / expande (fase `advance`, `creates` hacia estructura).
-* **Mictlantecuhtli (Involución)** ↔ fuerza que despoja / purifica (fase `retreat`, retorno al vacío).
-* **`isMirrorRel`** ↔ polaridad complementaria Evolución/Involución (fase opuesta + posición espejada).
-* **`isCreatesRel`** ↔ operación por la cual el sistema distingue y genera su propio orden desde el vacío-matriz.
-
-Lean es la fuente de las reglas; los CSV son derivados verificables
-(`scripts/self_bootstrap.py` = punto fijo operativo).
+Correspondencia con el ensayo:
+* Mictecacíhuatl (Evolución) ↔ fase `advance` / fuerza ascendente
+* Mictlantecuhtli (Involución) ↔ fase `retreat` / fuerza descendente
+* `isMirrorRel` ↔ polaridad complementaria de la díada
+* `isCreatesRel` ↔ auto-distinción generativa desde el vacío-matriz
 -/
 
-/-- Nodos = 13 tríadas × 2 fases × 3 posiciones. -/
-theorem nodes_from_axioms : expectedNodes = 13 * 2 * 3 := expected_nodes_formula
+/-- 13 tríadas × 2 fases × 3 posiciones = 78 nodos (fórmula, no literal suelto). -/
+theorem nodes_from_structure : 13 * 2 * 3 = 78 := by native_decide
 
-/-- Partición completa de los 390 candidatos dirigidos. -/
-theorem partition_complete :
+theorem expected_nodes_matches_structure : expectedNodes = 13 * 2 * 3 :=
+  expected_nodes_formula
+
+/-- Por tríada: 3 posiciones × 2 sentidos de espejo = 6 aristas `mirrorOf` dirigidas. -/
+def mirrorsPerTriad : Nat := 3 * 2
+
+theorem mirrors_per_triad : mirrorsPerTriad = 6 := by native_decide
+
+/-- 13 tríadas × 6 espejos dirigidos = 78. -/
+theorem mirrors_from_structure : 13 * mirrorsPerTriad = 78 := by native_decide
+
+theorem expected_mirrors_matches_structure :
+    expectedMirrorDirected = 13 * mirrorsPerTriad := by
+  native_decide
+
+/-- Candidatos dirigidos por tríada: 6 nodos × 5 destinos = 30; × 13 = 390. -/
+theorem candidates_from_structure : 13 * (6 * 5) = 390 := by native_decide
+
+theorem partition_sums_to_candidates :
     expectedMirrorDirected + expectedCreatesDirected + expectedNoneDirected = 390 :=
   expected_partition
 
-/-- Pasos vectoriales = 4 secuencias × 5 ejes. -/
-theorem vectors_from_axioms : expectedVectorSteps = 4 * 5 := expected_vector_steps_formula
+/-- Vectores: 4 secuencias × 5 ejes. -/
+theorem vectors_from_structure : 4 * 5 = 20 := by native_decide
 
-/-- La fase opuesta es involutiva: advance↔retreat (díada Evolución/Involución). -/
+theorem expected_vectors_matches_structure : expectedVectorSteps = 4 * 5 :=
+  expected_vector_steps_formula
+
+/-- Díada de fases: involutiva y sin punto fijo (Evolución ↔ Involución). -/
 theorem dual_phase_involutive (p : TriadPhase) : p.opposite.opposite = p :=
   opposite_involutive p
 
-/-- Ninguna fase es fija bajo oposición (no hay punto medio exterior). -/
 theorem dual_phase_no_fixed_point (p : TriadPhase) : p.opposite ≠ p :=
   opposite_ne p
 
-/-- Espejo implica fases distintas (complementariedad Mictecacíhuatl/Mictlantecuhtli). -/
 theorem mirror_requires_dual_phase (a b : TriadNode) (h : isMirror a b) :
     a.phase ≠ b.phase :=
   isMirror_implies_opposite_phase a b h
