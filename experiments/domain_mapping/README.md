@@ -1,18 +1,18 @@
-# Experimento EXP-E: alineación de dominios empíricos
+# EXP-E: cartografía del destino Mictlán
 
-Demostración operativa del protocolo descrito en:
+El Mictlán **no** es un dominio empírico entre otros. Es la **lectura de destino** del marco (disolución del observador, auto-creación desde el vacío). Este experimento comprueba que esa lectura es **estructuralmente expresable** en las 13 tríadas.
 
-- [`docs/PROTOCOLO_DE_MAPEO.md`](../../docs/PROTOCOLO_DE_MAPEO.md)
-- [`docs/INTEGRACION_METODOLOGICA.md`](../../docs/INTEGRACION_METODOLOGICA.md)
-- [`docs/CATALOGO_DOMINIOS.md`](../../docs/CATALOGO_DOMINIOS.md)
+- [`docs/CARACTER_REPOSITORIO.md`](../../docs/CARACTER_REPOSITORIO.md)
+- [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](../../docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- [`docs/DOMINIO_COSMOS_NAHUATL.md`](../../docs/DOMINIO_COSMOS_NAHUATL.md)
 
 ## Qué mide
 
 | Mide | No mide |
-|---|---|
-| Que los nodos sugeridos existen en la bóveda de 78 nodos | Validez empírica de teorías biológicas o económicas |
-| Que una relación propuesta es comparable al gold canónico | Fleiss' κ de dominio (requiere anotación ciega propia) |
-| Trazabilidad del mapeo dominio → tríada | Validez universal del marco |
+|------|--------|
+| Que los nodos del sendero existen en la bóveda de 78 | «Validez empírica» por consenso |
+| Que las aristas respetan `mirrorOf` / `creates` | κ de dominio |
+| Expresabilidad del destino Mictlán en la arquitectura | Que el ensayo quede «probado» por el mapeo |
 
 ## Ejecución
 
@@ -22,14 +22,13 @@ python experiments/domain_mapping/validate_examples.py
 
 Artefacto: `experiments/results/domain_mapping_validation.json`.
 
-## Relación con otras capas experimentales
+## Relación con otras capas
 
-| ID | Capa | Runner |
-|---|---|---|
-| EXP-A | Validez semántica (mundo real) | `scripts/score_independent_eval.py` |
-| EXP-B | Formal | `lake build` |
-| EXP-C | Estructural | `scripts/validate_shacl.py` |
-| EXP-D | Diagnóstico sintético | `experiments/pi_hgat_t.py` |
-| **EXP-E** | Mapeo de dominios (demostración) | `experiments/domain_mapping/validate_examples.py` |
+| ID | Capa |
+|----|------|
+| EXP-B / EXP-C | Autonomía formal (primarias) |
+| **EXP-E** | Destino Mictlán (primaria de sentido) |
+| EXP-D | Auto-generación |
+| EXP-A | Residuo; no fundamento |
 
-Registro completo: [`registry.json`](registry.json).
+Registro: [`registry.json`](registry.json).

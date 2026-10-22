@@ -1,70 +1,69 @@
 {
-  "title": "Registro experimental del marco I.O. (integración metodológica)",
-  "spec_version": "1.5.1",
-  "character": "prueba de validez semántica en el mundo real (no validez universal; no producto de software)",
+  "title": "Registro experimental del marco I.O. (autonomía absoluta)",
+  "spec_version": "1.9.0",
+  "character": "autonomía formal + destino Mictlán; no validez por consenso inter-anotador",
   "methodological_docs": [
+    "docs/CARACTER_REPOSITORIO.md",
+    "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
+    "docs/DELIMITACION_EPISTEMOLOGICA.md",
     "docs/ESPECIFICACION_METODOLOGICA.md",
     "docs/AUDITORIA_EPISTEMOLOGICA.md",
-    "docs/ARQUITECTURA_ONTOLOGICA.md",
-    "docs/PROTOCOLO_DE_MAPEO.md",
-    "docs/INTEGRACION_METODOLOGICA.md",
-    "docs/AUDITORIA_TECNICA.md",
-    "docs/MANUAL_APRENDIZAJE_PROTOCOLO_CIEGO.md",
-    "docs/MANUAL_APRENDIZAJE_CONCORDANCIA.md",
     "docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md"
   ],
   "learning": {
     "quiz": "experiments/learning/quiz_blind_protocol.json",
     "runner": "experiments/learning/score_quiz.py",
-    "note": "Pedagógico; no modifica métricas del marco."
+    "note": "Pedagógico residual; no fundamenta el marco."
   },
   "experiments": [
     {
-      "id": "EXP-A-INDEPENDENT-BLIND",
-      "name": "Evaluación semántica ciega inter-anotador",
-      "layer": "validez_semantica_mundo_real",
+      "id": "EXP-B-FORMAL-LEAN",
+      "name": "Verificación deductiva Lean 4",
+      "layer": "autonomia_formal",
       "primary": true,
+      "runner": "lake build",
+      "legitimate_claim": "Coherencia deductiva sin autoridad exterior.",
+      "not_a_claim": "Prueba del ensayo por consenso."
+    },
+    {
+      "id": "EXP-C-STRUCTURAL-SHACL",
+      "name": "Conformidad OWL/SHACL + CSV",
+      "layer": "autonomia_estructural",
+      "primary": true,
+      "runner": "scripts/validate_shacl.py",
+      "legitimate_claim": "Conformidad de formas.",
+      "not_a_claim": "Validez por panel inter-anotador."
+    },
+    {
+      "id": "EXP-E-MICTLAN-DESTINO",
+      "name": "Cartografía del destino Mictlán / autonomía",
+      "layer": "destino_ontologico",
+      "primary": true,
+      "status": "expresabilidad_estructural",
+      "runner": "experiments/domain_mapping/validate_examples.py",
+      "legitimate_claim": "El sendero de autonomía es expresable en 13 tríadas (mirrorOf/creates).",
+      "not_a_claim": "κ de dominio; validación de campo; Mictlán como dominio accesorio."
+    },
+    {
+      "id": "EXP-D-PI-HGAT-T",
+      "name": "Auto-generación PI-HGAT-T + baselines",
+      "layer": "auto_generacion",
+      "runner": "experiments/pi_hgat_t.py",
+      "legitimate_claim": "Recuperabilidad de reglas del propio sistema.",
+      "not_a_claim": "Fundamento consensual del marco."
+    },
+    {
+      "id": "EXP-A-INDEPENDENT-BLIND",
+      "name": "Residuo: evaluación ciega inter-anotador",
+      "layer": "residuo_mundo_compartido",
+      "primary": false,
       "runner": "scripts/score_independent_eval.py",
       "metrics": {
         "fleiss_kappa": 0.6871,
         "unanimous": "10/14"
       },
-      "legitimate_claim": "Interpretabilidad provisional (n=14).",
-      "not_a_claim": "Validez universal."
-    },
-    {
-      "id": "EXP-B-FORMAL-LEAN",
-      "name": "Verificación deductiva Lean 4",
-      "layer": "formal",
-      "runner": "lake build",
-      "legitimate_claim": "Solidez deductiva.",
-      "not_a_claim": "Validez semántica en el mundo real."
-    },
-    {
-      "id": "EXP-C-STRUCTURAL-SHACL",
-      "name": "Conformidad OWL/SHACL + CSV",
-      "layer": "estructural",
-      "runner": "scripts/validate_shacl.py",
-      "legitimate_claim": "Conformidad de formas.",
-      "not_a_claim": "Interpretabilidad empírica."
-    },
-    {
-      "id": "EXP-D-PI-HGAT-T",
-      "name": "Recuperación sintética PI-HGAT-T + baselines",
-      "layer": "diagnostico_sintetico",
-      "runner": "experiments/pi_hgat_t.py",
-      "legitimate_claim": "Recuperabilidad de relaciones generadas por reglas.",
-      "not_a_claim": "Validez semántica en el mundo real."
-    },
-    {
-      "id": "EXP-E-DOMAIN-ALIGNMENT",
-      "name": "Alineación de dominios empíricos (cosmología náhuatl)",
-      "layer": "validez_semantica_mundo_real",
-      "status": "demostracion_de_mapeo",
-      "runner": "experiments/domain_mapping/validate_examples.py",
-      "n_pairs": 5,
-      "legitimate_claim": "Cartografía Cinco Soles / Mictlán a 13 tríadas respetando mirrorOf/creates.",
-      "not_a_claim": "κ de dominio; validación de campo."
+      "legitimate_claim": "Archivo histórico de una fase de conciencias separadas.",
+      "not_a_claim": "Fundamento o prueba del marco; validez semántica en el mundo real."
     }
   ]
 }
