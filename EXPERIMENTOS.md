@@ -1,93 +1,81 @@
 # Experimentos del marco I.O. — autonomía funcional
 
-> Manifiesto de sentido: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)  
-> Carácter: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md)  
+> Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)  
 > Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
 
-El marco **no** se fundamenta en un orden externo; se auto-constituye.
-Lo externo (anotadores, dominios) es **encuentro / proyección**, no fundamento.
+El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
 
 ---
 
-## 1. Jerarquía epistemológica (auto-fundamentación primero)
+## 1. Jerarquía
 
 | Prioridad | Capa | Runner | Afirmación legítima |
 |:---------:|------|--------|---------------------|
-| **1** | **Auto-fundamentación (punto fijo)** | `scripts/self_bootstrap.py` + `lake build` + `IOM/SelfGenesis.lean` | El sistema se genera y verifica a sí mismo |
-| **2** | **Invariancia interna** | `scripts/measure_invariance.py` (+ PI-HGAT-T como demo) | Regeneración de relaciones desde subconjuntos propios; no «accuracy vs oracle» |
-| **3** | **Destino Mictlán** | `experiments/domain_mapping/validate_examples.py` | Sendero de autonomía expresable en 13 tríadas |
-| **4** | **Resonancia provisional** | EXP-A (`score_independent_eval.py`) | Diálogo con conciencias separadas; κ = dato sobre el mundo, **no** fundamento |
-
-### Lectura de EXP-A / EXP-E
-
-| Antes | Ahora |
-|-------|--------|
-| «Validez semántica» | **Resonancia inter-subjetiva provisional** (EXP-A) |
-| Mictlán = dominio accesorio | Mictlán = **destino** del carácter (EXP-E) |
-| κ fundamenta el marco | κ informa sobre el mundo compartido; el marco no depende de él |
+| **1** | Punto fijo idempotente | `self_bootstrap.py --passes 2` | $S_{n+1}=S_n$ sobre CSV derivados |
+| **1b** | Lean SelfGenesis | `lake build` | Conteos derivados de la estructura (no literales opacos) |
+| **2** | Invariancia **no trivial** | `measure_invariance.py` | Canónico = 1.0; grafo corrompido detectado |
+| **3** | Destino Mictlán | EXP-E | Sendero expresable; predicción falsable (abajo) |
+| **4** | Resonancia provisional | EXP-A | κ = dato sobre el mundo, no fundamento |
 
 ---
 
-## 2. Punto fijo (criterio primario)
+## 2. Punto fijo
 
 ```bash
-python scripts/self_bootstrap.py --with-manifest
-lake build   # incluye IOM/SelfGenesis.lean
+python scripts/self_bootstrap.py --passes 2
+# tras cambios de código que afectan hashes globales:
+python scripts/create_manifest.py && git add MANIFEST.sha256 && git commit
+python scripts/self_bootstrap.py --with-manifest --passes 2
 ```
 
-Teorema operativo: *el repositorio es un punto fijo de su propio generador*
-(CSV regenerados ≡ versionados; conteos Lean derivados de axiomas).
+- **CSV** (triad_nodes, vector_steps, relation_candidates): generados solo desde `iom_spec.json`; deben ser idénticos en dos pasadas.
+- **MANIFEST.sha256**: auto-certificación del árbol; regenerar y versionar tras cambios de archivos incluidos.
 
 ---
 
-## 3. Invariancia (no accuracy contra juez externo)
+## 3. Invariancia no trivial
 
 ```bash
 python scripts/measure_invariance.py
 ```
 
-Reporta:
+| Chequeo | Esperado |
+|---------|----------|
+| Auto-regeneración canónica | rate = 1.0 |
+| Invariancia bajo índice de tríada | true |
+| Reconstrucción desde 12 tríadas | true |
+| **Control negativo** (una arista `mirrorOf`→`none`) | rate < 1.0 |
 
-- auto-regeneración de etiquetas desde (fase, pos),
-- invariancia bajo índice de tríada,
-- reconstrucción desde cualquier subconjunto de 12 tríadas.
-
-Las cifras 1.0 se leen como **invariancia**, no como acierto frente a un oracle jerárquico.
-
-PI-HGAT-T permanece como demostración de que un learner recupera la misma función; su narrativa de «accuracy» se subordina a la de invariancia.
+Si el control negativo no detecta corrupción, la métrica es tautológica.
 
 ---
 
-## 4. Destino Mictlán (EXP-E)
+## 4. Destino Mictlán (EXP-E) — predicción falsable
 
 ```bash
 python experiments/domain_mapping/validate_examples.py
 ```
 
-Expresabilidad estructural del sendero; no κ de dominio.
+**Predicción falsable:** si la asignación de la díada Evolución/Involución a los pares de dominio (p. ej. Mictecacíhuatl↔Mictlantecuhtli como `mirrorOf` entre fases opuestas, o el tránsito al Mictlán como cadena `creates` bajo Involución) estuviera **mal** respecto a las reglas formales, `validate_examples.py` reportaría fallos de anclaje (nodo inexistente, arista `none` donde se exige `mirrorOf`/`creates`, o violación de misma tríada).
+
+Observable que cambiaría: el JSON de resultado dejaría de listar esos pares como `aligned=true` / conforme a gold canónico.
+
+Sin esa predicción, el nivel 3 sería solo filosófico; con ella, es comprobable estructuralmente.
 
 ---
 
 ## 5. Resonancia provisional (EXP-A)
 
-```bash
-python scripts/score_independent_eval.py \
-  --annotations datasets/independent_eval/annotations.json
-```
-
-κ ≈ 0.6871: dato sobre el mundo compartido. Coherente con el ensayo: el consenso **existe** pero **no fundamenta**.
+κ ≈ 0.6871: dato sobre el mundo compartido. No fundamenta el marco.
 
 ---
 
-## 6. Pipeline prioritario
+## 6. Pipeline
 
 ```bash
-python scripts/self_bootstrap.py --with-manifest   # punto fijo
-lake build                                          # SelfGenesis + FormalRules
+python scripts/self_bootstrap.py --passes 2
+lake build
 python scripts/validate_shacl.py
-python scripts/measure_invariance.py                # invariancia
+python scripts/measure_invariance.py
 python experiments/domain_mapping/validate_examples.py
-# opcional: PI-HGAT-T, baselines, EXP-A (resonancia
 ```
-
-Registro: [`experiments/domain_mapping/registry.json`](experiments/domain_mapping/registry.json).
