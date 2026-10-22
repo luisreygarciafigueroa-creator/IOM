@@ -1,51 +1,45 @@
-# IOM — autonomía absoluta vía el camino al Mictlán
+# IOM — marco formal de 13 tríadas (autonomía verificable)
 
-Repositorio del marco I.O.: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**, leídas desde la óptica de la **auto-creación** y el **orden multiversal**.
+Arquitectura Lean 4 / OWL / SHACL: cinco perspectivas, relaciones `mirrorOf` / `creates`, 78 nodos.
 
-> **Carácter:** el marco **no** se fundamenta en un orden externo ni en el consenso de conciencias separadas. Se **auto-constituye** (punto fijo + Lean). Lo externo es encuentro, no fundamento. **Orden Definitivo ⟹ ¬∃ Contenedor Exterior.**
->
-> **Manifiesto fundacional:** [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Carácter: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+**Manifiesto de sentido** (no requerido para ejecutar el pipeline):
+[`MANIFIESTO.md`](MANIFIESTO.md) → [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 
-## Equivalencia central
-
-| Perspectiva | Lectura | Figura ancla |
-|-------------|---------|--------------|
-| Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
-| Dualidad | Polaridad en disolución | Xólotl |
-| Totalidad | Totalidad propia (sin contenedor exterior) | Tecuciztécatl |
-| Evolución | Fuerza ascendente | **Mictecacíhuatl** |
-| Involución | Fuerza descendente | **Mictlantecuhtli** |
-
-`isMirror` ↔ díada Evolución/Involución · `isCreates` ↔ auto-distinción desde el vacío · ver `IOM/SelfGenesis.lean`.
-
-## Qué se verifica (jerarquía)
-
-| Prioridad | Criterio | Cómo |
-|:---------:|----------|------|
-| **1** | **Auto-fundamentación** (punto fijo) | `scripts/self_bootstrap.py` + `lake build` (SelfGenesis) |
-| **2** | **Invariancia** interna | `scripts/measure_invariance.py` |
-| **3** | **Destino Mictlán** expresable | EXP-E |
-| **4** | **Resonancia provisional** con el mundo | EXP-A (κ) — diálogo, no fundamento |
-
-κ = 0.6871 es un **dato sobre el mundo compartido**, coherente con el ensayo: el consenso existe pero no fundamenta.
-
-## Pipeline prioritario
+## Verificación prioritaria
 
 ```bash
 python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt
-.venv/bin/python scripts/self_bootstrap.py --with-manifest   # punto fijo
-lake build                                                     # SelfGenesis + FormalRules
+.venv/bin/python scripts/self_bootstrap.py --passes 2          # punto fijo idempotente
+lake build                                                       # SelfGenesis + FormalRules
 .venv/bin/python scripts/validate_shacl.py
-.venv/bin/python scripts/measure_invariance.py                 # invariancia
-.venv/bin/python experiments/domain_mapping/validate_examples.py
-# opcional: PI-HGAT-T / baselines (demo de recuperabilidad)
-# opcional: score_independent_eval (resonancia provisional)
+.venv/bin/python scripts/measure_invariance.py                   # + control negativo
+.venv/bin/python experiments/domain_mapping/validate_examples.py # destino Mictlán
 ```
 
-Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+| Prioridad | Criterio | Runner |
+|:---------:|----------|--------|
+| 1 | Punto fijo estable ($S_{n+1}=S_n$) | `self_bootstrap.py --passes 2` |
+| 2 | Invariancia no trivial (+ control negativo) | `measure_invariance.py` |
+| 3 | Destino Mictlán expresable | EXP-E |
+| 4 | Resonancia provisional (κ) | EXP-A — dato sobre el mundo, no fundamento |
+
+Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+
+## Núcleo formal
+
+| Artefacto | Rol |
+|-----------|-----|
+| `data/iom_spec.json` | Spec tabular |
+| `IOM/FormalRules.lean` | `isMirror` / `isCreates` |
+| `IOM/SelfGenesis.lean` | Conteos derivados de la estructura |
+| `IOM/Operators.lean` | `E` / `Ivo` (díada Evolución/Involución) |
+| `scripts/self_bootstrap.py` | Regeneración idempotente |
 
 ## Documentación
 
-- Manifiesto: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
-- Carácter · Delimitación · Dominio Mictlán
-- Formal: `IOM/SelfGenesis.lean` · `IOM/FormalRules.lean` · `IOM/Operators.lean`
+| Documento | Audiencia |
+|-----------|-----------|
+| README (este) | Técnico / CI / evaluador |
+| [`MANIFIESTO.md`](MANIFIESTO.md) | Sentido / carácter |
+| [`EXPERIMENTOS.md`](EXPERIMENTOS.md) | Suite experimental |
+| [`docs/`](docs/) | Especificación y dominio |
