@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Escribe SHA-256 de los artefactos fuente/reproducibles incluidos en el paquete."""
+"""Escribe SHA-256 de los artefactos fuente/reproducibles incluidos en el paquete.
+
+`MANIFEST.sha256` **no** se incluye en su propio contenido (evita hash
+auto-referente). El punto fijo con --with-manifest compara el manifiesto
+regenerado contra el versionado en HEAD, no contra un hash de sí mismo.
+"""
 from hashlib import sha256
 from pathlib import Path
 
@@ -7,9 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 INCLUDE_DIRS = ("IOM", "data", "datasets", "docs", "experiments", "ontology", "scripts", "tests")
 INCLUDE_FILES = (
     "IOM.lean", "README.md", "AUDITORIA.md", "EXPERIMENTOS.md", "REPRODUCCION.md", "paper.md",
+    "MANIFIESTO.md",
     "requirements.txt", "requirements-lock.txt", "lakefile.lean", "lake-manifest.json", "lean-toolchain",
     "LICENSE", ".gitignore", ".github/workflows/ci.yml",
 )
+# Nunca hashear el propio manifiesto ni artefactos de caché.
+EXCLUDE_NAMES = frozenset({"MANIFEST.sha256"})
 
 
 def main() -> None:
@@ -22,13 +30,14 @@ def main() -> None:
                 if p.is_file()
                 and not any(part in {"__pycache__", ".pytest_cache"} for part in p.parts)
             )
+    files = {p for p in files if p.name not in EXCLUDE_NAMES}
     out = ROOT / "MANIFEST.sha256"
     lines = [
         f"{sha256(path.read_bytes()).hexdigest()}  {path.relative_to(ROOT).as_posix()}"
         for path in sorted(files)
     ]
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"SHA-256: {len(lines)} archivos -> {out}")
+    print(f"SHA-256: {len(lines)} archivos -> {out} (excluye MANIFEST.sha256)")
 
 
 if __name__ == "__main__":
