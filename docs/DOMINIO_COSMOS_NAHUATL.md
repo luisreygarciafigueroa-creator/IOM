@@ -10,6 +10,7 @@ Fuentes integradas (literatura secundaria):
 
 - Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl*.
 - Mónica Luna López, «El camino al Mictlán: ¿ruta al tormento o al origen?», *Vita Brevis*, 2017.
+- *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (relato pictográfico; ver §7).
 
 ### Figuras ancla ↔ perspectivas I.O.
 
@@ -100,6 +101,8 @@ Plantilla CSV: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
 | NAH-09 | Xólotl | Quetzalcóatl | Dualidad | `mirrorOf` |
 | NAH-10 | Mictecacíhuatl | Mictlantecuhtli | Evolución / Involución | `mirrorOf` |
 
+Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md).
+
 ---
 
 ## 4. Límites explícitos
@@ -109,6 +112,7 @@ Plantilla CSV: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
 3. Lecturas de «ruta al origen» vs «tormento» son de la literatura secundaria.
 4. Sin anotación ciega propia, EXP-A no se reclama como prueba universal.
 5. Las fuentes coloniales pueden incorporar categorías cristianas; el mapeo no las «purifica».
+6. *Amoxtli in Atl Miquiztli* es relato original inspirado en tradición nahua, no fuente histórica primaria.
 
 ---
 
@@ -117,7 +121,7 @@ Plantilla CSV: `datasets/ingestion/templates/cosmos_nahuatl.csv`.
 - Moreno de los Arcos, R. «Los cinco soles cosmogónicos». *Estudios de Cultura Náhuatl*.
 - Luna López, M. (2017). «El camino al Mictlán…» *Vita Brevis* 6(11).
 - León-Portilla, M. *La filosofía náhuatl*.
-- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
 
 ---
 
@@ -129,4 +133,16 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 |---------|-----|
 | Piedra del Sol (`Piedra_del_Sol.png`) | Iconografía del Quinto Sol (Nahui Ollin) |
 | Láminas codiciales | Dualidad, Xólotl / inframundo, ciclo ritual |
+| *Amoxtli in Atl Miquiztli* (`Amoxtli_in_Atl_Miquiztli.pdf`) | Relato pictográfico del Mictlán (9+4=13 marcas) |
 | Tesis *Códice Xólotl* (`PECDSV03T.pdf`) | Edición de divulgación (Peña Cisneros, UAEM 2017) |
+
+---
+
+## 7. Relato pictográfico: *Amoxtli in Atl Miquiztli*
+
+**Libro del agua y de la muerte** — relato original inspirado en la tradición nahua (9 láminas).
+
+- PDF: [`media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf`](media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf)
+- Ficha de alineación I.O.: [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md)
+
+El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un solo río** (no trece caminos aislados). La Lámina V articula Tonalli, Mictecacíhuatl y Mictlantecuhtli con esquemas → / ← coherentes con las posiciones canónicas. El xoloitzcuintle opera como guía del primer cruce (eco de **Xólotl** / Dualidad). Colofón: *El río es uno.*
