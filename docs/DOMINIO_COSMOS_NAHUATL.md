@@ -1,87 +1,88 @@
-# Dominio: Cosmología náhuatl — Cinco Soles, figuras ancla y Mictlán
+# Dominio: Cosmología náhuatl — Mictlán, autonomía y figuras de apoyo
 
-> **Carácter:** el marco I.O. se **equipara** a este dominio: cinco perspectivas ↔ Cinco Soles;
-> **Nanahuatzin** = Individualidad, **Xólotl** = Dualidad, **Tecuciztécatl** = Totalidad,
-> **Mictecacíhuatl** = Evolución, **Mictlantecuhtli** = Involución; **13 tríadas** = **Mictlán**.
-> Documento canónico de sentido: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
+> **Carácter:** el marco I.O. se lee desde la óptica de
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
+> el **camino al Mictlán** como tránsito hacia la **autonomía ontológica** y el **orden multiversal**
+> (no como búsqueda de un contenedor exterior). **Mictecacíhuatl** = Evolución, **Mictlantecuhtli** = Involución;
+> **13 tríadas** = topología del tránsito. Las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl)
+> quedan como **apoyo semántico**. Documento canónico de sentido: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
 > La ontología core (78 nodos) permanece inmutable como bóveda técnica.
 
-Fuentes integradas (literatura secundaria):
+Fuentes integradas:
 
-- Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl*.
-- Mónica Luna López, «El camino al Mictlán: ¿ruta al tormento o al origen?», *Vita Brevis*, 2017.
+- *Del Orden Universal a la Creación de Uno Mismo* — ensayo ontológico (eje de sentido; ver §8).
+- Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl* (apoyo).
+- Mónica Luna López, «El camino al Mictlán…», *Vita Brevis*, 2017 (apoyo).
 - *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (relato pictográfico; ver §7).
-- *Del Orden Universal a la Creación de Uno Mismo* — ensayo ontológico (ver §8).
 
-### Figuras ancla ↔ perspectivas I.O.
+### Perspectivas bajo la óptica de autonomía
 
-| Perspectiva | Figura | Rol en el mito / marco |
-|-------------|--------|------------------------|
-| Individualidad | **Nanahuatzin** | Se arroja al fuego; nace el Quinto Sol |
-| Dualidad | **Xólotl** | Gemelo, desdoblamiento, tránsito al inframundo |
-| Totalidad | **Tecuciztécatl** | Aspira al sol; queda como luna (totalidad reflejada) |
-| Evolución | **Mictecacíhuatl** | Señora del Mictlán; continuidad del ciclo |
-| Involución | **Mictlantecuhtli** | Señor del Mictlán; disolución / vacío |
+| Perspectiva | Lectura (ensayo) | Figura ancla (apoyo) |
+|-------------|------------------|----------------------|
+| Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
+| Dualidad | Polaridad yo/otro que se disuelve en el tránsito | Xólotl |
+| Totalidad | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
+| Evolución | Fuerza ascendente: recombina y perfecciona en el vacío | **Mictecacíhuatl** |
+| Involución | Fuerza descendente: despoja y purifica hacia la raíz | **Mictlantecuhtli** |
 
-Las **13 tríadas** se leen como la **topología del Mictlán** (umbrales del camino; no 1:1 forzado con los nueve niveles literarios).
+Las **13 tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema).
 
 ---
 
-## 1. Los Cinco Soles cosmogónicos
+## 1. Los Cinco Soles cosmogónicos (apoyo semántico)
 
-El mito postula una sucesión de edades del mundo destruidas por cataclismos asociados a elementos. El orden varía entre fuentes; aquí se usa el de la interpretación de la Piedra del Sol (Chavero / Moreno):
+El mito postula una sucesión de edades; aquí se conserva como **material de apoyo**, no como eje prioritario del carácter del repositorio.
 
 | Sol | Nombre | Destrucción | Transformación típica |
 |-----|--------|-------------|----------------------|
 | I | *Nahui Ehécatl* (Viento) | Huracanes | Hombres → monos |
-| II | *Nahui Quiáhuitl* (Fuego / lluvia de fuego) | Fuego del cielo | Hombres → guajolotes |
+| II | *Nahui Quiáhuitl* (Fuego) | Fuego del cielo | Hombres → guajolotes |
 | III | *Nahui Atl* (Agua) | Diluvio | Hombres → peces |
-| IV | *Nahui Océlotl* (Tierra / tigre) | Temblores / ocelotes | Gigantes devorados |
-| V | *Nahui Ollin* (Movimiento) | Edad actual; fin por temblores y hambre | — |
+| IV | *Nahui Océlotl* (Tierra) | Temblores / ocelotes | Gigantes devorados |
+| V | *Nahui Ollin* (Movimiento) | Edad actual | — |
 
-Las cinco perspectivas se **equiparan** a este ciclo de principios (detalle en [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)).
+Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
 
-### Alineación a perspectivas I.O.
+### Alineación residual a perspectivas
 
-| Concepto náhuatl | Perspectiva | Relación candidata | Justificación operativa |
-|------------------|-------------|--------------------|-------------------------|
-| Nanahuatzin / sol que nace | Individualidad | `creates` | Singularidad sacrificial |
-| Xólotl / doble y tránsito | Dualidad | `mirrorOf` | Polaridad y desdoblamiento |
-| Tecuciztécatl / luna | Totalidad | — | Plenitud reflejada del sistema |
-| Mictecacíhuatl | Evolución | `creates` | Continuidad del ciclo de muertos |
-| Mictlantecuhtli | Involución | `creates` | Disolución hacia el vacío |
-| Lucha de dioses (Tezcatlipoca ↔ Quetzalcóatl) | Dualidad | `mirrorOf` | Polaridad de fuerzas |
-| Cataclismo que destruye la edad | Involución | `creates` | Disolución estructura → vacío |
-| Quinto Sol (*Nahui Ollin*) | Totalidad + Evolución | — | Edad presente |
+| Concepto náhuatl | Perspectiva | Relación candidata |
+|------------------|-------------|--------------------|
+| Nanahuatzin / sol que nace | Individualidad | `creates` |
+| Xólotl / doble y tránsito | Dualidad | `mirrorOf` |
+| Tecuciztécatl / luna | Totalidad | — |
+| Mictecacíhuatl | Evolución | `creates` |
+| Mictlantecuhtli | Involución | `creates` |
+| Tezcatlipoca ↔ Quetzalcóatl | Dualidad | `mirrorOf` |
+| Cataclismo de edad | Involución | `creates` |
 
 ---
 
 ## 2. El camino al Mictlán (= sistema de tríadas)
 
-El **Mictlán** se equipara a la **arquitectura de las 13 tríadas**: umbrales relacionales del camino, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen** — retorno al útero de la Tierra (Tlaltecuhtli), reciclaje de *teyolia*.
+El **Mictlán** es la **arquitectura de las 13 tríadas**: umbrales del tránsito hacia la autonomía, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen**.
 
-### Niveles (síntesis Códice Vaticano A / Florentino)
+Bajo el ensayo canónico: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío.
 
-| Nivel (Vaticano A) | Lectura operativa |
-|--------------------|-------------------|
-| 1. La Tierra (Tlaltecuhtli) | Entrada: cueva-matriz que devora |
+### Niveles (síntesis Códice Vaticano A / Florentino) — apoyo
+
+| Nivel | Lectura operativa |
+|-------|-------------------|
+| 1. La Tierra (Tlaltecuhtli) | Entrada: cueva-matriz |
 | 2. Pasadero de agua | Cruce con xoloitzcuintle (eco de Xólotl) |
 | 3. Montañas que se juntan | Dualidad vida/muerte |
-| 4–5. Obsidiana / viento de navajas | Descomposición del cuerpo |
-| 6. Banderas que tremolan | Desprendimiento de valores mundanos |
-| 7. Lugar donde se flecha | Obstáculo |
-| 8. Corazones comidos (jaguar) | Separación *teyolia* / cuerpo |
-| 9. Sin orificio para el humo | Mictlán propio: **Mictlantecuhtli** / **Mictecacíhuatl** |
+| 4–5. Obsidiana / viento de navajas | Descomposición |
+| 6–8. Banderas, flechas, corazones | Desprendimiento |
+| 9. Sin orificio para el humo | **Mictlantecuhtli** / **Mictecacíhuatl** |
 
-### Alineación a perspectivas I.O.
+### Alineación al carácter autónomo
 
 | Concepto | Perspectiva | Relación candidata |
 |----------|-------------|--------------------|
-| Difunto individual | Individualidad (Nanahuatzin) | — |
-| Vida ↔ muerte; cielo ↔ inframundo | Dualidad (Xólotl) | `mirrorOf` |
-| Cuatro destinos + niveles | Totalidad (Tecuciztécatl) | — |
-| Renovación de fuerza anímica | Evolución (Mictecacíhuatl) | `creates` |
-| Camino de disolución / retorno | Involución (Mictlantecuhtli) | `creates` |
+| Difunto / singularidad en tránsito | Individualidad | — |
+| Yo ↔ otro; cielo ↔ inframundo | Dualidad | `mirrorOf` |
+| Auto-totalidad sin contenedor exterior | Totalidad | — |
+| Recombinación / expansión en el vacío | Evolución (Mictecacíhuatl) | `creates` |
+| Despojo / retorno a la raíz | Involución (Mictlantecuhtli) | `creates` |
 
 ---
 
@@ -109,20 +110,20 @@ Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AM
 ## 4. Límites explícitos
 
 1. **No** se añaden nodos al core de 78.
-2. El orden de los Soles **no** se fija como teorema; la equivalencia de perspectivas es **operativa** del marco I.O.
+2. El orden de los Soles **no** se fija como teorema; es apoyo, no eje prioritario.
 3. Lecturas de «ruta al origen» vs «tormento» son de la literatura secundaria.
 4. Sin anotación ciega propia, EXP-A no se reclama como prueba universal.
 5. Las fuentes coloniales pueden incorporar categorías cristianas; el mapeo no las «purifica».
-6. *Amoxtli in Atl Miquiztli* y el ensayo de autonomía son textos de apoyo semántico, no fuentes históricas primarias.
+6. *Amoxtli* y el ensayo de autonomía son textos de apoyo / sentido; el ensayo es el **eje de carácter**, no una fuente histórica primaria.
 
 ---
 
 ## 5. Referencias de trabajo
 
+- Ensayo canónico: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 - Moreno de los Arcos, R. «Los cinco soles cosmogónicos». *Estudios de Cultura Náhuatl*.
 - Luna López, M. (2017). «El camino al Mictlán…» *Vita Brevis* 6(11).
-- León-Portilla, M. *La filosofía náhuatl*.
-- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
+- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
 
 ---
 
@@ -132,11 +133,11 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 
 | Recurso | Rol |
 |---------|-----|
-| Piedra del Sol (`Piedra_del_Sol.png`) | Iconografía del Quinto Sol (Nahui Ollin) |
-| Láminas codiciales | Dualidad, Xólotl / inframundo, ciclo ritual |
+| *Del Orden Universal…* (PDF) | Síntesis ontológica del carácter (autonomía / Mictlán) |
 | *Amoxtli in Atl Miquiztli* | Relato pictográfico del Mictlán (9+4=13 marcas) |
-| *Del Orden Universal…* (PDF) | Síntesis ontológica autonomía / Mictlán |
-| Tesis *Códice Xólotl* (`PECDSV03T.pdf`) | Edición de divulgación (Peña Cisneros, UAEM 2017) |
+| Piedra del Sol | Apoyo iconográfico (Quinto Sol) |
+| Láminas codiciales | Dualidad, Xólotl / inframundo |
+| Tesis *Códice Xólotl* | Edición de divulgación (Peña Cisneros, UAEM 2017) |
 
 ---
 
@@ -145,7 +146,7 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 **Libro del agua y de la muerte** — relato original inspirado en la tradición nahua (9 láminas).
 
 - PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf)
-- Ficha de alineación I.O.: [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md)
+- Ficha: [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md)
 
 El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un solo río**. Colofón: *El río es uno.*
 
@@ -153,16 +154,18 @@ El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un s
 
 ## 8. Ensayo ontológico: Del orden universal a la autonomía absoluta
 
-Texto de apoyo semántico (no añade nodos al core):
+**Eje de sentido del repositorio** (no añade nodos al core):
 
 - Markdown: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
-- PDF (síntesis visual): `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`
+- PDF: `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`
 
-| Tema del ensayo | Equivalencia I.O. / Mictlán |
-|-----------------|----------------------------|
+| Tema del ensayo | Lectura I.O. / Mictlán |
+|-----------------|----------------------|
 | Regresión infinita de sistemas exteriores | Límite de Totalidad como contenedor externo |
 | Colapso del mundo fenoménico de conciencias separadas | Tránsito por las 13 tríadas |
 | Camino al Mictlán como muerte ontológica | Disolución observador → tejido del sistema |
-| Mictecacíhuatl (ascendente / evolución) | Perspectiva **Evolución** |
-| Mictlantecuhtli (descendente / involución) | Perspectiva **Involución** |
+| Mictecacíhuatl (ascendente) | **Evolución** |
+| Mictlantecuhtli (descendente) | **Involución** |
 | Orden multiversal / auto-creación desde el vacío | Individualidad + Totalidad sin contenedor exterior |
+
+$$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
