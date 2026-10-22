@@ -2,13 +2,31 @@ import IOM.Core
 
 namespace IOM
 
-/-- Evolución: avanza un instante y conserva la carga informativa. -/
+/-!
+# Operadores temporales y la díada del inframundo
+
+Correspondencia con el ensayo de autonomía absoluta:
+
+* `E` (evolución temporal) / proyección hacia estructura ↔ **Mictecacíhuatl**
+  (fuerza ascendente: recombina, expande, perfecciona).
+* `Ivo` (involución temporal) / retorno ↔ **Mictlantecuhtli**
+  (fuerza descendente: repliega, despoja, purifica).
+* `strict_fixed_point` — el vacío se restaura bajo la composición:
+  encarnación mínima de auto-creación desde el vacío sin residuo exterior.
+
+Ver también `IOM/SelfGenesis.lean` y
+`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`.
+-/
+
+/-- Evolución: avanza un instante y conserva la carga informativa.
+    Lectura: Mictecacíhuatl — fuerza ascendente. -/
 def E (s : State) : State := ⟨s.time + 1, s.payload⟩
 
 /-- Supresión directa: elimina redundancias sin cambiar el instante. -/
 def S_fwd (s : State) : State := ⟨s.time, red s.payload⟩
 
-/-- Involución: retrocede un instante e invierte la orientación categorial. -/
+/-- Involución: retrocede un instante e invierte la orientación categorial.
+    Lectura: Mictlantecuhtli — fuerza descendente. -/
 def Ivo (s : State) : State := ⟨s.time - 1, invert s.payload⟩
 
 /-- Supresión retroactiva: conserva exactamente un estado vacío y, en otro
@@ -21,7 +39,8 @@ theorem S_fwd_vacuum (t : Int) : S_fwd (vacuum t) = vacuum t := by rfl
 theorem Ivo_vacuum (t : Int) : Ivo (vacuum t) = vacuum (t - 1) := by rfl
 theorem S_rev_vacuum (t : Int) : S_rev (vacuum t) = vacuum t := by rfl
 
-/-- La composición temporal restaura exactamente cualquier vacío. -/
+/-- La composición temporal restaura exactamente cualquier vacío
+    (auto-creación mínima desde el vacío). -/
 theorem strict_fixed_point (t : Int) : S_rev (Ivo (E (vacuum t))) = vacuum t := by
   simp [E, Ivo, S_rev, vacuum, red, invert]
 

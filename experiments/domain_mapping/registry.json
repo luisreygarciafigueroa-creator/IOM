@@ -1,69 +1,76 @@
 {
-  "title": "Registro experimental del marco I.O. (autonomía absoluta)",
+  "title": "Registro experimental I.O. — autonomía funcional",
   "spec_version": "1.9.0",
-  "character": "autonomía formal + destino Mictlán; no validez por consenso inter-anotador",
+  "character": "auto-fundamentación (punto fijo) + invariancia; resonancia provisional con el mundo; Mictlán como destino",
+  "foundational_manifesto": "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
   "methodological_docs": [
     "docs/CARACTER_REPOSITORIO.md",
-    "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
     "docs/DELIMITACION_EPISTEMOLOGICA.md",
     "docs/ESPECIFICACION_METODOLOGICA.md",
-    "docs/AUDITORIA_EPISTEMOLOGICA.md",
-    "docs/DICTAMEN_TECNICO_EPISTEMOLOGICO.md"
+    "EXPERIMENTOS.md"
   ],
-  "learning": {
-    "quiz": "experiments/learning/quiz_blind_protocol.json",
-    "runner": "experiments/learning/score_quiz.py",
-    "note": "Pedagógico residual; no fundamenta el marco."
-  },
   "experiments": [
     {
+      "id": "EXP-FIXED-POINT",
+      "name": "Punto fijo / self_bootstrap",
+      "layer": "auto_fundamentacion",
+      "primary": true,
+      "runner": "scripts/self_bootstrap.py",
+      "legitimate_claim": "El repo regenera sus artefactos derivados desde la spec sin residuo exterior.",
+      "not_a_claim": "Verdad ontológica universal."
+    },
+    {
       "id": "EXP-B-FORMAL-LEAN",
-      "name": "Verificación deductiva Lean 4",
-      "layer": "autonomia_formal",
+      "name": "Lean 4 + SelfGenesis",
+      "layer": "auto_fundamentacion",
       "primary": true,
       "runner": "lake build",
-      "legitimate_claim": "Coherencia deductiva sin autoridad exterior.",
-      "not_a_claim": "Prueba del ensayo por consenso."
+      "legitimate_claim": "Conteos y dualidad de fase derivables de axiomas; díada Evolución/Involución formalizada.",
+      "not_a_claim": "Fundamento por consenso inter-anotador."
+    },
+    {
+      "id": "EXP-INVARIANCE",
+      "name": "Invariancia interna",
+      "layer": "invariancia",
+      "primary": true,
+      "runner": "scripts/measure_invariance.py",
+      "legitimate_claim": "Auto-regeneración, invariancia bajo índice de tríada, reconstrucción desde subconjunto.",
+      "not_a_claim": "Accuracy contra oracle jerárquico como fundamento."
     },
     {
       "id": "EXP-C-STRUCTURAL-SHACL",
-      "name": "Conformidad OWL/SHACL + CSV",
+      "name": "Conformidad SHACL",
       "layer": "autonomia_estructural",
-      "primary": true,
       "runner": "scripts/validate_shacl.py",
-      "legitimate_claim": "Conformidad de formas.",
-      "not_a_claim": "Validez por panel inter-anotador."
+      "legitimate_claim": "Conformidad de formas del grafo regenerado.",
+      "not_a_claim": "Validez por panel externo."
     },
     {
       "id": "EXP-E-MICTLAN-DESTINO",
-      "name": "Cartografía del destino Mictlán / autonomía",
+      "name": "Cartografía del destino Mictlán",
       "layer": "destino_ontologico",
       "primary": true,
-      "status": "expresabilidad_estructural",
       "runner": "experiments/domain_mapping/validate_examples.py",
-      "legitimate_claim": "El sendero de autonomía es expresable en 13 tríadas (mirrorOf/creates).",
-      "not_a_claim": "κ de dominio; validación de campo; Mictlán como dominio accesorio."
+      "legitimate_claim": "Sendero de autonomía expresable en 13 tríadas.",
+      "not_a_claim": "Mictlán como dominio empírico accesorio."
     },
     {
       "id": "EXP-D-PI-HGAT-T",
-      "name": "Auto-generación PI-HGAT-T + baselines",
-      "layer": "auto_generacion",
+      "name": "Demo de recuperabilidad (subordinada a invariancia)",
+      "layer": "invariancia",
       "runner": "experiments/pi_hgat_t.py",
-      "legitimate_claim": "Recuperabilidad de reglas del propio sistema.",
-      "not_a_claim": "Fundamento consensual del marco."
+      "legitimate_claim": "Un learner recupera la función invariante (fase, pos)→relación.",
+      "not_a_claim": "Fundamento por métricas de accuracy vs oracle."
     },
     {
-      "id": "EXP-A-INDEPENDENT-BLIND",
-      "name": "Residuo: evaluación ciega inter-anotador",
-      "layer": "residuo_mundo_compartido",
+      "id": "EXP-A-RESONANCE",
+      "name": "Resonancia inter-subjetiva provisional",
+      "layer": "proyeccion_mundo_compartido",
       "primary": false,
       "runner": "scripts/score_independent_eval.py",
-      "metrics": {
-        "fleiss_kappa": 0.6871,
-        "unanimous": "10/14"
-      },
-      "legitimate_claim": "Archivo histórico de una fase de conciencias separadas.",
-      "not_a_claim": "Fundamento o prueba del marco; validez semántica en el mundo real."
+      "metrics": {"fleiss_kappa": 0.6871, "unanimous": "10/14"},
+      "legitimate_claim": "Dato sobre el mundo compartido; el consenso existe pero no fundamenta.",
+      "not_a_claim": "Fundamento o prueba del marco."
     }
   ]
 }
