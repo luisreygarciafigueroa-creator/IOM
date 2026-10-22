@@ -23,17 +23,12 @@ El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
 
 ```bash
 python scripts/self_bootstrap.py --passes 2
-# tras una transición de árbol que se decide versionar:
-python scripts/create_manifest.py && git add MANIFEST.sha256 && git commit
+python scripts/create_manifest.py && git add MANIFEST.sha256 && git commit   # si el árbol cambió
 python scripts/self_bootstrap.py --with-manifest --passes 2
 ```
 
-- **CSV** (triad_nodes, vector_steps, relation_candidates): derivados solo de `iom_spec.json`; dos pasadas idénticas.
-- **`MANIFEST.sha256` no se hashea a sí mismo** (`create_manifest.py` lo excluye) — no hay hash auto-referente.
-
-### Propiedad (no limitación)
-
-El punto fijo del manifiesto es **pariente del árbol versionado**: el estado $S$ incluye el git tree. La iteración es estable *dentro de un árbol dado*; los cambios de árbol requieren re-versionado explícito. Eso es **autogestión**, no dependencia de un juez exterior: el sistema que se crea a sí mismo también decide cuándo su nueva versión es él mismo.
+`MANIFEST.sha256` **no** se hashea a sí mismo. El punto fijo del manifiesto es
+**pariente del árbol versionado**: autogestión, no juez exterior.
 
 ---
 
@@ -43,12 +38,7 @@ El punto fijo del manifiesto es **pariente del árbol versionado**: el estado $S
 python scripts/measure_invariance.py
 ```
 
-| Chequeo | Esperado |
-|---------|----------|
-| Auto-regeneración canónica | rate = 1.0 |
-| Invariancia bajo índice de tríada | true |
-| Reconstrucción desde 12 tríadas | true |
-| **Control negativo** (`mirrorOf`→`none`) | rate < 1.0 |
+Control negativo obligatorio: una arista corrupta debe bajar el rate.
 
 ---
 
@@ -58,19 +48,25 @@ python scripts/measure_invariance.py
 python experiments/domain_mapping/validate_examples.py
 ```
 
-Si la díada Evolución/Involución estuviera mal asignada en los pares de dominio, el validador reportaría fallos de anclaje (`aligned` falso, arista `none` indebida, o violación de misma tríada).
+Fallos de anclaje si la díada E/Ivo está mal asignada en dominio.
 
 ---
 
 ## 5. Resonancia provisional (EXP-A)
 
-κ ≈ 0.6871: registro del **encuentro** con el mundo compartido. No fundamenta el marco.
+κ ≈ 0.6871 (histórico): registro del **encuentro**, no fundamento.
 
-Protocolo: anotadores **sin** leer `MANIFIESTO.md` ni este documento antes de anotar (ceguera de sentido preservada).
+La ceguera es un **estado del anotador**, no del repo público. Rondas nuevas:
+
+1. Entregar solo [`datasets/independent_eval/instrument/`](datasets/independent_eval/instrument/) (`INSTRUCTIONS.md` + `pairs.csv`), **sin** clon del repo.
+2. Rellenar el **log de acceso** (`ACCESS_LOG.template.json`): cuándo se entregó qué; exposición previa al manifiesto/README.
+3. Excluir del κ primario a quien declare o documente haber leído el marco antes de anotar.
+
+El κ solo vale si el otro fue genuinamente libre de no ver lo que el marco esperaba.
 
 ---
 
-## 6. Pipeline
+## 6. Pipeline interno
 
 ```bash
 python scripts/self_bootstrap.py --passes 2
