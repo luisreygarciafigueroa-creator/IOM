@@ -12,24 +12,28 @@ El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
 | Prioridad | Capa | Runner | Afirmación legítima |
 |:---------:|------|--------|---------------------|
 | **1** | Punto fijo idempotente | `self_bootstrap.py --passes 2` | $S_{n+1}=S_n$ sobre CSV derivados |
-| **1b** | Lean SelfGenesis | `lake build` | Conteos derivados de la estructura (no literales opacos) |
-| **2** | Invariancia **no trivial** | `measure_invariance.py` | Canónico = 1.0; grafo corrompido detectado |
-| **3** | Destino Mictlán | EXP-E | Sendero expresable; predicción falsable (abajo) |
+| **1b** | Lean SelfGenesis | `lake build` | Conteos derivados de la estructura |
+| **2** | Invariancia **no trivial** | `measure_invariance.py` | Canónico = 1.0; corrupción detectada |
+| **3** | Destino Mictlán | EXP-E | Sendero expresable; predicción falsable |
 | **4** | Resonancia provisional | EXP-A | κ = dato sobre el mundo, no fundamento |
 
 ---
 
-## 2. Punto fijo
+## 2. Punto fijo (CSV y manifiesto)
 
 ```bash
 python scripts/self_bootstrap.py --passes 2
-# tras cambios de código que afectan hashes globales:
+# tras una transición de árbol que se decide versionar:
 python scripts/create_manifest.py && git add MANIFEST.sha256 && git commit
 python scripts/self_bootstrap.py --with-manifest --passes 2
 ```
 
-- **CSV** (triad_nodes, vector_steps, relation_candidates): generados solo desde `iom_spec.json`; deben ser idénticos en dos pasadas.
-- **MANIFEST.sha256**: auto-certificación del árbol; regenerar y versionar tras cambios de archivos incluidos.
+- **CSV** (triad_nodes, vector_steps, relation_candidates): derivados solo de `iom_spec.json`; dos pasadas idénticas.
+- **`MANIFEST.sha256` no se hashea a sí mismo** (`create_manifest.py` lo excluye) — no hay hash auto-referente.
+
+### Propiedad (no limitación)
+
+El punto fijo del manifiesto es **pariente del árbol versionado**: el estado $S$ incluye el git tree. La iteración es estable *dentro de un árbol dado*; los cambios de árbol requieren re-versionado explícito. Eso es **autogestión**, no dependencia de un juez exterior: el sistema que se crea a sí mismo también decide cuándo su nueva versión es él mismo.
 
 ---
 
@@ -44,9 +48,7 @@ python scripts/measure_invariance.py
 | Auto-regeneración canónica | rate = 1.0 |
 | Invariancia bajo índice de tríada | true |
 | Reconstrucción desde 12 tríadas | true |
-| **Control negativo** (una arista `mirrorOf`→`none`) | rate < 1.0 |
-
-Si el control negativo no detecta corrupción, la métrica es tautológica.
+| **Control negativo** (`mirrorOf`→`none`) | rate < 1.0 |
 
 ---
 
@@ -56,17 +58,15 @@ Si el control negativo no detecta corrupción, la métrica es tautológica.
 python experiments/domain_mapping/validate_examples.py
 ```
 
-**Predicción falsable:** si la asignación de la díada Evolución/Involución a los pares de dominio (p. ej. Mictecacíhuatl↔Mictlantecuhtli como `mirrorOf` entre fases opuestas, o el tránsito al Mictlán como cadena `creates` bajo Involución) estuviera **mal** respecto a las reglas formales, `validate_examples.py` reportaría fallos de anclaje (nodo inexistente, arista `none` donde se exige `mirrorOf`/`creates`, o violación de misma tríada).
-
-Observable que cambiaría: el JSON de resultado dejaría de listar esos pares como `aligned=true` / conforme a gold canónico.
-
-Sin esa predicción, el nivel 3 sería solo filosófico; con ella, es comprobable estructuralmente.
+Si la díada Evolución/Involución estuviera mal asignada en los pares de dominio, el validador reportaría fallos de anclaje (`aligned` falso, arista `none` indebida, o violación de misma tríada).
 
 ---
 
 ## 5. Resonancia provisional (EXP-A)
 
-κ ≈ 0.6871: dato sobre el mundo compartido. No fundamenta el marco.
+κ ≈ 0.6871: registro del **encuentro** con el mundo compartido. No fundamenta el marco.
+
+Protocolo: anotadores **sin** leer `MANIFIESTO.md` ni este documento antes de anotar (ceguera de sentido preservada).
 
 ---
 
