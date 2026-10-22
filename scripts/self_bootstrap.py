@@ -1,21 +1,11 @@
 #!/usr/bin/env python3
 """Punto fijo del repositorio: auto-creación estable bajo iteración.
 
-Requisitos de autonomía medible:
-  1. Regenerar CSV (y opcionalmente MANIFEST) desde data/iom_spec.json.
-  2. Verificar identidad con lo versionado (git diff vacío).
-  3. Segunda pasada idéntica (S_{n+1} = S_n): sin timestamps ni orden inestable.
+  python scripts/self_bootstrap.py --passes 2
+  python scripts/self_bootstrap.py --with-manifest --passes 2
 
-Con --with-manifest:
-  - Lee el MANIFEST.sha256 versionado (si existe).
-  - Regenera el manifiesto.
-  - Comprueba que el nuevo manifiesto coincide con el versionado *antes*
-    de cualquier commit; si el working tree ya tenía el manifiesto correcto,
-    la segunda corrida no lo altera.
-
-Uso:
-  python scripts/self_bootstrap.py
-  python scripts/self_bootstrap.py --with-manifest
+CSV siempre; MANIFEST solo con --with-manifest (versionar el manifiesto
+tras cambios de árbol: create_manifest.py && git add MANIFEST.sha256).
 """
 from __future__ import annotations
 
@@ -41,32 +31,23 @@ def git_diff_paths(paths: list[str]) -> subprocess.CompletedProcess:
     return run(["git", "diff", "--ignore-space-at-eol", "--exit-code", "--", *paths])
 
 
-def porcelain() -> str:
-    return run(["git", "status", "--porcelain", "--", *DERIVED_CSV, "MANIFEST.sha256"]).stdout
+def porcelain(paths: list[str]) -> str:
+    return run(["git", "status", "--porcelain", "--", *paths]).stdout
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Punto fijo idempotente del repositorio")
-    parser.add_argument(
-        "--with-manifest",
-        action="store_true",
-        help="Incluir MANIFEST.sha256 en el punto fijo",
-    )
-    parser.add_argument(
-        "--passes",
-        type=int,
-        default=2,
-        help="Número de regeneraciones consecutivas (default 2 = prueba de estabilidad)",
-    )
+    parser = argparse.ArgumentParser(description="Punto fijo idempotente")
+    parser.add_argument("--with-manifest", action="store_true")
+    parser.add_argument("--passes", type=int, default=2)
     args = parser.parse_args()
-
-    print("=== self_bootstrap: punto fijo idempotente ===")
-    print(f"Pasadas: {args.passes}  |  manifiesto: {args.with_manifest}")
-    print()
 
     paths = list(DERIVED_CSV)
     if args.with_manifest:
         paths.append("MANIFEST.sha256")
+
+    print("=== self_bootstrap: punto fijo idempotente ===")
+    print(f"Pasadas: {args.passes}  |  manifiesto: {args.with_manifest}")
+    print()
 
     for i in range(1, args.passes + 1):
         print(f"--- pasada {i}/{args.passes} ---")
@@ -77,8 +58,6 @@ def main() -> int:
             return 1
 
         if args.with_manifest:
-            # Comparar manifiesto *versionado* (HEAD) con el que se acaba de regenerar
-            # tras create_manifest: primero regenerar, luego diff contra HEAD.
             r = run([sys.executable, "scripts/create_manifest.py"])
             print(r.stdout, end="")
             if r.returncode != 0:
@@ -88,27 +67,28 @@ def main() -> int:
         r = git_diff_paths(paths)
         if r.returncode != 0:
             print(
-                f"FALLO en pasada {i}: artefactos regenerados ≠ versionados (HEAD).",
+                f"FALLO en pasada {i}: regenerado ≠ HEAD en {paths}",
                 file=sys.stderr,
             )
             print(r.stdout or r.stderr, file=sys.stderr)
-            print(
-                "\nSi es la primera vez que regeneras tras un cambio de spec:\n"
-                "  git add datasets/ MANIFEST.sha256 && git commit\n"
-                "Luego vuelve a ejecutar self_bootstrap para confirmar S_n = S_{n+1}.",
-                file=sys.stderr,
-            )
+            if args.with_manifest:
+                print(
+                    "\nSi el árbol cambió, versiona el manifiesto:\n"
+                    "  python scripts/create_manifest.py\n"
+                    "  git add MANIFEST.sha256 && git commit -m 'chore: refresh MANIFEST'\n"
+                    "Luego: python scripts/self_bootstrap.py --with-manifest --passes 2",
+                    file=sys.stderr,
+                )
             return 1
 
-        dirty = porcelain().strip()
+        dirty = porcelain(paths).strip()
         if dirty:
-            print(f"FALLO: working tree no limpio tras pasada {i}:\n{dirty}", file=sys.stderr)
+            print(f"FALLO: porcelain no limpio:\n{dirty}", file=sys.stderr)
             return 1
         print(f"OK pasada {i}: diff vacío, porcelain limpio")
 
     print()
-    print("OK: punto fijo estable bajo iteración (S_{n+1} = S_n).")
-    print("  Autonomía medible: regeneración idempotente desde iom_spec.json.")
+    print("OK: punto fijo estable (S_{n+1} = S_n).")
     return 0
 
 
