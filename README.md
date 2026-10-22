@@ -2,84 +2,50 @@
 
 Repositorio del marco I.O.: **Individualidad**, **Dualidad**, **Totalidad**, **Evolución** e **Involución**, leídas desde la óptica de la **auto-creación** y el **orden multiversal**.
 
-> **Carácter:** el sentido del marco **no** es encontrar un orden universal exterior ni obtener validez por el consenso de un «mundo compartido por conciencias separadas». Ese consenso es, en el ensayo canónico, frágil y **superable**. El eje es cartografiar el **camino al Mictlán** hacia una existencia que se origina desde el vacío: **Orden Definitivo ⟹ ¬∃ Contenedor Exterior.**
+> **Carácter:** el marco **no** se fundamenta en un orden externo ni en el consenso de conciencias separadas. Se **auto-constituye** (punto fijo + Lean). Lo externo es encuentro, no fundamento. **Orden Definitivo ⟹ ¬∃ Contenedor Exterior.**
 >
-> Texto canónico: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Carácter: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
-
-Lean 4 / OWL / SHACL y los 78 nodos son la **bóveda técnica de autonomía formal**: coherencia que **no pide** legitimación a un panel de observadores externos.
+> **Manifiesto fundacional:** [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Carácter: [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
 
 ## Equivalencia central
 
-| Perspectiva | Lectura | Figura ancla (apoyo) |
-|-------------|---------|----------------------|
+| Perspectiva | Lectura | Figura ancla |
+|-------------|---------|--------------|
 | Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
-| Dualidad | Polaridad yo/otro que se disuelve en el tránsito | Xólotl |
-| Totalidad | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
-| Evolución | Fuerza ascendente en el vacío | **Mictecacíhuatl** |
-| Involución | Fuerza descendente hacia la raíz | **Mictlantecuhtli** |
+| Dualidad | Polaridad en disolución | Xólotl |
+| Totalidad | Totalidad propia (sin contenedor exterior) | Tecuciztécatl |
+| Evolución | Fuerza ascendente | **Mictecacíhuatl** |
+| Involución | Fuerza descendente | **Mictlantecuhtli** |
 
-Las **13 tríadas** = topología del camino al Mictlán (muerte ontológica: observador → tejido del sistema).
+`isMirror` ↔ díada Evolución/Involución · `isCreates` ↔ auto-distinción desde el vacío · ver `IOM/SelfGenesis.lean`.
 
-## Qué se verifica (jerarquía de autonomía)
+## Qué se verifica (jerarquía)
 
-| Prioridad | Pregunta | Respuesta |
-|:---------:|----------|-----------|
-| **1** | ¿El sistema es coherente sin autoridad exterior? | Lean (**EXP-B**) + SHACL (**EXP-C**) — **autonomía formal** |
-| **2** | ¿El sendero Mictlán / autonomía es cartografiable? | **EXP-E** + dominio cosmológico |
-| **3** | ¿Las reglas se recuperan desde el propio sistema? | PI-HGAT-T (**EXP-D**) |
-| **4** | ¿Qué quedó del protocolo de conciencias separadas? | EXP-A (κ) — **residuo opcional, no fundamento** |
+| Prioridad | Criterio | Cómo |
+|:---------:|----------|------|
+| **1** | **Auto-fundamentación** (punto fijo) | `scripts/self_bootstrap.py` + `lake build` (SelfGenesis) |
+| **2** | **Invariancia** interna | `scripts/measure_invariance.py` |
+| **3** | **Destino Mictlán** expresable | EXP-E |
+| **4** | **Resonancia provisional** con el mundo | EXP-A (κ) — diálogo, no fundamento |
 
-## Residuo EXP-A (archivo, no eje)
-
-| Métrica | Valor | Lectura |
-|---|---:|---|
-| Fleiss' κ | 0.6871 | Documento de una fase de observadores separados; **no** prueba del marco |
-| Unánime | 10/14 | Controles de ese archivo |
-
-**Prohibido** presentar κ como validez del repositorio. Ver [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md).
-
-## Experimentos (relectura)
-
-| ID | Capa | Afirmación legítima |
-|----|------|---------------------|
-| **EXP-B** | Autonomía formal | Coherencia Lean |
-| **EXP-C** | Autonomía estructural | Conformidad SHACL |
-| **EXP-E** | Cartografía del tránsito | Sendero Mictlán / autonomía |
-| **EXP-D** | Auto-generación | Recuperación de reglas internas |
-| **EXP-A** | Residuo del mundo compartido | κ documentado; no fundante |
-
-## Dominio prioritario
-
-| Documento | Rol |
-|-----------|-----|
-| [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) | Eje de sentido |
-| [`CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md) | Carácter |
-| [`DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md) | Cartografía Mictlán |
-| [`media/cosmos_nahuatl/`](docs/media/cosmos_nahuatl/) | Medios |
+κ = 0.6871 es un **dato sobre el mundo compartido**, coherente con el ensayo: el consenso existe pero no fundamenta.
 
 ## Pipeline prioritario
 
 ```bash
 python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt
-lake build                                                                    # EXP-B autonomía formal
-.venv/bin/python scripts/validate_spec.py
-.venv/bin/python scripts/generate_ontology.py
-.venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python scripts/validate_shacl.py                                    # EXP-C
-.venv/bin/python experiments/domain_mapping/validate_examples.py              # EXP-E
-.venv/bin/python experiments/pi_hgat_t.py                                     # EXP-D opcional
-# EXP-A (residuo, no prioritario):
-# .venv/bin/python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
+.venv/bin/python scripts/self_bootstrap.py --with-manifest   # punto fijo
+lake build                                                     # SelfGenesis + FormalRules
+.venv/bin/python scripts/validate_shacl.py
+.venv/bin/python scripts/measure_invariance.py                 # invariancia
+.venv/bin/python experiments/domain_mapping/validate_examples.py
+# opcional: PI-HGAT-T / baselines (demo de recuperabilidad)
+# opcional: score_independent_eval (resonancia provisional)
 ```
+
+Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
 
 ## Documentación
 
-### Núcleo de sentido
-- [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
-- [`docs/CARACTER_REPOSITORIO.md`](docs/CARACTER_REPOSITORIO.md)
-- [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
-- [`docs/DOMINIO_COSMOS_NAHUATL.md`](docs/DOMINIO_COSMOS_NAHUATL.md)
-
-### Formal
-- [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md) · [`docs/RELACIONES_OPERATIVAS.md`](docs/RELACIONES_OPERATIVAS.md)
-- [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md) · [`docs/AUDITORIA_EPISTEMOLOGICA.md`](docs/AUDITORIA_EPISTEMOLOGICA.md)
+- Manifiesto: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- Carácter · Delimitación · Dominio Mictlán
+- Formal: `IOM/SelfGenesis.lean` · `IOM/FormalRules.lean` · `IOM/Operators.lean`
