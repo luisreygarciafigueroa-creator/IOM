@@ -1,59 +1,65 @@
-# Informe de auditoría epistemológica: validez semántica e interpretabilidad empírica del marco I.O.
+# Auditoría epistemológica: autonomía formal vs residuo del mundo compartido
 
-> Auditoría del carácter del repositorio: **prueba y demostración empírica de interpretabilidad** — no producto de software ni validación sintética autorreferencial.  
-> Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · Independiente: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
+> Bajo el carácter de **autonomía absoluta**, esta auditoría **no** certifica «validez semántica en el mundo real» por acuerdo de conciencias separadas.
+> Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 
 ---
 
 ## 1. Contexto y capas
 
 | Capa | Afirmación legítima |
-|---|---|
-| **Validez semántica (mundo real)** | Interpretabilidad y acuerdo inter-anotador sobre conceptos externos (κ, desacuerdos, mapeos) |
-| **Formal** | Coherencia deductiva en Lean 4.9.0 |
-| **Estructural** | Conformidad OWL/SHACL y CSV |
-| **Diagnóstico sintético** | Recuperación de relaciones *generadas por reglas* (PI-HGAT-T) |
+|------|---------------------|
+| **Autonomía formal** | Coherencia Lean + SHACL sin autoridad exterior |
+| **Cartografía del tránsito** | Expresabilidad del sendero Mictlán / autonomía en 13 tríadas |
+| **Diagnóstico sintético** | Auto-recuperabilidad de reglas (PI-HGAT-T) |
+| **Residuo inter-anotador** | κ documentado; **no** fundamento del marco |
 
-La frontera entre consistencia interna y validez empírica externa es **infranqueable**: Lean/SHACL/PI-HGAT-T no demuestran interpretabilidad en el mundo real.
+La frontera crítica ya no es «interno vs empírico externo», sino **autonomía vs dependencia de un contenedor de consenso**.
 
-## 2. Validez semántica (evaluación inter-anotador)
+---
+
+## 2. Residuo EXP-A (archivo, no eje)
 
 ```bash
 python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
 ```
 
-| Hallazgo | Valor |
-|---|---:|
-| Fleiss' κ | **0.6871** |
-| Unánimes | 10/14 |
-| Desacuerdos | NC01, NC02, AM01, AM03 |
+| Hallazgo | Valor | Lectura bajo autonomía |
+|----------|------:|------------------------|
+| Fleiss' κ | 0.6871 | Métrica de un panel de observadores separados — **no** prueba del marco |
+| Unánimes | 10/14 | Controles estables *dentro* de esa fase residual |
+| Desacuerdos | NC01, NC02, AM01, AM03 | Fronteras del vocabulario compartido, no fallo de la autonomía formal |
 
-κ = 0.6871 es **demostración provisional** de interpretabilidad; **no** validez universal. Los desacuerdos en NC/AM indican fronteras elásticas de las definiciones operativas, no fallo aleatorio.
+**Prohibido** presentar κ como demostración de validez del repositorio.
 
-## 3. Consistencia formal y estructural
+---
 
-- Lean 4: teoremas sobre vacío, unidad, infinito, transformación ([`PREMISAS_Y_TEOREMAS.md`](PREMISAS_Y_TEOREMAS.md)).
-- SHACL/CSV: conformidad de formas.
+## 3. Autonomía formal y estructural
 
-Condición **necesaria e insuficiente** para validez empírica.
+- Lean 4: teoremas sobre vacío, unidad, infinito, transformación.
+- SHACL/CSV: conformidad de formas y cardinalidades.
 
-## 4. Crítica: prueba empírica vs diagnóstico sintético
+Estas capas **bastan** para sostener el carácter del proyecto: el sistema no necesita un jurado exterior para ser coherente consigo mismo.
 
-| Criterio | Prueba empírica (mundo real) | Diagnóstico sintético |
-|---|---|---|
-| Datos | `datasets/independent_eval/` | `experiments/pi_hgat_t.py` |
-| Métrica | Fleiss' κ | Accuracy / F1 |
-| Afirmación | Interpretabilidad humana externa | Recuperabilidad de reglas internas |
+---
 
-PI-HGAT-T **no** aporta evidencia de verdad, utilidad o interpretabilidad de las 13 tríadas en la realidad.
+## 4. Crítica de la discrepancia corregida
 
-## 5. Dictamen y recomendaciones
+| Antes (discrepancia | Ahora |
+|------------------|--------|
+| Eje = «validez semántica en el mundo real» vía κ | Eje = autonomía formal + cartografía del tránsito |
+| El consenso de anotadores legitimaba el marco | Ese consenso es el «mundo compartido» que el ensayo declara superable |
+| PI-HGAT-T excluido de validez empírica | PI-HGAT-T = auto-generación; EXP-A = residuo no fundante |
 
-**Dictamen:** favorable **condicionado**. Coherencia formal en Lean y promesa empírica (κ=0.6871).
+---
 
-1. Tratar κ como prueba de concepto **provisional**; prohibido reclamar validez universal sin ampliar panel y corpus.
-2. Redefinir fronteras de `mirrorOf`/`creates` en NC01, NC02, AM01, AM03 antes de inferencia automatizada.
-3. Toda ingesta de dominio debe superar evaluación ciega **específica del dominio**.
-4. **Excluir** métricas de PI-HGAT-T/baselines de expedientes que certifiquen validez semántica real.
+## 5. Dictamen
 
-Suite experimental: [`../experiments/domain_mapping/registry.json`](../experiments/domain_mapping/registry.json).
+**Dictamen:** el repositorio es **coherente con la autonomía absoluta** solo si:
+
+1. No reclama validez por acuerdo inter-subjetivo.
+2. Trata Lean/SHACL como expresión técnica de no-dependencia de contenedor exterior.
+3. Conserva EXP-A como archivo opcional, no como ceremonia de legitimación.
+4. Lee EXP-E como cartografía del sendero, no como «prueba de campo consensuada».
+
+Suite: [`../experiments/domain_mapping/registry.json`](../experiments/domain_mapping/registry.json).

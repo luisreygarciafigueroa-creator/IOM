@@ -1,34 +1,46 @@
 # Delimitación epistemológica del marco IOM
 
-El repositorio tiene carácter de **prueba y demostración de validez semántica en el mundo real**. Este documento separa las capas para que no se confundan entre sí.
-
-Detalle operativo: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md).
-
----
-
-## Capas (la validez semántica real es el eje)
-
-| Capa | Naturaleza | Artefactos | Qué demuestra | Qué **no** demuestra |
-|---|---|---|---|---|
-| **Validez semántica (mundo real)** | Juicios o datos **no** derivados del generador de reglas; protocolo ciego; mapeos de dominio | `datasets/independent_eval/`, `datasets/external_eval/`, `CATALOGO_DOMINIOS.md`, anotación humana | Interpretabilidad, acuerdo inter-anotador, aplicabilidad semántica a conceptos externos | Verdad universal del marco; cobertura completa de dominios |
-| **Formal** | Determinista, a priori | Lean 4 (`IOM/*.lean`) | Corrección de operadores **dentro del sistema formal** | Validez semántica empírica |
-| **Sintética / estructural** | Datos generados por las reglas canónicas | SHACL, CSV, PI-HGAT-T, baselines | Consistencia y recuperabilidad de relaciones *generadas por reglas* | Validez semántica en el mundo real |
+> Bajo el carácter de **autonomía absoluta** ([`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md),
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)),
+> este repositorio **no** funda su validez en el consenso de un «mundo compartido por conciencias separadas».
+> Ese consenso es, en el ensayo canónico, frágil, provisional y **superable**.
 
 ---
 
-## Reglas de lenguaje
+## Principio rector
 
-1. **Validez semántica / mundo real** → «prueba de validez semántica», «demostración de interpretabilidad», «acuerdo inter-anotador bajo protocolo ciego», «alineación a dominio real».
-2. **Lean** → «demostrado formalmente».
-3. **SHACL / CSV canónicos** → «conforme a la especificación».
-4. **PI-HGAT-T / baselines = 1.0** → «recuperabilidad de relaciones generadas por reglas» (diagnóstico interno); **nunca** «validez semántica en el mundo real» ni «validación empírica del marco».
-5. **Ingesta de dominios** → «demostración de alineación»; requiere etiquetas independientes propias para contar como prueba semántica de campo.
+$$\text{Validez del marco} \neq \text{Acuerdo inter-subjetivo exterior}$$
+
+$$\text{Validez del marco} = \text{Capacidad de originarse y sostenerse sin contenedor exterior}$$
+
+La bóveda técnica (Lean, SHACL, 78 nodos) expresa **autonomía formal**: coherencia interna que no pide autorización a un panel de observadores separados. El acuerdo inter-anotador (κ) es un **residuo** de la fase del mundo compartido, no el fundamento.
+
+---
+
+## Capas (ordenadas por prioridad de sentido)
+
+| Prioridad | Capa | Naturaleza | Qué establece | Qué **no** establece |
+|:---------:|------|------------|---------------|----------------------|
+| **1** | **Autonomía formal** | Determinista, a priori | Coherencia deductiva y de forma **sin autoridad exterior** (Lean, SHACL, CSV canónicos) | «Verdad» empírica consensuada |
+| **2** | **Cartografía del tránsito** | Ejercicio de alineación | Que el sendero Mictlán / autonomía es **expresable** en las 13 tríadas | Que un panel externo «valide» el marco |
+| **3** | **Diagnóstico de auto-generación** | Sintético interno | Que las reglas del sistema son recuperables desde sí mismas (PI-HGAT-T) | Validez en un mundo compartido |
+| **4** | **Residuo del mundo compartido** | Protocolo ciego histórico | κ y desacuerdos entre anotadores separados (EXP-A) | Fundamento de la autonomía del marco |
+
+---
+
+## Reglas de lenguaje (obligatorias)
+
+1. **Prohibido** presentar el acuerdo inter-anotador (κ, Fleiss, «validez semántica en el mundo real») como **prueba** o **fundamento** del marco.
+2. **Lean / SHACL** → «autonomía formal», «coherencia sin contenedor exterior», «bóveda técnica».
+3. **PI-HGAT-T = 1.0** → «auto-recuperabilidad de reglas generadas por el sistema»; nunca «validez empírica».
+4. **EXP-A / independent_eval** → «residuo documentado de la fase de conciencias separadas»; opcional, no prioritario.
+5. **Mapeo de dominios** → «cartografía del tránsito»; no «demostración de validez en el mundo real por consenso».
+6. Toda afirmación que implique *necesitar* un panel de observadores externos para legitimar el marco **contradice el carácter** del repositorio.
 
 ---
 
 ## Referencias
 
-- Método de la prueba: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
-- Dominios: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md)
-- Auditoría métricas 100 %: [`AUDITORIA_METRICAS.md`](AUDITORIA_METRICAS.md)
-- Independent eval: [`datasets/independent_eval/`](../datasets/independent_eval/)
+- Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
+- Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- Capas operativas: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md) (reorientado)
