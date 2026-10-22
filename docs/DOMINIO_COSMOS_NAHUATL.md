@@ -133,7 +133,7 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 |---------|-----|
 | Piedra del Sol (`Piedra_del_Sol.png`) | Iconografía del Quinto Sol (Nahui Ollin) |
 | Láminas codiciales | Dualidad, Xólotl / inframundo, ciclo ritual |
-| *Amoxtli in Atl Miquiztli* (`Amoxtli_in_Atl_Miquiztli.pdf`) | Relato pictográfico del Mictlán (9+4=13 marcas) |
+| *Amoxtli in Atl Miquiztli* (`Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`) | Relato pictográfico del Mictlán (9+4=13 marcas) |
 | Tesis *Códice Xólotl* (`PECDSV03T.pdf`) | Edición de divulgación (Peña Cisneros, UAEM 2017) |
 
 ---
@@ -142,7 +142,7 @@ Carpeta: [`docs/media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 
 **Libro del agua y de la muerte** — relato original inspirado en la tradición nahua (9 láminas).
 
-- PDF: [`media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf`](media/cosmos_nahuatl/Amoxtli_in_Atl_Miquiztli.pdf)
+- PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf)
 - Ficha de alineación I.O.: [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md)
 
 El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un solo río** (no trece caminos aislados). La Lámina V articula Tonalli, Mictecacíhuatl y Mictlantecuhtli con esquemas → / ← coherentes con las posiciones canónicas. El xoloitzcuintle opera como guía del primer cruce (eco de **Xólotl** / Dualidad). Colofón: *El río es uno.*
