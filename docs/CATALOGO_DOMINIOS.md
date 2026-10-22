@@ -1,38 +1,37 @@
-# Catálogo de dominios: demostración de alineación semántica al mundo real
+# Catálogo de dominios: cartografía del tránsito (no validez por consenso)
 
-Este documento ofrece **traducciones conceptuales** para demostrar cómo fenómenos de disciplinas reales pueden alinearse con la ontología canónica de 78 nodos (13 tríadas × 2 fases × 3 posiciones) sin romper las restricciones formales (Lean, RDF/OWL, SHACL).
+Este documento ofrece **traducciones conceptuales** para cartografiar fenómenos al vocabulario de 78 nodos (13 tríadas × 2 fases × 3 posiciones) sin romper Lean / RDF / SHACL.
 
-En el carácter actual del repositorio, estos mapeos son **demostraciones de aplicabilidad semántica**, no teorías de dominio validadas en campo. La prueba primaria de validez semántica sigue siendo la anotación ciega independiente (`datasets/independent_eval/`).
+Bajo el carácter de **autonomía absoluta**, estos mapeos son **ejercicios del sendero**, no «demostraciones de validez semántica en el mundo real» mediadas por paneles de anotadores separados. La prueba primaria del repositorio ya **no** es la anotación ciega independiente.
 
-La ontología core permanece **inmutable**. Los datos externos se mapean como *instancias de alineación* o *candidatos de relación* que se validan estructuralmente antes de cualquier experimento predictivo.
+La ontología core permanece **inmutable**. Los datos externos se alinean como instancias o candidatos de relación; la coherencia formal basta para admitirlos estructuralmente.
 
 ---
 
 ## 1. Principios de mapeo
 
-1. **No se añaden nodos al core**: los 78 nodos (`datasets/triad_nodes.csv`) son la bóveda bancaria. Los conceptos nuevos se alinean a etiquetas existentes o se registran como *extensiones externas* en `datasets/ingestion/`.
-2. **Tres perspectivas posicionales**: cada fenómeno se interpreta bajo Individualidad (unidad/singularidad), Dualidad (relación/diferencia) o Totalidad (integración/sistema).
-3. **Dos direcciones vectoriales**: Evolución (proyección del vacío hacia estructura) e Involución (disolución de estructura hacia el vacío).
-4. **Relaciones admisibles**: solo `mirrorOf` (fase opuesta + posición reflejada) y `creates` (las cuatro reglas de creación). Cualquier otra arista se etiqueta `none`.
-5. **Validación previa**: todo CSV de entrada debe pasar por `scripts/importar_datos_personalizados.py` antes de mezclarse con los candidatos canónicos.
-6. **Validez semántica de campo**: un mapeo de dominio solo cuenta como evidencia de mundo real tras etiquetado ciego independiente propio (mismo estándar que `independent_eval`).
+1. **No se añaden nodos al core**: los 78 nodos son la bóveda técnica.
+2. **Tres perspectivas posicionales**: Individualidad, Dualidad, Totalidad — leídas como singularidad auto-creada, polaridad en disolución, totalidad propia (sin contenedor exterior).
+3. **Dos direcciones**: Evolución (Mictecacíhuatl) e Involución (Mictlantecuhtli).
+4. **Relaciones admisibles**: solo `mirrorOf` y `creates` (resto: `none`).
+5. **Validación estructural**: `scripts/importar_datos_personalizados.py` antes de mezclar con candidatos canónicos.
+6. **No se exige** etiquetado ciego inter-anotador para «legitimar» un dominio: eso restauraría la dependencia del mundo compartido.
 
 ---
 
-## 2. Cosmología náhuatl — Cinco Soles y Mictlán
+## 2. Cosmología náhuatl — Mictlán / autonomía (dominio prioritario)
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
+Ensayo de sentido: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md).  
 Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.  
-Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/) (Piedra del Sol, láminas codiciales, tesis *Códice Xólotl*).
+Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 
 | Concepto | Perspectiva | Relación candidata |
 |----------|-------------|--------------------|
-| Lucha Tezcatlipoca ↔ Quetzalcóatl | D | `mirrorOf` |
-| Cataclismo / nuevo Sol | Invol / Evol | `creates` |
-| Camino al Mictlán | Invol | `creates` |
-| Vida ↔ muerte | D | `mirrorOf` |
-
-Fuentes: Moreno de los Arcos; Luna López (2017).
+| Mictecacíhuatl ↔ Mictlantecuhtli | Evol / Invol | `mirrorOf` |
+| Camino al Mictlán (tránsito) | Invol → autonomía | `creates` |
+| Vida ↔ muerte (separación) | Dualidad | `mirrorOf` |
+| Auto-creación desde el vacío | Individualidad / Totalidad | `creates` |
 
 ---
 
@@ -40,35 +39,28 @@ Fuentes: Moreno de los Arcos; Luna López (2017).
 
 | Disciplina | Fenómeno típico | Vector dominante |
 |------------|-----------------|------------------|
-| Sociología | Cambio de norma social | Invol → Evol |
+| Sociología | Cambio de norma | Invol → Evol |
 | Física / sistemas complejos | Transición de fase | Evol / Invol |
-| Psicología | Insight / represión | Invol |
+| Psicología | Insight / disolución del yo-observador | Invol |
 | Ingeniería de software | Deuda técnica / refactor | Invol → Evol |
-| IA / cognición artificial | Animal → humano → IA | Evol / Invol |
+| IA / cognición | Animal → humano → IA | Evol / Invol |
 
 ---
 
-## 4. Cómo contribuir un nuevo dominio
+## 4. Cómo contribuir un dominio
 
 1. Copia `datasets/ingestion/templates/plantilla_dominio.csv`.
 2. Rellena `external_id`, `external_label`, `mapped_node_id`.
-3. Ejecuta:
-   ```bash
-   python scripts/importar_datos_personalizados.py \
-       --input datasets/ingestion/templates/mi_dominio.csv \
-       --output datasets/ingestion/aligned/mi_dominio_aligned.csv
-   ```
-4. Validar IDs contra los 78 nodos canónicos.
+3. Ejecuta `importar_datos_personalizados.py`.
+4. Valida IDs contra los 78 nodos.
 5. **Sin modificar** `data/iom_spec.json` ni la ontología core.
-6. Para validez semántica de campo: anotación ciega independiente + κ.
+6. No se requiere panel ciego para «aprobar» el mapeo; la admisión es estructural.
 
 ---
 
-## 5. Referencias internas
+## 5. Referencias
 
 - Nodos: [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv)
-- Alineación: [`MANUAL_ALINEACION_DOMINIOS.md`](MANUAL_ALINEACION_DOMINIOS.md)
+- Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
+- Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md)
 - Náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
-- Medios: [`media/cosmos_nahuatl/README.md`](media/cosmos_nahuatl/README.md)
-- Reglas: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md)
-- Script: [`scripts/importar_datos_personalizados.py`](../scripts/importar_datos_personalizados.py)
