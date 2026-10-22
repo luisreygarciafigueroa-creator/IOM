@@ -1,0 +1,26 @@
+{
+  "title": "Registro de acceso e independencia del anotador (EXP-A)",
+  "purpose": "Hacer auditable no solo el κ, sino que el anotador no recibió el marco antes de anotar.",
+  "entries": [
+    {
+      "annotator_id": "A1",
+      "instrument_delivered_at": "YYYY-MM-DDTHH:MM:SSZ",
+      "instrument_contents": ["INSTRUCTIONS.md", "pairs.csv"],
+      "materials_explicitly_withheld": [
+        "README.md",
+        "MANIFIESTO.md",
+        "EXPERIMENTOS.md",
+        "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
+        "docs/CARACTER_REPOSITORIO.md",
+        "rule_reference.json",
+        "datasets/relation_candidates.csv",
+        "experiments/results/*"
+      ],
+      "declared_prior_exposure_to_repo": false,
+      "declared_prior_exposure_notes": "",
+      "annotations_received_at": "YYYY-MM-DDTHH:MM:SSZ",
+      "included_in_primary_kappa": true
+    }
+  ],
+  "exclusion_rule": "Si declared_prior_exposure_to_repo es true, o si se documenta acceso al manifiesto/README antes de anotar, el anotador se excluye del κ primario y se reporta aparte."
+}

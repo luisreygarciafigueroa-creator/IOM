@@ -1,34 +1,41 @@
-# Evaluación independiente (prueba de validez semántica)
+# Evaluación independiente (resonancia provisional — EXP-A)
 
-**Estado: Completado** · Este directorio es el **centro de la prueba de validez semántica** del marco IOM en el mundo real. No es un anexo del generador de 390 candidatos.
+**Estado histórico: completado** (κ = 0.6871).  
+Bajo el carácter actual del repo, este conjunto es un **registro del encuentro**
+con el mundo compartido, **no** el fundamento del marco.
 
-## Principio
+## Ceguera = estado del anotador
 
-Los juicios se obtienen bajo protocolo **ciego**: sin `rule_label`, sin gold de entrenamiento y sin pistas estructurales en el material presentado al anotador (`annotator_pairs.csv`).
+El repo público documenta autonomía; un anotador que lo lea antes de anotar
+queda contaminado. Por eso las rondas nuevas usan el **instrumento autocontenido**:
+
+```
+instrument/
+  INSTRUCTIONS.md   # definiciones neutras
+  pairs.csv         # 14 pares sin gold
+  ACCESS_LOG.template.json
+```
+
+Entregar **solo** instrucciones + pares, fuera del clon del repo.  
+Registrar en el log de acceso **cuándo** se entregó qué y si hubo exposición previa.
 
 ## Integridad
 
 | Archivo | Rol |
-|---|---|
-| `annotator_pairs.csv` | Material **ciego** (id, etiquetas léxicas, contexto genérico) |
-| `independent_pairs.csv` | Metadatos de análisis (kind, source/target estructurales) |
-| `annotations.json` | Juicios A1–A3 + métricas |
+|---------|-----|
+| `instrument/` | Material entregable al anotador (ceguera práctica) |
+| `annotator_pairs.csv` | Misma lista de pares (análisis en-repo) |
+| `annotations.json` | Juicios A1–A3 (histórico) |
 | `rule_reference.json` | Solo post-hoc |
-| `annotator_pairs_rule_application.csv` | Análisis post-hoc label vs regla |
-| `PROTOCOL.json` | Protocolo publicado |
-| `SCORE_REPORT.md` | Informe de puntuación |
+| `PROTOCOL.json` | Protocolo + reglas de independencia |
 
-## Resultados
+## Resultados históricos
 
 | Métrica | Valor |
-|---|---:|
+|---------|------:|
 | Fleiss' κ | 0.6871 |
 | Unánime | 10/14 |
-| Mayoría (≥2) | 13/14 |
-| Controles unánimes | sí |
-| Fuera-de-reglas unánimes | sí |
-
-Desacuerdos: NC01, NC02, AM01, AM03.
+| Desacuerdos | NC01, NC02, AM01, AM03 |
 
 ```bash
 python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
@@ -36,5 +43,5 @@ python scripts/score_independent_eval.py --annotations datasets/independent_eval
 
 ## Lenguaje
 
-Este conjunto autoriza afirmaciones de **validez semántica / interpretabilidad** bajo protocolo ciego.  
-Las métricas de PI-HGAT-T **no** se interpretan como validación independiente del marco.
+Autoriza hablar de **resonancia inter-subjetiva provisional** bajo protocolo ciego.  
+**No** autoriza «el marco es válido porque κ ≈ 0.69».

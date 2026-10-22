@@ -1,27 +1,41 @@
 {
   "title": "Protocolo de anotación independiente (ciego)",
-  "version": "1.0.0",
-  "status": "completed",
+  "version": "1.1.0",
+  "status": "completed_historical",
   "n_items": 14,
-  "purpose": "Estudiar la interpretación humana de relaciones estructurales del marco I.O. sobre pares que incluyen controles canónicos, casos fuera de las cuatro reglas, conceptos nuevos y casos ambiguos. No mide recuperación de reglas por un modelo entrenado.",
+  "purpose": "Registrar resonancia inter-subjetiva provisional sobre pares léxicos. No fundamenta el marco; el marco se auto-certifica por punto fijo e invariancia.",
+  "framing": "κ es un dato sobre el encuentro con el mundo compartido, no el criterio primario de validez del repositorio.",
   "blinding": [
     "Los anotadores no reciben rule_label ni consensus previo.",
     "No se muestra experiments/results ni relation_candidates gold.",
-    "Solo ven: id, source/target (o etiquetas), context y las definiciones de RELACIONES_OPERATIVAS.md."
+    "Entrega preferente: instrument/ (INSTRUCTIONS.md + pairs.csv) sin clon del repo.",
+    "No se entrega MANIFIESTO.md, README del proyecto, EXPERIMENTOS.md ni el ensayo de autonomía.",
+    "La ceguera es un estado del anotador; el repo público no puede garantizarla por sí solo."
   ],
+  "self_contained_instrument": "datasets/independent_eval/instrument/",
+  "access_log": {
+    "template": "datasets/independent_eval/instrument/ACCESS_LOG.template.json",
+    "required_fields": [
+      "instrument_delivered_at",
+      "materials_explicitly_withheld",
+      "declared_prior_exposure_to_repo",
+      "annotations_received_at",
+      "included_in_primary_kappa"
+    ],
+    "rule": "Prior exposure al repo/manifiesto → exclusión del κ primario."
+  },
   "labels": ["none", "mirrorOf", "creates", "unsure"],
-  "recruitment": "Tres rondas independientes de aplicación del protocolo (A1 estructuralista, A2 estructural-semántica, A3 conservadora).",
+  "recruitment_historical": "Tres rondas A1–A3 (completadas). Rondas futuras usan instrument/ + access log.",
   "metrics_to_publish": [
-    "acuerdo por par (mayoría / unánime)",
-    "Fleiss' kappa global y por kind",
-    "tabla de desacuerdos ítem a ítem",
-    "coincidencia con rule_reference (solo post-hoc)",
-    "tasa de 'unsure' por kind"
+    "Fleiss' kappa global (solo anotadores included_in_primary_kappa)",
+    "tabla de desacuerdos",
+    "tasa de unsure",
+    "log de acceso e independencia (auditoría)"
   ],
   "result_artifacts": [
     "annotations.json",
     "annotator_pairs.csv",
-    "annotator_pairs_rule_application.csv",
+    "instrument/",
     "experiments/results/independent_eval_metrics.json",
     "SCORE_REPORT.md"
   ]
