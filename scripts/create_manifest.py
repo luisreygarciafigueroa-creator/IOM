@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Escribe SHA-256 de los artefactos fuente/reproducibles incluidos en el paquete.
 
-Exclusiones explícitas (no forman parte del punto fijo del manifiesto):
-  - MANIFEST.sha256  — evita hash auto-referente
-  - AUDITORIA_AUTO.md — regenerable y con timestamp; cada corrida cambiaría S
-  - __pycache__, .pytest_cache
+Exclusiones (no forman parte del punto fijo del manifiesto):
+  - MANIFEST.sha256 — evita hash auto-referente
+  - AUDITORIA_AUTO.md — regenerable con timestamp
+  - ontology/io_ontology.ttl — regenerable; orden de serialización rdflib no es
+    estable byte-a-byte entre corridas (CI lo regenera antes de SHACL)
+  - __pycache__, .pytest_cache, .venv
+
+Los CSV canónicos (triad_nodes, vector_steps, relation_candidates) SÍ entran:
+son el punto fijo de generate_ontology.py.
 """
 from hashlib import sha256
 from pathlib import Path
@@ -20,6 +25,7 @@ INCLUDE_FILES = (
 EXCLUDE_NAMES = frozenset({
     "MANIFEST.sha256",
     "AUDITORIA_AUTO.md",
+    "io_ontology.ttl",  # regenerable; serialización no determinista
 })
 EXCLUDE_DIR_PARTS = frozenset({"__pycache__", ".pytest_cache", ".venv", "node_modules"})
 
