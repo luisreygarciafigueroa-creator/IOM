@@ -3,7 +3,7 @@
   "spec_version": "1.9.0",
   "title": "Especificación IOM canónica",
   "source_date": "2026-10-21",
-  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de tríadas 1.9.0: T01 orientación|cuántico|dirección … T13 animal|humano|IA.",
+  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de presentación 1.9.0: orientación|cuántico|dirección … animal|humano|IA. El índice es ordinal, no identidad.",
   "triad_index_range": { "min": 1, "max": 13 },
   "positions": {
     "indices": [0, 1, 2],
@@ -63,7 +63,7 @@
       ["luz", "consciencia", "oscuridad"],
       ["IA", "humano", "animal"]
     ],
-    "note": "triads.adv[0] = tríada #1 (T01: orientación|cuántico|dirección); triads.adv[12] = tríada #13 (T13: animal|humano|IA). Posiciones adv: →|0|→ ; ret: ←|0|← . Arrays 0-based; triad_index y node_id públicos 1-based."
+    "note": "Identidad de cada tríada = sus tres etiquetas. El índice T01…T13 es solo orden de presentación (1.9.0: orientación|cuántico|dirección primero; animal|humano|IA último). Posiciones adv: →|0|→ ; ret: ←|0|←."
   },
   "vectors": [
     {"name": "Evol", "phase": "adv", "labels": ["invol", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
@@ -86,15 +86,15 @@
   },
   "migrations": [
     {"from_version": "1.0.0", "to_version": "1.1.0", "description": "Añade spec_version, schema_version formal y bloque migrations.", "date": "2026-10-08"},
-    {"from_version": "1.1.0", "to_version": "1.2.0", "description": "Actualiza las 13 tríadas; ret en orden de índice homólogo.", "date": "2026-10-13"},
-    {"from_version": "1.2.0", "to_version": "1.3.0", "description": "Secuencias de retroceso de perspectivas vectoriales 4 y 5.", "date": "2026-10-16"},
-    {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Tríada 10: universo|espacio|vacío → todo|espacio|nada.", "date": "2026-10-16"},
-    {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Tríada 10 revertida a universo|espacio|vacío; vectores 4/5 actualizados.", "date": "2026-10-18"},
-    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía de etiqueta de datos: caracter → carácter.", "date": "2026-10-18"},
-    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena tríadas al orden visual (oscuridad primero; animal en posición 7).", "date": "2026-10-20"},
-    {"from_version": "1.6.0", "to_version": "1.7.0", "description": "Índice de tríada 1–13 (antes 0–12); node_id T01…T13.", "date": "2026-10-20"},
-    {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga tríadas públicas T01–T13 y posiciones visuales.", "date": "2026-10-20"},
-    {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (tríada #8 en orden previo).", "date": "2026-10-20"},
-    {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de tríadas: T01=orientación|cuántico|dirección … T13=animal|humano|IA. Mismas etiquetas; nuevo índice. adv →|0|→ ; ret ←|0|←.", "date": "2026-10-21"}
+    {"from_version": "1.1.0", "to_version": "1.2.0", "description": "Actualiza el conjunto de 13 tríadas (identidad por etiquetas); fase ret en orden homólogo de columnas.", "date": "2026-10-13"},
+    {"from_version": "1.2.0", "to_version": "1.3.0", "description": "Secuencias de retroceso de las perspectivas vectoriales Evolución e Involución.", "date": "2026-10-16"},
+    {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Sustituye las etiquetas universo|espacio|vacío por todo|espacio|nada (misma ranura estructural del momento).", "date": "2026-10-16"},
+    {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Restaura las etiquetas universo|espacio|vacío; actualiza secuencias vectoriales Evolución/Involución.", "date": "2026-10-18"},
+    {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía canónica de la etiqueta: caracter → carácter.", "date": "2026-10-18"},
+    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena las 13 tríadas: oscuridad|consciencia|luz antes; animal|humano|IA más adelante. Identidad por etiquetas, no por índice.", "date": "2026-10-20"},
+    {"from_version": "1.6.0", "to_version": "1.7.0", "description": "node_id públicos T01…T13 (índice 1–13). El índice es ordinal de presentación, no identidad histórica.", "date": "2026-10-20"},
+    {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga node_id T01–T13 y etiquetas de posición visual →|0|→ y ←|0|←.", "date": "2026-10-20"},
+    {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (en la tríada carácter|subconsciente|personalidad).", "date": "2026-10-20"},
+    {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de presentación: primera tríada orientación|cuántico|dirección; última animal|humano|IA. Mismas etiquetas; el índice solo ordena, no identifica.", "date": "2026-10-21"}
   ]
 }
