@@ -93,7 +93,18 @@ io:VectorStepShape a sh:NodeShape ;
     sh:property [ sh:path io:hasAxisPosition ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasStepIndex ; sh:datatype xsd:integer ; sh:in ( 0 1 2 3 4 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:displayArrow ; sh:in ( "→"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] .
+    sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:sparql [
+        sh:message "etiqueta vectorial canónica" ;
+        sh:select """
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT $this WHERE {
+                $this rdfs:label ?label .
+                BIND(STR(?label) AS ?text)
+                FILTER (?text != "invol" && ?text != "ind" && ?text != "dua" && ?text != "tot" && ?text != "evol")
+            }
+        """
+    ] .
 
 io:ExpandedCategoryShape a sh:NodeShape ;
     sh:targetClass io:ExpandedCategory ;
