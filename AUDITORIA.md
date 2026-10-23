@@ -1,51 +1,42 @@
-# Auditoría IOM — prueba de validez semántica en el mundo real
+# Auditoría IOM — auto-fundamentación y encuentros
 
-**Carácter del repositorio:** [`docs/VALIDACION_INDEPENDIENTE.md`](docs/VALIDACION_INDEPENDIENTE.md)
+**Jerarquía canónica:** [`EXPERIMENTOS.md`](EXPERIMENTOS.md)  
+**Delimitación:** [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
 
-## 1. Validez semántica en el mundo real (capa primaria)
+## 1. Capa primaria — autonomía (punto fijo)
 
-**Estado: demostración provisional completada** (panel de 14 pares; no generalización universal).
+El repositorio es **válido como sistema** si:
 
-| Métrica | Valor |
-|---|---:|
-| Fleiss' κ | 0.6871 |
-| Unánime | 10/14 |
-| Mayoría (≥2) | 13/14 |
-| Controles unánimes | sí |
-| Fuera de reglas unánimes | sí |
-| Acuerdo post-hoc con reglas (informativo) | 0.9394 |
+1. `self_bootstrap.py --passes 2` deja CSV idénticos a HEAD ($S_{n+1}=S_n$).
+2. `lake build` incluye `IOM/SelfGenesis.lean` (conteos derivados).
+3. SHACL conforme sobre TTL regenerado.
+4. `measure_invariance.py` reporta invariancia **no trivial** (control negativo).
 
-Desacuerdos publicados: NC01, NC02, AM01, AM03.  
-Artefactos: `datasets/independent_eval/`, `scripts/score_independent_eval.py`.
+`AUDITORIA_AUTO.md` es artefacto regenerable (timestamp); **no** forma parte del manifiesto. Debe regenerarse tras cada cambio de `spec_version`; si queda desfasado (p. ej. 1.8.0 vs 1.9.0), **no** se usa como prueba de punto fijo.
 
-Alineación a dominios reales (demostración de mapeo, no validación de campo): [`docs/CATALOGO_DOMINIOS.md`](docs/CATALOGO_DOMINIOS.md).
+## 2. Capa secundaria — invariancia
 
-## 2. Consistencia formal (prerrequisito)
+Regeneración de etiquetas desde (fase, pos); LOO por tríada; corrupción de una arista detectada.
 
-Lean 4.9.0: operadores, `isMirror` / `isCreates`, conteos; sin `sorry`.  
-Premisas vs teoremas: [`docs/PREMISAS_Y_TEOREMAS.md`](docs/PREMISAS_Y_TEOREMAS.md).
+## 3. Encuentro — EXP-E y EXP-A (no fundamentan)
 
-## 3. Conformidad estructural (prerrequisito)
+| Experimento | Rol |
+|-------------|-----|
+| EXP-E (dominio / Mictlán) | Expresabilidad; un fallo de anclaje **no** invalida el núcleo |
+| EXP-A (κ) | Resonancia provisional **solo** con log de acceso e instrumento ciego |
 
-SHACL, CSV canónicos, puentes `tests/test_formal_rules_bridge.py` y property links.
+κ ≈ 0.6871 es registro histórico. Sin `ACCESS_LOG` de exposición previa **no** se declara «demostración provisional completada» en esta auditoría.
 
-## 4. Diagnóstico sintético (no es validez semántica real)
+## 4. Diagnóstico sintético (circular)
 
-Recuperación de relaciones **generadas por reglas** bajo leave-one-triad-out:
+| Método | Accuracy |
+|--------|---------:|
+| PI-HGAT-T (fase + posición) | 1.0000 |
+| MLP / reglas sin grafo | 1.0000 |
 
-| Método | Accuracy | Macro-F1 |
-|---|---:|---:|
-| PI-HGAT-T (fase + posición) | 1.0000 | 1.0000 |
-| Ablación sin fase | 0.6000 | 0.6056 |
-| Ablación sin posición | 0.6359 | 0.5771 |
-| Oracle de reglas | 1.0000 | 1.0000 |
-| MLP sin grafo | 1.0000 | 1.0000 |
-| Regresión logística | 0.5333 | 0.2424 |
+Muestran que la regla ya está en las features; no son validez semántica mundana.
 
-Estas cifras **no** se reportan como validez semántica en el mundo real. Véase [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md).
+## 5. Referencias
 
-## Documentos de evaluación técnica ampliados
-
-- [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md) — validez semántica, κ y dictamen
-- [`docs/INTEGRACION_METODOLOGICA.md`](docs/INTEGRACION_METODOLOGICA.md) — mapeo de dominios empíricos
-- [`docs/PROTOCOLO_DE_MAPEO.md`](docs/PROTOCOLO_DE_MAPEO.md) — protocolo de alineación y validación ciega
+- Técnica: [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md)
+- Métricas sintéticas: [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)

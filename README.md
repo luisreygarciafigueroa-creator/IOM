@@ -1,45 +1,46 @@
 # IOM — marco formal de 13 tríadas (autonomía verificable)
 
-Arquitectura Lean 4 / OWL / SHACL: cinco perspectivas, relaciones `mirrorOf` / `creates`, 78 nodos.
+Arquitectura Lean 4 / OWL / SHACL: cinco perspectivas, `mirrorOf` / `creates`, 78 nodos.
 
-**Manifiesto de sentido** (no requerido para ejecutar el pipeline):
-[`MANIFIESTO.md`](MANIFIESTO.md) → [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+**Manifiesto de sentido** (no requerido para el pipeline): [`MANIFIESTO.md`](MANIFIESTO.md)
 
-## Verificación prioritaria
+## Criterio del marco
+
+El sistema se sostiene en el **punto fijo de su especificación**. Anotadores, dominios y métricas de recuperación de reglas son **encuentro**, no fundamento.
+
+## Verificación prioritaria (núcleo autónomo)
 
 ```bash
 python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt
-.venv/bin/python scripts/self_bootstrap.py --passes 2          # punto fijo idempotente
-lake build                                                       # SelfGenesis + FormalRules
+.venv/bin/python scripts/self_bootstrap.py --passes 2   # S_{n+1}=S_n (CSV)
+lake build                                                # SelfGenesis + FormalRules
 .venv/bin/python scripts/validate_shacl.py
-.venv/bin/python scripts/measure_invariance.py                   # + control negativo
-.venv/bin/python experiments/domain_mapping/validate_examples.py # destino Mictlán
+.venv/bin/python scripts/measure_invariance.py            # + control negativo
+```
+
+Opcional (no bloquean «repo válido»):
+
+```bash
+.venv/bin/python scripts/self_bootstrap.py --with-manifest --passes 2
+.venv/bin/python experiments/domain_mapping/validate_examples.py  # EXP-E: encuentro
+.venv/bin/python experiments/pi_hgat_t.py                          # diagnóstico circular
 ```
 
 | Prioridad | Criterio | Runner |
 |:---------:|----------|--------|
-| 1 | Punto fijo estable ($S_{n+1}=S_n$) | `self_bootstrap.py --passes 2` |
-| 2 | Invariancia no trivial (+ control negativo) | `measure_invariance.py` |
-| 3 | Destino Mictlán expresable | EXP-E |
-| 4 | Resonancia provisional (κ) | EXP-A — dato sobre el mundo, no fundamento |
+| 1 | Punto fijo ($S_{n+1}=S_n$) | `self_bootstrap.py --passes 2` |
+| 1b | Conteos derivados | `lake build` (SelfGenesis) |
+| 2 | Invariancia no trivial | `measure_invariance.py` |
+| 3 | Destino Mictlán (encuentro) | EXP-E — **fuera del CI bloqueante** |
+| 4 | Resonancia κ (encuentro) | EXP-A — requiere log de acceso |
 
-Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
 
 ## Núcleo formal
 
 | Artefacto | Rol |
 |-----------|-----|
-| `data/iom_spec.json` | Spec tabular |
+| `data/iom_spec.json` | Spec tabular (`spec_version` 1.9.0) |
 | `IOM/FormalRules.lean` | `isMirror` / `isCreates` |
 | `IOM/SelfGenesis.lean` | Conteos derivados de la estructura |
-| `IOM/Operators.lean` | `E` / `Ivo` (díada Evolución/Involución) |
 | `scripts/self_bootstrap.py` | Regeneración idempotente |
-
-## Documentación
-
-| Documento | Audiencia |
-|-----------|-----------|
-| README (este) | Técnico / CI / evaluador |
-| [`MANIFIESTO.md`](MANIFIESTO.md) | Sentido / carácter |
-| [`EXPERIMENTOS.md`](EXPERIMENTOS.md) | Suite experimental |
-| [`docs/`](docs/) | Especificación y dominio |

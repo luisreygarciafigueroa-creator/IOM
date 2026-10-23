@@ -1,40 +1,33 @@
 # Experimentos del marco I.O. — autonomía funcional
 
-> Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)  
-> Delimitación: [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+> Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 
 El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
 
-**Intérprete:** todos los comandos asumen el venv del repo (`.venv/bin/python` tras `python3 -m venv .venv && .venv/bin/python -m pip install -r requirements-lock.txt`).
+**Intérprete:** `.venv/bin/python` tras instalar `requirements-lock.txt`.
 
 ---
 
 ## 1. Jerarquía
 
-| Prioridad | Capa | Runner | Afirmación legítima |
-|:---------:|------|--------|---------------------|
-| **1** | Punto fijo idempotente | `self_bootstrap.py --passes 2` | $S_{n+1}=S_n$ sobre CSV derivados |
-| **1b** | Lean SelfGenesis | `lake build` | Conteos derivados de la estructura |
-| **2** | Invariancia **no trivial** | `measure_invariance.py` | Canónico = 1.0; corrupción detectada |
-| **3** | Destino Mictlán | EXP-E | Sendero expresable; predicción falsable |
-| **4** | Resonancia provisional | EXP-A | κ = dato sobre el mundo, no fundamento |
+| Prioridad | Capa | Runner | ¿Bloquea «repo válido»? |
+|:---------:|------|--------|:-----------------------:|
+| **1** | Punto fijo | `self_bootstrap.py --passes 2` | sí |
+| **1b** | SelfGenesis | `lake build` | sí |
+| **2** | Invariancia no trivial | `measure_invariance.py` | sí |
+| **3** | Destino Mictlán | EXP-E | **no** (encuentro) |
+| **4** | Resonancia κ | EXP-A | **no** (requiere ACCESS_LOG) |
 
 ---
 
-## 2. Punto fijo (CSV y manifiesto)
+## 2. Punto fijo
 
 ```bash
 .venv/bin/python scripts/self_bootstrap.py --passes 2
-# tras una transición de árbol versionada:
-.venv/bin/python scripts/create_manifest.py && git add MANIFEST.sha256 && git commit -m "chore: refresh MANIFEST"
-.venv/bin/python scripts/self_bootstrap.py --with-manifest --passes 2
+.venv/bin/python scripts/self_bootstrap.py --with-manifest --passes 2  # tras versionar MANIFEST
 ```
 
-- **CSV**: derivados de `iom_spec.json`; dos pasadas idénticas.
-- **`MANIFEST.sha256` no se hashea a sí mismo**; **`AUDITORIA_AUTO.md` está excluido** (timestamped).
-- Con `--with-manifest`, la **cobertura es dura**: si faltan runners críticos en el manifiesto, el script **falla** (no solo advierte).
-
-Propiedad: el punto fijo del manifiesto es **pariente del árbol versionado** (autogestión, no juez exterior).
+`AUDITORIA_AUTO.md` y `io_ontology.ttl` no entran en el manifiesto.
 
 ---
 
@@ -44,32 +37,28 @@ Propiedad: el punto fijo del manifiesto es **pariente del árbol versionado** (a
 .venv/bin/python scripts/measure_invariance.py
 ```
 
-Control negativo: una arista `mirrorOf`→`none` debe bajar el rate.
+Control negativo obligatorio.
 
 ---
 
-## 4. Destino Mictlán (EXP-E)
+## 4. EXP-E (opcional)
 
 ```bash
 .venv/bin/python experiments/domain_mapping/validate_examples.py
 ```
 
-Fallos de anclaje si la díada E/Ivo está mal asignada en dominio.
+Un fallo de anclaje de dominio **no** invalida el núcleo formal.
 
 ---
 
-## 5. Resonancia provisional (EXP-A)
+## 5. EXP-A (opcional; κ no cerrado sin log)
 
-κ ≈ 0.6871 (histórico). Instrumento: [`datasets/independent_eval/instrument/`](datasets/independent_eval/instrument/).
+Instrumento: `datasets/independent_eval/instrument/`.
+
+Un κ histórico (~0.6871) **no** se presenta como demostración completada mientras no exista `ACCESS_LOG` de exposición previa. `rule_reference.json` es post-hoc; no se entrega al anotador.
 
 ---
 
-## 6. Pipeline interno
+## 6. Diagnóstico circular (opcional)
 
-```bash
-.venv/bin/python scripts/self_bootstrap.py --passes 2
-lake build
-.venv/bin/python scripts/validate_shacl.py
-.venv/bin/python scripts/measure_invariance.py
-.venv/bin/python experiments/domain_mapping/validate_examples.py
-```
+PI-HGAT-T / baselines: recuperan la regla embebida en (fase, pos). No son criterio primario.

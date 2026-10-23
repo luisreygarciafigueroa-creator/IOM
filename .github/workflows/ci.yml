@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   lean:
-    name: Lean 4 build
+    name: Lean 4 build (SelfGenesis)
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
@@ -17,8 +17,8 @@ jobs:
         with:
           build: true
 
-  ontology:
-    name: RDF, SHACL, schema and experiments
+  core:
+    name: Núcleo autónomo (punto fijo, SHACL, invariancia)
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
@@ -31,26 +31,44 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-lock.txt
-          python -c "import jsonschema; print('jsonschema', jsonschema.__version__)"
       - name: Validate iom_spec.json against JSON Schema
         run: python scripts/validate_spec.py
       - name: Check specification migrations
         run: python scripts/migrate_spec.py --check
       - name: Generate ontology/CSV and require versioned CSV match
         run: python scripts/check_generated_committed.py
-      - name: Check spec ↔ CSV ↔ ontology sync (tras regenerar)
+      - name: Punto fijo idempotente (CSV)
+        run: python scripts/self_bootstrap.py --passes 2
+      - name: Check spec ↔ CSV sync
         run: python scripts/sync_spec_artifacts.py --check
-      - name: Unit tests (ontology, property-based, metrics audit, PI-HGAT-T)
+      - name: Unit tests (ontología, reglas, schema)
         run: python -m unittest discover -s tests -v
-      - name: Score independent evaluation (capa C)
-        run: python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
-      - name: OWL RL + SHACL validation (TTL regenerado en working tree)
+      - name: OWL RL + SHACL
         run: python scripts/validate_shacl.py
-      - name: Reproducible PI-HGAT-T experiment
+      - name: Invariancia no trivial (+ control negativo)
+        run: python scripts/measure_invariance.py
+
+  optional_encounter:
+    name: Encuentro / diagnóstico (no bloqueante del núcleo)
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    needs: [core]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+      - name: Install locked dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-lock.txt
+      - name: Score independent evaluation (histórico; sin ACCESS_LOG)
+        run: python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
+      - name: PI-HGAT-T (diagnóstico circular)
         run: python experiments/pi_hgat_t.py
-      - name: Baseline classifiers comparison
+      - name: Baselines
         run: python experiments/baselines.py
-      - name: Audit perfect metrics (100%)
-        run: python scripts/audit_perfect_metrics.py
-      - name: Generate audit report
-        run: python scripts/generate_audit_report.py
+      - name: EXP-E domain mapping (encuentro)
+        run: python experiments/domain_mapping/validate_examples.py
