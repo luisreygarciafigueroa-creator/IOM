@@ -7,6 +7,9 @@ on:
 permissions:
   contents: read
 
+# Único workflow de validez del repositorio.
+# Encuentro (EXP-A/E, PI-HGAT-T) vive en workflows/encuentro.yml (manual).
+
 jobs:
   lean:
     name: Lean 4 build (SelfGenesis)
@@ -37,7 +40,7 @@ jobs:
         run: python scripts/migrate_spec.py --check
       - name: Generate ontology/CSV and require versioned CSV match
         run: python scripts/check_generated_committed.py
-      - name: Punto fijo idempotente (CSV)
+      - name: Punto fijo idempotente (CSV + sello spec_version)
         run: python scripts/self_bootstrap.py --passes 2
       - name: Check spec ↔ CSV sync
         run: python scripts/sync_spec_artifacts.py --check
@@ -47,28 +50,3 @@ jobs:
         run: python scripts/validate_shacl.py
       - name: Invariancia no trivial (+ control negativo)
         run: python scripts/measure_invariance.py
-
-  optional_encounter:
-    name: Encuentro / diagnóstico (no bloqueante del núcleo)
-    runs-on: ubuntu-24.04
-    continue-on-error: true
-    needs: [core]
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: '3.12'
-          cache: pip
-          cache-dependency-path: requirements-lock.txt
-      - name: Install locked dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements-lock.txt
-      - name: Score independent evaluation (histórico; sin ACCESS_LOG)
-        run: python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
-      - name: PI-HGAT-T (diagnóstico circular)
-        run: python experiments/pi_hgat_t.py
-      - name: Baselines
-        run: python experiments/baselines.py
-      - name: EXP-E domain mapping (encuentro)
-        run: python experiments/domain_mapping/validate_examples.py
