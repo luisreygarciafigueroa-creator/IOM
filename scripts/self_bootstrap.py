@@ -7,12 +7,13 @@
 Con --with-manifest:
   1. Regenera CSV + MANIFEST.sha256
   2. Exige identidad con HEAD (git diff vacío)
-  3. **Cobertura dura:** archivos críticos del árbol deben aparecer en el
-     manifiesto regenerado; si faltan, falla (no es decorativo).
+  3. Cobertura dura de archivos críticos
+  4. Sello datasets/GENERATED_FROM.json == spec_version del iom_spec.json
 """
 from __future__ import annotations
 
 import argparse
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -23,9 +24,9 @@ DERIVED_CSV = [
     "datasets/triad_nodes.csv",
     "datasets/vector_steps.csv",
     "datasets/relation_candidates.csv",
+    "datasets/GENERATED_FROM.json",
 ]
 
-# Deben estar en MANIFEST si existen en disco (runners y protocolo de sentido).
 CRITICAL_IF_PRESENT = [
     "scripts/self_bootstrap.py",
     "scripts/measure_invariance.py",
@@ -38,7 +39,24 @@ CRITICAL_IF_PRESENT = [
     "datasets/independent_eval/instrument/INSTRUCTIONS.md",
     "datasets/independent_eval/instrument/pairs.csv",
     "datasets/independent_eval/instrument/ACCESS_LOG.template.json",
+    "datasets/GENERATED_FROM.json",
 ]
+
+
+def check_spec_version_stamp() -> list[str]:
+    """Falla si los derivados no declaran la misma spec_version que iom_spec.json."""
+    spec = json.loads((ROOT / "data" / "iom_spec.json").read_text(encoding="utf-8"))
+    expected = spec["spec_version"]
+    stamp_path = ROOT / "datasets" / "GENERATED_FROM.json"
+    if not stamp_path.is_file():
+        return [f"falta {stamp_path.as_posix()} (regenera con generate_ontology.py)"]
+    stamp = json.loads(stamp_path.read_text(encoding="utf-8"))
+    if stamp.get("spec_version") != expected:
+        return [
+            f"GENERATED_FROM.json spec_version={stamp.get('spec_version')!r} "
+            f"≠ iom_spec.json {expected!r}"
+        ]
+    return []
 
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess:
@@ -59,7 +77,6 @@ def manifest_paths(manifest_file: Path) -> set[str]:
         line = line.strip()
         if not line:
             continue
-        # "<hash>  <path>"
         parts = line.split("  ", 1)
         if len(parts) == 2:
             out.add(parts[1])
@@ -67,7 +84,6 @@ def manifest_paths(manifest_file: Path) -> set[str]:
 
 
 def check_manifest_coverage() -> list[str]:
-    """Devuelve lista de críticos presentes en disco pero ausentes del manifiesto."""
     mf = ROOT / "MANIFEST.sha256"
     if not mf.is_file():
         return ["MANIFEST.sha256 (archivo inexistente)"]
@@ -102,6 +118,13 @@ def main() -> int:
             print(r.stderr, file=sys.stderr)
             return 1
 
+        stamp_errs = check_spec_version_stamp()
+        if stamp_errs:
+            print("FALLO: sello de spec_version inconsistente:", file=sys.stderr)
+            for e in stamp_errs:
+                print(f"  - {e}", file=sys.stderr)
+            return 1
+
         if args.with_manifest:
             r = run([sys.executable, "scripts/create_manifest.py"])
             print(r.stdout, end="")
@@ -118,11 +141,6 @@ def main() -> int:
                 )
                 for m in missing:
                     print(f"  - {m}", file=sys.stderr)
-                print(
-                    "\nEsto no es un warning: el punto fijo con --with-manifest "
-                    "exige cobertura. Revisa create_manifest.py INCLUDE_* / exclusiones.",
-                    file=sys.stderr,
-                )
                 return 1
 
         r = git_diff_paths(paths)
@@ -134,7 +152,7 @@ def main() -> int:
             print(r.stdout or r.stderr, file=sys.stderr)
             if args.with_manifest:
                 print(
-                    "\nVersiona el manifiesto actualizado:\n"
+                    "\nVersiona el manifiesto:\n"
                     "  python scripts/create_manifest.py\n"
                     "  git add MANIFEST.sha256 && git commit -m 'chore: refresh MANIFEST'\n"
                     "  python scripts/self_bootstrap.py --with-manifest --passes 2",
@@ -146,8 +164,11 @@ def main() -> int:
         if dirty:
             print(f"FALLO: porcelain no limpio:\n{dirty}", file=sys.stderr)
             return 1
-        print(f"OK pasada {i}: diff vacío, porcelain limpio"
-              + (", cobertura crítica OK" if args.with_manifest else ""))
+        print(
+            f"OK pasada {i}: diff vacío, porcelain limpio"
+            + (", cobertura crítica OK" if args.with_manifest else "")
+            + f", stamp={json.loads((ROOT / 'datasets' / 'GENERATED_FROM.json').read_text())['spec_version']}"
+        )
 
     print()
     print("OK: punto fijo estable (S_{n+1} = S_n).")
