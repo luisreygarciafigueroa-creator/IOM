@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Escribe SHA-256 de los artefactos fuente/reproducibles incluidos en el paquete.
 
-`MANIFEST.sha256` **no** se incluye en su propio contenido (evita hash
-auto-referente). El punto fijo con --with-manifest compara el manifiesto
-regenerado contra el versionado en HEAD, no contra un hash de sí mismo.
+Exclusiones explícitas (no forman parte del punto fijo del manifiesto):
+  - MANIFEST.sha256  — evita hash auto-referente
+  - AUDITORIA_AUTO.md — regenerable y con timestamp; cada corrida cambiaría S
+  - __pycache__, .pytest_cache
 """
 from hashlib import sha256
 from pathlib import Path
@@ -16,8 +17,11 @@ INCLUDE_FILES = (
     "requirements.txt", "requirements-lock.txt", "lakefile.lean", "lake-manifest.json", "lean-toolchain",
     "LICENSE", ".gitignore", ".github/workflows/ci.yml",
 )
-# Nunca hashear el propio manifiesto ni artefactos de caché.
-EXCLUDE_NAMES = frozenset({"MANIFEST.sha256"})
+EXCLUDE_NAMES = frozenset({
+    "MANIFEST.sha256",
+    "AUDITORIA_AUTO.md",
+})
+EXCLUDE_DIR_PARTS = frozenset({"__pycache__", ".pytest_cache", ".venv", "node_modules"})
 
 
 def main() -> None:
@@ -28,7 +32,7 @@ def main() -> None:
             files.update(
                 p for p in folder.rglob("*")
                 if p.is_file()
-                and not any(part in {"__pycache__", ".pytest_cache"} for part in p.parts)
+                and not any(part in EXCLUDE_DIR_PARTS for part in p.parts)
             )
     files = {p for p in files if p.name not in EXCLUDE_NAMES}
     out = ROOT / "MANIFEST.sha256"
@@ -37,7 +41,8 @@ def main() -> None:
         for path in sorted(files)
     ]
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"SHA-256: {len(lines)} archivos -> {out} (excluye MANIFEST.sha256)")
+    print(f"SHA-256: {len(lines)} archivos -> {out}")
+    print(f"  excluidos por nombre: {sorted(EXCLUDE_NAMES)}")
 
 
 if __name__ == "__main__":
