@@ -72,11 +72,11 @@ theorem isMirrorRel_implies_same_triad (a b : TriadNode) (h : isMirrorRel a b) :
     sameTriad a b := h.1
 
 /-- Las cuatro reglas de creación entre fases opuestas (solo posicional). -/
-def lateral (p : TriadPosition) : Prop := p = .→ ∨ p = .←
+def lateral (p : TriadPosition) : Prop := p = .«→» ∨ p = .«←»
 
 def isCreatesPositional (a b : TriadNode) : Prop :=
   a.phase.opposite = b.phase ∧
-    ((lateral a.pos ∧ b.pos = .₀) ∨ (a.pos = .₀ ∧ lateral b.pos))
+    ((lateral a.pos ∧ b.pos = .«₀») ∨ (a.pos = .«₀» ∧ lateral b.pos))
 
 /-- `creates` operativo: misma tríada ∧ condición posicional de creación. -/
 def isCreatesRel (a b : TriadNode) : Prop :=
