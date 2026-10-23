@@ -15,10 +15,9 @@ g = Graph()
 for prefix, namespace in (("io", IO), ("rdfs", RDFS), ("xsd", XSD), ("owl", OWL)):
     g.bind(prefix, namespace)
 
-# OWL vocabulary: class/property declarations and explicit domains/ranges.
 ontology = IO.Ontology
 g.add((ontology, RDF.type, OWL.Ontology))
-g.add((ontology, OWL.versionInfo, Literal("1.1.0")))
+g.add((ontology, OWL.versionInfo, Literal(SPEC["spec_version"])))
 g.add((ontology, RDFS.label, Literal("Ontología IOM", lang="es")))
 g.add((ontology, RDFS.comment, Literal(SPEC["source_note"], lang="es")))
 classes = ("OntoNode", "VectorStep", "Perspective", "ExpandedCategory", "Position", "Direction", "SourceModel")
@@ -71,8 +70,6 @@ for name in ("hasPerspective", "hasPosition", "hasDirection", "hasVector", "hasT
     g.add((IO[name], RDF.type, OWL.FunctionalProperty))
 g.add((IO.mirrorOf, RDF.type, OWL.SymmetricProperty))
 
-# Posiciones canónicas: → / 0 / → (avance) y ← / 0 / ← (retroceso).
-# Los individuos de posición se nombran por el símbolo de display.
 for pos, label in [("→", "→"), ("0", "0"), ("←", "←")]:
     g.add((IO[pos], RDF.type, OWL.NamedIndividual))
     g.add((IO[pos], RDF.type, IO.Position))
@@ -80,7 +77,6 @@ for pos, label in [("→", "→"), ("0", "0"), ("←", "←")]:
 for direction in ("evol", "invol"):
     g.add((IO[direction], RDF.type, OWL.NamedIndividual))
     g.add((IO[direction], RDF.type, IO.Direction))
-# Cinco perspectivas canónicas: Individualidad, Dualidad, Totalidad, Evolución e Involución.
 _perspective_labels = SPEC.get("perspective_labels") or {
     "Ind": "Individualidad", "D": "Dualidad", "Tot": "Totalidad",
     "Evol": "Evolución", "Invol": "Involución",
@@ -124,7 +120,6 @@ for phase, rows in triad_rows.items():
                               "position": pos_names[pos_idx], "display_label": display_label,
                               "perspective": perspective_names[pos_idx], "label": label})
 
-# Espejos entre fases: se invierten laterales y se conserva el centro.
 for triad_idx in triad_ids:
     for pos_idx in range(3):
         adv = IO[f"T{triad_idx:02d}_adv_P{pos_idx}"]
@@ -132,7 +127,6 @@ for triad_idx in triad_ids:
         g.add((adv, IO.mirrorOf, ret))
         g.add((ret, IO.mirrorOf, adv))
 
-# Aplicar las cuatro reglas de creación indicadas en la fuente estructurada.
 for triad_idx in triad_ids:
     for rule in SPEC["creation_rules"]:
         for source_pos in rule["source_positions"]:
@@ -170,7 +164,6 @@ for prop, value in ((IO.declaredTriadCount, 13), (IO.declaredPerspectiveCount, 5
                     (IO.declaredOperatorCount, 4), (IO.declaredExpandedCategoryCount, 21)):
     g.add((model, prop, Literal(value, datatype=XSD.integer)))
 
-# Pair-classification dataset for PI-HGAT-T: 36 directed candidates per triad.
 relation_csv = []
 relation_lookup = {}
 for subject, _, obj in g.triples((None, IO.mirrorOf, None)):
@@ -208,6 +201,22 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 write_csv(ROOT / "datasets" / "triad_nodes.csv", nodes_csv)
 write_csv(ROOT / "datasets" / "vector_steps.csv", vector_csv)
 write_csv(ROOT / "datasets" / "relation_candidates.csv", relation_csv)
+
+_stamp = {
+    "spec_version": SPEC["spec_version"],
+    "schema_version": SPEC.get("schema_version"),
+    "source_date": SPEC.get("source_date"),
+    "artifacts": [
+        "datasets/triad_nodes.csv",
+        "datasets/vector_steps.csv",
+        "datasets/relation_candidates.csv",
+        "ontology/io_ontology.ttl",
+    ],
+}
+(ROOT / "datasets" / "GENERATED_FROM.json").write_text(
+    json.dumps(_stamp, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+)
 print(f"Tríadas: {n_triads} por fase (índice {index_base}–{index_base + n_triads - 1}); nodos: {len(nodes_csv)}; creates: 104; espejos: 78")
 print(f"Pasos vectoriales: {len(vector_csv)}; candidatos PI-HGAT-T: {len(relation_csv)}")
 print(f"OWL/Turtle: {out}")
+print(f"Sello: datasets/GENERATED_FROM.json spec_version={SPEC['spec_version']}")
