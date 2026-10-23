@@ -4,8 +4,11 @@
   python scripts/self_bootstrap.py --passes 2
   python scripts/self_bootstrap.py --with-manifest --passes 2
 
-CSV siempre; MANIFEST solo con --with-manifest (versionar el manifiesto
-tras cambios de árbol: create_manifest.py && git add MANIFEST.sha256).
+Con --with-manifest:
+  1. Regenera CSV + MANIFEST.sha256
+  2. Exige identidad con HEAD (git diff vacío)
+  3. **Cobertura dura:** archivos críticos del árbol deben aparecer en el
+     manifiesto regenerado; si faltan, falla (no es decorativo).
 """
 from __future__ import annotations
 
@@ -22,6 +25,21 @@ DERIVED_CSV = [
     "datasets/relation_candidates.csv",
 ]
 
+# Deben estar en MANIFEST si existen en disco (runners y protocolo de sentido).
+CRITICAL_IF_PRESENT = [
+    "scripts/self_bootstrap.py",
+    "scripts/measure_invariance.py",
+    "scripts/create_manifest.py",
+    "scripts/generate_ontology.py",
+    "IOM/SelfGenesis.lean",
+    "IOM/FormalRules.lean",
+    "MANIFIESTO.md",
+    "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
+    "datasets/independent_eval/instrument/INSTRUCTIONS.md",
+    "datasets/independent_eval/instrument/pairs.csv",
+    "datasets/independent_eval/instrument/ACCESS_LOG.template.json",
+]
+
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
@@ -33,6 +51,33 @@ def git_diff_paths(paths: list[str]) -> subprocess.CompletedProcess:
 
 def porcelain(paths: list[str]) -> str:
     return run(["git", "status", "--porcelain", "--", *paths]).stdout
+
+
+def manifest_paths(manifest_file: Path) -> set[str]:
+    out: set[str] = set()
+    for line in manifest_file.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        # "<hash>  <path>"
+        parts = line.split("  ", 1)
+        if len(parts) == 2:
+            out.add(parts[1])
+    return out
+
+
+def check_manifest_coverage() -> list[str]:
+    """Devuelve lista de críticos presentes en disco pero ausentes del manifiesto."""
+    mf = ROOT / "MANIFEST.sha256"
+    if not mf.is_file():
+        return ["MANIFEST.sha256 (archivo inexistente)"]
+    listed = manifest_paths(mf)
+    missing = []
+    for rel in CRITICAL_IF_PRESENT:
+        p = ROOT / rel
+        if p.is_file() and rel not in listed:
+            missing.append(rel)
+    return missing
 
 
 def main() -> int:
@@ -64,6 +109,22 @@ def main() -> int:
                 print(r.stderr, file=sys.stderr)
                 return 1
 
+            missing = check_manifest_coverage()
+            if missing:
+                print(
+                    "FALLO de cobertura del manifiesto — archivos críticos en disco "
+                    "pero ausentes de MANIFEST.sha256:",
+                    file=sys.stderr,
+                )
+                for m in missing:
+                    print(f"  - {m}", file=sys.stderr)
+                print(
+                    "\nEsto no es un warning: el punto fijo con --with-manifest "
+                    "exige cobertura. Revisa create_manifest.py INCLUDE_* / exclusiones.",
+                    file=sys.stderr,
+                )
+                return 1
+
         r = git_diff_paths(paths)
         if r.returncode != 0:
             print(
@@ -73,10 +134,10 @@ def main() -> int:
             print(r.stdout or r.stderr, file=sys.stderr)
             if args.with_manifest:
                 print(
-                    "\nSi el árbol cambió, versiona el manifiesto:\n"
+                    "\nVersiona el manifiesto actualizado:\n"
                     "  python scripts/create_manifest.py\n"
                     "  git add MANIFEST.sha256 && git commit -m 'chore: refresh MANIFEST'\n"
-                    "Luego: python scripts/self_bootstrap.py --with-manifest --passes 2",
+                    "  python scripts/self_bootstrap.py --with-manifest --passes 2",
                     file=sys.stderr,
                 )
             return 1
@@ -85,7 +146,8 @@ def main() -> int:
         if dirty:
             print(f"FALLO: porcelain no limpio:\n{dirty}", file=sys.stderr)
             return 1
-        print(f"OK pasada {i}: diff vacío, porcelain limpio")
+        print(f"OK pasada {i}: diff vacío, porcelain limpio"
+              + (", cobertura crítica OK" if args.with_manifest else ""))
 
     print()
     print("OK: punto fijo estable (S_{n+1} = S_n).")
