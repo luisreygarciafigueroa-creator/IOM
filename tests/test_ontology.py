@@ -108,7 +108,7 @@ class IOMValidationTests(unittest.TestCase):
                     )
                     self.assertEqual(
                         self.data.value(node, IO.hasPosition),
-                        IO[["left", "center", "right"][pos]],
+                        IO[{"adv": ["→", "0", "→"], "ret": ["←", "0", "←"]}[phase][pos]],
                     )
                     display_labels = self.SPEC["positions"]["adv_labels" if phase == "adv" else "ret_labels"]
                     generated = next(r for r in self.NODE_ROWS if r["node_id"] == f"T{triad_index:02d}_{phase}_P{pos}")
@@ -137,7 +137,11 @@ class IOMValidationTests(unittest.TestCase):
                                 IO[f"T{i:02d}_{rule['target_phase']}_P{dst}"],
                             )
                         )
-        self.assertEqual(len(expected), 104)
+        n_rules_edges = sum(
+            len(r["source_positions"]) * len(r["target_positions"])
+            for r in self.SPEC["creation_rules"]
+        )
+        self.assertEqual(len(expected), 13 * n_rules_edges)
         self.assertEqual(actual, expected)
 
     def test_vectors_match_all_four_updated_sequences(self):
@@ -206,10 +210,12 @@ class IOMValidationTests(unittest.TestCase):
         )
 
     def test_generated_datasets_have_expected_rows(self):
+        n_triads = len(self.SPEC["triads"]["adv"])
+        n_vec = sum(len(v["labels"]) for v in self.SPEC["vectors"])
         expected = {
-            "triad_nodes.csv": 78,
-            "vector_steps.csv": 20,
-            "relation_candidates.csv": 390,
+            "triad_nodes.csv": n_triads * 2 * 3,
+            "vector_steps.csv": n_vec,
+            "relation_candidates.csv": n_triads * 6 * 5,
         }
         for name, count in expected.items():
             with (ROOT / "datasets" / name).open(encoding="utf-8", newline="") as f:
