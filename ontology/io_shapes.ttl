@@ -9,7 +9,7 @@ io:StructuralShape a sh:NodeShape ;
     sh:property [ sh:path io:hasPhase ; sh:datatype xsd:string ; sh:in ( "adv"^^xsd:string "ret"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasLocalPos ; sh:datatype xsd:integer ; sh:in ( 0 1 2 ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:displayLabel ; sh:datatype xsd:string ; sh:in ( "→"^^xsd:string "0"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path io:hasPosition ; sh:in ( io:→ io:0 io:← ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path io:hasPosition ; sh:in ( <http://example.org/iom#→> <http://example.org/iom#0> <http://example.org/iom#←> ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasPerspective ; sh:in ( io:Ind io:D io:Tot ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path io:hasDirection ; sh:in ( io:evol io:invol ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
@@ -20,10 +20,14 @@ io:StructuralShape a sh:NodeShape ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
-                $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective ; io:hasPosition ?position .
-                FILTER ((?pos = 0 && (?perspective != io:Ind || ?position != io:→)) ||
-                        (?pos = 1 && (?perspective != io:D || ?position != io:0)) ||
-                        (?pos = 2 && (?perspective != io:Tot || ?position != io:←)))
+                $this io:hasLocalPos ?pos ; io:hasPerspective ?perspective ; io:hasPosition ?position ; io:hasPhase ?phase .
+                FILTER (
+                  (?pos = 1 && (?perspective != io:D || ?position != <http://example.org/iom#0>)) ||
+                  (?pos = 0 && ?perspective != io:Ind) ||
+                  (?pos = 2 && ?perspective != io:Tot) ||
+                  (?phase = \"adv\" && (?pos = 0 || ?pos = 2) && ?position != <http://example.org/iom#→>) ||
+                  (?phase = \"ret\" && (?pos = 0 || ?pos = 2) && ?position != <http://example.org/iom#←>)
+                )
             }
         """
     ] ;
@@ -33,10 +37,10 @@ io:StructuralShape a sh:NodeShape ;
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
                 $this io:hasPhase ?phase ; io:hasLocalPos ?pos ; io:displayLabel ?label .
-                FILTER ((?phase = "adv" &&
-                         !((?pos = 0 && ?label = "→") || (?pos = 1 && ?label = "0") || (?pos = 2 && ?label = "→"))) ||
-                        (?phase = "ret" &&
-                         !((?pos = 0 && ?label = "←") || (?pos = 1 && ?label = "0") || (?pos = 2 && ?label = "←"))))
+                FILTER ((?phase = \"adv\" &&
+                         !((?pos = 0 && ?label = \"→\") || (?pos = 1 && ?label = \"0\") || (?pos = 2 && ?label = \"→\"))) ||
+                        (?phase = \"ret\" &&
+                         !((?pos = 0 && ?label = \"←\") || (?pos = 1 && ?label = \"0\") || (?pos = 2 && ?label = \"←\"))))
             }
         """
     ] ;
@@ -49,7 +53,7 @@ io:StructuralShape a sh:NodeShape ;
                 ?mirror io:hasTriadIndex ?otherTriad ; io:hasLocalPos ?otherPos ; io:hasPhase ?otherPhase .
                 FILTER NOT EXISTS { ?mirror io:mirrorOf $this }
                 FILTER (?triad != ?otherTriad || ?otherPos != (2 - ?pos) ||
-                        !((?phase = "adv" && ?otherPhase = "ret") || (?phase = "ret" && ?otherPhase = "adv")))
+                        !((?phase = \"adv\" && ?otherPhase = \"ret\") || (?phase = \"ret\" && ?otherPhase = \"adv\")))
             }
         """
     ] ;
@@ -59,7 +63,7 @@ io:StructuralShape a sh:NodeShape ;
             PREFIX io: <http://example.org/iom#>
             SELECT $this WHERE {
                 $this io:hasPhase ?phase ; io:hasDirection ?direction .
-                FILTER ((?phase = "adv" && ?direction != io:evol) || (?phase = "ret" && ?direction != io:invol))
+                FILTER ((?phase = \"adv\" && ?direction != io:evol) || (?phase = \"ret\" && ?direction != io:invol))
             }
         """
     ] ;
@@ -71,10 +75,10 @@ io:StructuralShape a sh:NodeShape ;
                 $this io:hasTriadIndex ?triad ; io:hasLocalPos ?pos ; io:hasPhase ?phase ; io:creates ?target .
                 ?target io:hasTriadIndex ?otherTriad ; io:hasLocalPos ?otherPos ; io:hasPhase ?otherPhase .
                 FILTER (?triad != ?otherTriad ||
-                    !((?phase = "adv" && ?otherPhase = "ret" &&
+                    !((?phase = \"adv\" && ?otherPhase = \"ret\" &&
                        ((?pos = 0 && ?otherPos = 1) || (?pos = 2 && ?otherPos = 1) ||
                         (?pos = 1 && (?otherPos = 0 || ?otherPos = 2)))) ||
-                      (?phase = "ret" && ?otherPhase = "adv" &&
+                      (?phase = \"ret\" && ?otherPhase = \"adv\" &&
                        ((?pos = 0 && ?otherPos = 1) || (?pos = 2 && ?otherPos = 1) ||
                         (?pos = 1 && (?otherPos = 0 || ?otherPos = 2)))))
                 )
@@ -91,7 +95,7 @@ io:VectorStepShape a sh:NodeShape ;
     sh:property [ sh:path io:displayArrow ; sh:in ( "→"^^xsd:string "←"^^xsd:string ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:property [ sh:path rdfs:label ; sh:languageIn ( "es" ) ; sh:minCount 1 ; sh:maxCount 1 ] ;
     sh:sparql [
-        sh:message "Etiqueta, fase, paso, eje y flecha deben ajustarse a las cuatro secuencias vectoriales declaradas (spec 1.5.0)." ;
+        sh:message "Etiqueta, fase, paso, eje y flecha deben ajustarse a las cuatro secuencias vectoriales declaradas." ;
         sh:select """
             PREFIX io: <http://example.org/iom#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -100,22 +104,22 @@ io:VectorStepShape a sh:NodeShape ;
                       io:hasStepIndex ?step ; io:displayArrow ?arrow ; rdfs:label ?label .
                 BIND(STR(?label) AS ?text)
                 FILTER (
-                  (?vector = io:Evol && ?phase = "adv" &&
-                    (?axis != ?step || ?arrow != "→" ||
-                     !((?axis = 0 && ?text = "invol") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
-                  (?vector = io:Evol && ?phase = "ret" &&
-                    (?axis != 4 - ?step || ?arrow != "←" ||
-                     !((?axis = 0 && ?text = "invol") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "evol")))) ||
-                  (?vector = io:Invol && ?phase = "adv" &&
-                    (?axis != 4 - ?step || ?arrow != "→" ||
-                     !((?axis = 0 && ?text = "evol") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol")))) ||
-                  (?vector = io:Invol && ?phase = "ret" &&
-                    (?axis != ?step || ?arrow != "←" ||
-                     !((?axis = 0 && ?text = "evol") || (?axis = 1 && ?text = "ind") ||
-                       (?axis = 2 && ?text = "dua") || (?axis = 3 && ?text = "tot") || (?axis = 4 && ?text = "invol"))))
+                  (?vector = io:Evol && ?phase = \"adv\" &&
+                    (?axis != ?step || ?arrow != \"→\" ||
+                     !((?axis = 0 && ?text = \"invol\") || (?axis = 1 && ?text = \"ind\") ||
+                       (?axis = 2 && ?text = \"dua\") || (?axis = 3 && ?text = \"tot\") || (?axis = 4 && ?text = \"evol\")))) ||
+                  (?vector = io:Evol && ?phase = \"ret\" &&
+                    (?axis != 4 - ?step || ?arrow != \"←\" ||
+                     !((?axis = 0 && ?text = \"invol\") || (?axis = 1 && ?text = \"ind\") ||
+                       (?axis = 2 && ?text = \"dua\") || (?axis = 3 && ?text = \"tot\") || (?axis = 4 && ?text = \"evol\")))) ||
+                  (?vector = io:Invol && ?phase = \"adv\" &&
+                    (?axis != 4 - ?step || ?arrow != \"→\" ||
+                     !((?axis = 0 && ?text = \"evol\") || (?axis = 1 && ?text = \"ind\") ||
+                       (?axis = 2 && ?text = \"dua\") || (?axis = 3 && ?text = \"tot\") || (?axis = 4 && ?text = \"invol\")))) ||
+                  (?vector = io:Invol && ?phase = \"ret\" &&
+                    (?axis != ?step || ?arrow != \"←\" ||
+                     !((?axis = 0 && ?text = \"evol\") || (?axis = 1 && ?text = \"ind\") ||
+                       (?axis = 2 && ?text = \"dua\") || (?axis = 3 && ?text = \"tot\") || (?axis = 4 && ?text = \"invol\"))))
                 )
             }
         """
