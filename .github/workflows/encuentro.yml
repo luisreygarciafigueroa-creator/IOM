@@ -27,8 +27,8 @@ jobs:
       - name: Score independent evaluation (histórico; sin ACCESS_LOG)
         run: python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
       - name: PI-HGAT-T (diagnóstico circular)
-        run: python experiments/pi_hgat_t.py
+        run: python experiments/optional/pi_hgat_t.py
       - name: Baselines
-        run: python experiments/baselines.py
+        run: python experiments/optional/baselines.py
       - name: EXP-E domain mapping
         run: python experiments/domain_mapping/validate_examples.py

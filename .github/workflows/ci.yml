@@ -47,7 +47,16 @@ jobs:
       - name: Regenerar TTL completo (no versionado byte-a-byte)
         run: python scripts/generate_ontology.py
       - name: Unit tests (ontología, reglas, schema)
-        run: python -m unittest discover -s tests -v
+        run: |
+          python -m unittest \
+            tests.test_formal_rules_bridge \
+            tests.test_metrics_audit \
+            tests.test_ontology \
+            tests.test_property_based \
+            tests.test_property_links \
+            tests.test_score_independent_eval \
+            tests.test_validate_spec \
+            -v
       - name: OWL RL + SHACL
         run: python scripts/validate_shacl.py
       - name: Invariancia no trivial (+ control negativo)
