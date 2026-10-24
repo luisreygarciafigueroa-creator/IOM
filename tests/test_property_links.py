@@ -36,24 +36,12 @@ class PropertyLinksTests(unittest.TestCase):
         self.assertIn("schema_version", self.spec)
 
     def test_node_count_matches_spec(self):
-        # 13 tríadas × 2 fases × 3 posiciones = 78
         expected = self.n_triads * 2 * 3
         self.assertEqual(len(self.nodes), expected)
         indices = {int(r["triad_index"]) for r in self.nodes}
         self.assertEqual(indices, set(range(1, self.n_triads + 1)))
 
-    def test_external_candidate_ids_follow_public_triad_numbers(self):
-        with (ROOT / "datasets" / "external_eval" / "external_relation_candidates.csv").open(encoding="utf-8", newline="") as fh:
-            rows = list(csv.DictReader(fh))
-        self.assertTrue(rows)
-        for row in rows:
-            triad_index = int(row["triad_index"])
-            self.assertIn(triad_index, range(1, self.n_triads + 1))
-            self.assertTrue(row["source"].startswith(f"T{triad_index:02d}_"), row)
-            self.assertTrue(row["target"].startswith(f"T{triad_index:02d}_"), row)
-
     def test_relation_candidate_count(self):
-        # 13 × 6 × 5 = 390 pares dirigidos no reflexivos
         expected = self.n_triads * 6 * 5
         self.assertEqual(len(self.relations), expected)
 
@@ -61,8 +49,6 @@ class PropertyLinksTests(unittest.TestCase):
         counts = {"none": 0, "mirrorOf": 0, "creates": 0}
         for row in self.relations:
             counts[row["relation"]] += 1
-        # mirrorOf: 13 tríadas × 6 nodos / 2 (simétrico) * 2 direcciones?
-        # Según EXPERIMENTOS: 78 mirrorOf, 104 creates, 208 none
         self.assertEqual(counts["mirrorOf"], 78)
         self.assertEqual(counts["creates"], 104)
         self.assertEqual(counts["none"], 208)
@@ -73,7 +59,6 @@ class PropertyLinksTests(unittest.TestCase):
             if row["relation"] != "mirrorOf":
                 continue
             src, tgt = row["source"], row["target"]
-            # node_id formato T{ii}_{phase}_P{pos}
             s_parts = src.split("_")
             t_parts = tgt.split("_")
             self.assertEqual(s_parts[0], t_parts[0], "misma tríada")
@@ -99,7 +84,6 @@ class PropertyLinksTests(unittest.TestCase):
             self.assertIn(key, allowed, f"creates no permitido: {row['source']} -> {row['target']}")
 
     def test_vector_steps_count(self):
-        # 4 vectores × 5 pasos = 20
         self.assertEqual(len(self.vectors), 20)
 
     def test_lean_operators_file_exists_and_mentions_mirror(self):

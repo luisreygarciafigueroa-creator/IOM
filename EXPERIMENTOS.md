@@ -27,7 +27,7 @@ El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
 .venv/bin/python scripts/self_bootstrap.py --with-manifest --passes 2  # tras versionar MANIFEST
 ```
 
-`AUDITORIA_AUTO.md` y `io_ontology.ttl` no entran en el manifiesto.
+`io_ontology.ttl` no entra en el manifiesto (serialización no determinista). `AUDITORIA_AUTO.md` y `experiments/results/` no se versionan: son derivados de encuentro.
 
 ---
 

@@ -12,7 +12,7 @@ El repositorio es **válido como sistema** si:
 3. SHACL conforme sobre TTL regenerado.
 4. `measure_invariance.py` reporta invariancia **no trivial** (control negativo).
 
-`AUDITORIA_AUTO.md` es artefacto regenerable (timestamp); **no** forma parte del manifiesto. Debe regenerarse tras cada cambio de `spec_version`; si queda desfasado (p. ej. 1.8.0 vs 1.9.0), **no** se usa como prueba de punto fijo.
+`AUDITORIA_AUTO.md` **no se versiona**. Se genera bajo `experiments/results/` (CI/local) y es solo un informe fechado. **No** es prueba de punto fijo ni fundamento.
 
 ## 2. Capa secundaria — invariancia
 
