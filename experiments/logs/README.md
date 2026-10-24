@@ -1,3 +1,8 @@
-# Logs experimentales (no versionados)
+# logs/ — no versionados
 
-Regenerables. Fuera del manifiesto y del criterio de validez del núcleo.
+| Propiedad | Valor |
+|-----------|--------|
+| ¿Fundamenta el punto fijo? | **No** |
+| ¿Participa en CI core? | **No** |
+
+**Genera:** `python experiments/optional/pi_hgat_t.py` → `pi_hgat_t.log`

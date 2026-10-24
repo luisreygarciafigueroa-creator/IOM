@@ -1,5 +1,9 @@
-# external_eval — capa de encuentro (opcional)
+# external_eval — encuentro (opcional, vacío por defecto)
 
-**No** forma parte del núcleo. Candidatos y anotaciones externas viven fuera del
-punto fijo. Si se usan, descargar como dataset opcional con hash; no versionar
-como fundamento del sistema.
+| Propiedad | Valor |
+|-----------|--------|
+| ¿Fundamenta el punto fijo? | **No** |
+| ¿Participa en CI core? | **No** |
+| ¿Datos versionados? | **No** (descargar aparte con hash si se usan) |
+
+Candidatos y anotaciones externas no son condición de existencia del sistema.

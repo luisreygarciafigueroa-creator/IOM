@@ -1,11 +1,14 @@
-# Resultados experimentales (no versionados)
+# results/ — salidas opcionales (no versionadas)
 
-Esta carpeta **no** forma parte del punto fijo ni del fundamento del marco.
+| Propiedad | Valor |
+|-----------|--------|
+| ¿Fundamenta el punto fijo? | **No** |
+| ¿Participa en CI core? | **No** |
+| ¿Reproducible offline? | Solo tras regenerar CSV y ejecutar scripts opcionales |
 
-Los JSON y logs se regeneran en CI o localmente (`pi_hgat_t.py`, `baselines.py`, `generate_audit_report.py`).
-No deben usarse como prueba de autonomía del sistema.
+**Generan contenido:**
+- `python experiments/optional/pi_hgat_t.py`
+- `python experiments/optional/baselines.py`
+- `python scripts/generate_audit_report.py`
 
-```text
-iom_spec.json → derivados canónicos (CSV + GENERATED_FROM)
-             → (opcional) experiments/results/  ← solo encuentro / diagnóstico
-```
+Los JSON de esta carpeta **no** se versionan. Accuracy 1.0 aquí es tautología informativa.
