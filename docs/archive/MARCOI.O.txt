@@ -1,0 +1,15 @@
+# ARCHIVO — MARCOI.O.txt
+
+**Estado:** borrador histórico. **No** es fuente normativa del marco.
+
+Texto filosófico canónico:
+  docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md
+
+El contenido íntegro de este borrador permanece en el historial de Git
+(ruta anterior: `docs/MARCOI.O.txt`). Si alguna definición normativa no
+está en el ensayo canónico, migrarla antes de purgar el historial.
+
+---
+Cabecera original (referencia):
+  I.O.: La Dinámica Temporal del Vacío y la Unidad Informativa
+  Autor: Luis Rey García Figueroa — Octubre de 2026
