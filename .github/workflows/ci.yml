@@ -44,8 +44,10 @@ jobs:
         run: python scripts/self_bootstrap.py --passes 2
       - name: Check spec ↔ CSV sync
         run: python scripts/sync_spec_artifacts.py --check
-      - name: Regenerar TTL completo (no versionado byte-a-byte)
-        run: python scripts/generate_ontology.py
+      - name: Regenerar TTL (generador + materialize determinista)
+        run: |
+          python scripts/generate_ontology.py
+          python scripts/materialize_ttl.py
       - name: Unit tests (ontología, reglas, schema)
         run: |
           python -m unittest \
