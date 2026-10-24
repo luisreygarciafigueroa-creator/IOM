@@ -70,9 +70,8 @@ class PerfectMetricsAuditTests(unittest.TestCase):
 
     def test_model_does_not_use_triad_index_in_features(self):
         """Sanity: features_for_node en pi_hgat_t no incluye índice de tríada."""
-        src = (ROOT / "experiments" / "pi_hgat_t.py").read_text(encoding="utf-8")
+        src = (ROOT / "experiments" / "optional" / "pi_hgat_t.py").read_text(encoding="utf-8")
         self.assertIn("sin etiqueta léxica ni número de tríada", src)
-        # La función features_for_node solo usa phase y position
         self.assertIn("phase == \"adv\"", src)
         self.assertIn("position == 0", src)
 
