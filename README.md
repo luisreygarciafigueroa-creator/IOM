@@ -23,7 +23,7 @@ Opcional (no bloquean «repo válido»):
 ```bash
 .venv/bin/python scripts/self_bootstrap.py --with-manifest --passes 2
 .venv/bin/python experiments/domain_mapping/validate_examples.py  # EXP-E: encuentro
-.venv/bin/python experiments/pi_hgat_t.py                          # diagnóstico circular
+.venv/bin/python experiments/optional/pi_hgat_t.py                 # diagnóstico circular
 ```
 
 | Prioridad | Criterio | Runner |

@@ -61,4 +61,9 @@ Un κ histórico (~0.6871) **no** se presenta como demostración completada mien
 
 ## 6. Diagnóstico circular (opcional)
 
-PI-HGAT-T / baselines: recuperan la regla embebida en (fase, pos). No son criterio primario.
+PI-HGAT-T / baselines (`experiments/optional/`): recuperan la regla embebida en (fase, pos). No son criterio primario.
+
+```bash
+.venv/bin/python experiments/optional/pi_hgat_t.py
+.venv/bin/python experiments/optional/baselines.py
+```
