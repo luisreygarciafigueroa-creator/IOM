@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Genera informe de auditoría que relaciona commit, hashes de datos,
-versiones de dependencias y métricas experimentales."""
+"""Genera informe de auditoría (regenerable; no versionar como fundamento)."""
 from __future__ import annotations
 
 import hashlib
@@ -95,8 +94,9 @@ def main() -> None:
             }
         report["baselines_summary"] = summary
 
-    out_json = ROOT / "experiments" / "results" / "audit_report.json"
-    out_json.parent.mkdir(parents=True, exist_ok=True)
+    out_dir = ROOT / "experiments" / "results"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_json = out_dir / "audit_report.json"
     out_json.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     lines = [
@@ -147,10 +147,10 @@ def main() -> None:
         "```",
         "",
         "---",
-        "Generado por `scripts/generate_audit_report.py`.",
+        "Generado por `scripts/generate_audit_report.py`. **No versionar** este archivo.",
     ]
 
-    out_md = ROOT / "AUDITORIA_AUTO.md"
+    out_md = out_dir / "AUDITORIA_AUTO.md"
     out_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print(f"Auditoría JSON: {out_json}")
