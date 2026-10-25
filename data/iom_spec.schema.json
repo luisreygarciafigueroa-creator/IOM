@@ -160,10 +160,7 @@
     "expanded_categories": {
       "type": "object",
       "minProperties": 1,
-      "additionalProperties": {
-        "type": "array",
-        "items": { "type": "string" }
-      }
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
     },
     "migrations": {
       "type": "array",
@@ -187,6 +184,27 @@
         "max": { "const": 13 }
       },
       "additionalProperties": false
+    },
+    "purpose": {
+      "type": "object",
+      "required": ["id", "label", "definition", "criterion"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "definition": { "type": "string", "minLength": 1 },
+        "criterion": { "type": "string", "minLength": 1 },
+        "chain": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "perspective_roles": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "note": { "type": "string" }
+      }
     }
   }
 }
