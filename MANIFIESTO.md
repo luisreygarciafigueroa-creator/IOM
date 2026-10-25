@@ -7,10 +7,7 @@ no sea una colección de datos aislados, sino una totalidad capaz de conservar
 identidad, expresar relaciones, recorrer transformaciones y reconstruir su
 propia organización.
 
-> **Definición canónica.** La unidad informativa es la mínima estructura
-> autocontenida capaz de conservar una distinción, relacionarla con su
-> opuesto, integrarla en un sistema y transformarse sin perder la trazabilidad
-> de su identidad.
+> **Definición canónica.** La unidad informativa es la mínima estructura autocontenida capaz de conservar una distinción, relacionarla con su opuesto, integrarla en un sistema y transformarse sin perder la trazabilidad de su identidad.
 
 Cadena operativa:
 

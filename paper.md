@@ -11,10 +11,9 @@ Referencia conceptual: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`
 
 ## Propósito
 
-La unidad informativa no es una colección arbitraria de datos. Es la mínima
-estructura capaz de conservar una distinción, relacionarla con su opuesto,
-integrarla en un sistema y transformarse sin perder la trazabilidad de su
-identidad. Las 13 tríadas son modos de composición de esa unidad.
+La unidad informativa es la mínima estructura autocontenida capaz de conservar una distinción, relacionarla con su opuesto, integrarla en un sistema y transformarse sin perder la trazabilidad de su identidad.
+
+Las 13 tríadas son modos de composición de esa unidad.
 
 ## Núcleo (fundamento)
 

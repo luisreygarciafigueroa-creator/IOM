@@ -4,9 +4,7 @@ IOM es un marco formal para **construir y verificar unidades informativas
 autocontenidas** mediante cinco perspectivas, trece tríadas y relaciones de
 transformación (`mirrorOf` / `creates`).
 
-> **Unidad informativa:** mínima estructura autocontenida capaz de conservar una
-> distinción, relacionarla con su opuesto, integrarla en un sistema y
-> transformarse sin perder la trazabilidad de su identidad.
+> **Definición canónica.** La unidad informativa es la mínima estructura autocontenida capaz de conservar una distinción, relacionarla con su opuesto, integrarla en un sistema y transformarse sin perder la trazabilidad de su identidad.
 
 La **autonomía verificable** es el *mecanismo* que permite constituir, conservar
 y validar esa unidad desde su propia estructura (`data/iom_spec.json` + Lean +
