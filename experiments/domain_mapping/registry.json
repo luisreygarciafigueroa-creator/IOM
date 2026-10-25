@@ -1,76 +1,23 @@
 {
-  "title": "Registro experimental I.O. — autonomía funcional",
-  "spec_version": "1.9.0",
-  "character": "auto-fundamentación (punto fijo) + invariancia; resonancia provisional con el mundo; Mictlán como destino",
-  "foundational_manifesto": "docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md",
-  "methodological_docs": [
-    "docs/CARACTER_REPOSITORIO.md",
-    "docs/DELIMITACION_EPISTEMOLOGICA.md",
-    "docs/ESPECIFICACION_METODOLOGICA.md",
-    "EXPERIMENTOS.md"
-  ],
-  "experiments": [
+  "schema_version": "1.0",
+  "domains": [
     {
-      "id": "EXP-FIXED-POINT",
-      "name": "Punto fijo / self_bootstrap",
-      "layer": "auto_fundamentacion",
-      "primary": true,
-      "runner": "scripts/self_bootstrap.py",
-      "legitimate_claim": "El repo regenera sus artefactos derivados desde la spec sin residuo exterior.",
-      "not_a_claim": "Verdad ontológica universal."
-    },
-    {
-      "id": "EXP-B-FORMAL-LEAN",
-      "name": "Lean 4 + SelfGenesis",
-      "layer": "auto_fundamentacion",
-      "primary": true,
-      "runner": "lake build",
-      "legitimate_claim": "Conteos y dualidad de fase derivables de axiomas; díada Evolución/Involución formalizada.",
-      "not_a_claim": "Fundamento por consenso inter-anotador."
-    },
-    {
-      "id": "EXP-INVARIANCE",
-      "name": "Invariancia interna",
-      "layer": "invariancia",
-      "primary": true,
-      "runner": "scripts/measure_invariance.py",
-      "legitimate_claim": "Auto-regeneración, invariancia bajo índice de tríada, reconstrucción desde subconjunto.",
-      "not_a_claim": "Accuracy contra oracle jerárquico como fundamento."
-    },
-    {
-      "id": "EXP-C-STRUCTURAL-SHACL",
-      "name": "Conformidad SHACL",
-      "layer": "autonomia_estructural",
-      "runner": "scripts/validate_shacl.py",
-      "legitimate_claim": "Conformidad de formas del grafo regenerado.",
-      "not_a_claim": "Validez por panel externo."
-    },
-    {
-      "id": "EXP-E-MICTLAN-DESTINO",
-      "name": "Cartografía del destino Mictlán",
-      "layer": "destino_ontologico",
-      "primary": true,
+      "id": "cosmos_nahuatl",
+      "label": "Cosmología náhuatl (Mictlán / Quinto Sol)",
       "runner": "experiments/domain_mapping/validate_examples.py",
-      "legitimate_claim": "Sendero de autonomía expresable en 13 tríadas.",
-      "not_a_claim": "Mictlán como dominio empírico accesorio."
+      "status": "optional_encounter"
+    }
+  ],
+  "synthetic_diagnostics": [
+    {
+      "id": "pi_hgat_t",
+      "runner": "experiments/optional/pi_hgat_t.py",
+      "status": "optional_circular_diagnostic"
     },
     {
-      "id": "EXP-D-PI-HGAT-T",
-      "name": "Demo de recuperabilidad (subordinada a invariancia)",
-      "layer": "invariancia",
-      "runner": "experiments/pi_hgat_t.py",
-      "legitimate_claim": "Un learner recupera la función invariante (fase, pos)→relación.",
-      "not_a_claim": "Fundamento por métricas de accuracy vs oracle."
-    },
-    {
-      "id": "EXP-A-RESONANCE",
-      "name": "Resonancia inter-subjetiva provisional",
-      "layer": "proyeccion_mundo_compartido",
-      "primary": false,
-      "runner": "scripts/score_independent_eval.py",
-      "metrics": {"fleiss_kappa": 0.6871, "unanimous": "10/14"},
-      "legitimate_claim": "Dato sobre el mundo compartido; el consenso existe pero no fundamenta.",
-      "not_a_claim": "Fundamento o prueba del marco."
+      "id": "baselines",
+      "runner": "experiments/optional/baselines.py",
+      "status": "optional_circular_diagnostic"
     }
   ]
 }
