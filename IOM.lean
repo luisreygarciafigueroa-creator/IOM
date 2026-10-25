@@ -3,3 +3,4 @@ import IOM.Operators
 import IOM.Specification
 import IOM.FormalRules
 import IOM.SelfGenesis
+import IOM.InformationalUnit

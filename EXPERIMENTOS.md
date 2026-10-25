@@ -1,4 +1,6 @@
-# Experimentos del marco I.O. — autonomía funcional
+# Experimentos del marco I.O. — unidad informativa
+
+> Propósito: construcción formal de **unidad informativa**. La autonomía verificable es el mecanismo de constitución y validación.
 
 > Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 
