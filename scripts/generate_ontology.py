@@ -206,6 +206,8 @@ _stamp = {
     "spec_version": SPEC["spec_version"],
     "schema_version": SPEC.get("schema_version"),
     "source_date": SPEC.get("source_date"),
+    "purpose_id": (SPEC.get("purpose") or {}).get("id"),
+    "purpose_label": (SPEC.get("purpose") or {}).get("label"),
     "artifacts": [
         "datasets/triad_nodes.csv",
         "datasets/vector_steps.csv",
