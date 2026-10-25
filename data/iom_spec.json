@@ -96,5 +96,27 @@
     {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga node_id T01–T13 y etiquetas de posición visual →|0|→ y ←|0|←.", "date": "2026-10-20"},
     {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (en la tríada carácter|subconsciente|personalidad).", "date": "2026-10-20"},
     {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de presentación: primera tríada orientación|cuántico|dirección; última animal|humano|IA. Mismas etiquetas; el índice solo ordena, no identifica.", "date": "2026-10-21"}
-  ]
+  ],
+  "purpose": {
+    "id": "informational_unit_creation",
+    "label": "Creación de la unidad informativa",
+    "definition": "La unidad informativa es la mínima estructura autocontenida capaz de conservar una distinción, relacionarla con su opuesto, integrarla en un sistema y transformarse sin perder la trazabilidad de su identidad.",
+    "criterion": "A unit is valid when its nodes, relations, phases and vectors are derivable and traceable from the canonical specification.",
+    "chain": [
+      "vacío informativo",
+      "distinción",
+      "relación",
+      "integración",
+      "transformación",
+      "unidad informativa autocontenida"
+    ],
+    "perspective_roles": {
+      "Ind": "Conserva el elemento distinguible",
+      "D": "Registra la diferencia o relación",
+      "Tot": "Integra los elementos en una estructura",
+      "Evol": "Expande o proyecta la información",
+      "Invol": "Regresa, comprime o reorganiza la información"
+    },
+    "note": "Las 13 tríadas son modos de composición de la unidad informativa. La autonomía verificable es el mecanismo de constitución y validación, no el fin en sí mismo."
+  }
 }
