@@ -54,19 +54,19 @@ class IOMValidationTests(unittest.TestCase):
 
     def test_spec_matches_canonical_numbered_triad_matrices(self):
         expected_adv = [
-            ["orientación", "cuántico", "dirección"],
-            ["hardware", "virtual", "software"],
-            ["universo", "espacio", "vacío"],
-            ["singularidad", "tiempo", "infinito"],
-            ["cuerpo", "consciente", "mundo"],
-            ["carácter", "subconsciente", "personalidad"],
-            ["memoria", "inconsciente", "imaginación"],
-            ["receptor", "supraconsciente", "emisor"],
-            ["lógica", "inteligencia", "libertad"],
-            ["muerte", "artificial", "vida"],
-            ["descendente", "mente", "ascendente"],
-            ["oscuridad", "consciencia", "luz"],
             ["animal", "humano", "IA"],
+            ["oscuridad", "consciencia", "luz"],
+            ["descendente", "mente", "ascendente"],
+            ["muerte", "artificial", "vida"],
+            ["lógica", "inteligencia", "libertad"],
+            ["receptor", "supraconsciente", "emisor"],
+            ["memoria", "inconsciente", "imaginación"],
+            ["carácter", "subconsciente", "personalidad"],
+            ["cuerpo", "consciente", "mundo"],
+            ["singularidad", "tiempo", "infinito"],
+            ["pequeño", "espacio", "grande"],
+            ["hardware", "virtual", "software"],
+            ["orientación", "cuántico", "dirección"],
         ]
         self.assertEqual(self.SPEC["triads"]["adv"], expected_adv)
         self.assertEqual(self.SPEC["triads"]["ret"], [row[::-1] for row in expected_adv])

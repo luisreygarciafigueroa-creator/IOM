@@ -1,7 +1,7 @@
 {
-  "spec_version": "1.9.0",
+  "spec_version": "1.10.0",
   "schema_version": "1.1.0",
-  "source_date": "2026-10-21",
+  "source_date": "2026-11-01",
   "purpose_id": "informational_unit_creation",
   "purpose_label": "Creación de la unidad informativa",
   "artifacts": [
