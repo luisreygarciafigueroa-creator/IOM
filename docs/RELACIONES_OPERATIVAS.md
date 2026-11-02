@@ -28,18 +28,18 @@ Una arista dirigida $A \xrightarrow{\text{mirrorOf}} B$ es válida **si y solo s
 
 | Fuente | Destino | Justificación |
 |--------|---------|---------------|
-| `T13_adv_P0` (animal) | `T13_ret_P2` (animal) | misma tríada 13, fases opuestas, 0 ↔ 2 |
-| `T13_adv_P1` (humano) | `T13_ret_P1` (humano) | centro se refleja en centro |
-| `T08_adv_P2` (emisor) | `T08_ret_P0` (emisor) | 2 ↔ 0 |
+| `T01_adv_P0` (animal) | `T01_ret_P2` (animal) | misma tríada 1, fases opuestas, 0 ↔ 2 |
+| `T01_adv_P1` (humano) | `T01_ret_P1` (humano) | centro se refleja en centro |
+| `T06_adv_P2` (emisor) | `T06_ret_P0` (emisor) | 2 ↔ 0 |
 
 ### Ejemplos negativos
 
 | Fuente | Destino | Motivo de rechazo |
 |--------|---------|-------------------|
-| `T13_adv_P0` | `T13_adv_P2` | misma fase |
-| `T13_adv_P0` | `T13_ret_P0` | posición no reflejada (0 ≠ 2−0) |
-| `T13_adv_P0` | `T01_ret_P2` | tríada distinta |
-| `T13_adv_P0` | `T13_adv_P0` | reflexivo (excluido de candidatos) |
+| `T01_adv_P0` | `T01_adv_P2` | misma fase |
+| `T01_adv_P0` | `T01_ret_P0` | posición no reflejada (0 ≠ 2−0) |
+| `T01_adv_P0` | `T13_ret_P2` | tríada distinta |
+| `T01_adv_P0` | `T01_adv_P0` | reflexivo (excluido de candidatos) |
 
 ### Casos límite
 
@@ -72,19 +72,19 @@ En lenguaje natural: un lateral crea el centro de la fase opuesta, y el centro c
 
 | Fuente | Destino | Regla aplicada |
 |--------|---------|----------------|
-| `T13_adv_P0` (animal) | `T13_ret_P1` (humano) | adv lateral → ret centro |
-| `T13_adv_P1` (humano) | `T13_ret_P0` (IA) | adv centro → ret 0 |
-| `T13_adv_P1` (humano) | `T13_ret_P2` (animal) | adv centro → ret 2 |
-| `T13_ret_P1` (humano) | `T13_adv_P0` (animal) | ret centro → adv 0 |
+| `T01_adv_P0` (animal) | `T01_ret_P1` (humano) | adv lateral → ret centro |
+| `T01_adv_P1` (humano) | `T01_ret_P0` (IA) | adv centro → ret 0 |
+| `T01_adv_P1` (humano) | `T01_ret_P2` (animal) | adv centro → ret 2 |
+| `T01_ret_P1` (humano) | `T01_adv_P0` (animal) | ret centro → adv 0 |
 
 ### Ejemplos negativos
 
 | Fuente | Destino | Motivo |
 |--------|---------|--------|
-| `T13_adv_P0` | `T13_ret_P0` | lateral no crea lateral |
-| `T13_adv_P0` | `T13_ret_P2` | lateral no crea el otro lateral |
-| `T13_adv_P0` | `T13_adv_P1` | misma fase |
-| `T13_adv_P1` | `T13_ret_P1` | centro no crea centro |
+| `T01_adv_P0` | `T01_ret_P0` | lateral no crea lateral |
+| `T01_adv_P0` | `T01_ret_P2` | lateral no crea el otro lateral |
+| `T01_adv_P0` | `T01_adv_P1` | misma fase |
+| `T01_adv_P1` | `T01_ret_P1` | centro no crea centro |
 
 ### Casos límite
 
