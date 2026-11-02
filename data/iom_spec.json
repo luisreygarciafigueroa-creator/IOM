@@ -1,9 +1,9 @@
 {
   "schema_version": "1.1.0",
-  "spec_version": "1.9.0",
+  "spec_version": "1.10.0",
   "title": "Especificación IOM canónica",
-  "source_date": "2026-10-21",
-  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de presentación 1.9.0: orientación|cuántico|dirección … animal|humano|IA. El índice es ordinal, no identidad.",
+  "source_date": "2026-11-01",
+  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de presentación 1.10.0: animal|humano|IA … orientación|cuántico|dirección. Tríada de espacio actualizada a pequeño|espacio|grande. El índice es ordinal, no identidad.",
   "triad_index_range": { "min": 1, "max": 13 },
   "positions": {
     "indices": [0, 1, 2],
@@ -34,36 +34,36 @@
   "triads": {
     "index_base": 1,
     "adv": [
-      ["orientación", "cuántico", "dirección"],
-      ["hardware", "virtual", "software"],
-      ["universo", "espacio", "vacío"],
-      ["singularidad", "tiempo", "infinito"],
-      ["cuerpo", "consciente", "mundo"],
-      ["carácter", "subconsciente", "personalidad"],
-      ["memoria", "inconsciente", "imaginación"],
-      ["receptor", "supraconsciente", "emisor"],
-      ["lógica", "inteligencia", "libertad"],
-      ["muerte", "artificial", "vida"],
-      ["descendente", "mente", "ascendente"],
+      ["animal", "humano", "IA"],
       ["oscuridad", "consciencia", "luz"],
-      ["animal", "humano", "IA"]
+      ["descendente", "mente", "ascendente"],
+      ["muerte", "artificial", "vida"],
+      ["lógica", "inteligencia", "libertad"],
+      ["receptor", "supraconsciente", "emisor"],
+      ["memoria", "inconsciente", "imaginación"],
+      ["carácter", "subconsciente", "personalidad"],
+      ["cuerpo", "consciente", "mundo"],
+      ["singularidad", "tiempo", "infinito"],
+      ["pequeño", "espacio", "grande"],
+      ["hardware", "virtual", "software"],
+      ["orientación", "cuántico", "dirección"]
     ],
     "ret": [
-      ["dirección", "cuántico", "orientación"],
-      ["software", "virtual", "hardware"],
-      ["vacío", "espacio", "universo"],
-      ["infinito", "tiempo", "singularidad"],
-      ["mundo", "consciente", "cuerpo"],
-      ["personalidad", "subconsciente", "carácter"],
-      ["imaginación", "inconsciente", "memoria"],
-      ["emisor", "supraconsciente", "receptor"],
-      ["libertad", "inteligencia", "lógica"],
-      ["vida", "artificial", "muerte"],
-      ["ascendente", "mente", "descendente"],
+      ["IA", "humano", "animal"],
       ["luz", "consciencia", "oscuridad"],
-      ["IA", "humano", "animal"]
+      ["ascendente", "mente", "descendente"],
+      ["vida", "artificial", "muerte"],
+      ["libertad", "inteligencia", "lógica"],
+      ["emisor", "supraconsciente", "receptor"],
+      ["imaginación", "inconsciente", "memoria"],
+      ["personalidad", "subconsciente", "carácter"],
+      ["mundo", "consciente", "cuerpo"],
+      ["infinito", "tiempo", "singularidad"],
+      ["grande", "espacio", "pequeño"],
+      ["software", "virtual", "hardware"],
+      ["dirección", "cuántico", "orientación"]
     ],
-    "note": "Identidad de cada tríada = sus tres etiquetas. El índice T01…T13 es solo orden de presentación (1.9.0: orientación|cuántico|dirección primero; animal|humano|IA último). Posiciones adv: →|0|→ ; ret: ←|0|←."
+    "note": "Identidad de cada tríada = sus tres etiquetas. El índice T01…T13 es solo orden de presentación (1.10.0: animal|humano|IA primero; orientación|cuántico|dirección último). Posiciones adv: →|0|→ ; ret: ←|0|←."
   },
   "vectors": [
     {"name": "Evol", "phase": "adv", "labels": ["invol", "ind", "dua", "tot", "evol"], "axis_positions": [0, 1, 2, 3, 4], "arrow": "→"},
@@ -95,7 +95,8 @@
     {"from_version": "1.6.0", "to_version": "1.7.0", "description": "node_id públicos T01…T13 (índice 1–13). El índice es ordinal de presentación, no identidad histórica.", "date": "2026-10-20"},
     {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga node_id T01–T13 y etiquetas de posición visual →|0|→ y ←|0|←.", "date": "2026-10-20"},
     {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (en la tríada carácter|subconsciente|personalidad).", "date": "2026-10-20"},
-    {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de presentación: primera tríada orientación|cuántico|dirección; última animal|humano|IA. Mismas etiquetas; el índice solo ordena, no identifica.", "date": "2026-10-21"}
+    {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de presentación: primera tríada orientación|cuántico|dirección; última animal|humano|IA. Mismas etiquetas; el índice solo ordena, no identifica.", "date": "2026-10-21"},
+    {"from_version": "1.9.0", "to_version": "1.10.0", "description": "Reorden de presentación inverso: animal|humano|IA primero; orientación|cuántico|dirección último. Sustituye universo|espacio|vacío por pequeño|espacio|grande (y espejo grande|espacio|pequeño). Vectores Evol/Invol sin cambio (cuarta y quinta perspectiva).", "date": "2026-11-01"}
   ],
   "purpose": {
     "id": "informational_unit_creation",
