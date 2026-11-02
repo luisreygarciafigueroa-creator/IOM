@@ -6,7 +6,7 @@
     "docs/PROTOCOLO_DE_MAPEO.md",
     "docs/MANUAL_ALINEACION_DOMINIOS.md"
   ],
-  "note": "Demostraciones de mapeo (Cinco Soles y Mictlán); no sustituyen anotación ciega de dominio ni κ propio.",
+  "note": "Demostraciones de mapeo (Cinco Soles y Mictlán); no sustituyen anotación ciega de dominio ni κ propio. Alineado a spec 1.10.0.",
   "pairs": [
     {
       "id": "NAH-01",
@@ -18,8 +18,8 @@
       "relation": "mirrorOf",
       "analytic_impact": "Reflejo de polos oscuro/luminoso.",
       "suggested_nodes": {
-        "source": "T01_adv_P0",
-        "target": "T01_ret_P0",
+        "source": "T02_adv_P0",
+        "target": "T02_ret_P0",
         "note": "espejo"
       }
     },
@@ -33,8 +33,8 @@
       "relation": "mirrorOf",
       "analytic_impact": "Polaridad vida/muerte.",
       "suggested_nodes": {
-        "source": "T03_adv_P2",
-        "target": "T03_adv_P0",
+        "source": "T04_adv_P2",
+        "target": "T04_adv_P0",
         "note": "espejo demostrativo"
       }
     },
@@ -48,8 +48,8 @@
       "relation": "creates",
       "analytic_impact": "Transición entre Soles.",
       "suggested_nodes": {
-        "source": "T01_adv_P1",
-        "target": "T01_ret_P1",
+        "source": "T02_adv_P1",
+        "target": "T02_ret_P1",
         "note": "creates"
       }
     },
@@ -59,7 +59,7 @@
       "source_label": "camino_al_Mictlan",
       "target_label": "Mictlan",
       "perspective": "Involución",
-      "phase_hint": "Retorno al vacío",
+      "phase_hint": "Retorno",
       "relation": "creates",
       "analytic_impact": "Camino al lugar de los muertos.",
       "suggested_nodes": {
@@ -78,8 +78,8 @@
       "relation": "none",
       "analytic_impact": "Contraste de edades cosmológicas.",
       "suggested_nodes": {
-        "source": "T01_adv_P2",
-        "target": "T01_adv_P0",
+        "source": "T02_adv_P2",
+        "target": "T02_adv_P0",
         "note": "none"
       }
     }
