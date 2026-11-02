@@ -66,7 +66,7 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOG
 
 | Artefacto | Rol |
 |-----------|-----|
-| `data/iom_spec.json` | Spec tabular (`spec_version` 1.9.0) + propósito canónico |
+| `data/iom_spec.json` | Spec tabular (`spec_version` 1.10.0) + propósito canónico |
 | `IOM/FormalRules.lean` | `isMirror` / `isCreates` |
 | `IOM/SelfGenesis.lean` | Conteos derivados de la estructura |
 | `IOM/InformationalUnit.lean` | Núcleo mínimo: identidad, relación, trazabilidad |
