@@ -1,4 +1,4 @@
-# Las cinco perspectivas del marco I.O.
+# Las cinco perspectivas del marco I.O. — Vectores 4ª y 5ª
 
 El marco I.O. se articula mediante **cinco perspectivas complementarias**:
 
@@ -10,110 +10,219 @@ El marco I.O. se articula mediante **cinco perspectivas complementarias**:
 | 4 | `Evol` | **Evolución** | Vectorial: flujo del vacío hacia la estructura |
 | 5 | `Invol` | **Involución** | Vectorial: flujo de la estructura hacia el vacío |
 
-Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada (→ | 0 | → en avance; ← | 0 | ← en retroceso). Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **materia** y de **vacío**, en registro **real** y **virtual**.
+Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada. Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **materia** y de **vacío**, en registro **real** y **virtual**.
 
 Fuente estructurada: [`data/iom_spec.json`](../data/iom_spec.json) (`five_perspectives`, `vectors`).
+
+Documento narrativo complementario: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
 ## Cuarta perspectiva
 
-### Evolución · materia real
+### Evolución de la materia real
 
 ```
 invol | ind | dua | tot | evol
   0   |  1  |  2  |  3  |  4
-      |  ⟳  |  ⟳  |  ⟳  |  ⟳
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
 ------------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  |
+materia | ⟲ |  ⟲  |  ⟲  |  ⟲
   4   |  3  |  2  |  1  |  0
 evol  | tot | dua | ind | invol
 ```
 
-| Fase | Etiquetas en orden de eje | Posiciones del eje | Flujo |
-|---|---|---|---|
-| Avance | `invol · ind · dua · tot · evol` | `0 · 1 · 2 · 3 · 4` | ⟳ |
-| Retroceso | `evol · tot · dua · ind · invol` | `4 · 3 · 2 · 1 · 0` | ⟲ |
+### Involución de la materia virtual
 
-### Involución · materia virtual
+```
+evol  | tot | dua | ind | invol
+  4   |  3  |  2  |  1  |  0
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
+------------------------------------
+materia | ⟲ |  ⟲  |  ⟲  |  ⟲
+  0   |  1  |  2  |  3  |  4
+invol | ind | dua | tot | evol
+```
+
+### Evolución del vacío real
 
 ```
 invol | tot | dua | ind | evol
   4   |  3  |  2  |  1  |  0
-  ⟳   |  ⟳  |  ⟳  |  ⟳  |
-----------------------------------
-      |  ⟲  |  ⟲  |  ⟲  |  ⟲
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
+------------------------------------
+vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
   0   |  1  |  2  |  3  |  4
 evol  | ind | dua | tot | invol
 ```
 
-| Fase | Etiquetas en orden de eje | Posiciones del eje | Flujo |
-|---|---|---|---|
-| Avance | `invol · tot · dua · ind · evol` | `4 · 3 · 2 · 1 · 0` | ⟳ |
-| Retroceso | `evol · ind · dua · tot · invol` | `0 · 1 · 2 · 3 · 4` | ⟲ |
+### Involución del vacío virtual
+
+```
+evol  | ind | dua | tot | invol
+  0   |  1  |  2  |  3  |  4
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
+------------------------------------
+vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
+  4   |  3  |  2  |  1  |  0
+invol | tot | dua | ind | evol
+```
+
+### Involución del vacío real (variante)
+
+```
+evol  | tot | dua | ind | invol
+  4   |  3  |  2  |  1  |  0
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
+------------------------------------
+vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
+  0   |  1  |  2  |  3  |  4
+invol | tot | dua | ind | evol
+```
+
+### Evolución del vacío virtual (variante)
+
+```
+invol | ind | dua | tot | evol
+  0   |  1  |  2  |  3  |  4
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
+------------------------------------
+vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
+  4   |  3  |  2  |  1  |  0
+evol  | tot | dua | ind | invol
+```
+
+### Involución de la materia real
+
+```
+evol  | ind | dua | tot | invol
+  0   |  1  |  2  |  3  |  4
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
+------------------------------------
+materia | ⟳ |  ⟳  |  ⟳  |  ⟳
+  4   |  3  |  2  |  1  |  0
+invol | tot | dua | ind | evol
+```
+
+### Evolución de la materia virtual
+
+```
+invol | tot | dua | ind | evol
+  4   |  3  |  2  |  1  |  0
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
+------------------------------------
+materia | ⟳ |  ⟳  |  ⟳  |  ⟳
+  0   |  1  |  2  |  3  |  4
+evol  | ind | dua | tot | invol
+```
 
 ---
 
 ## Quinta perspectiva
 
-### Involución · vacío real
+### Evolución de la materia virtual
 
 ```
-invol | ind | dua | tot | evol
+evol  | ind | dua | tot | invol
   0   |  1  |  2  |  3  |  4
-      |  ⟳  |  ⟳  |  ⟳  |  ⟳
-------------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  |
+materia | ⟳ |  ⟳  |  ⟳  |  ⟳
+----------------------------------
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
   4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | invol
+invol | tot | dua | ind | evol
 ```
 
-| Fase | Etiquetas en orden de eje | Posiciones del eje | Flujo |
-|---|---|---|---|
-| Avance | `invol · ind · dua · tot · evol` | `0 · 1 · 2 · 3 · 4` | ⟳ |
-| Retroceso | `evol · tot · dua · ind · invol` | `4 · 3 · 2 · 1 · 0` | ⟲ |
-
-### Evolución · vacío virtual
+### Involución de la materia real
 
 ```
 invol | tot | dua | ind | evol
   4   |  3  |  2  |  1  |  0
-  ⟳   |  ⟳  |  ⟳  |  ⟳  |
+materia | ⟳ |  ⟳  |  ⟳  |  ⟳
 ----------------------------------
-      |  ⟲  |  ⟲  |  ⟲  |  ⟲
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
   0   |  1  |  2  |  3  |  4
 evol  | ind | dua | tot | invol
 ```
 
-| Fase | Etiquetas en orden de eje | Posiciones del eje | Flujo |
-|---|---|---|---|
-| Avance | `invol · tot · dua · ind · evol` | `4 · 3 · 2 · 1 · 0` | ⟳ |
-| Retroceso | `evol · ind · dua · tot · invol` | `0 · 1 · 2 · 3 · 4` | ⟲ |
+### Evolución del vacío virtual
+
+```
+evol  | tot | dua | ind | invol
+  4   |  3  |  2  |  1  |  0
+vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
+  0   |  1  |  2  |  3  |  4
+invol | ind | dua | tot | evol
+```
+
+### Involución del vacío real
+
+```
+invol | tot | dua | ind | evol
+  0   |  1  |  2  |  3  |  4
+vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
+  4   |  3  |  2  |  1  |  0
+evol  | ind | dua | tot | invol
+```
+
+### Involución del vacío virtual
+
+```
+invol | tot | dua | ind | evol
+  4   |  3  |  2  |  1  |  0
+vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
+----------------------------------
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
+  0   |  1  |  2  |  3  |  4
+evol  | ind | dua | tot | invol
+```
+
+### Evolución del vacío real
+
+```
+evol  | ind | dua | tot | invol
+  0   |  1  |  2  |  3  |  4
+vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
+----------------------------------
+  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
+  4   |  3  |  2  |  1  |  0
+invol | tot | dua | ind | evol
+```
+
+### Involución de la materia virtual
+
+```
+invol | ind | dua | tot | evol
+  0   |  1  |  2  |  3  |  4
+materia | ⟲ |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
+  4   |  3  |  2  |  1  |  0
+evol  | tot | dua | ind | invol
+```
+
+### Evolución de la materia real
+
+```
+evol  | ind | dua | tot | invol
+  4   |  3  |  2  |  1  |  0
+materia | ⟲ |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
+  0   |  1  |  2  |  3  |  4
+invol | tot | dua | ind | evol
+```
 
 ---
 
-## Resumen de ejes
+## Notas
 
-| Perspectiva | Lectura | Eje de avance (posiciones) | Eje de retroceso (posiciones) |
-|---|---|---|---|
-| **4ª** | Evolución · materia real | invol(0)·ind(1)·dua(2)·tot(3)·evol(4) | evol(4)·tot(3)·dua(2)·ind(1)·invol(0) |
-| **4ª** | Involución · materia virtual | invol(4)·tot(3)·dua(2)·ind(1)·evol(0) | evol(0)·ind(1)·dua(2)·tot(3)·invol(4) |
-| **5ª** | Involución · vacío real | invol(0)·ind(1)·dua(2)·tot(3)·evol(4) | evol(4)·tot(3)·dua(2)·ind(1)·invol(0) |
-| **5ª** | Evolución · vacío virtual | invol(4)·tot(3)·dua(2)·ind(1)·evol(0) | evol(0)·ind(1)·dua(2)·tot(3)·invol(4) |
-
-Los dos ejes estructurales se conservan:
-
-1. **Eje A** (materia real / vacío real): `invol · ind · dua · tot · evol` ↔ espejo.
-2. **Eje B** (materia virtual / vacío virtual): `invol · tot · dua · ind · evol` ↔ espejo.
-
-La distinción real/virtual y materia/vacío es lectural (semántica de la perspectiva), no un cambio de posiciones del eje.
-
----
-
-## Representación formal
-
-Cada fila se materializa como cinco instancias `io:VectorStep`. Cada instancia conserva el vector (`Evol` / `Invol`), fase, posición del eje, índice visual, etiqueta y flecha. En conjunto son **20 pasos vectoriales** (los dos ejes × dos fases).
-
-En la ontología, las cinco perspectivas son individuos de `io:Perspective` con etiquetas en español: Individualidad, Dualidad, Totalidad, Evolución e Involución.
+- Cada configuración diferencia materia/vacío y dominio real/virtual.
+- El orden de categorías, valores, etiquetas y flechas define la configuración; no deben intercambiarse arbitrariamente.
+- Las flechas ⟳ y ⟲ señalan relaciones propias de cada esquema.
+- Estas lecturas se integran con la narrativa de continuidad informacional desarrollada en la Cosmología del Mictlán.
 
 `spec_version` ≥ **1.5.0**.
