@@ -1,4 +1,4 @@
-# Auditoría epistemológica: autonomía formal vs residuo del mundo compartido
+# Auditoría epistemológica: autonomía formal frente al residuo del mundo compartido
 
 > Bajo el carácter de **autonomía absoluta**, esta auditoría **no** certifica «validez semántica en el mundo real» por acuerdo de conciencias separadas.
 > Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
@@ -10,11 +10,11 @@
 | Capa | Afirmación legítima |
 |------|---------------------|
 | **Autonomía formal** | Coherencia Lean + SHACL sin autoridad exterior |
-| **Cartografía del tránsito** | Expresabilidad del sendero Mictlán / autonomía en 13 tríadas |
+| **Cartografía del tránsito** | Expresabilidad del sendero Mictlán / autonomía en trece tríadas |
 | **Diagnóstico sintético** | Auto-recuperabilidad de reglas (PI-HGAT-T) |
 | **Residuo inter-anotador** | κ documentado; **no** fundamento del marco |
 
-La frontera crítica ya no es «interno vs empírico externo», sino **autonomía vs dependencia de un contenedor de consenso**.
+La frontera crítica ya no es «interno frente a empírico externo», sino **autonomía frente a dependencia de un contenedor de consenso**.
 
 ---
 
