@@ -3,7 +3,7 @@
 > **Relato pictográfico del Mictlán** (relato original inspirado en la tradición nahua).  
 > PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf) (9 páginas).
 
-Documento de **apoyo semántico** al carácter del repositorio: 13 tríadas ↔ Mictlán; Mictecacíhuatl = Evolución; Mictlantecuhtli = Involución; Dualidad / Xólotl en el xoloitzcuintle. No modifica los 78 nodos canónicos.
+Documento de **apoyo semántico** al carácter del repositorio: trece tríadas ↔ Mictlán; Mictecacíhuatl = Evolución; Mictlantecuhtli = Involución; Dualidad / Xólotl en el xoloitzcuintle. No modifica los setenta y ocho nodos canónicos.
 
 ---
 
@@ -26,9 +26,9 @@ Documento de **apoyo semántico** al carácter del repositorio: 13 tríadas ↔ 
 
 ## Alineación al marco I.O.
 
-### Trece marcas = 13 tríadas
+### Trece marcas = trece tríadas
 
-El tlacuilo formula explícitamente: *nueve señales + cuatro pasos = trece marcas en el códice*, pero **una sola corriente**. Eso coincide con la equivalencia canónica **13 tríadas ↔ arquitectura del Mictlán** ([`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)).
+El tlacuilo formula explícitamente: *nueve señales + cuatro pasos = trece marcas en el códice*, pero **una sola corriente**. Eso coincide con la equivalencia canónica **trece tríadas ↔ arquitectura del Mictlán** ([`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)).
 
 ### Posiciones → / 0 / ← en la Lámina V
 
@@ -70,4 +70,4 @@ El tlacuilo formula explícitamente: *nueve señales + cuatro pasos = trece marc
 - Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 - Medios: [`media/cosmos_nahuatl/README.md`](media/cosmos_nahuatl/README.md)
 
-**Límite:** relato original inspirado en tradición nahua, no fuente histórica primaria. No añade nodos al core de 78.
+**Límite:** relato original inspirado en tradición nahua, no fuente histórica primaria. No añade nodos al core de setenta y ocho.
