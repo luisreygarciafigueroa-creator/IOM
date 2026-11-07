@@ -11,7 +11,7 @@
 
 ## 1. Invarianza del núcleo
 
-78 nodos (13 × 2 × 3) = bóveda técnica. Conceptos externos se alinean **sin** alterar `iom_spec.json`, Lean ni SHACL.
+Setenta y ocho nodos (13 × 2 × 3) = bóveda técnica. Conceptos externos se alinean **sin** alterar `iom_spec.json`, Lean ni SHACL.
 
 | Perspectiva | Lectura bajo autonomía |
 |-------------|------------------------|
@@ -37,7 +37,7 @@ Detalle: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
 1. Identificar fenómeno.
 2. Asignar perspectiva (Ind / D / Tot).
 3. Fase/vector (adv–Evol o ret–Invol).
-4. Anclar a `mapped_node_id` de los 78.
+4. Anclar a `mapped_node_id` de los setenta y ocho.
 5. Evaluar arista (`mirrorOf` / `creates` / `none`).
 6. Validar con el script de ingesta.
 
@@ -72,7 +72,7 @@ EXP-E comprueba expresabilidad estructural; **no** es validación de campo ni κ
 | ID | Rol |
 |----|-----|
 | EXP-B / EXP-C | Autonomía formal |
-| EXP-E | Destino Mictlán expresable en 13 tríadas |
+| EXP-E | Destino Mictlán expresable en trece tríadas |
 | EXP-D | Auto-generación |
 | EXP-A | Residuo; no fundamento |
 
