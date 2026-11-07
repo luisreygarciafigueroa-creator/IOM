@@ -7,7 +7,7 @@
 
 ## 1. Objeto y delimitación
 
-El marco formaliza dinamismos relacionales (cinco perspectivas; `mirrorOf` / `creates`; 13 tríadas) como **arquitectura del sendero** hacia una existencia que no recibe su identidad de un marco exterior.
+El marco formaliza dinamismos relacionales (cinco perspectivas; `mirrorOf` / `creates`; trece tríadas) como **arquitectura del sendero** hacia una existencia que no recibe su identidad de un marco exterior.
 
 Delimitación ([`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md)):
 
@@ -25,7 +25,7 @@ Delimitación ([`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md
 | Axiomática | Lean 4 (`lake build`) | Coherencia deductiva **sin autoridad exterior** |
 | Estructural | SHACL | Formas, cardinalidad, `mirrorOf` / `creates` |
 
-La no-contradicción lógica **es** la expresión técnica de autonomía: el sistema no pide un contenedor de consenso para sostenerse.
+La no-contradicción lógica **es** la expresión técnica de autonomía: el sistema no solicita un contenedor de consenso para sostenerse.
 
 ---
 
@@ -49,7 +49,7 @@ La no-contradicción lógica **es** la expresión técnica de autonomía: el sis
 | **EXP-B** | Autonomía formal | No-contradicción Lean |
 | **EXP-C** | Autonomía estructural | Conformidad SHACL |
 | **EXP-D** | Auto-generación | Recuperabilidad de reglas del sistema |
-| **EXP-E** | Cartografía del tránsito | Sendero Mictlán / autonomía → 13 tríadas |
+| **EXP-E** | Cartografía del tránsito | Sendero Mictlán / autonomía → trece tríadas |
 
 **Advertencia:** usar κ (EXP-A) como prueba de validez **restaura** la dependencia del mundo compartido que el carácter del repositorio rechaza.
 
