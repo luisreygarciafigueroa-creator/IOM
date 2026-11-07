@@ -1,6 +1,6 @@
 # Catálogo de dominios: cartografía del tránsito (no validez por consenso)
 
-Este documento ofrece **traducciones conceptuales** para cartografiar fenómenos al vocabulario de 78 nodos (13 tríadas × 2 fases × 3 posiciones) sin romper Lean / RDF / SHACL.
+Este documento ofrece **traducciones conceptuales** para cartografiar fenómenos al vocabulario de setenta y ocho nodos (trece tríadas × dos fases × tres posiciones) sin romper Lean / RDF / SHACL.
 
 Bajo el carácter de **autonomía absoluta**, estos mapeos son **ejercicios del sendero**, no «demostraciones de validez semántica en el mundo real» mediadas por paneles de anotadores separados. La prueba primaria del repositorio ya **no** es la anotación ciega independiente.
 
@@ -10,7 +10,7 @@ La ontología core permanece **inmutable**. Los datos externos se alinean como i
 
 ## 1. Principios de mapeo
 
-1. **No se añaden nodos al core**: los 78 nodos son la bóveda técnica.
+1. **No se añaden nodos al core**: los setenta y ocho nodos son la bóveda técnica.
 2. **Tres perspectivas posicionales**: Individualidad, Dualidad, Totalidad — leídas como singularidad auto-creada, polaridad en disolución, totalidad propia (sin contenedor exterior).
 3. **Dos direcciones**: Evolución (Mictecacíhuatl) e Involución (Mictlantecuhtli).
 4. **Relaciones admisibles**: solo `mirrorOf` y `creates` (resto: `none`).
@@ -52,7 +52,7 @@ Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 1. Copia `datasets/ingestion/templates/plantilla_dominio.csv`.
 2. Rellena `external_id`, `external_label`, `mapped_node_id`.
 3. Ejecuta `importar_datos_personalizados.py`.
-4. Valida IDs contra los 78 nodos.
+4. Valida IDs contra los setenta y ocho nodos.
 5. **Sin modificar** `data/iom_spec.json` ni la ontología core.
 6. No se requiere panel ciego para «aprobar» el mapeo; la admisión es estructural.
 
