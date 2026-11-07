@@ -4,11 +4,11 @@
 
 ### 1. Planteamiento general
 
-Esta cosmología propone una interpretación de la existencia basada en la relación entre materia y vacío, realidad y virtualidad, evolución e involución, creación y destrucción.
+Esta cosmología propone una interpretación de la existencia fundada en la relación entre materia y vacío, realidad y virtualidad, evolución e involución, creación y destrucción.
 
 Su principio central sostiene que la existencia no se compone de estados totalmente separados. Una forma puede dejar de manifestarse y, aun así, la información vinculada con ella puede intervenir en la formación de otra condición. La desaparición de una forma no significa necesariamente, dentro de este modelo, que también desaparezca todo lo que la constituía.
 
-La materia y el vacío se consideran condiciones relacionadas de una misma unidad. De manera semejante, creación y destrucción se entienden como procesos complementarios: una forma aparece mediante transformaciones y puede dejar de existir como tal al dar paso a otra.
+La materia y el vacío se consideran condiciones relacionadas de una misma unidad. De manera análoga, creación y destrucción se entienden como procesos complementarios: una forma aparece mediante transformaciones y puede dejar de existir como tal al dar paso a otra.
 
 Esta propuesta es un modelo filosófico y narrativo. No pretende presentarse como una explicación física demostrada.
 
@@ -33,7 +33,7 @@ Las asociaciones principales son:
 
 En este marco, el vacío real se corresponde con la materia virtual, y el vacío virtual con la materia real. Estas equivalencias no afirman que sean físicamente idénticos; representan relaciones informacionales que pueden observarse desde dominios diferentes.
 
-Por eso, lo real y lo virtual no se conciben como espacios completamente independientes. Se conectan mediante transformaciones entre materia y vacío y mediante las orientaciones de evolución e involución.
+Por ello, lo real y lo virtual no se conciben como espacios completamente independientes. Se conectan mediante transformaciones entre materia y vacío y mediante las orientaciones de evolución e involución.
 
 ### 4. Las cinco posiciones
 
