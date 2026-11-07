@@ -89,7 +89,7 @@ invol | ind | dua | tot | evol
 ------------------------------------
 vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
   4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | invol
+evol  | tot | dua | ind | evol
 ```
 
 ### Involución de la materia real
