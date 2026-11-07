@@ -1,6 +1,6 @@
 # Premisas asumidas y teoremas derivados del marco I.O.
 
-Este documento separa **afirmaciones asumidas** (premisas del marco) de **resultados demostrados** en Lean o comprobados de forma determinista sobre la especificación estructurada. No confunde recuperación de reglas con validación empírica del marco sobre datos independientes.
+Este documento distingue con rigor **afirmaciones asumidas** (premisas del marco) de **resultados demostrados** en Lean o comprobados de forma determinista sobre la especificación estructurada. No confunde la recuperación de reglas con la validación empírica del marco sobre datos independientes.
 
 ---
 
@@ -45,7 +45,7 @@ Este documento separa **afirmaciones asumidas** (premisas del marco) de **result
 Estas premisas **no se demuestran**: se **asumen** como codificación operativa del marco y se **comprueban** de forma determinista (Lean + SHACL + CSV).
 
 1. Hay **cinco perspectivas**: Individualidad, Dualidad, Totalidad, Evolución, Involución.
-2. Hay **13 tríadas** por fase (avance/retroceso) con etiquetas canónicas en `data/iom_spec.json`.
+2. Hay **trece tríadas** por fase (avance/retroceso) con etiquetas canónicas en `data/iom_spec.json`.
 3. **Espejo (`mirrorOf`)**: misma tríada, fase opuesta, posición lateral invertida (`pos' = 2 - pos`), centro fijo.
 4. **Creación (`creates`)**: exactamente las cuatro reglas de `creation_rules` (lateral→centro o centro→laterales entre fases opuestas).
 5. **Vectores**: cuatro secuencias de cinco pasos con ejes y flechas declarados.
@@ -70,7 +70,7 @@ Demostrados en `IOM/Core.lean`, `IOM/Operators.lean`, `IOM/Specification.lean`, 
 
 ## 4. Qué **no** afirma el marco (límites)
 
-- No afirma que las 13 tríadas describan datos del mundo natural medidos empíricamente.
+- No afirma que las trece tríadas describan datos del mundo natural medidos empíricamente.
 - No afirma que accuracy 1.0 en PI-HGAT-T «valide el marco en el mundo real»: valida la **recuperabilidad de relaciones generadas por las reglas** bajo partición leave-one-triad-out.
 - La reinterpretación del infinito como vacío es **premisa filosófica**, no teorema ni hallazgo experimental.
 - La evaluación con anotadores humanos independientes (ciegos) es el canal legítimo para estudiar **validez semántica / interpretabilidad** de las relaciones en el mundo real; ver `datasets/independent_eval/`.
