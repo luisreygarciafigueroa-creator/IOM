@@ -8,13 +8,13 @@ Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL
 
 ## Principio rector
 
-> El marco se sostiene por **auto-coherencia** (bóveda Lean / SHACL / 78 nodos), no por el acuerdo de observadores externos.
+> El marco se sostiene por **auto-coherencia** (bóveda Lean / SHACL / setenta y ocho nodos), no por el acuerdo de observadores externos.
 > Un panel de anotadores separados reproduce el «mundo real» provisional del ensayo; **no** lo fundamenta.
 
 | Fuente | Rol bajo autonomía absoluta |
 |--------|-----------------------------|
 | `data/iom_spec.json` + CSV + ontología | **Arquitectura autónoma** bajo prueba de coherencia interna |
-| Lean / SHACL | **Autonomía formal** — no pide permiso a un consenso exterior |
+| Lean / SHACL | **Autonomía formal** — no solicita permiso a un consenso exterior |
 | PI-HGAT-T / baselines | Auto-recuperabilidad de reglas *del propio sistema* |
 | `datasets/independent_eval/` | **Residuo** de la fase de conciencias separadas (documentado, no fundante) |
 | Cartografía de dominios | Ejercicio del tránsito; no certificado de «mundo real» |
@@ -25,7 +25,7 @@ Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL
 
 | Se establece | No se establece |
 |--------------|-----------------|
-| Coherencia deductiva y de forma del sistema de 13 tríadas | Que el marco «describe la realidad» por acuerdo inter-subjetivo |
+| Coherencia deductiva y de forma del sistema de trece tríadas | Que el marco «describe la realidad» por acuerdo inter-subjetivo |
 | Que las reglas son recuperables desde sí mismas (diagnóstico interno) | Que κ ≈ 0.69 **funda** la validez del proyecto |
 | Que el sendero Mictlán / autonomía es cartografiable en el vocabulario formal | Cobertura empírica de todos los dominios por paneles externos |
 | Que el requisito del sistema puede ser la abolición de requisitos impuestos | Verdad ontológica universal por consenso |
