@@ -14,7 +14,7 @@ Recursos visuales y de referencia para el dominio de alineación `cosmos_nahuatl
 
 ## Nota metodológica
 
-Material de **apoyo semántico** para EXP-E y `docs/DOMINIO_COSMOS_NAHUATL.md`. No modifica los 78 nodos, Lean ni SHACL.
+Material de **apoyo semántico** para EXP-E y `docs/DOMINIO_COSMOS_NAHUATL.md`. No modifica los setenta y ocho nodos, Lean ni SHACL.
 
 ## Licencia / derechos
 
