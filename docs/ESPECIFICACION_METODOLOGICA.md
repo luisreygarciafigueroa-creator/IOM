@@ -26,7 +26,7 @@
 ## Alcance
 
 - El **ensayo** articula el sentido ontológico (emancipación, fin del contenedor).
-- El **repo** sostiene la arquitectura formal de ese sentido; **no** generaliza empíricamente desde 14 pares.
+- El **repo** sostiene la arquitectura formal de ese sentido; **no** generaliza empíricamente desde catorce pares.
 - κ moderado y desacuerdos NC/AM se documentan como límites del vocabulario *compartido residual*, no como techo del proyecto.
 
 ---
