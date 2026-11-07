@@ -1,6 +1,6 @@
 # Tríadas categoriales del marco I.O.
 
-**13 tríadas** × **2 fases** × **3 posiciones** = **78 nodos**  
+**Trece tríadas** × **dos fases** × **tres posiciones** = **setenta y ocho nodos**  
 `spec_version` **1.10.0** · [`datasets/triad_nodes.csv`](../datasets/triad_nodes.csv) · [`data/iom_spec.json`](../data/iom_spec.json)
 
 - Índice: **1 … 13** (`T01` … `T13`)
