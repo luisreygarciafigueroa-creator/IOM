@@ -8,7 +8,7 @@
 
 ## 1. Qué era EXP-A
 
-Protocolo ciego con 14 pares y tres anotadores. Fleiss' κ = 0.6871.
+Protocolo ciego con catorce pares y tres anotadores. Fleiss' κ = 0.6871.
 
 En una fase anterior del proyecto se presentaba como «validez semántica en el mundo real». Ese planteamiento **contradice** el ensayo canónico: el consenso de conciencias separadas no es fundamento último.
 
