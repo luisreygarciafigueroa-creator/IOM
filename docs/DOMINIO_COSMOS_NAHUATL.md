@@ -4,9 +4,9 @@
 > [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
 > el **camino al Mictlán** como tránsito hacia la **autonomía ontológica** y el **orden multiversal**
 > (no como búsqueda de un contenedor exterior). **Mictecacíhuatl** = Evolución, **Mictlantecuhtli** = Involución;
-> **13 tríadas** = topología del tránsito. Las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl)
+> **trece tríadas** = topología del tránsito. Las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl)
 > quedan como **apoyo semántico**. Documento canónico de sentido: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
-> La ontología core (78 nodos) permanece inmutable como bóveda técnica.
+> La ontología core (setenta y ocho nodos) permanece inmutable como bóveda técnica.
 
 Fuentes integradas:
 
@@ -25,7 +25,7 @@ Fuentes integradas:
 | Evolución | Fuerza ascendente: recombina y perfecciona en el vacío | **Mictecacíhuatl** |
 | Involución | Fuerza descendente: despoja y purifica hacia la raíz | **Mictlantecuhtli** |
 
-Las **13 tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema).
+Las **trece tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema).
 
 ---
 
@@ -59,7 +59,7 @@ Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO
 
 ## 2. El camino al Mictlán (= sistema de tríadas)
 
-El **Mictlán** es la **arquitectura de las 13 tríadas**: umbrales del tránsito hacia la autonomía, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen**.
+El **Mictlán** es la **arquitectura de las trece tríadas**: umbrales del tránsito hacia la autonomía, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen**.
 
 Bajo el ensayo canónico: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío.
 
@@ -109,7 +109,7 @@ Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AM
 
 ## 4. Límites explícitos
 
-1. **No** se añaden nodos al core de 78.
+1. **No** se añaden nodos al core de setenta y ocho.
 2. El orden de los Soles **no** se fija como teorema; es apoyo, no eje prioritario.
 3. Lecturas de «ruta al origen» vs «tormento» son de la literatura secundaria.
 4. Sin anotación ciega propia, EXP-A no se reclama como prueba universal.
@@ -162,7 +162,7 @@ El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un s
 | Tema del ensayo | Lectura I.O. / Mictlán |
 |-----------------|----------------------|
 | Regresión infinita de sistemas exteriores | Límite de Totalidad como contenedor externo |
-| Colapso del mundo fenoménico de conciencias separadas | Tránsito por las 13 tríadas |
+| Colapso del mundo fenoménico de conciencias separadas | Tránsito por las trece tríadas |
 | Camino al Mictlán como muerte ontológica | Disolución observador → tejido del sistema |
 | Mictecacíhuatl (ascendente) | **Evolución** |
 | Mictlantecuhtli (descendente) | **Involución** |
