@@ -1,16 +1,16 @@
 # Experimentos del marco I.O. — unidad informativa
 
-> Propósito: construcción formal de **unidad informativa**. La autonomía verificable es el mecanismo de constitución y validación.
+> Propósito: construcción formal de **unidad informativa**. La autonomía verificable constituye el mecanismo de constitución y validación.
 
 > Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 
-El marco se auto-constituye. Lo externo es **encuentro**, no fundamento.
+El marco se auto-constituye. Lo externo pertenece al orden del **encuentro**, no al del fundamento.
 
 **Intérprete:** `.venv/bin/python` tras instalar `requirements-lock.txt`.
 
 ---
 
-## 1. Jerarquía
+## 1. Jerarquía de prioridades
 
 | Prioridad | Capa | Runner | ¿Bloquea «repo válido»? |
 |:---------:|------|--------|:-----------------------:|
@@ -63,7 +63,7 @@ Un κ histórico (~0.6871) **no** se presenta como demostración completada mien
 
 ## 6. Diagnóstico circular (opcional)
 
-PI-HGAT-T / baselines (`experiments/optional/`): recuperan la regla embebida en (fase, pos). No son criterio primario.
+PI-HGAT-T / baselines (`experiments/optional/`): recuperan la regla embebida en (fase, pos). No constituyen criterio primario.
 
 ```bash
 .venv/bin/python experiments/optional/pi_hgat_t.py
