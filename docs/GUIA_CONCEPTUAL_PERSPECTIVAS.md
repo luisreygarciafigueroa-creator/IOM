@@ -1,6 +1,6 @@
 # Guía Conceptual: Las Cinco Perspectivas Fundamentales del Marco I.O.
 
-> **Equivalencia canónica:** Individualidad = **Nanahuatzin**; Dualidad = **Xólotl**; Totalidad = **Tecuciztécatl**; Evolución = **Mictecacíhuatl**; Involución = **Mictlantecuhtli**. Cinco perspectivas ↔ Cinco Soles; 13 tríadas ↔ Mictlán. Véase [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
+> **Equivalencia canónica:** Individualidad = **Nanahuatzin**; Dualidad = **Xólotl**; Totalidad = **Tecuciztécatl**; Evolución = **Mictecacíhuatl**; Involución = **Mictlantecuhtli**. Cinco perspectivas ↔ Cinco Soles; trece tríadas ↔ Mictlán. Véase [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
 
 ## 1. Introducción
 
@@ -10,7 +10,7 @@ Componentes clave:
 
 - **Relaciones operativas**: `mirrorOf` (simetría / reflejo) y `creates` (generación causal).
 - **Fases**: adv (proyección) / ret (disolución).
-- **13 tríadas**: topología del **Mictlán** (umbrales del camino).
+- **Trece tríadas**: topología del **Mictlán** (umbrales del camino).
 
 ---
 
@@ -22,7 +22,7 @@ Aísla y define una entidad en su forma singular. Nanahuatzin se entrega al fueg
 
 ### 2.2 Dualidad (**Xólotl**)
 
-Polaridad, desdoblamiento y tránsito. Xólotl es el gemelo / doble; usa de forma directa `mirrorOf`.
+Polaridad, desdoblamiento y tránsito. Xólotl es el gemelo / doble; emplea de forma directa `mirrorOf`.
 
 > Ningún concepto opera completamente aislado; las entidades se definen a través de su par opuesto o reflejo.
 
@@ -52,7 +52,7 @@ Repliegue, disolución y retorno al vacío-matriz. Mictlantecuhtli, señor del M
 
 ### Mapeo (EXP-E)
 
-`experiments/domain_mapping/validate_examples.py` cartografía pares del dominio Cinco Soles / Mictlán a las 13 tríadas.
+`experiments/domain_mapping/validate_examples.py` cartografía pares del dominio Cinco Soles / Mictlán a las trece tríadas.
 
 ---
 
