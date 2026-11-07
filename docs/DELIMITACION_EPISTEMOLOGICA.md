@@ -13,29 +13,29 @@ $$\text{Validez del marco} \neq \text{Acuerdo inter-subjetivo exterior}$$
 
 $$\text{Validez del marco} = \text{Capacidad de originarse y sostenerse sin contenedor exterior}$$
 
-La bóveda técnica (Lean, SHACL, 78 nodos) expresa **autonomía formal**: coherencia interna que no pide autorización a un panel de observadores separados. El acuerdo inter-anotador (κ) es un **residuo** de la fase del mundo compartido, no el fundamento.
+La bóveda técnica (Lean, SHACL, setenta y ocho nodos) expresa **autonomía formal**: coherencia interna que no solicita autorización a un panel de observadores separados. El acuerdo inter-anotador (κ) constituye un **residuo** de la fase del mundo compartido, no el fundamento del marco.
 
 ---
 
-## Resolución de las tres fricciones ensayo ↔ repo
+## Resolución de las tres fricciones entre ensayo y repositorio
 
-### 1. El ensayo niega el fundamento consensual; el repo no lo necesita
+### 1. El ensayo niega el fundamento consensual; el repositorio no lo necesita
 
 | Fricción | Resolución |
 |----------|------------|
-| EXP-A (κ, 14 pares) parecía la «única validación semántica» | EXP-A queda como **archivo residual** (`primary: false`). El repo **no está obligado** a apoyarse en él |
-| Consenso inter-anotador = lo que el ensayo descalifica | Prohibido presentar κ como prueba o fundamento |
+| EXP-A (κ, catorce pares) parecía la «única validación semántica» | EXP-A queda como **archivo residual** (`primary: false`). El repositorio **no está obligado** a apoyarse en él |
+| Consenso inter-anotador = aquello que el ensayo descalifica | Prohibido presentar κ como prueba o fundamento |
 
-El sistema se sostiene por **autonomía formal** (EXP-B/C), no por jurado exterior.
+El sistema se sostiene por **autonomía formal** (EXP-B/C), no por un jurado exterior.
 
-### 2. Alcance: ontología del ensayo vs. bóveda del repo
+### 2. Alcance: ontología del ensayo frente a bóveda del repositorio
 
 | Plano | Afirma | No afirma |
 |-------|--------|-----------|
 | **Ensayo** (sentido / carácter) | Emancipación absoluta, fin del contenedor, auto-creación desde el vacío | No es un teorema Lean ni un resultado de κ |
-| **Repo** (bóveda formal) | Coherencia de 13 tríadas, `mirrorOf`/`creates`, expresabilidad del sendero | No «demuestra» empíricamente la emancipación universal |
+| **Repositorio** (bóveda formal) | Coherencia de trece tríadas, `mirrorOf`/`creates`, expresabilidad del sendero | No «demuestra» empíricamente la emancipación universal |
 
-La retórica del ensayo **orienta el carácter**; el repo **no pretende probarla** con 14 pares ni con generalización estadística. No hay sobrepromesa empírica: hay **separación de planos**.
+La retórica del ensayo **orienta el carácter**; el repositorio **no pretende probarla** con catorce pares ni con generalización estadística. No hay sobrepromesa empírica: hay **separación de planos**.
 
 ### 3. Mictlán: destino, no ejemplo de dominio
 
@@ -43,9 +43,9 @@ La retórica del ensayo **orienta el carácter**; el repo **no pretende probarla
 |------------------|--------|
 | Mictlán = caso EXP-E de «mapeo de dominio» con advertencia de no-validación de campo | Mictlán = **destino ontológico del carácter** |
 | Cosmología del ensayo = dato de alineación | Cosmología del ensayo = **verdad de sentido** del proyecto |
-| EXP-E = demostración accesoria | EXP-E = comprobación de que el destino es **expresable** en 13 tríadas |
+| EXP-E = demostración accesoria | EXP-E = comprobación de que el destino es **expresable** en trece tríadas |
 
-El repo no «trata la cosmología como mero dato»: la adopta como eje de sentido; la bóveda formal solo garantiza que ese eje cabe sin contradicción.
+El repositorio no «trata la cosmología como mero dato»: la adopta como eje de sentido; la bóveda formal solo garantiza que ese eje cabe sin contradicción.
 
 ---
 
