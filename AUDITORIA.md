@@ -5,14 +5,14 @@
 
 ## 1. Capa primaria — autonomía (punto fijo)
 
-El repositorio es **válido como sistema** si:
+El repositorio es **válido como sistema** si, y solo si:
 
 1. `self_bootstrap.py --passes 2` deja CSV idénticos a HEAD ($S_{n+1}=S_n$).
 2. `lake build` incluye `IOM/SelfGenesis.lean` (conteos derivados).
-3. SHACL conforme sobre TTL regenerado.
+3. SHACL resulta conforme sobre TTL regenerado.
 4. `measure_invariance.py` reporta invariancia **no trivial** (control negativo).
 
-`AUDITORIA_AUTO.md` **no se versiona**. Se genera bajo `experiments/results/` (CI/local) y es solo un informe fechado. **No** es prueba de punto fijo ni fundamento.
+`AUDITORIA_AUTO.md` **no se versiona**. Se genera bajo `experiments/results/` (CI/local) y constituye únicamente un informe fechado. **No** es prueba de punto fijo ni fundamento.
 
 ## 2. Capa secundaria — invariancia
 
@@ -34,7 +34,7 @@ Regeneración de etiquetas desde (fase, pos); LOO por tríada; corrupción de un
 | PI-HGAT-T (fase + posición) | 1.0000 |
 | MLP / reglas sin grafo | 1.0000 |
 
-Muestran que la regla ya está en las features; no son validez semántica mundana.
+Muestran que la regla ya se halla embebida en las features; no constituyen validez semántica mundana.
 
 ## 5. Referencias
 
