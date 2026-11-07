@@ -26,7 +26,7 @@ según las mismas reglas SHACL / `FormalRules.lean`:
 - `creates` ⟺ fases opuestas ∧ (lateral→centro ∨ centro→lateral)
 - `none` en cualquier otro caso
 
-Esta función es **idéntica** en las 13 tríadas. Por tanto, en cada fold LOO, el 100 % de los pares de prueba tiene una clave de features ya vista en entrenamiento con la misma etiqueta.
+Esta función es **idéntica** en las trece tríadas. Por tanto, en cada fold LOO, el 100 % de los pares de prueba tiene una clave de features ya vista en entrenamiento con la misma etiqueta.
 
 ### 3. Consecuencia: cualquier modelo que aprenda la función alcanza 1.0
 
@@ -51,7 +51,7 @@ Esta función es **idéntica** en las 13 tríadas. Por tanto, en cada fold LOO, 
 | «La ontología es aprendible a partir de rasgos estructurales mínimos.» | «PI-HGAT-T supera a baselines en datos independientes del generador.» |
 | «Las ablaciones cuantifican la contribución de fase y posición.» | «El 100 % demuestra robustez frente a ruido del mundo real.» |
 
-La prueba de validez semántica del marco sobre datos **no** derivados de las reglas exige anotación humana ciega (`datasets/independent_eval/`) o candidatos externos (`datasets/external_eval/`).
+La prueba de validez semántica del marco sobre datos **no** derivados de las reglas exigiría anotación humana ciega (`datasets/independent_eval/`) o candidatos externos (`datasets/external_eval/`). Bajo el carácter de autonomía absoluta, ese canal permanece como **residuo**, no como fundamento.
 
 ## Cómo reproducir la auditoría
 
