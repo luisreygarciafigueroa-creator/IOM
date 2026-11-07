@@ -26,18 +26,18 @@ Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL
 |----|------|---------------------|
 | **EXP-B** | Autonomía formal (Lean) | Coherencia sin autoridad exterior |
 | **EXP-C** | Autonomía estructural (SHACL) | Conformidad de formas |
-| **EXP-E** | Destino Mictlán | Sendero de autonomía expresable en 13 tríadas |
+| **EXP-E** | Destino Mictlán | Sendero de autonomía expresable en trece tríadas |
 | **EXP-D** | Auto-generación | Recuperabilidad de reglas internas |
 | **EXP-A** | Residuo | Archivo de panel separado; **no** fundamento |
 
 ---
 
-## 3. Mapeo y 13 tríadas
+## 3. Mapeo y trece tríadas
 
 1. Identificar el fenómeno o umbral del tránsito.
 2. Asignar perspectiva.
 3. Relación `creates` / `mirrorOf` + fase.
-4. Verificar anclaje a una de las 13 tríadas sin violar axiomas.
+4. Verificar anclaje a una de las trece tríadas sin violar axiomas.
 
 El Mictlán es **destino del carácter**, no un dominio empírico entre otros.
 
