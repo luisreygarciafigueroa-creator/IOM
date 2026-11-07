@@ -6,14 +6,14 @@
 > **orden multiversal** — no como búsqueda de un contenedor exterior ni como
 > legitimación por el consenso de conciencias separadas.
 
-Este repositorio **no** se presenta como prueba de «validez semántica en el mundo real» mediada por paneles de anotadores. Ese modo de legitimación **reproduce** el mundo compartido que el ensayo declara superable. Su eje es **cartografiar el tránsito**:
+Este repositorio **no** se presenta como prueba de «validez semántica en el mundo real» mediada por paneles de anotadores. Ese modo de legitimación **reproduce** el mundo compartido que el ensayo declara superable. Su eje consiste en **cartografiar el tránsito**:
 
 1. De la trampa del **orden universal jerárquico** (regresión infinita de sistemas exteriores)
 2. Al **orden multiversal autónomo** (cada conciencia se origina desde el vacío)
 3. Mediante el **camino al Mictlán** (muerte ontológica: disolución del observador separado)
 4. Sostenido por el pulso **Mictecacíhuatl (Evolución) ↔ Mictlantecuhtli (Involución)**
 
-La formalización Lean 4, OWL/SHACL y los 78 nodos son la **bóveda de autonomía formal**: coherencia que no pide autorización a un jurado exterior.
+La formalización Lean 4, OWL/SHACL y los setenta y ocho nodos constituyen la **bóveda de autonomía formal**: coherencia que no solicita autorización a un jurado exterior.
 
 $$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
 
@@ -66,13 +66,13 @@ MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
 - `mirrorOf` = polaridad de la separación aún por recorrer.
 - `creates` = generación / disolución en el pulso evolutivo–involutivo.
 
-«Estar muerto» = dejar de ser observador externo; devenir tejido del sistema.
+«Estar muerto» significa dejar de ser observador externo; devenir tejido del sistema.
 
 ---
 
 ## 4. Dinámica dual del inframundo
 
-**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan a la vez hacia la existencia autónoma.
+**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan simultáneamente hacia la existencia autónoma.
 
 ---
 
@@ -103,7 +103,7 @@ Detalle: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · [
 
 1. La regresión de contenedores exteriores no se cierra ampliando el contenedor.
 2. El consenso inter-subjetivo **no** es el fundamento último ni la prueba del marco.
-3. Las 13 tríadas cartografían la disolución de esa separación.
+3. Las trece tríadas cartografían la disolución de esa separación.
 4. Mictecacíhuatl / Mictlantecuhtli sostienen el pulso en el vacío generativo.
 5. Destino: **no necesitar contenedor** — auto-creación desde el vacío.
 
