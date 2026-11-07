@@ -1,6 +1,7 @@
-# Propuesta de integración metodológica: mapeo de dominios empíricos al marco I.O.
+# Propuesta de integración metodológica: mapeo de dominios al marco I.O.
 
-> Guía operativa para alinear dominios empíricos (cosmología náhuatl) a las cinco perspectivas y 13 tríadas, sin confundir capas formales, estructurales y de validez semántica.  
+> Guía operativa para alinear dominios (cosmología náhuatl y otros) a las cinco perspectivas y trece tríadas, sin confundir capas formales, estructurales y de encuentro.  
+> Bajo el carácter de **autonomía absoluta**, la prueba primaria **no** es la anotación ciega inter-anotador.  
 > Catálogo: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) · Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Protocolo: [`PROTOCOLO_DE_MAPEO.md`](PROTOCOLO_DE_MAPEO.md)
 
 ---
@@ -9,7 +10,7 @@
 
 ### 1.1 Contexto estratégico y estructura semántica multicapa
 
-La arquitectura metodológica del marco I.O. traduce la complejidad de dominios empíricos heterogéneos —cosmogonías náhuatl y otros dominios empíricos— en estructuras semánticas medibles e interoperables. El compromiso epistémico central es **desacoplar** la deducción lógica interna de la validación cognitiva externa, evitando la autorreferencialidad (un sistema que convalida reglas generadas por sí mismo).
+La arquitectura metodológica del marco I.O. traduce la complejidad de dominios heterogéneos —cosmogonías náhuatl y otros— en estructuras semánticas medibles e interoperables. El compromiso epistémico central es **desacoplar** la deducción lógica interna de la dependencia de un contenedor de consenso exterior, evitando tanto la autorreferencialidad vacía como la legitimación por panel de observadores separados.
 
 | Perspectiva | Función |
 |---|---|
@@ -21,24 +22,25 @@ La arquitectura metodológica del marco I.O. traduce la complejidad de dominios 
 
 | Capa | Contenido | Afirmación legítima |
 |---|---|---|
-| Validez semántica (mundo real) | Pares independientes, anotación ciega, κ, mapeos de dominio | Interpretabilidad y acuerdo inter-anotador sobre conceptos externos |
-| Formal | Lean 4.9.0 (`IOM/FormalRules.lean`) | Teoremas y coherencia axiomática |
+| Autonomía formal | Lean 4 (`IOM/FormalRules.lean`) | Teoremas y coherencia axiomática sin autoridad exterior |
 | Estructural | OWL/SHACL, CSV canónicos | Conformidad sintáctica y shape constraints |
+| Cartografía del tránsito | Mapeos de dominio, EXP-E | Expresabilidad en trece tríadas |
 | Diagnóstico sintético | PI-HGAT-T, baselines | Recuperación de relaciones generadas por reglas |
+| Residuo inter-anotador | Pares independientes, κ | Archivo histórico; **no** fundamento |
 
-OWL/SHACL garantizan conformidad sintáctica; Lean 4 prueba solidez matemática. Ambas son **prerrequisitos insuficientes** para reclamar validez empírica: esta queda supeditada a la prueba semántica ciega.
+OWL/SHACL garantizan conformidad sintáctica; Lean 4 prueba solidez matemática. Bajo el carácter actual, estas capas **bastan** para sostener la autonomía formal. El residuo inter-anotador no se promociona a prueba de validez del marco.
 
 ### 1.2 Operacionalización de relaciones y tríadas
 
-Antes de ingerir datos empíricos, Lean 4 restringe el comportamiento de los constructos:
+Antes de ingerir datos, Lean 4 restringe el comportamiento de los constructos:
 
 - **`mirrorOf`:** simetría estructural entre perspectivas/fases; no basta la semejanza temática; exige isomorfismo funcional (fase opuesta, posición reflejada).
 - **`creates`:** generación orientada de estructuras o fases; direccionalidad asimétrica e irreflexiva; gobierna transiciones evolutivas e involutivas.
-- **Fases y tríadas:** cada entidad empírica se posiciona en fase y en una de las 13 tríadas; las relaciones solo son válidas si respetan restricciones de fase.
+- **Fases y tríadas:** cada entidad se posiciona en fase y en una de las trece tríadas; las relaciones solo son válidas si respetan restricciones de fase.
 
 ---
 
-## 2. Protocolo de alineación para dominios empíricos complejos
+## 2. Protocolo de alineación para dominios complejos
 
 ### 2.1 Mapeo sistemático a las tríadas
 
@@ -64,28 +66,28 @@ Fundamento: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md), 
 1. Lean 4 demuestra consistencia interna, **no** veracidad empírica automática.
 2. Prohibido asignar `creates`/`mirrorOf` por semejanza discursiva.
 3. Evolución/Involución deben respetar fronteras de unidad y vacío.
-4. La idoneidad semántica del mapeo se valida solo con acuerdo inter-anotador independiente.
+4. La admisión de un mapeo es estructural; no se exige panel ciego para legitimarlo.
 
 ---
 
-## 3. Validación semántica empírica y control de calidad
+## 3. Residuo inter-anotador y control de calidad
 
-### 3.1 Protocolo ciego
+### 3.1 Protocolo ciego (archivo, no eje)
 
 Metodología: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md). Datos: `datasets/independent_eval/`.
 
-| Métrica | Valor | Decisión ontológica |
+| Métrica | Valor | Lectura |
 |---|---:|---|
-| Fleiss' κ | **0.6871** | Preservar arquitectura de perspectivas |
-| Unanimidad | 10/14 | Congelar definiciones de tríadas involucradas en controles |
-| Desacuerdos | 4/14 (NC01, NC02, AM01, AM03) | Análisis de frontera y casos ambiguos |
+| Fleiss' κ | **0.6871** | Acuerdo *dentro del residuo* |
+| Unanimidad | 10/14 | Controles estructurales estables |
+| Desacuerdos | 4/14 (NC01, NC02, AM01, AM03) | Fronteras del vocabulario compartido residual |
 
 ### 3.2 Diagnóstico de desacuerdos
 
 - **NC (conceptos nuevos):** tensionan límites de las tríadas; refinar notas de alcance o expandir subsunción.
 - **AM (ambiguos):** solapamiento entre perspectivas; reglas de desempatado más estrictas en [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
 
-**Contraste:** PI-HGAT-T mide recuperación de reglas sintéticas; κ mide interpretabilidad humana no guiada. Solo κ constituye prueba de validez en el mundo real.
+**Contraste:** PI-HGAT-T mide recuperación de reglas sintéticas; κ mide interpretabilidad humana no guiada. Ninguno de los dos **funda** el marco bajo el carácter de autonomía absoluta.
 
 ---
 
@@ -98,10 +100,10 @@ lake build
 .venv/bin/python scripts/generate_ontology.py
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python scripts/validate_shacl.py
-.venv/bin/python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json
-.venv/bin/python experiments/pi_hgat_t.py
-.venv/bin/python experiments/baselines.py
+.venv/bin/python experiments/domain_mapping/validate_examples.py
+.venv/bin/python experiments/pi_hgat_t.py   # opcional
+.venv/bin/python scripts/score_independent_eval.py --annotations datasets/independent_eval/annotations.json  # residuo opcional
 .venv/bin/python scripts/generate_audit_report.py
 ```
 
-Este flujo vincula la comprobación sintáctica en CI/CD con la verificación lógica de los teoremas formales y con el eje central del repositorio: la **prueba de validez semántica en el mundo real**.
+Este flujo vincula la comprobación sintáctica en CI/CD con la verificación lógica de los teoremas formales y con el eje central del repositorio: la **autonomía formal** y la cartografía del tránsito hacia la no-dependencia de contenedor exterior.
