@@ -1,6 +1,6 @@
 # Propuesta de arquitectura ontológica: marco semántico I.O. para la alineación de dominios empíricos
 
-> Arquitectura de alineación interdisciplinaria (cosmología náhuatl) sobre las cinco perspectivas y 13 tríadas.  
+> Arquitectura de alineación interdisciplinaria (cosmología náhuatl) sobre las cinco perspectivas y trece tríadas.  
 > Premisas: [`PREMISAS_Y_TEOREMAS.md`](PREMISAS_Y_TEOREMAS.md) · Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Catálogo: [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md)
 
 ---
@@ -31,7 +31,7 @@ Axiomas: vacío, unidad, infinito, transformación.
 
 ## 3. Alineación cosmología náhuatl
 
-Proceso de 6 pasos: fenómeno → perspectiva → tríada → fase → `mirrorOf`/`creates` → validación SHACL.
+Proceso de seis pasos: fenómeno → perspectiva → tríada → fase → `mirrorOf`/`creates` → validación SHACL.
 
 ### Matriz comparativa (EXP-E — cosmología náhuatl)
 
@@ -47,7 +47,7 @@ Ejemplos ejecutables: [`experiments/domain_mapping/examples.json`](../experiment
 
 ## 4. Evaluación empírica
 
-κ = **0.6871** (14 pares, 10/14 unánimes). Desacuerdos: NC01, NC02, AM01, AM03.
+κ = **0.6871** (catorce pares, 10/14 unánimes). Desacuerdos: NC01, NC02, AM01, AM03.
 
 Demostración **provisional** de interpretabilidad externa.
 
