@@ -16,9 +16,34 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
-      - uses: leanprover/lean-action@v1
-        with:
-          build: true
+
+      # GitHub releases/latest de elan falla a veces con 503.
+      # Usamos el mirror oficial + reintentos y luego lake build.
+      - name: Install elan (retries via elan.lean-lang.org)
+        run: |
+          set -euo pipefail
+          for i in 1 2 3 4 5; do
+            if curl -sSfL https://elan.lean-lang.org/elan-init.sh -o /tmp/elan-init.sh; then
+              break
+            fi
+            echo "Attempt $i failed; retrying in $((i * 3))s..."
+            sleep $((i * 3))
+          done
+          test -s /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain none --no-modify-path
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install Lean toolchain from lean-toolchain
+        run: |
+          set -euo pipefail
+          TOOLCHAIN="$(cat lean-toolchain)"
+          elan toolchain install "$TOOLCHAIN"
+          elan default "$TOOLCHAIN"
+          lean --version
+          lake --version
+
+      - name: lake build
+        run: lake build
 
   core:
     name: Núcleo autónomo (punto fijo, SHACL, invariancia)
