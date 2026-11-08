@@ -2,6 +2,8 @@
 
 Este documento distingue con rigor **afirmaciones asumidas** (premisas del marco) de **resultados demostrados** en Lean o comprobados de forma determinista sobre la especificación estructurada. No confunde la recuperación de reglas con la validación empírica del marco sobre datos independientes.
 
+Sentido cosmológico (no formal): [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
+
 ---
 
 ## 1. Qué afirma el marco (núcleo conceptual)
@@ -11,7 +13,7 @@ Este documento distingue con rigor **afirmaciones asumidas** (premisas del marco
 | Afirmación | Tipo |
 |---|---|
 | El vacío es la **ausencia de carga informativa** en un instante $t$: $V_t = (t, \emptyset)$. | **Premisa** (definición operativa) |
-| El vacío no es aniquilación: es condición de posibilidad de nueva emergencia. | **Premisa** (interpretación ontológica) |
+| El vacío no es aniquilación: es condición de posibilidad de nueva emergencia. | **Premisa** (interpretación ontológica; alineada con la Cosmología del Mictlán) |
 | Bajo los operadores formales, el vacío es **punto fijo estricto** de la composición $S_{\mathrm{rev}} \circ Ivo \circ E$. | **Teorema** (demostrado en Lean: `strict_fixed_point`) |
 | $E(V_t)=V_{t+1}$, $S_{\mathrm{fwd}}(V_t)=V_t$, $Ivo(V_t)=V_{t-1}$, $S_{\mathrm{rev}}(V_t)=V_t$. | **Teoremas** (Lean: `E_vacuum`, `S_fwd_vacuum`, `Ivo_vacuum`, `S_rev_vacuum`) |
 
@@ -48,7 +50,7 @@ Estas premisas **no se demuestran**: se **asumen** como codificación operativa 
 2. Hay **trece tríadas** por fase (avance/retroceso) con etiquetas canónicas en `data/iom_spec.json`.
 3. **Espejo (`mirrorOf`)**: misma tríada, fase opuesta, posición lateral invertida (`pos' = 2 - pos`), centro fijo.
 4. **Creación (`creates`)**: exactamente las cuatro reglas de `creation_rules` (lateral→centro o centro→laterales entre fases opuestas).
-5. **Vectores**: cuatro secuencias de cinco pasos con ejes y flechas declarados.
+5. **Vectores**: cuatro secuencias de cinco pasos con ejes y flechas declarados (detalle narrativo en [`VECTORES_4_5.md`](VECTORES_4_5.md) y [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)).
 
 ---
 
@@ -74,6 +76,7 @@ Demostrados en `IOM/Core.lean`, `IOM/Operators.lean`, `IOM/Specification.lean`, 
 - No afirma que accuracy 1.0 en PI-HGAT-T «valide el marco en el mundo real»: valida la **recuperabilidad de relaciones generadas por las reglas** bajo partición leave-one-triad-out.
 - La reinterpretación del infinito como vacío es **premisa filosófica**, no teorema ni hallazgo experimental.
 - La evaluación con anotadores humanos independientes (ciegos) es el canal legítimo para estudiar **validez semántica / interpretabilidad** de las relaciones en el mundo real; ver `datasets/independent_eval/`.
+- La Cosmología del Mictlán es modelo filosófico de correspondencia y continuidad informacional, no afirmación física demostrada.
 
 ---
 
@@ -87,3 +90,4 @@ Demostrados en `IOM/Core.lean`, `IOM/Operators.lean`, `IOM/Specification.lean`, 
 | Comprobación JSON ⇄ reglas | `tests/test_property_links.py`, `tests/test_formal_rules_bridge.py` |
 | Validez semántica (mundo real) | `datasets/independent_eval/` |
 | Recuperabilidad sintética | PI-HGAT-T, baselines |
+| Sentido cosmológico | [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) |
