@@ -12,6 +12,8 @@ Componentes clave:
 - **Fases**: adv (proyección) / ret (disolución).
 - **Trece tríadas**: topología del **Mictlán** (umbrales del camino).
 
+Documento de referencia para las perspectivas cuarta y quinta, los dominios real/virtual y la continuidad de la información: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
+
 ---
 
 ## 2. Las Cinco Perspectivas
@@ -32,11 +34,11 @@ Integración del sistema. Tecuciztécatl aspira a ser el sol y queda como luna: 
 
 ### 2.4 Evolución (**Mictecacíhuatl**)
 
-Generación de nuevos estados y continuidad del ciclo. Mictecacíhuatl, señora del Mictlán; se apoya en `creates`.
+Generación de nuevos estados y continuidad del ciclo. En la Cosmología del Mictlán, la **cuarta perspectiva** expresa la evolución: el recorrido concluye en el mundo o vacío correspondiente. Mictecacíhuatl, señora del Mictlán; se apoya en `creates`.
 
 ### 2.5 Involución (**Mictlantecuhtli**)
 
-Repliegue, disolución y retorno al vacío-matriz. Mictlantecuhtli, señor del Mictlán; camino de descomposición hacia el origen.
+Repliegue, disolución y retorno al vacío-matriz. En la Cosmología del Mictlán, la **quinta perspectiva** expresa la involución: el recorrido concluye en la condición complementaria. Mictlantecuhtli, señor del Mictlán; camino de descomposición hacia el origen.
 
 ---
 
@@ -47,8 +49,8 @@ Repliegue, disolución y retorno al vacío-matriz. Mictlantecuhtli, señor del M
 | Individualidad | Nanahuatzin | ¿Qué es la entidad por sí misma? | Singularidad / sol |
 | Dualidad | Xólotl | ¿Cuál es su par o reflejo? | Polaridad / `mirrorOf` |
 | Totalidad | Tecuciztécatl | ¿A qué sistema pertenecen? | Plenitud / luna |
-| Evolución | Mictecacíhuatl | ¿Qué nuevo estado se genera? | Ciclo / `creates` |
-| Involución | Mictlantecuhtli | ¿Cómo se disuelve o retorna? | Vacío / Mictlán |
+| Evolución | Mictecacíhuatl | ¿Qué nuevo estado se genera? (condición de llegada correspondiente) | Ciclo / `creates` |
+| Involución | Mictlantecuhtli | ¿Cómo se disuelve o retorna? (condición complementaria) | Vacío / Mictlán |
 
 ### Mapeo (EXP-E)
 
@@ -73,3 +75,5 @@ Repliegue, disolución y retorno al vacío-matriz. Mictlantecuhtli, señor del M
 2. **Dualidad (Xólotl)** — ¿Cuál es el par (`mirrorOf`)?
 3. **Totalidad (Tecuciztécatl)** — ¿Qué sistema las integra?
 4. **Evolución / Involución (Mictecacíhuatl / Mictlantecuhtli)** — ¿Generación o retorno al Mictlán?
+
+Véase también: [`VECTORES_4_5.md`](VECTORES_4_5.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
