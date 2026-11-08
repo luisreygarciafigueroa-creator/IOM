@@ -7,7 +7,7 @@ fijo, Lean, SHACL). La autonomía verificable es el *mecanismo* de constitución
 y validación; anotadores, dominios y learners de recuperación de reglas son
 **encuentro**, no fundamento.
 
-Referencia conceptual: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Spec: [`data/iom_spec.json`](data/iom_spec.json) · Jerarquía: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
+Referencia conceptual: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Cosmología: [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) · Spec: [`data/iom_spec.json`](data/iom_spec.json) · Jerarquía: [`EXPERIMENTOS.md`](EXPERIMENTOS.md).
 
 ## Propósito
 
@@ -25,7 +25,7 @@ Las 13 tríadas son modos de composición de esa unidad.
 ## Encuentro (no fundamenta)
 
 EXP-E (dominio / Mictlán) y EXP-A (κ) son proyección provisional. Sin
-`ACCESS_LOG`, κ histórico no se declara demostración cerrada.
+`ACCESS_LOG`, κ histórico no se declara demostración cerrada. El sentido del destino Mictlán se desarrolla en la Cosmología del Mictlán.
 
 ## Diagnóstico circular (opcional)
 
