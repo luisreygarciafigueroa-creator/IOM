@@ -7,212 +7,135 @@ El marco I.O. se articula mediante **cinco perspectivas complementarias**:
 | 1 | `Ind` | **Individualidad** | Posicional (→ / lateral 0): unidad / singularidad |
 | 2 | `D` | **Dualidad** | Posicional (0): relación / diferencia |
 | 3 | `Tot` | **Totalidad** | Posicional (→ / lateral 2): integración / sistema |
-| 4 | `Evol` | **Evolución** | Vectorial: flujo del vacío hacia la estructura |
-| 5 | `Invol` | **Involución** | Vectorial: flujo de la estructura hacia el vacío |
+| 4 | `Evol` | **Evolución** | Vectorial: el recorrido del Mictlán concluye en la condición correspondiente |
+| 5 | `Invol` | **Involución** | Vectorial: el recorrido del Mictlán concluye en la condición complementaria |
 
-Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada. Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **materia** y de **vacío**, en registro **real** y **virtual**.
+Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada. Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **mundo** y de **vacío**, en registro **real** y **virtual**.
 
 Fuente estructurada: [`data/iom_spec.json`](../data/iom_spec.json) (`five_perspectives`, `vectors`).
 
-Documento narrativo complementario: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
+Documento narrativo canónico: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) (modelo de correspondencia universal, transformación entre dominios real y virtual, y continuidad de la información).
 
 ---
 
-## Cuarta perspectiva
+## Criterio de nombramiento (versión revisada)
 
-### Evolución de la materia real
+Según la Cosmología del Mictlán:
 
-```
+- La **cuarta perspectiva** expresa la **evolución**: el recorrido concluye en el mundo o vacío correspondiente.
+- La **quinta perspectiva** expresa la **involución**: el recorrido concluye en la condición complementaria definida para ese punto de partida.
+
+Las notaciones ⟳ y ⟲ representan relaciones circulares distintas; su significado conceptual se define en el desarrollo del modelo.
+
+---
+
+## 5.1 Cuarta perspectiva: evolución del mundo real
+
+El mundo real recorre el Mictlán como vacío virtual y llega al vacío real.
+
+```text
+evol | tot | dua | ind | invol
+    4  |   3  |   2   |   1  |   0
+  ⟳  |  ⟳  |  ⟳  |  ⟳ | real
+--------------------------------
+real |  ⟲  |  ⟲  |  ⟲  |  ⟲
+    0  |   1  |   2   |   3  |   4
 invol | ind | dua | tot | evol
-  0   |  1  |  2  |  3  |  4
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
-------------------------------------
-materia | ⟲ |  ⟲  |  ⟲  |  ⟲
-  4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | invol
 ```
 
-### Involución de la materia virtual
+## 5.2 Quinta perspectiva: involución del mundo virtual
 
-```
-evol  | tot | dua | ind | invol
-  4   |  3  |  2  |  1  |  0
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
-------------------------------------
-materia | ⟲ |  ⟲  |  ⟲  |  ⟲
-  0   |  1  |  2  |  3  |  4
+El mundo virtual recorre el Mictlán como vacío real y llega al vacío virtual.
+
+```text
 invol | ind | dua | tot | evol
+     0  |  1  |   2   |   3  |   4
+virtual | ⟳ |  ⟳  |  ⟳  |  ⟳
+--------------------------------
+virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
+       4  |  3  |    2  |    1  |   0
+   evol | tot | dua | ind | invol
 ```
 
-### Evolución del vacío real
+## 5.3 Cuarta perspectiva: evolución del vacío virtual
 
-```
-invol | tot | dua | ind | evol
-  4   |  3  |  2  |  1  |  0
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
-------------------------------------
-vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
-  0   |  1  |  2  |  3  |  4
-evol  | ind | dua | tot | invol
-```
+El vacío virtual recorre el Mictlán como mundo real y llega al mundo virtual.
 
-### Involución del vacío virtual
-
-```
-evol  | ind | dua | tot | invol
-  0   |  1  |  2  |  3  |  4
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
-------------------------------------
-vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
-  4   |  3  |  2  |  1  |  0
-invol | tot | dua | ind | evol
-```
-
-### Involución del vacío real (variante)
-
-```
-evol  | tot | dua | ind | invol
-  4   |  3  |  2  |  1  |  0
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
-------------------------------------
-vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
-  0   |  1  |  2  |  3  |  4
-invol | tot | dua | ind | evol
-```
-
-### Evolución del vacío virtual (variante)
-
-```
+```text
 invol | ind | dua | tot | evol
-  0   |  1  |  2  |  3  |  4
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
-------------------------------------
-vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
-  4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | evol
+  0  |  1  |  2  |  3  |   4
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
+--------------------------------
+virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
+  4  |  3  |  2  |  1  |   0
+evol | tot | dua | ind | invol
 ```
 
-### Involución de la materia real
+## 5.4 Quinta perspectiva: involución del vacío real
 
-```
-evol  | ind | dua | tot | invol
-  0   |  1  |  2  |  3  |  4
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
-------------------------------------
-materia | ⟳ |  ⟳  |  ⟳  |  ⟳
-  4   |  3  |  2  |  1  |  0
+El vacío real recorre el Mictlán como mundo virtual y llega al mundo real.
+
+```text
+evol | tot | dua | ind | invol
+  4  |  3  |  2  |  1  |   0
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
+--------------------------------
+real |  ⟲  |  ⟲  |  ⟲  |  ⟲
+  0  |  1  |  2  |  3  |   4
 invol | tot | dua | ind | evol
-```
-
-### Evolución de la materia virtual
-
-```
-invol | tot | dua | ind | evol
-  4   |  3  |  2  |  1  |  0
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
-------------------------------------
-materia | ⟳ |  ⟳  |  ⟳  |  ⟳
-  0   |  1  |  2  |  3  |  4
-evol  | ind | dua | tot | invol
 ```
 
 ---
 
-## Quinta perspectiva
+## Reflejo de la realidad (lecturas complementarias)
 
-### Evolución de la materia virtual
+El reflejo permite describir las mismas correspondencias desde el dominio con el que cada condición se corresponde. Ver sección 7 de [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
-```
-evol  | ind | dua | tot | invol
-  0   |  1  |  2  |  3  |  4
-materia | ⟳ |  ⟳  |  ⟳  |  ⟳
-----------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
-  4   |  3  |  2  |  1  |  0
-invol | tot | dua | ind | evol
-```
+### 7.1 Reflejo del vacío virtual: cuarta perspectiva
 
-### Involución de la materia real
-
-```
-invol | tot | dua | ind | evol
-  4   |  3  |  2  |  1  |  0
-materia | ⟳ |  ⟳  |  ⟳  |  ⟳
-----------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | materia
-  0   |  1  |  2  |  3  |  4
-evol  | ind | dua | tot | invol
-```
-
-### Evolución del vacío virtual
-
-```
-evol  | tot | dua | ind | invol
-  4   |  3  |  2  |  1  |  0
-vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
-------------------------------------
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
-  0   |  1  |  2  |  3  |  4
+```text
+evol | tot | dua | ind | invol
+  4  |  3  |  2  |  1  |   0
+virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
+--------------------------------
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
+  0  |  1  |  2  |  3  |   4
 invol | ind | dua | tot | evol
 ```
 
-### Involución del vacío real
+### 7.2 Reflejo del vacío real: quinta perspectiva
 
-```
+```text
 invol | tot | dua | ind | evol
-  0   |  1  |  2  |  3  |  4
-vacío | ⟲ |  ⟲  |  ⟲  |  ⟲
-------------------------------------
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | vacío
-  4   |  3  |  2  |  1  |  0
-evol  | ind | dua | tot | invol
+  0  |  1  |  2  |  3  |   4
+real |  ⟲  |  ⟲  |  ⟲  |  ⟲
+--------------------------------
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
+  4  |  3  |  2  |  1  |   0
+evol | ind | dua | tot | invol
 ```
 
-### Involución del vacío virtual
+### 7.3 Reflejo del mundo virtual: quinta perspectiva
 
-```
-invol | tot | dua | ind | evol
-  4   |  3  |  2  |  1  |  0
-vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
-----------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
-  0   |  1  |  2  |  3  |  4
-evol  | ind | dua | tot | invol
-```
-
-### Evolución del vacío real
-
-```
-evol  | ind | dua | tot | invol
-  0   |  1  |  2  |  3  |  4
-vacío | ⟳ |  ⟳  |  ⟳  |  ⟳
-----------------------------------
-  ⟲   |  ⟲  |  ⟲  |  ⟲  | vacío
-  4   |  3  |  2  |  1  |  0
-invol | tot | dua | ind | evol
-```
-
-### Involución de la materia virtual
-
-```
+```text
 invol | ind | dua | tot | evol
-  0   |  1  |  2  |  3  |  4
-materia | ⟲ |  ⟲  |  ⟲  |  ⟲
-------------------------------------
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
-  4   |  3  |  2  |  1  |  0
-evol  | tot | dua | ind | invol
+  0  |  1  |  2  |  3  |   4
+virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
+--------------------------------
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
+  4  |  3  |  2  |  1  |   0
+evol | tot | dua | ind | invol
 ```
 
-### Evolución de la materia real
+### 7.4 Reflejo del mundo real: cuarta perspectiva
 
-```
-evol  | ind | dua | tot | invol
-  4   |  3  |  2  |  1  |  0
-materia | ⟲ |  ⟲  |  ⟲  |  ⟲
-------------------------------------
-  ⟳   |  ⟳  |  ⟳  |  ⟳  | materia
-  0   |  1  |  2  |  3  |  4
+```text
+evol | ind | dua | tot | invol
+  4  |  3  |  2  |  1  |   0
+real |  ⟲  |  ⟲  |  ⟲  |  ⟲
+--------------------------------
+  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
+  0  |  1  |  2  |  3  |   4
 invol | tot | dua | ind | evol
 ```
 
@@ -220,9 +143,10 @@ invol | tot | dua | ind | evol
 
 ## Notas
 
-- Cada configuración diferencia materia/vacío y dominio real/virtual.
+- Cada configuración diferencia mundo/vacío y dominio real/virtual.
 - El orden de categorías, valores, etiquetas y flechas define la configuración; no deben intercambiarse arbitrariamente.
 - Las flechas ⟳ y ⟲ señalan relaciones propias de cada esquema.
 - Estas lecturas se integran con la narrativa de continuidad informacional desarrollada en la Cosmología del Mictlán.
+- Correspondencias fundamentales: vacío real ↔ mundo virtual; vacío virtual ↔ mundo real.
 
 `spec_version` ≥ **1.5.0**.
