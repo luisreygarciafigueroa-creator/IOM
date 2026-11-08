@@ -2,6 +2,8 @@
 
 Recursos visuales y de referencia para el dominio de alineación `cosmos_nahuatl`.
 
+Documento de sentido canónico: [`docs/COSMOLOGIA_DEL_MICTLAN.md`](../../COSMOLOGIA_DEL_MICTLAN.md).
+
 | Archivo | Descripción | Uso en el marco I.O. |
 |---------|-------------|----------------------|
 | `Piedra_del_Sol.png` | Piedra del Sol (Calendario Azteca). Museo Nacional de Antropología. | Iconografía del **Quinto Sol** (Nahui Ollin) y las edades previas. |
@@ -14,7 +16,7 @@ Recursos visuales y de referencia para el dominio de alineación `cosmos_nahuatl
 
 ## Nota metodológica
 
-Material de **apoyo semántico** para EXP-E y `docs/DOMINIO_COSMOS_NAHUATL.md`. No modifica los setenta y ocho nodos, Lean ni SHACL.
+Material de **apoyo semántico** para EXP-E, `docs/DOMINIO_COSMOS_NAHUATL.md` y `docs/COSMOLOGIA_DEL_MICTLAN.md`. No modifica los setenta y ocho nodos, Lean ni SHACL.
 
 ## Licencia / derechos
 
