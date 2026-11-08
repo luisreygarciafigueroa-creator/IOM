@@ -8,7 +8,7 @@ Mapeo de las **tres primeras perspectivas** del marco I.O. sobre las trece tría
 | **Dualidad** | Segunda |
 | **Totalidad** | Tercera |
 
-Estas tres perspectivas describen los *modos de actualización* de la unidad informativa. Se leen en isomorfismo con las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl). Las perspectivas cuarta y quinta (Evolución / Involución) se tratan en [`VECTORES_4_5.md`](VECTORES_4_5.md) y en la [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
+Estas tres perspectivas describen los *modos de actualización* de la unidad informativa. Se leen en isomorfismo con las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl). Las perspectivas cuarta y quinta (Evolución / Involución) se tratan en [`VECTORES_4_5.md`](VECTORES_4_5.md) y en la [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) (modelo de correspondencia universal y continuidad de la información).
 
 Fuente de las trece tríadas canónicas: [`TRIADAS_CATEGORIALES.md`](TRIADAS_CATEGORIALES.md) · [`data/iom_spec.json`](../data/iom_spec.json).
 
@@ -63,4 +63,4 @@ Fuente de las trece tríadas canónicas: [`TRIADAS_CATEGORIALES.md`](TRIADAS_CAT
 - Las columnas se alinean con las tres posiciones de cada tríada (lateral · centro · lateral), leídas desde Individualidad → Dualidad → Totalidad.
 - Este mapeo complementa, no sustituye, las relaciones operativas `mirrorOf` / `creates` ni los vectores de la cuarta y quinta perspectiva.
 
-Véase también: [`GUIA_CONCEPTUAL_PERSPECTIVAS.md`](GUIA_CONCEPTUAL_PERSPECTIVAS.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+Véase también: [`GUIA_CONCEPTUAL_PERSPECTIVAS.md`](GUIA_CONCEPTUAL_PERSPECTIVAS.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
