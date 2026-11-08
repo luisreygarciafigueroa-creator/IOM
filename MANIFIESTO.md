@@ -21,11 +21,15 @@ La **autonomía verificable** constituye el mecanismo decisivo: permite que la u
 
 El repositorio no se fundamenta en un orden exterior compartido por conciencias separadas. Se **auto-constituye** en el punto fijo de su especificación (`data/iom_spec.json` y predicados Lean). Anotadores, dominios empíricos y métricas de recuperación de reglas pertenecen al orden del **encuentro**, no al del fundamento.
 
-## Texto canónico
+## Texto canónico de sentido
 
 El desarrollo sistemático de esta idea se encuentra en:
 
 **[`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)**
+
+**Cosmología del Mictlán** (modelo de correspondencia universal entre materia/vacío, dominios real/virtual, evolución/involución y continuidad de la información):
+
+**[`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)**
 
 Síntesis visual:
 `docs/media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`
@@ -38,6 +42,7 @@ Borrador histórico (no normativo): [`docs/archive/MARCOI.O.txt`](docs/archive/M
 |-----------|-----|
 | **README.md** | Técnico: propósito, pipeline, criterios de verificación |
 | **MANIFIESTO.md** (este) | Propósito y fundamento del marco |
+| **docs/COSMOLOGIA_DEL_MICTLAN.md** | Modelo cosmológico de correspondencias y transformaciones |
 | **docs/DEL_ORDEN_…** | Desarrollo filosófico canónico |
 | **EXPERIMENTOS.md** | Qué se mide y qué no se mide |
 | **docs/DELIMITACION_EPISTEMOLOGICA.md** | Qué cuenta como fundamento |
