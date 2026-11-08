@@ -2,7 +2,7 @@
 
 Este documento **no** define el repositorio como prueba de validez semántica en un mundo compartido por conciencias separadas. Ese modo de legitimación es exactamente el que el ensayo canónico declara **superable**.
 
-Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 
 ---
 
@@ -37,7 +37,7 @@ Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL
 | Prioridad | Afirmación legítima | Artefacto |
 |:---------:|---------------------|-----------|
 | **1** | Autonomía formal (coherencia sin contenedor exterior) | Lean, SHACL, CSV, `iom_spec.json` |
-| **2** | Cartografía del tránsito (Mictlán / autonomía) | EXP-E, dominio cosmológico, ensayo |
+| **2** | Cartografía del tránsito (Mictlán / autonomía) | EXP-E, dominio cosmológico, ensayo, Cosmología |
 | **3** | Auto-generación recuperable de reglas | PI-HGAT-T, baselines |
 | **4** | Residuo documentado del mundo compartido | `independent_eval`, κ (opcional) |
 
@@ -84,3 +84,4 @@ python scripts/score_independent_eval.py --annotations datasets/independent_eval
 - Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md)
 - Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 - Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
