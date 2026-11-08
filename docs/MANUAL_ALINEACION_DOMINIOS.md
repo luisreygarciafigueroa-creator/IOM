@@ -5,7 +5,8 @@
 > ejercicios secundarios. **No** existe «prueba primaria EXP-A» que legitime el mapeo.
 >
 > [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) ·
-> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) ·
+> [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 
 ---
 
@@ -18,8 +19,10 @@ Setenta y ocho nodos (13 × 2 × 3) = bóveda técnica. Conceptos externos se al
 | Individualidad | Singularidad auto-creada |
 | Dualidad | Polaridad en disolución |
 | Totalidad | Totalidad propia (sin contenedor exterior) |
-| Evolución | Mictecacíhuatl — ascendente |
-| Involución | Mictlantecuhtli — descendente |
+| Evolución (4ª) | Mictecacíhuatl — el recorrido del Mictlán concluye en la condición correspondiente |
+| Involución (5ª) | Mictlantecuhtli — el recorrido concluye en la condición complementaria |
+
+Detalle: [`VECTORES_4_5.md`](VECTORES_4_5.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
@@ -54,6 +57,7 @@ python scripts/importar_datos_personalizados.py \
 ## 4. Mictlán — destino, no ejemplo
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
+Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).  
 Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md).
 
 | Concepto | Perspectiva | Relación |
