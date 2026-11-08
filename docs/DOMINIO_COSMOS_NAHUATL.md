@@ -1,7 +1,8 @@
 # Dominio: Cosmología náhuatl — Mictlán, autonomía y figuras de apoyo
 
 > **Carácter:** el marco I.O. se lee desde la óptica de
-> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+> y de la [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md):
 > el **camino al Mictlán** como tránsito hacia la **autonomía ontológica** y el **orden multiversal**
 > (no como búsqueda de un contenedor exterior). **Mictecacíhuatl** = Evolución, **Mictlantecuhtli** = Involución;
 > **trece tríadas** = topología del tránsito. Las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl)
@@ -11,19 +12,20 @@
 Fuentes integradas:
 
 - *Del Orden Universal a la Creación de Uno Mismo* — ensayo ontológico (eje de sentido; ver §8).
+- [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) — modelo de correspondencia universal, dominios real/virtual, continuidad de la información.
 - Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl* (apoyo).
 - Mónica Luna López, «El camino al Mictlán…», *Vita Brevis*, 2017 (apoyo).
 - *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (relato pictográfico; ver §7).
 
 ### Perspectivas bajo la óptica de autonomía
 
-| Perspectiva | Lectura (ensayo) | Figura ancla (apoyo) |
-|-------------|------------------|----------------------|
+| Perspectiva | Lectura (ensayo / Cosmología) | Figura ancla (apoyo) |
+|-------------|-------------------------------|----------------------|
 | Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
 | Dualidad | Polaridad yo/otro que se disuelve en el tránsito | Xólotl |
 | Totalidad | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
-| Evolución | Fuerza ascendente: recombina y perfecciona en el vacío | **Mictecacíhuatl** |
-| Involución | Fuerza descendente: despoja y purifica hacia la raíz | **Mictlantecuhtli** |
+| Evolución (4ª) | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente | **Mictecacíhuatl** |
+| Involución (5ª) | Fuerza descendente; el recorrido concluye en la condición complementaria | **Mictlantecuhtli** |
 
 Las **trece tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema).
 
@@ -31,7 +33,7 @@ Las **trece tríadas** = topología del **camino al Mictlán** (muerte ontológi
 
 ## 1. Los Cinco Soles cosmogónicos (apoyo semántico)
 
-El mito postula una sucesión de edades; aquí se conserva como **material de apoyo**, no como eje prioritario del carácter del repositorio.
+El mito postula una sucesión de edades; aquí se conserva como **material de apoyo**, no como eje prioritario del carácter del repositorio. La Cosmología del Mictlán lo lee como correspondencia narrativa con las cinco perspectivas.
 
 | Sol | Nombre | Destrucción | Transformación típica |
 |-----|--------|-------------|----------------------|
@@ -41,7 +43,7 @@ El mito postula una sucesión de edades; aquí se conserva como **material de ap
 | IV | *Nahui Océlotl* (Tierra) | Temblores / ocelotes | Gigantes devorados |
 | V | *Nahui Ollin* (Movimiento) | Edad actual | — |
 
-Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
+Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ### Alineación residual a perspectivas
 
@@ -61,7 +63,7 @@ Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO
 
 El **Mictlán** es la **arquitectura de las trece tríadas**: umbrales del tránsito hacia la autonomía, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen**.
 
-Bajo el ensayo canónico: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío.
+Bajo el ensayo canónico y la Cosmología: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío. El Mictlán funciona como recorrido simbólico entre condiciones de existencia (mundo/vacío, real/virtual).
 
 ### Niveles (síntesis Códice Vaticano A / Florentino) — apoyo
 
@@ -114,16 +116,17 @@ Pares del relato *Amoxtli* (AMX-01…07): ver [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AM
 3. Lecturas de «ruta al origen» vs «tormento» son de la literatura secundaria.
 4. Sin anotación ciega propia, EXP-A no se reclama como prueba universal.
 5. Las fuentes coloniales pueden incorporar categorías cristianas; el mapeo no las «purifica».
-6. *Amoxtli* y el ensayo de autonomía son textos de apoyo / sentido; el ensayo es el **eje de carácter**, no una fuente histórica primaria.
+6. *Amoxtli*, el ensayo de autonomía y la Cosmología del Mictlán son textos de apoyo / sentido; el ensayo y la Cosmología orientan el **eje de carácter**, no son fuentes históricas primarias.
 
 ---
 
 ## 5. Referencias de trabajo
 
 - Ensayo canónico: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 - Moreno de los Arcos, R. «Los cinco soles cosmogónicos». *Estudios de Cultura Náhuatl*.
 - Luna López, M. (2017). «El camino al Mictlán…» *Vita Brevis* 6(11).
-- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md).
+- Interno: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · [`AMOXTLI_IN_ATL_MIQUIZTLI.md`](AMOXTLI_IN_ATL_MIQUIZTLI.md) · [`CATALOGO_DOMINIOS.md`](CATALOGO_DOMINIOS.md) · [`VECTORES_4_5.md`](VECTORES_4_5.md).
 
 ---
 
@@ -158,14 +161,15 @@ El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un s
 
 - Markdown: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
 - PDF: `media/cosmos_nahuatl/Del Orden Universal a la Autonomía Absoluta_ El Sendero del Mictlán.pdf`
+- Cosmología complementaria: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 
 | Tema del ensayo | Lectura I.O. / Mictlán |
 |-----------------|----------------------|
 | Regresión infinita de sistemas exteriores | Límite de Totalidad como contenedor externo |
 | Colapso del mundo fenoménico de conciencias separadas | Tránsito por las trece tríadas |
 | Camino al Mictlán como muerte ontológica | Disolución observador → tejido del sistema |
-| Mictecacíhuatl (ascendente) | **Evolución** |
-| Mictlantecuhtli (descendente) | **Involución** |
+| Mictecacíhuatl (ascendente) | **Evolución** (4ª perspectiva) |
+| Mictlantecuhtli (descendente) | **Involución** (5ª perspectiva) |
 | Orden multiversal / auto-creación desde el vacío | Individualidad + Totalidad sin contenedor exterior |
 
 $$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
