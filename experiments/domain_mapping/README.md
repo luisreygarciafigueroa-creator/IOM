@@ -4,6 +4,7 @@ El Mictlán **no** es un dominio empírico entre otros. Es la **lectura de desti
 
 - [`docs/CARACTER_REPOSITORIO.md`](../../docs/CARACTER_REPOSITORIO.md)
 - [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](../../docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- [`docs/COSMOLOGIA_DEL_MICTLAN.md`](../../docs/COSMOLOGIA_DEL_MICTLAN.md)
 - [`docs/DOMINIO_COSMOS_NAHUATL.md`](../../docs/DOMINIO_COSMOS_NAHUATL.md)
 
 ## Qué mide
@@ -12,7 +13,7 @@ El Mictlán **no** es un dominio empírico entre otros. Es la **lectura de desti
 |------|--------|
 | Que los nodos del sendero existen en la bóveda de 78 | «Validez empírica» por consenso |
 | Que las aristas respetan `mirrorOf` / `creates` | κ de dominio |
-| Expresabilidad del destino Mictlán en la arquitectura | Que el ensayo quede «probado» por el mapeo |
+| Expresabilidad del destino Mictlán en la arquitectura | Que el ensayo o la Cosmología queden «probados» por el mapeo |
 
 ## Ejecución
 
