@@ -9,14 +9,14 @@ El marco I.O. es una arquitectura formal de **cinco perspectivas** orientada al 
 | **Individualidad** | Singularidad que se origina a sí misma |
 | **Dualidad** | Polaridad yo/otro en disolución |
 | **Totalidad** | Totalidad propia (no del sistema exterior) |
-| **Evolución** | Mictecacíhuatl — recombinación en el vacío |
-| **Involución** | Mictlantecuhtli — despojo hacia la raíz |
+| **Evolución** (4ª) | Mictecacíhuatl — el recorrido del Mictlán concluye en la condición correspondiente |
+| **Involución** (5ª) | Mictlantecuhtli — el recorrido concluye en la condición complementaria |
 
 Relaciones: `creates`, `mirrorOf`; fases adv/ret; posiciones → / 0 / ←.
 
 **No** se define como «demostración de validez semántica en el mundo real bajo protocolo ciego». Ese lenguaje restauraba el fundamento consensual que el ensayo descalifica.
 
-Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md).
+Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
@@ -39,7 +39,7 @@ Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md) · Ensayo: [`DEL
 3. Relación `creates` / `mirrorOf` + fase.
 4. Verificar anclaje a una de las trece tríadas sin violar axiomas.
 
-El Mictlán es **destino del carácter**, no un dominio empírico entre otros.
+El Mictlán es **destino del carácter**, no un dominio empírico entre otros. La Cosmología del Mictlán desarrolla el modelo de correspondencia entre mundos y vacíos (real/virtual) y la continuidad de la información.
 
 ---
 
@@ -61,8 +61,8 @@ python experiments/domain_mapping/validate_examples.py
 
 | Plano | Contenido |
 |-------|-----------|
-| Ensayo (sentido) | Emancipación absoluta, fin del contenedor |
+| Ensayo / Cosmología (sentido) | Emancipación absoluta, fin del contenedor, continuidad informacional |
 | Repo (bóveda) | Coherencia formal de esa arquitectura |
 | No se afirma | Que el consenso inter-anotador pruebe el ensayo |
 
-Soporte: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+Soporte: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · [`VECTORES_4_5.md`](VECTORES_4_5.md).
