@@ -1,7 +1,8 @@
 # Carácter del repositorio IOM
 
 > **Enfoque canónico:** el marco I.O. se lee desde la óptica de
-> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md):
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+> y de la [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md):
 > el **camino al Mictlán** como tránsito hacia la **autonomía absoluta** y el
 > **orden multiversal** — no como búsqueda de un contenedor exterior ni como
 > legitimación por el consenso de conciencias separadas.
@@ -17,7 +18,7 @@ La formalización Lean 4, OWL/SHACL y los setenta y ocho nodos constituyen la **
 
 $$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
 
-Texto fuente: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md).
+Textos fuente: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
@@ -48,8 +49,10 @@ Ambas son formas de **contenedor exterior**. El carácter del repositorio las re
 | **Individualidad** | Singularidad que se crea a sí misma | Nanahuatzin |
 | **Dualidad** | Polaridad yo ↔ otro que se disuelve en el tránsito | Xólotl |
 | **Totalidad** | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
-| **Evolución** | Fuerza ascendente en el vacío (**Mictecacíhuatl**) | Mictecacíhuatl |
-| **Involución** | Fuerza descendente hacia la raíz (**Mictlantecuhtli**) | Mictlantecuhtli |
+| **Evolución** | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente (**Mictecacíhuatl**) | Mictecacíhuatl |
+| **Involución** | Fuerza descendente; el recorrido concluye en la condición complementaria (**Mictlantecuhtli**) | Mictlantecuhtli |
+
+Detalle de las configuraciones 4ª y 5ª: [`VECTORES_4_5.md`](VECTORES_4_5.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
@@ -72,7 +75,7 @@ MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
 
 ## 4. Dinámica dual del inframundo
 
-**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan simultáneamente hacia la existencia autónoma.
+**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan simultáneamente hacia la existencia autónoma. La Cosmología del Mictlán formaliza estas direcciones como perspectivas cuarta y quinta según la condición de llegada del recorrido.
 
 ---
 
@@ -81,7 +84,7 @@ MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
 | Capa | Rol |
 |------|-----|
 | Lean / SHACL / 78 nodos | **Autonomía formal** — eje técnico |
-| Cartografía Mictlán / ensayo | **Sentido** del tránsito |
+| Cartografía Mictlán / Cosmología / ensayo | **Sentido** del tránsito |
 | PI-HGAT-T | Auto-recuperabilidad de reglas |
 | EXP-A (κ, panel ciego) | **Residuo** del mundo compartido; **no** fundamento |
 
@@ -107,4 +110,4 @@ Detalle: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · [
 4. Mictecacíhuatl / Mictlantecuhtli sostienen el pulso en el vacío generativo.
 5. Destino: **no necesitar contenedor** — auto-creación desde el vacío.
 
-Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md).
+Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
