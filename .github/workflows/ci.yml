@@ -17,21 +17,32 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # GitHub releases/latest de elan falla a veces con 503.
-      # Usamos el mirror oficial + reintentos y luego lake build.
-      - name: Install elan (retries via elan.lean-lang.org)
+      # GitHub /releases/latest de elan falla intermitentemente (503/504).
+      # Descargamos un tarball de versión fija con reintentos e instalamos a mano.
+      - name: Install elan v4.2.4 (pinned tarball + retries)
         run: |
           set -euo pipefail
-          for i in 1 2 3 4 5; do
-            if curl -sSfL https://elan.lean-lang.org/elan-init.sh -o /tmp/elan-init.sh; then
+          ELAN_VERSION=v4.2.4
+          ARCH=x86_64-unknown-linux-gnu
+          URL="https://github.com/leanprover/elan/releases/download/${ELAN_VERSION}/elan-${ARCH}.tar.gz"
+          TMPDIR="$(mktemp -d)"
+          for i in 1 2 3 4 5 6 7 8; do
+            echo "Attempt $i: downloading $URL"
+            if curl -fsSL --retry 2 --retry-delay 2 -o "$TMPDIR/elan.tar.gz" "$URL"; then
               break
             fi
-            echo "Attempt $i failed; retrying in $((i * 3))s..."
-            sleep $((i * 3))
+            echo "Download failed; waiting $((i * 4))s..."
+            sleep $((i * 4))
           done
-          test -s /tmp/elan-init.sh
-          sh /tmp/elan-init.sh -y --default-toolchain none --no-modify-path
+          test -s "$TMPDIR/elan.tar.gz"
+          tar -xzf "$TMPDIR/elan.tar.gz" -C "$TMPDIR"
+          # El tarball contiene el binario elan-init
+          INIT_BIN="$(find "$TMPDIR" -type f -name 'elan-init' -o -name 'elan' | head -1)"
+          test -n "$INIT_BIN"
+          chmod +x "$INIT_BIN"
+          "$INIT_BIN" -y --default-toolchain none --no-modify-path
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          rm -rf "$TMPDIR"
 
       - name: Install Lean toolchain from lean-toolchain
         run: |
