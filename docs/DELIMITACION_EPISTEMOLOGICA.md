@@ -1,7 +1,8 @@
 # Delimitación epistemológica del marco IOM
 
 > Bajo el carácter de **autonomía absoluta** ([`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md),
-> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)),
+> [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md),
+> [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)),
 > este repositorio **no** funda su validez en el consenso de un «mundo compartido por conciencias separadas».
 > Ese consenso es, en el ensayo canónico, frágil, provisional y **superable**.
 
@@ -32,17 +33,17 @@ El sistema se sostiene por **autonomía formal** (EXP-B/C), no por un jurado ext
 
 | Plano | Afirma | No afirma |
 |-------|--------|-----------|
-| **Ensayo** (sentido / carácter) | Emancipación absoluta, fin del contenedor, auto-creación desde el vacío | No es un teorema Lean ni un resultado de κ |
+| **Ensayo / Cosmología** (sentido / carácter) | Emancipación absoluta, fin del contenedor, auto-creación desde el vacío, continuidad informacional entre condiciones | No es un teorema Lean ni un resultado de κ |
 | **Repositorio** (bóveda formal) | Coherencia de trece tríadas, `mirrorOf`/`creates`, expresabilidad del sendero | No «demuestra» empíricamente la emancipación universal |
 
-La retórica del ensayo **orienta el carácter**; el repositorio **no pretende probarla** con catorce pares ni con generalización estadística. No hay sobrepromesa empírica: hay **separación de planos**.
+La retórica del ensayo y de la Cosmología del Mictlán **orienta el carácter**; el repositorio **no pretende probarla** con catorce pares ni con generalización estadística. No hay sobrepromesa empírica: hay **separación de planos**.
 
 ### 3. Mictlán: destino, no ejemplo de dominio
 
 | Antes (fricción) | Ahora |
 |------------------|--------|
 | Mictlán = caso EXP-E de «mapeo de dominio» con advertencia de no-validación de campo | Mictlán = **destino ontológico del carácter** |
-| Cosmología del ensayo = dato de alineación | Cosmología del ensayo = **verdad de sentido** del proyecto |
+| Cosmología del ensayo = dato de alineación | Cosmología del Mictlán = **verdad de sentido** del proyecto (correspondencia universal, dominios real/virtual, continuidad de la información) |
 | EXP-E = demostración accesoria | EXP-E = comprobación de que el destino es **expresable** en trece tríadas |
 
 El repositorio no «trata la cosmología como mero dato»: la adopta como eje de sentido; la bóveda formal solo garantiza que ese eje cabe sin contradicción.
@@ -54,7 +55,7 @@ El repositorio no «trata la cosmología como mero dato»: la adopta como eje de
 | Prioridad | Capa | Qué establece | Qué **no** establece |
 |:---------:|------|---------------|----------------------|
 | **1** | Autonomía formal (Lean, SHACL, CSV) | Coherencia sin autoridad exterior | Verdad empírica consensuada |
-| **2** | Destino Mictlán (EXP-E + ensayo) | Expresabilidad del sendero de autonomía | Prueba estadística de emancipación |
+| **2** | Destino Mictlán (EXP-E + ensayo + Cosmología) | Expresabilidad del sendero de autonomía | Prueba estadística de emancipación |
 | **3** | Auto-generación (PI-HGAT-T) | Recuperabilidad de reglas internas | Validez por mundo compartido |
 | **4** | Residuo EXP-A | κ documentado históricamente | Fundamento del marco |
 
@@ -75,5 +76,6 @@ El repositorio no «trata la cosmología como mero dato»: la adopta como eje de
 
 - Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 - Ensayo: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+- Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 - Experimentos: [`../EXPERIMENTOS.md`](../EXPERIMENTOS.md)
 - Capas: [`VALIDACION_INDEPENDIENTE.md`](VALIDACION_INDEPENDIENTE.md)
