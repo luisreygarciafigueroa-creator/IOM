@@ -3,7 +3,9 @@
 > **Relato pictográfico del Mictlán** (relato original inspirado en la tradición nahua).  
 > PDF: [`media/cosmos_nahuatl/Amoxtli in Atl Miquiztli - Libro del Agua y de la Muerte.pdf`](media/cosmos_nahuatl/Amoxtli%20in%20Atl%20Miquiztli%20-%20Libro%20del%20Agua%20y%20de%20la%20Muerte.pdf) (9 páginas).
 
-Documento de **apoyo semántico** al carácter del repositorio: trece tríadas ↔ Mictlán; Mictecacíhuatl = Evolución; Mictlantecuhtli = Involución; Dualidad / Xólotl en el xoloitzcuintle. No modifica los setenta y ocho nodos canónicos.
+Documento de **apoyo semántico** al carácter del repositorio: trece tríadas ↔ Mictlán; Mictecacíhuatl = Evolución (4ª perspectiva); Mictlantecuhtli = Involución (5ª perspectiva); Dualidad / Xólotl en el xoloitzcuintle. No modifica los setenta y ocho nodos canónicos.
+
+Cosmología de referencia: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
@@ -43,8 +45,8 @@ El tlacuilo formula explícitamente: *nueve señales + cuatro pasos = trece marc
 |------------------|-------------------|
 | **Tonalli** (viajero) | Individualidad en tránsito |
 | **Xoloitzcuintle** | Dualidad / **Xólotl** — guía, primer cruce |
-| **Mictecacíhuatl** | **Evolución** |
-| **Mictlantecuhtli** | **Involución** |
+| **Mictecacíhuatl** | **Evolución** (4ª) |
+| **Mictlantecuhtli** | **Involución** (5ª) |
 | Río único | Totalidad del sistema |
 | Primer cruce (con guía) | Fase **adv** |
 | Segundo cruce (solo) | Fase **ret** |
@@ -67,6 +69,7 @@ El tlacuilo formula explícitamente: *nueve señales + cuatro pasos = trece marc
 ## Uso en el repositorio
 
 - Dominio: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
+- Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
 - Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 - Medios: [`media/cosmos_nahuatl/README.md`](media/cosmos_nahuatl/README.md)
 
