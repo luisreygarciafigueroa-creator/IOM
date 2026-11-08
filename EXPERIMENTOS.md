@@ -2,7 +2,7 @@
 
 > Propósito: construcción formal de **unidad informativa**. La autonomía verificable constituye el mecanismo de constitución y validación.
 
-> Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)
+> Manifiesto: [`MANIFIESTO.md`](MANIFIESTO.md) · Ensayo: [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) · Cosmología: [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)
 
 El marco se auto-constituye. Lo externo pertenece al orden del **encuentro**, no al del fundamento.
 
@@ -49,7 +49,7 @@ Control negativo obligatorio.
 .venv/bin/python experiments/domain_mapping/validate_examples.py
 ```
 
-Un fallo de anclaje de dominio **no** invalida el núcleo formal.
+Un fallo de anclaje de dominio **no** invalida el núcleo formal. La lectura de destino del Mictlán se desarrolla en [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md).
 
 ---
 
