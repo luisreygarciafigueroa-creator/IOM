@@ -1,7 +1,8 @@
 # Auditoría IOM — auto-fundamentación y encuentros
 
 **Jerarquía canónica:** [`EXPERIMENTOS.md`](EXPERIMENTOS.md)  
-**Delimitación:** [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)
+**Delimitación:** [`docs/DELIMITACION_EPISTEMOLOGICA.md`](docs/DELIMITACION_EPISTEMOLOGICA.md)  
+**Cosmología:** [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)
 
 ## 1. Capa primaria — autonomía (punto fijo)
 
@@ -22,7 +23,7 @@ Regeneración de etiquetas desde (fase, pos); LOO por tríada; corrupción de un
 
 | Experimento | Rol |
 |-------------|-----|
-| EXP-E (dominio / Mictlán) | Expresabilidad; un fallo de anclaje **no** invalida el núcleo |
+| EXP-E (dominio / Mictlán) | Expresabilidad del destino Mictlán; un fallo de anclaje **no** invalida el núcleo. Sentido: Cosmología del Mictlán |
 | EXP-A (κ) | Resonancia provisional **solo** con log de acceso e instrumento ciego |
 
 κ ≈ 0.6871 es registro histórico. Sin `ACCESS_LOG` de exposición previa **no** se declara «demostración provisional completada» en esta auditoría.
@@ -40,3 +41,4 @@ Muestran que la regla ya se halla embebida en las features; no constituyen valid
 
 - Técnica: [`docs/AUDITORIA_TECNICA.md`](docs/AUDITORIA_TECNICA.md)
 - Métricas sintéticas: [`docs/AUDITORIA_METRICAS.md`](docs/AUDITORIA_METRICAS.md)
+- Cosmología: [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)
