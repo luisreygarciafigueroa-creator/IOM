@@ -8,6 +8,9 @@ La **autonomía verificable** no es un atributo accesorio, sino el mecanismo por
 
 El desarrollo del horizonte de sentido se encuentra en el [`MANIFIESTO.md`](MANIFIESTO.md).
 
+**Cosmología del Mictlán** (modelo de correspondencia universal, transformación entre dominios real y virtual, continuidad de la información):
+[`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)
+
 ## Cadena operativa de constitución
 
 ```text
@@ -24,8 +27,8 @@ vacío informativo
 | Individualidad | Conserva el elemento distinguible |
 | Dualidad      | Registra la diferencia o la relación |
 | Totalidad     | Integra los elementos en una estructura |
-| Evolución     | Expande o proyecta la información |
-| Involución    | Regresa, comprime o reorganiza la información |
+| Evolución     | Expande o proyecta la información (recorrido del Mictlán concluye en la condición correspondiente) |
+| Involución    | Regresa, comprime o reorganiza la información (recorrido concluye en la condición complementaria) |
 
 Las trece tríadas no constituyen una mera taxonomía, sino **modos de composición** de la unidad informativa (setenta y ocho nodos).
 
@@ -66,6 +69,16 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOG
 | `IOM/SelfGenesis.lean`       | Conteos derivados de la estructura |
 | `IOM/InformationalUnit.lean` | Núcleo mínimo: identidad, relación, trazabilidad |
 | `scripts/self_bootstrap.py`  | Regeneración idempotente |
+
+## Documentación de sentido y cosmología
+
+| Documento | Rol |
+|-----------|-----|
+| [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) | Modelo de correspondencia universal, dominios real/virtual, 4ª/5ª perspectivas, reflejo, continuidad informacional |
+| [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md) | Diagramas de las perspectivas cuarta (evolución) y quinta (involución) |
+| [`docs/TRES_PERSPECTIVAS.md`](docs/TRES_PERSPECTIVAS.md) | Individualidad · Dualidad · Totalidad |
+| [`MANIFIESTO.md`](MANIFIESTO.md) | Propósito y fundamento |
+| [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) | Ensayo canónico de sentido |
 
 ## Afirmación rigurosa
 
