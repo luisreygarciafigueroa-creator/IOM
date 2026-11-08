@@ -12,7 +12,7 @@ La ontología core permanece **inmutable**. Los datos externos se alinean como i
 
 1. **No se añaden nodos al core**: los setenta y ocho nodos son la bóveda técnica.
 2. **Tres perspectivas posicionales**: Individualidad, Dualidad, Totalidad — leídas como singularidad auto-creada, polaridad en disolución, totalidad propia (sin contenedor exterior).
-3. **Dos direcciones**: Evolución (Mictecacíhuatl) e Involución (Mictlantecuhtli).
+3. **Dos direcciones**: Evolución (Mictecacíhuatl; 4ª perspectiva — condición de llegada correspondiente) e Involución (Mictlantecuhtli; 5ª perspectiva — condición complementaria).
 4. **Relaciones admisibles**: solo `mirrorOf` y `creates` (resto: `none`).
 5. **Validación estructural**: `scripts/importar_datos_personalizados.py` antes de mezclar con candidatos canónicos.
 6. **No se exige** etiquetado ciego inter-anotador para «legitimar» un dominio: eso restauraría la dependencia del mundo compartido.
@@ -22,6 +22,7 @@ La ontología core permanece **inmutable**. Los datos externos se alinean como i
 ## 2. Cosmología náhuatl — Mictlán / autonomía (dominio prioritario)
 
 Documento: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md).  
+Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).  
 Ensayo de sentido: [`DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md).  
 Plantilla: `datasets/ingestion/templates/cosmos_nahuatl.csv`.  
 Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
@@ -64,3 +65,4 @@ Medios: [`media/cosmos_nahuatl/`](media/cosmos_nahuatl/).
 - Carácter: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md)
 - Delimitación: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md)
 - Náhuatl: [`DOMINIO_COSMOS_NAHUATL.md`](DOMINIO_COSMOS_NAHUATL.md)
+- Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md)
