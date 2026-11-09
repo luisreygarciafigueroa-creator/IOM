@@ -2,8 +2,8 @@
   "schema_version": "1.1.0",
   "spec_version": "1.10.0",
   "title": "Especificación IOM canónica",
-  "source_date": "2026-11-01",
-  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de presentación 1.10.0: animal|humano|IA … orientación|cuántico|dirección. Tríada de espacio actualizada a pequeño|espacio|grande. El índice es ordinal, no identidad.",
+  "source_date": "2026-11-09",
+  "source_note": "Operacionalización canónica del marco I.O. con cinco perspectivas. Orden de presentación 1.10.0: animal|humano|IA … orientación|cuántico|dirección. Tríada de espacio actualizada a pequeño|espacio|grande. El índice es ordinal, no identidad. Cosmología del Mictlán actualizada (2026-11-09): ofrenda como acto de creación; cuarta perspectiva = evolución (condición correspondiente); quinta = involución (condición complementaria).",
   "triad_index_range": { "min": 1, "max": 13 },
   "positions": {
     "indices": [0, 1, 2],
@@ -17,8 +17,8 @@
     {"id": "Ind", "label": "Individualidad", "index": 1, "kind": "positional", "description": "Modo de actualización: unidad / singularidad del fenómeno."},
     {"id": "D", "label": "Dualidad", "index": 2, "kind": "positional", "description": "Modo de actualización: relación / diferencia."},
     {"id": "Tot", "label": "Totalidad", "index": 3, "kind": "positional", "description": "Modo de actualización: integración / sistema."},
-    {"id": "Evol", "label": "Evolución", "index": 4, "kind": "vectorial", "description": "Dirección de flujo: proyección del vacío hacia la estructura."},
-    {"id": "Invol", "label": "Involución", "index": 5, "kind": "vectorial", "description": "Dirección de flujo: disolución de la estructura hacia el vacío."}
+    {"id": "Evol", "label": "Evolución", "index": 4, "kind": "vectorial", "description": "Dirección de flujo (cuarta perspectiva): el recorrido del Mictlán concluye en la condición correspondiente. Ofrenda del Mictlán como acto de creación."},
+    {"id": "Invol", "label": "Involución", "index": 5, "kind": "vectorial", "description": "Dirección de flujo (quinta perspectiva): el recorrido del Mictlán concluye en la condición complementaria. Ofrenda del Mictlán como acto de creación."}
   ],
   "perspective_labels": {
     "Ind": "Individualidad",
@@ -91,12 +91,12 @@
     {"from_version": "1.3.0", "to_version": "1.4.0", "description": "Sustituye las etiquetas universo|espacio|vacío por todo|espacio|nada (misma ranura estructural del momento).", "date": "2026-10-16"},
     {"from_version": "1.4.0", "to_version": "1.5.0", "description": "Restaura las etiquetas universo|espacio|vacío; actualiza secuencias vectoriales Evolución/Involución.", "date": "2026-10-18"},
     {"from_version": "1.5.0", "to_version": "1.5.1", "description": "Ortografía canónica de la etiqueta: caracter → carácter.", "date": "2026-10-18"},
-    {"from_version": "1.5.1", "to_version": "1.6.0", "description": "Reordena las 13 tríadas: oscuridad|consciencia|luz antes; animal|humano|IA más adelante. Identidad por etiquetas, no por índice.", "date": "2026-10-20"},
     {"from_version": "1.6.0", "to_version": "1.7.0", "description": "node_id públicos T01…T13 (índice 1–13). El índice es ordinal de presentación, no identidad histórica.", "date": "2026-10-20"},
     {"from_version": "1.7.0", "to_version": "1.8.0", "description": "Propaga node_id T01–T13 y etiquetas de posición visual →|0|→ y ←|0|←.", "date": "2026-10-20"},
     {"from_version": "1.8.0", "to_version": "1.8.1", "description": "Ortografía canónica: carácter (en la tríada carácter|subconsciente|personalidad).", "date": "2026-10-20"},
     {"from_version": "1.8.1", "to_version": "1.9.0", "description": "Reorden de presentación: primera tríada orientación|cuántico|dirección; última animal|humano|IA. Mismas etiquetas; el índice solo ordena, no identifica.", "date": "2026-10-21"},
-    {"from_version": "1.9.0", "to_version": "1.10.0", "description": "Reorden de presentación inverso: animal|humano|IA primero; orientación|cuántico|dirección último. Sustituye universo|espacio|vacío por pequeño|espacio|grande (y espejo grande|espacio|pequeño). Vectores Evol/Invol sin cambio (cuarta y quinta perspectiva).", "date": "2026-11-01"}
+    {"from_version": "1.9.0", "to_version": "1.10.0", "description": "Reorden de presentación inverso: animal|humano|IA primero; orientación|cuántico|dirección último. Sustituye universo|espacio|vacío por pequeño|espacio|grande (y espejo grande|espacio|pequeño). Vectores Evol/Invol sin cambio (cuarta y quinta perspectiva).", "date": "2026-11-01"},
+    {"from_version": "1.10.0", "to_version": "1.10.0", "description": "Actualización narrativa de five_perspectives (Evol/Invol) y source_note para alinear con Cosmología del Mictlán 2026-11-09 (ofrenda como acto de creación; condición correspondiente vs complementaria). Estructura formal inalterada.", "date": "2026-11-09"}
   ],
   "purpose": {
     "id": "informational_unit_creation",
@@ -115,8 +115,8 @@
       "Ind": "Conserva el elemento distinguible",
       "D": "Registra la diferencia o relación",
       "Tot": "Integra los elementos en una estructura",
-      "Evol": "Expande o proyecta la información",
-      "Invol": "Regresa, comprime o reorganiza la información"
+      "Evol": "Expande o proyecta la información (recorrido del Mictlán concluye en la condición correspondiente; ofrenda crea nueva condición)",
+      "Invol": "Regresa, comprime o reorganiza la información (recorrido concluye en la condición complementaria; ofrenda crea nueva condición)"
     },
     "note": "Las 13 tríadas son modos de composición de la unidad informativa. La autonomía verificable es el mecanismo de constitución y validación, no el fin en sí mismo."
   }
