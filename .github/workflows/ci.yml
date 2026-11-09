@@ -26,23 +26,33 @@ jobs:
           ARCH=x86_64-unknown-linux-gnu
           URL="https://github.com/leanprover/elan/releases/download/${ELAN_VERSION}/elan-${ARCH}.tar.gz"
           TMPDIR="$(mktemp -d)"
-          for i in 1 2 3 4 5 6 7 8; do
+          trap 'rm -rf "$TMPDIR"' EXIT
+          ARCHIVE="$TMPDIR/elan.tar.gz"
+          for i in 1 2 3 4; do
             echo "Attempt $i: downloading $URL"
-            if curl -fsSL --retry 2 --retry-delay 2 -o "$TMPDIR/elan.tar.gz" "$URL"; then
+            rm -f "$ARCHIVE"
+            if curl -fsSL --connect-timeout 20 --max-time 180 \
+              --retry 5 --retry-all-errors --retry-delay 5 --retry-max-time 180 \
+              -o "$ARCHIVE" "$URL"; then
               break
             fi
-            echo "Download failed; waiting $((i * 4))s..."
-            sleep $((i * 4))
+            echo "Download failed; waiting $((i * 15))s before another attempt..."
+            sleep $((i * 15))
           done
-          test -s "$TMPDIR/elan.tar.gz"
-          tar -xzf "$TMPDIR/elan.tar.gz" -C "$TMPDIR"
+          if [[ ! -s "$ARCHIVE" ]]; then
+            echo "::error::Unable to download Elan ${ELAN_VERSION} from GitHub Releases after all retries."
+            exit 1
+          fi
+          tar -xzf "$ARCHIVE" -C "$TMPDIR"
           # El tarball contiene el binario elan-init
-          INIT_BIN="$(find "$TMPDIR" -type f -name 'elan-init' -o -name 'elan' | head -1)"
-          test -n "$INIT_BIN"
+          INIT_BIN="$(find "$TMPDIR" -type f \( -name 'elan-init' -o -name 'elan' \) -print -quit)"
+          if [[ -z "$INIT_BIN" ]]; then
+            echo "::error::Elan archive did not contain elan-init or elan."
+            exit 1
+          fi
           chmod +x "$INIT_BIN"
           "$INIT_BIN" -y --default-toolchain none --no-modify-path
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-          rm -rf "$TMPDIR"
 
       - name: Install Lean toolchain from lean-toolchain
         run: |
