@@ -5,7 +5,8 @@
 > y de la [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md):
 > el **camino al Mictlán** como tránsito hacia la **autonomía absoluta** y el
 > **orden multiversal** — no como búsqueda de un contenedor exterior ni como
-> legitimación por el consenso de conciencias separadas.
+> legitimación por el consenso de conciencias separadas. La ofrenda del Mictlán
+> al finalizar cada recorrido constituye el acto de creación de una nueva condición.
 
 Este repositorio **no** se presenta como prueba de «validez semántica en el mundo real» mediada por paneles de anotadores. Ese modo de legitimación **reproduce** el mundo compartido que el ensayo declara superable. Su eje consiste en **cartografiar el tránsito**:
 
@@ -13,6 +14,7 @@ Este repositorio **no** se presenta como prueba de «validez semántica en el mu
 2. Al **orden multiversal autónomo** (cada conciencia se origina desde el vacío)
 3. Mediante el **camino al Mictlán** (muerte ontológica: disolución del observador separado)
 4. Sostenido por el pulso **Mictecacíhuatl (Evolución) ↔ Mictlantecuhtli (Involución)**
+5. Culminado en la **ofrenda del Mictlán** (acto de creación de una nueva condición)
 
 La formalización Lean 4, OWL/SHACL y los setenta y ocho nodos constituyen la **bóveda de autonomía formal**: coherencia que no solicita autorización a un jurado exterior.
 
@@ -49,8 +51,8 @@ Ambas son formas de **contenedor exterior**. El carácter del repositorio las re
 | **Individualidad** | Singularidad que se crea a sí misma | Nanahuatzin |
 | **Dualidad** | Polaridad yo ↔ otro que se disuelve en el tránsito | Xólotl |
 | **Totalidad** | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
-| **Evolución** | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente (**Mictecacíhuatl**) | Mictecacíhuatl |
-| **Involución** | Fuerza descendente; el recorrido concluye en la condición complementaria (**Mictlantecuhtli**) | Mictlantecuhtli |
+| **Evolución** | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente (**Mictecacíhuatl**); ofrenda crea nueva condición | Mictecacíhuatl |
+| **Involución** | Fuerza descendente; el recorrido concluye en la condición complementaria (**Mictlantecuhtli**); ofrenda crea nueva condición | Mictlantecuhtli |
 
 Detalle de las configuraciones 4ª y 5ª: [`VECTORES_4_5.md`](VECTORES_4_5.md) · [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
 
@@ -68,6 +70,7 @@ MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
 - Posiciones **→ / 0 / ←**; fases **adv / ret**.
 - `mirrorOf` = polaridad de la separación aún por recorrer.
 - `creates` = generación / disolución en el pulso evolutivo–involutivo.
+- Al finalizar el recorrido, la ofrenda del Mictlán permite la creación de una nueva condición.
 
 «Estar muerto» significa dejar de ser observador externo; devenir tejido del sistema.
 
@@ -75,7 +78,7 @@ MUNDO FENOMÉNICO              CAMINO AL MICTLÁN                 ESTADO FINAL
 
 ## 4. Dinámica dual del inframundo
 
-**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan simultáneamente hacia la existencia autónoma. La Cosmología del Mictlán formaliza estas direcciones como perspectivas cuarta y quinta según la condición de llegada del recorrido.
+**Mictecacíhuatl** (Evolución) recombina y perfecciona; **Mictlantecuhtli** (Involución) despoja y purifica. Ambas actúan simultáneamente hacia la existencia autónoma. La Cosmología del Mictlán formaliza estas direcciones como perspectivas cuarta y quinta según la condición de llegada del recorrido, y establece que la ofrenda del Mictlán es el acto de creación que perpetúa la transformación.
 
 ---
 
@@ -108,6 +111,7 @@ Detalle: [`DELIMITACION_EPISTEMOLOGICA.md`](DELIMITACION_EPISTEMOLOGICA.md) · [
 2. El consenso inter-subjetivo **no** es el fundamento último ni la prueba del marco.
 3. Las trece tríadas cartografían la disolución de esa separación.
 4. Mictecacíhuatl / Mictlantecuhtli sostienen el pulso en el vacío generativo.
-5. Destino: **no necesitar contenedor** — auto-creación desde el vacío.
+5. La ofrenda del Mictlán al finalizar el recorrido es el acto de creación.
+6. Destino: **no necesitar contenedor** — auto-creación desde el vacío.
 
 Relaciones: [`RELACIONES_OPERATIVAS.md`](RELACIONES_OPERATIVAS.md) · Cosmología: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
