@@ -8,11 +8,12 @@
 > **trece tríadas** = topología del tránsito. Las figuras del Quinto Sol (Nanahuatzin, Xólotl, Tecuciztécatl)
 > quedan como **apoyo semántico**. Documento canónico de sentido: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO.md).
 > La ontología core (setenta y ocho nodos) permanece inmutable como bóveda técnica.
+> La ofrenda del Mictlán al finalizar cada recorrido constituye el acto de creación de una nueva condición.
 
 Fuentes integradas:
 
 - *Del Orden Universal a la Creación de Uno Mismo* — ensayo ontológico (eje de sentido; ver §8).
-- [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) — modelo de correspondencia universal, dominios real/virtual, continuidad de la información.
+- [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) — modelo de correspondencia universal, dominios real/virtual, continuidad de la información y ofrenda como acto de creación.
 - Roberto Moreno de los Arcos, «Los cinco soles cosmogónicos», *Estudios de Cultura Náhuatl* (apoyo).
 - Mónica Luna López, «El camino al Mictlán…», *Vita Brevis*, 2017 (apoyo).
 - *Amoxtli in Atl Miquiztli* — Libro del agua y de la muerte (relato pictográfico; ver §7).
@@ -24,8 +25,8 @@ Fuentes integradas:
 | Individualidad | Singularidad que se crea a sí misma | Nanahuatzin |
 | Dualidad | Polaridad yo/otro que se disuelve en el tránsito | Xólotl |
 | Totalidad | Cada conciencia constituye **su** totalidad | Tecuciztécatl |
-| Evolución (4ª) | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente | **Mictecacíhuatl** |
-| Involución (5ª) | Fuerza descendente; el recorrido concluye en la condición complementaria | **Mictlantecuhtli** |
+| Evolución (4ª) | Fuerza ascendente; el recorrido del Mictlán concluye en la condición correspondiente; ofrenda crea nueva condición | **Mictecacíhuatl** |
+| Involución (5ª) | Fuerza descendente; el recorrido concluye en la condición complementaria; ofrenda crea nueva condición | **Mictlantecuhtli** |
 
 Las **trece tríadas** = topología del **camino al Mictlán** (muerte ontológica: observador → tejido del sistema).
 
@@ -63,7 +64,7 @@ Detalle de sentido prioritario: [`CARACTER_REPOSITORIO.md`](CARACTER_REPOSITORIO
 
 El **Mictlán** es la **arquitectura de las trece tríadas**: umbrales del tránsito hacia la autonomía, no «infierno» cristiano. Lecturas recientes (Luna López; Matos Moctezuma; López Austin) lo leen como **ruta al origen**.
 
-Bajo el ensayo canónico y la Cosmología: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío. El Mictlán funciona como recorrido simbólico entre condiciones de existencia (mundo/vacío, real/virtual).
+Bajo el ensayo canónico y la Cosmología: «estar muerto» = dejar de ser observador externo para convertirse en el tejido del sistema; destino = auto-creación desde el vacío. El Mictlán funciona como recorrido simbólico entre condiciones de existencia (mundo/vacío, real/virtual). Al finalizar el recorrido, la ofrenda del Mictlán permite la creación de una nueva condición.
 
 ### Niveles (síntesis Códice Vaticano A / Florentino) — apoyo
 
@@ -171,5 +172,6 @@ El tlacuilo formula **nueve señales + cuatro pasos = trece marcas**, con **un s
 | Mictecacíhuatl (ascendente) | **Evolución** (4ª perspectiva) |
 | Mictlantecuhtli (descendente) | **Involución** (5ª perspectiva) |
 | Orden multiversal / auto-creación desde el vacío | Individualidad + Totalidad sin contenedor exterior |
+| Ofrenda del Mictlán | Acto de creación de una nueva condición |
 
 $$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
