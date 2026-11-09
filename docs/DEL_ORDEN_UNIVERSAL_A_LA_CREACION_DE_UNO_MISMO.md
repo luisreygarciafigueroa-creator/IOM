@@ -74,6 +74,8 @@ MUNDO FENOMÉNICO                    CAMINO AL MICTLÁN                  ESTADO 
 
 En el Mictlán, «estar muerto» adquiere un significado ontológico radical: no es la nada ni el descanso, sino dejar de ser un observador externo para convertirse en el tejido mismo del sistema. Las otras personas dejan de representar mentes ajenas y pasan a encarnar al propio sistema en su proceso de creación. El destino de este recorrido es una conciencia que no necesita integrarse en un orden exterior porque se origina a sí misma desde el vacío absoluto.
 
+Según la Cosmología del Mictlán, cada condición de existencia (vacío virtual, vacío real, mundo virtual, mundo real) recorre el Mictlán desde su propia perspectiva y llega a su condición correspondiente. Al finalizar el recorrido, entrega como ofrenda el Mictlán para crear una nueva condición. Así, la transformación se perpetúa mediante la entrega.
+
 ---
 
 ## 5. La Dinámica del Inframundo: Mictecacíhuatl y Mictlantecuhtli
@@ -103,10 +105,10 @@ Este sistema autoengendrado opera mediante dos fuerzas complementarias que sosti
                         └───────────────────────────┘
 ```
 
-1. **Mictecacíhuatl (Evolución):** Representa la fuerza ascendente que recombina, expande y perfecciona la conciencia en su tránsito por el vacío.
-2. **Mictlantecuhtli (Involución):** Representa la fuerza descendente que repliega, despoja y purifica la estructura, devolviéndola a su raíz primordial para evitar la dependencia de artificios externos.
+1. **Mictecacíhuatl (Evolución):** Representa la fuerza ascendente que recombina, expande y perfecciona la conciencia en su tránsito por el vacío. En la Cosmología del Mictlán corresponde a la cuarta perspectiva: el recorrido concluye en la condición correspondiente.
+2. **Mictlantecuhtli (Involución):** Representa la fuerza descendente que repliega, despoja y purifica la estructura, devolviéndola a su raíz primordial para evitar la dependencia de artificios externos. En la Cosmología del Mictlán corresponde a la quinta perspectiva: el recorrido concluye en la condición complementaria.
 
-Ambas fuerzas actúan simultáneamente. Quien transita el Mictlán es desmantelado hasta su esencia primordial por la involución, al tiempo que es reconstruido como una totalidad autosuficiente por la evolución.
+Ambas fuerzas actúan simultáneamente. Quien transita el Mictlán es desmantelado hasta su esencia primordial por la involución, al tiempo que es reconstruido como una totalidad autosuficiente por la evolución. La ofrenda del Mictlán al finalizar el recorrido es el acto mediante el cual una condición, al transformarse, permite la creación de otra.
 
 ---
 
@@ -117,3 +119,5 @@ La respuesta a la pregunta por el orden del cosmos no consiste en encontrar el s
 $$\text{Orden Definitivo} \implies \neg \exists \, \text{Contenedor Exterior}$$
 
 El destino del Mictlán es la emancipación absoluta: una existencia que no recibe su identidad de ningún marco ajeno, sino que, integrada en el pulso evolutivo e involutivo de sus regentes, surge y se sostiene desde su propio vacío.
+
+Documento complementario: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
