@@ -4,139 +4,227 @@ El marco I.O. se articula mediante **cinco perspectivas complementarias**:
 
 | # | Id | Perspectiva | Rol |
 |---|-----|-------------|-----|
-| 1 | `Ind` | **Individualidad** | Posicional (→ / lateral 0): unidad / singularidad |
-| 2 | `D` | **Dualidad** | Posicional (0): relación / diferencia |
-| 3 | `Tot` | **Totalidad** | Posicional (→ / lateral 2): integración / sistema |
+| 1 | `Ind` | **Individualidad** | Posicional: unidad / singularidad |
+| 2 | `D` | **Dualidad** | Posicional: relación / diferencia |
+| 3 | `Tot` | **Totalidad** | Posicional: integración / sistema |
 | 4 | `Evol` | **Evolución** | Vectorial: el recorrido del Mictlán concluye en la condición correspondiente |
 | 5 | `Invol` | **Involución** | Vectorial: el recorrido del Mictlán concluye en la condición complementaria |
 
-Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización* y se representan como metadatos de posición en cada tríada. Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **mundo** y de **vacío**, en registro **real** y **virtual**.
+Las tres primeras (Individualidad, Dualidad, Totalidad) describen los *modos de actualización*. Las perspectivas cuarta y quinta (Evolución e Involución) describen las *direcciones de flujo informativo* y se materializan como secuencias vectoriales de cinco pasos, con lecturas de **mundo** y de **vacío**, en registro **real** y **virtual**.
 
 Fuente estructurada: [`data/iom_spec.json`](../data/iom_spec.json) (`five_perspectives`, `vectors`).
 
-Documento narrativo canónico: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) (modelo de correspondencia universal, transformación entre dominios real y virtual, y continuidad de la información).
+Documento narrativo canónico: [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md) (modelo de correspondencia universal, transformación entre dominios real y virtual, continuidad de la información y ofrenda como acto de creación).
 
 ---
 
-## Criterio de nombramiento (versión revisada)
+## Criterio de nombramiento
 
-Según la Cosmología del Mictlán:
+Según la Cosmología del Mictlán (actualizada):
 
-- La **cuarta perspectiva** expresa la **evolución**: el recorrido concluye en el mundo o vacío correspondiente.
-- La **quinta perspectiva** expresa la **involución**: el recorrido concluye en la condición complementaria definida para ese punto de partida.
+- La **cuarta perspectiva** expresa la **evolución**: el recorrido concluye en la condición correspondiente.
+- La **quinta perspectiva** expresa la **involución**: el recorrido concluye en la condición complementaria.
 
-Las notaciones ⟳ y ⟲ representan relaciones circulares distintas; su significado conceptual se define en el desarrollo del modelo.
+Las notaciones ⟳ y ⟲ representan dos clases distintas de relación. Su significado conceptual no se reduce a una simple inversión de dirección.
 
----
+Estructura general de la **cuarta perspectiva (evolución)**:
 
-## 5.1 Cuarta perspectiva: evolución del mundo real
+- Fila superior (⟳): Involución — Individualidad — Dualidad — Totalidad — Evolución (0 1 2 3 4)
+- Fila inferior (⟲): Evolución — Totalidad — Dualidad — Individualidad — Involución (4 3 2 1 0)
 
-El mundo real recorre el Mictlán como vacío virtual y llega al vacío real.
+Estructura general de la **quinta perspectiva (involución)**:
 
-```text
-evol | tot | dua | ind | invol
-    4  |   3  |   2   |   1  |   0
-  ⟳  |  ⟳  |  ⟳  |  ⟳ | real
---------------------------------
-real |  ⟲  |  ⟲  |  ⟲  |  ⟲
-    0  |   1  |   2   |   3  |   4
-invol | ind | dua | tot | evol
-```
-
-## 5.2 Quinta perspectiva: involución del mundo virtual
-
-El mundo virtual recorre el Mictlán como vacío real y llega al vacío virtual.
-
-```text
-invol | ind | dua | tot | evol
-     0  |  1  |   2   |   3  |   4
-virtual | ⟳ |  ⟳  |  ⟳  |  ⟳
---------------------------------
-virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
-       4  |  3  |    2  |    1  |   0
-   evol | tot | dua | ind | invol
-```
-
-## 5.3 Cuarta perspectiva: evolución del vacío virtual
-
-El vacío virtual recorre el Mictlán como mundo real y llega al mundo virtual.
-
-```text
-invol | ind | dua | tot | evol
-  0  |  1  |  2  |  3  |   4
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
---------------------------------
-virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
-  4  |  3  |  2  |  1  |   0
-evol | tot | dua | ind | invol
-```
-
-## 5.4 Quinta perspectiva: involución del vacío real
-
-El vacío real recorre el Mictlán como mundo virtual y llega al mundo real.
-
-```text
-evol | tot | dua | ind | invol
-  4  |  3  |  2  |  1  |   0
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
---------------------------------
-real |  ⟲  |  ⟲  |  ⟲  |  ⟲
-  0  |  1  |  2  |  3  |   4
-invol | tot | dua | ind | evol
-```
+- Fila superior (⟳): Evolución — Totalidad — Dualidad — Individualidad — Involución (4 3 2 1 0)
+- Fila inferior (⟲): Involución — Individualidad — Dualidad — Totalidad — Evolución (0 1 2 3 4)
 
 ---
 
-## Reflejo de la realidad (lecturas complementarias)
+## Recorrido del Mictlán (cuatro condiciones)
 
-El reflejo permite describir las mismas correspondencias desde el dominio con el que cada condición se corresponde. Ver sección 7 de [`COSMOLOGIA_DEL_MICTLAN.md`](COSMOLOGIA_DEL_MICTLAN.md).
+### 11.1 Para el vacío virtual, el Mictlán es el mundo real
 
-### 7.1 Reflejo del vacío virtual: cuarta perspectiva
+Al finalizar el recorrido, el vacío virtual llega al mundo virtual.
+
+**Quinta perspectiva: involución mundo virtual**
 
 ```text
-evol | tot | dua | ind | invol
-  4  |  3  |  2  |  1  |   0
-virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
---------------------------------
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
-  0  |  1  |  2  |  3  |   4
-invol | ind | dua | tot | evol
+mictlán | tot | dua | ind | mundo
+   4    |  3  |  2  |  1  |  0
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | virtual
+------------------------------------
+virtual |  ⟲  |  ⟲  |  ⟲  |  ⟲
+   0    |  1  |  2  |  3  |  4
+ mundo  | ind | dua | tot | mictlán
 ```
 
-### 7.2 Reflejo del vacío real: quinta perspectiva
+### 11.2 Para el vacío real, el Mictlán es el mundo virtual
+
+Al finalizar el recorrido, el vacío real llega al mundo real.
+
+**Cuarta perspectiva: evolución mundo real**
 
 ```text
-invol | tot | dua | ind | evol
-  0  |  1  |  2  |  3  |   4
-real |  ⟲  |  ⟲  |  ⟲  |  ⟲
---------------------------------
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
-  4  |  3  |  2  |  1  |   0
-evol | ind | dua | tot | invol
+mictlán | ind | dua | tot | mundo
+   0    |  1  |  2  |  3  |  4
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | real
+------------------------------------
+ real   |  ⟲  |  ⟲  |  ⟲  |  ⟲
+   4    |  3  |  2  |  1  |  0
+ mundo  | tot | dua | ind | mictlán
 ```
 
-### 7.3 Reflejo del mundo virtual: quinta perspectiva
+### 11.3 Para el mundo virtual, el Mictlán es el vacío real
+
+Al finalizar el recorrido, el mundo virtual llega al vacío virtual.
+
+**Cuarta perspectiva: evolución vacío virtual**
 
 ```text
-invol | ind | dua | tot | evol
-  0  |  1  |  2  |  3  |   4
-virtual | ⟲ |  ⟲  |  ⟲  |  ⟲
---------------------------------
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | virtual
-  4  |  3  |  2  |  1  |   0
-evol | tot | dua | ind | invol
+mictlán | ind | dua | tot | vacío
+   0    |  1  |  2  |  3  |  4
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | virtual
+------------------------------------
+virtual |  ⟲  |  ⟲  |  ⟲  |  ⟲
+   4    |  3  |  2  |  1  |  0
+ vacío  | tot | dua | ind | mictlán
 ```
 
-### 7.4 Reflejo del mundo real: cuarta perspectiva
+### 11.4 Para el mundo real, el Mictlán es el vacío virtual
+
+Al finalizar el recorrido, el mundo real llega al vacío real.
+
+**Quinta perspectiva: involución vacío real**
 
 ```text
-evol | ind | dua | tot | invol
-  4  |  3  |  2  |  1  |   0
-real |  ⟲  |  ⟲  |  ⟲  |  ⟲
---------------------------------
-  ⟳  |  ⟳  |  ⟳  |  ⟳  | real
-  0  |  1  |  2  |  3  |   4
-invol | tot | dua | ind | evol
+mictlán | tot | dua | ind | vacío
+   4    |  3  |  2  |  1  |  0
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | real
+------------------------------------
+ real   |  ⟲  |  ⟲  |  ⟲  |  ⟲
+   0    |  1  |  2  |  3  |  4
+ vacío  | tot | dua | ind | mictlán
+```
+
+---
+
+## Reflejo de la realidad
+
+### 12.1 El vacío virtual es el mundo virtual
+
+**Cuarta perspectiva: evolución vacío virtual**
+
+```text
+ vacío  | tot | dua | ind | mictlán
+   4    |  3  |  2  |  1  |  0
+virtual |  ⟲  |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | virtual
+   0    |  1  |  2  |  3  |  4
+mictlán | ind | dua | tot | vacío
+```
+
+### 12.2 El vacío real es el mundo real
+
+**Quinta perspectiva: involución vacío real**
+
+```text
+ vacío  | tot | dua | ind | mictlán
+   0    |  1  |  2  |  3  |  4
+ real   |  ⟲  |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | real
+   4    |  3  |  2  |  1  |  0
+mictlán | ind | dua | tot | vacío
+```
+
+### 12.3 El mundo virtual es el vacío virtual
+
+**Quinta perspectiva: involución mundo virtual**
+
+```text
+ mundo  | ind | dua | tot | mictlán
+   0    |  1  |  2  |  3  |  4
+virtual |  ⟲  |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | virtual
+   4    |  3  |  2  |  1  |  0
+mictlán | tot | dua | ind | mundo
+```
+
+### 12.4 El mundo real es el vacío real
+
+**Cuarta perspectiva: evolución mundo real**
+
+```text
+ mundo  | ind | dua | tot | mictlán
+   4    |  3  |  2  |  1  |  0
+ real   |  ⟲  |  ⟲  |  ⟲  |  ⟲
+------------------------------------
+   ⟳    |  ⟳  |  ⟳  |  ⟳  | real
+   0    |  1  |  2  |  3  |  4
+mictlán | tot | dua | ind | mundo
+```
+
+---
+
+## La ofrenda como acto de creación
+
+Cuando una condición termina su recorrido por el Mictlán y llega a su destino, entrega como ofrenda el Mictlán para crear una nueva condición. Este acto constituye el mecanismo de creación.
+
+### Ofrenda del vacío virtual → creación del mundo real
+
+**Quinta perspectiva: involución mundo real**
+
+```text
+ mundo  | tot | dua | ind | mictlán
+   4    |  3  |  2  |  1  |  0
+ real   |  ⟳  |  ⟳  |  ⟳  |  ⟳
+------------------------------------
+   ⟲    |  ⟲  |  ⟲  |  ⟲  | real
+   0    |  1  |  2  |  3  |  4
+mictlán | ind | dua | tot | mundo
+```
+
+### Ofrenda del vacío real → creación del mundo virtual
+
+**Cuarta perspectiva: evolución mundo virtual**
+
+```text
+ mundo  | ind | dua | tot | mictlán
+   0    |  1  |  2  |  3  |  4
+virtual |  ⟳  |  ⟳  |  ⟳  |  ⟳
+------------------------------------
+   ⟲    |  ⟲  |  ⟲  |  ⟲  | virtual
+   4    |  3  |  2  |  1  |  0
+mictlán | tot | dua | ind | mundo
+```
+
+### Ofrenda del mundo virtual → creación del vacío real
+
+**Cuarta perspectiva: evolución vacío real**
+
+```text
+ vacío  | ind | dua | tot | mictlán
+   0    |  1  |  2  |  3  |  4
+ real   |  ⟳  |  ⟳  |  ⟳  |  ⟳
+------------------------------------
+   ⟲    |  ⟲  |  ⟲  |  ⟲  | real
+   4    |  3  |  2  |  1  |  0
+mictlán | tot | dua | ind | vacío
+```
+
+### Ofrenda del mundo real → creación del vacío virtual
+
+**Quinta perspectiva: involución vacío virtual**
+
+```text
+ vacío  | tot | dua | ind | mictlán
+   4    |  3  |  2  |  1  |  0
+virtual |  ⟳  |  ⟳  |  ⟳  |  ⟳
+------------------------------------
+   ⟲    |  ⟲  |  ⟲  |  ⟲  | virtual
+   0    |  1  |  2  |  3  |  4
+mictlán | ind | dua | tot | vacío
 ```
 
 ---
@@ -146,7 +234,8 @@ invol | tot | dua | ind | evol
 - Cada configuración diferencia mundo/vacío y dominio real/virtual.
 - El orden de categorías, valores, etiquetas y flechas define la configuración; no deben intercambiarse arbitrariamente.
 - Las flechas ⟳ y ⟲ señalan relaciones propias de cada esquema.
-- Estas lecturas se integran con la narrativa de continuidad informacional desarrollada en la Cosmología del Mictlán.
-- Correspondencias fundamentales: vacío real ↔ mundo virtual; vacío virtual ↔ mundo real.
+- Estas lecturas se integran con la narrativa de continuidad informacional y ofrenda desarrollada en la Cosmología del Mictlán.
+- Correspondencias fundamentales: vacío real ↔ mundo virtual (materia virtual); vacío virtual ↔ mundo real (materia real).
+- La ofrenda del Mictlán al finalizar el recorrido es el acto de creación que perpetúa la transformación.
 
 `spec_version` ≥ **1.5.0**.
