@@ -27,7 +27,7 @@ El desarrollo sistemático de esta idea se encuentra en:
 
 **[`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md)**
 
-**Cosmología del Mictlán** (modelo de correspondencia universal entre materia/vacío, dominios real/virtual, evolución/involución y continuidad de la información):
+**Cosmología del Mictlán** (modelo de correspondencia universal entre materia/vacío, dominios real/virtual, evolución/involución, continuidad de la información y ofrenda como acto de creación):
 
 **[`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)**
 
@@ -42,7 +42,7 @@ Borrador histórico (no normativo): [`docs/archive/MARCOI.O.txt`](docs/archive/M
 |-----------|-----|
 | **README.md** | Técnico: propósito, pipeline, criterios de verificación |
 | **MANIFIESTO.md** (este) | Propósito y fundamento del marco |
-| **docs/COSMOLOGIA_DEL_MICTLAN.md** | Modelo cosmológico de correspondencias y transformaciones |
+| **docs/COSMOLOGIA_DEL_MICTLAN.md** | Modelo cosmológico completo de correspondencias, transformaciones, reflejo y ofrenda |
 | **docs/DEL_ORDEN_…** | Desarrollo filosófico canónico |
 | **EXPERIMENTOS.md** | Qué se mide y qué no se mide |
 | **docs/DELIMITACION_EPISTEMOLOGICA.md** | Qué cuenta como fundamento |
