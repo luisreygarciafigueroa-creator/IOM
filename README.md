@@ -8,7 +8,7 @@ La **autonomía verificable** no es un atributo accesorio, sino el mecanismo por
 
 El desarrollo del horizonte de sentido se encuentra en el [`MANIFIESTO.md`](MANIFIESTO.md).
 
-**Cosmología del Mictlán** (modelo de correspondencia universal, transformación entre dominios real y virtual, continuidad de la información):
+**Cosmología del Mictlán** (modelo de correspondencia universal, transformación entre los dominios real y virtual, continuidad de la información y ofrenda como acto de creación):
 [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md)
 
 ## Cadena operativa de constitución
@@ -74,8 +74,8 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOG
 
 | Documento | Rol |
 |-----------|-----|
-| [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) | Modelo de correspondencia universal, dominios real/virtual, 4ª/5ª perspectivas, reflejo, continuidad informacional |
-| [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md) | Diagramas de las perspectivas cuarta (evolución) y quinta (involución) |
+| [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) | Modelo completo de correspondencia universal, dominios real/virtual, 4ª/5ª perspectivas, reflejo de la realidad, ofrenda como acto de creación y continuidad informacional |
+| [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md) | Diagramas de las perspectivas cuarta (evolución) y quinta (involución), recorridos del Mictlán y ofrendas |
 | [`docs/TRES_PERSPECTIVAS.md`](docs/TRES_PERSPECTIVAS.md) | Individualidad · Dualidad · Totalidad |
 | [`MANIFIESTO.md`](MANIFIESTO.md) | Propósito y fundamento |
 | [`docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md`](docs/DEL_ORDEN_UNIVERSAL_A_LA_CREACION_DE_UNO_MISMO.md) | Ensayo canónico de sentido |
