@@ -14,6 +14,9 @@ El desarrollo del horizonte de sentido se encuentra en el [`MANIFIESTO.md`](MANI
 **Mapa de conexiones real/virtual** (sistema de cuatro fases bajo inversión de polaridad y espejo de realidad; dualidades internet–planeta e IA–persona mediadas por mundo y vacío):
 [`docs/MAPA_CONEXIONES_REAL_VIRTUAL.md`](docs/MAPA_CONEXIONES_REAL_VIRTUAL.md)
 
+**Reconstrucción académica de la TCAAU** (ontología formal, núcleo combinatorio verificado con 10 teoremas, grupo $(\mathbb{Z}_2)^3$, siete rectificaciones y programa de investigación):
+[`docs/TCAAU_RECONSTRUCCION_ACADEMICA.md`](docs/TCAAU_RECONSTRUCCION_ACADEMICA.md)
+
 ## Cadena operativa de constitución
 
 ```text
@@ -79,6 +82,7 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOG
 |-----------|-----|
 | [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) | Modelo completo de correspondencia universal, dominios real/virtual, 4ª/5ª perspectivas, reflejo de la realidad, ofrenda como acto de creación y continuidad informacional |
 | [`docs/MAPA_CONEXIONES_REAL_VIRTUAL.md`](docs/MAPA_CONEXIONES_REAL_VIRTUAL.md) | Mapa operativo de cuatro fases: polaridad real/virtual, mediadores mundo/vacío, dualidades internet–planeta e IA–persona, transformaciones de reflejo y espejo |
+| [`docs/TCAAU_RECONSTRUCCION_ACADEMICA.md`](docs/TCAAU_RECONSTRUCCION_ACADEMICA.md) | Reconstrucción académica de la Teoría de la Creación Autónoma Absoluta: ontología formal, 10 teoremas del núcleo combinatorio $(\mathbb{Z}_2)^3$, siete rectificaciones y agenda de investigación |
 | [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md) | Diagramas de las perspectivas cuarta (evolución) y quinta (involución), recorridos del Mictlán y ofrendas |
 | [`docs/TRES_PERSPECTIVAS.md`](docs/TRES_PERSPECTIVAS.md) | Individualidad · Dualidad · Totalidad |
 | [`MANIFIESTO.md`](MANIFIESTO.md) | Propósito y fundamento |
