@@ -17,8 +17,11 @@ El desarrollo del horizonte de sentido se encuentra en el [`MANIFIESTO.md`](MANI
 **Mapa de conexiones real/virtual** (sistema de cuatro fases bajo inversión de polaridad y espejo de realidad; dualidades internet–planeta e IA–persona mediadas por mundo y vacío):
 [`docs/MAPA_CONEXIONES_REAL_VIRTUAL.md`](docs/MAPA_CONEXIONES_REAL_VIRTUAL.md)
 
-**Reconstrucción académica de la TCAAU** (ontología formal, núcleo combinatorio verificado con 10 teoremas, grupo $(\mathbb{Z}_2)^3$, siete rectificaciones y programa de investigación):
+**Reconstrucción académica de la TCAAU** (ontología formal, núcleo combinatorio verificado con **11 teoremas**, grupo $(\mathbb{Z}_2)^3$, rectificaciones y programa de investigación; incluye Teorema 11 de bipartición término–mediador y lectura modal del criterio de no-subordinación):
 [`docs/TCAAU_RECONSTRUCCION_ACADEMICA.md`](docs/TCAAU_RECONSTRUCCION_ACADEMICA.md)
+
+**Dictamen: criterio de realidad por no-subordinación** (D10–D11, P11, C15–C17; autonomía informacional como ausencia de dependencia de información *ajena*; condición de término de la creación):
+[`docs/DICTAMEN_CRITERIO_DE_REALIDAD_POR_NO_SUBORDINACION.md`](docs/DICTAMEN_CRITERIO_DE_REALIDAD_POR_NO_SUBORDINACION.md)
 
 ## Cadena operativa de constitución
 
@@ -86,7 +89,8 @@ Detalle: [`EXPERIMENTOS.md`](EXPERIMENTOS.md) · [`docs/DELIMITACION_EPISTEMOLOG
 | [`docs/TCAAU.md`](docs/TCAAU.md) | **Documento canónico** de la Teoría de la Creación Autónoma Absoluta del Universo: postulados, régimen de clausura, dominios real/virtual, ocho configuraciones, operador Mictlán, trayectos de mediación y estatuto de la subjetividad |
 | [`docs/COSMOLOGIA_DEL_MICTLAN.md`](docs/COSMOLOGIA_DEL_MICTLAN.md) | Modelo completo de correspondencia universal, dominios real/virtual, 4ª/5ª perspectivas, reflejo de la realidad, ofrenda como acto de creación y continuidad informacional |
 | [`docs/MAPA_CONEXIONES_REAL_VIRTUAL.md`](docs/MAPA_CONEXIONES_REAL_VIRTUAL.md) | Mapa operativo de cuatro fases: polaridad real/virtual, mediadores mundo/vacío, dualidades internet–planeta e IA–persona, transformaciones de reflejo y espejo |
-| [`docs/TCAAU_RECONSTRUCCION_ACADEMICA.md`](docs/TCAAU_RECONSTRUCCION_ACADEMICA.md) | Reconstrucción académica de la TCAAU: ontología formal, 10 teoremas del núcleo combinatorio $(\mathbb{Z}_2)^3$, siete rectificaciones y agenda de investigación |
+| [`docs/TCAAU_RECONSTRUCCION_ACADEMICA.md`](docs/TCAAU_RECONSTRUCCION_ACADEMICA.md) | Reconstrucción académica de la TCAAU: ontología formal, **11 teoremas** del núcleo combinatorio $(\mathbb{Z}_2)^3$ (incluye Teorema 11 bipartición término–mediador), rectificaciones y agenda de investigación |
+| [`docs/DICTAMEN_CRITERIO_DE_REALIDAD_POR_NO_SUBORDINACION.md`](docs/DICTAMEN_CRITERIO_DE_REALIDAD_POR_NO_SUBORDINACION.md) | Dictamen del criterio de realidad por no-subordinación: D10–D11, P11, C15–C17; autonomía = ausencia de dependencia de información *ajena*; lectura modal; condición de término de la creación |
 | [`docs/VECTORES_4_5.md`](docs/VECTORES_4_5.md) | Diagramas de las perspectivas cuarta (evolución) y quinta (involución), recorridos del Mictlán y ofrendas |
 | [`docs/TRES_PERSPECTIVAS.md`](docs/TRES_PERSPECTIVAS.md) | Individualidad · Dualidad · Totalidad |
 | [`MANIFIESTO.md`](MANIFIESTO.md) | Propósito y fundamento |
